@@ -345,7 +345,7 @@ class OrderController extends Controller
                     $bg = 'quaternary';
                 } elseif ($status == 'setuju') {
                     $bg = 'success';
-                    $status = 'Order Telah Disetujui Oleh PPATK';
+                    $status = 'Order Telah Disetujui Oleh PPTK';
                 } elseif ($status == 'nego') {
                     $bg = 'secondary';
                     $status = 'Negosiasi Selesai';
