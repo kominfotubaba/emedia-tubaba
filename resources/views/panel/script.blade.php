@@ -19,6 +19,7 @@
 <script src="/assets/js/vendor/tagify.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/assets/js/vendor/imask.js"></script>
+<script src="/assets/js/cs/wizard.js"></script>
 <!-- Vendor Scripts End -->
 
 <!-- Template Base Scripts Start -->
@@ -48,6 +49,7 @@
 <script src="/assets/js/common.js"></script>
 <script src="/assets/js/scripts.js"></script>
 <script src="/assets/js/master.js"></script>
+<script src="/assets/js/forms/wizards.js"></script>
 <!-- Page Specific Scripts End -->
 
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>

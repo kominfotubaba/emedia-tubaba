@@ -3,7 +3,9 @@
     <main>
         <section class="scroll-section" id="title">
             <div class="page-title-container">
-                <h1 class="mb-0 pb-0 display-4">List Pengajuan</h1>
+                <h1 class="mb-0 pb-0 display-4">List Pengajuan Tahun {{ $tahun }}</h1>
+                <div id="tahuns" hidden>{{ $tahun }}</div>
+                <div id="users" hidden>{{ Auth::user()->role }}</div>
                 {{-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
                     <ul class="breadcrumb pt-0">
                         <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
@@ -35,6 +37,11 @@
                             </div>
                             <div class="col-12 col-sm-7 col-lg-9 col-xxl-10 text-end mb-1">
                                 <div class="d-inline-block">
+                                    @if ($pengajuan_tahun == 0)
+                                        <button class="btn btn-sm btn-outline-muted" type="button">
+                                            Pengajuan
+                                        </button>
+                                    @endif
                                     <button class="btn btn-icon btn-icon-only btn-outline-muted btn-sm datatable-print"
                                         type="button" data-datatable="#tbDaftarPengajuan">
                                         <i data-acorn-icon="print"></i>
@@ -92,6 +99,7 @@
 @push('script')
     <script>
         $(document).ready(function() {
+            var tahun = $('#tahuns').html()
             $('#tbDaftarPengajuan').DataTable({
                 processing: true,
                 serverSide: true,
@@ -104,7 +112,7 @@
                     [0, "asc"]
                 ],
                 responsive: true,
-                ajax: '{!! route('daftar.show') !!}',
+                ajax: '/daftar/' + tahun + '/show',
                 columns: [
                     // {
                     //     data: 'id',

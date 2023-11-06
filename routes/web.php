@@ -52,8 +52,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
 
     Route::prefix('/daftar')->group(function () {
+        // Route::get('/', [MediaPengajuanDaftarController::class, 'show_detail']);
+
         Route::get('/', [MediaPengajuanDaftarController::class, 'index']);
-        Route::get('/show', [MediaPengajuanDaftarController::class, 'show'])->name('daftar.show');
+        Route::get('/show', [MediaPengajuanDaftarController::class, 'show']);
+        Route::get('/{tahun}/detail', [MediaPengajuanDaftarController::class, 'index_detail']);
+        Route::get('/{tahun}/show', [MediaPengajuanDaftarController::class, 'show_detail'])->name('daftar.show');
     });
     // end of Pengajuan
 

@@ -16,10 +16,16 @@ class MediaPengajuanDaftarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        return view('admin.pengajuan.daftar_pengajuan');
+    }
 
+    public function index_detail(Request $request)
+    {
+        //
+        $tahun = $request->segment(2);
         $count = tahun::select('tahun')->where('pengajuan', 1)->count();
         if ($count == 0) {
             # code...
@@ -31,7 +37,13 @@ class MediaPengajuanDaftarController extends Controller
 
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
         $pengajuan_cek = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-        return view('admin.pengajuan.list', ['pengajuan_buka' => $tahun_hitung, 'pengajuan_data' => $pengajuan_cek]);
+        $pengajuan_tahun = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun)->count();
+        return view('admin.pengajuan.list', [
+            'pengajuan_buka' => $tahun_hitung,
+            'pengajuan_data' => $pengajuan_cek,
+            'pengajuan_tahun' => $pengajuan_tahun,
+            'tahun' => $tahun
+        ]);
     }
 
     /**
@@ -61,15 +73,16 @@ class MediaPengajuanDaftarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show_detail(Request $request)
     {
         //
+        $tahun = $request->segment(2);
         if (Auth::user()->role == 'user') {
             # code...
             // $data = media_pengajuan::where('id_user', Auth::user()->id)->get();
-            $data = media_pengajuan::where('id_user', Auth::user()->id)->join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
+            $data = media_pengajuan::where('tahun_pengajuan', $tahun)->where('id_user', Auth::user()->id)->join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
         } else {
-            $data = media_pengajuan::join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
+            $data = media_pengajuan::where('tahun_pengajuan', $tahun)->join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
         }
         return DataTables()->of($data)
             ->addColumn('action', function ($data) {
@@ -137,6 +150,40 @@ class MediaPengajuanDaftarController extends Controller
                 return '<span class="badge m-2 ' . $bg . '">' . $keterangan . '</span>';
             })
             ->rawColumns(['action', 'keterangan'])
+            ->make(true);
+    }
+
+    public function show(Request $request)
+    {
+        //
+        $data = tahun::orderByDesc('tahun')->get();
+        return DataTables()->of($data)
+            ->addColumn('aksi', function ($data) {
+                if ((Auth::user()->role == 'admin') || Auth::user()->role == 'user') {
+
+                    $button = '<a href="/daftar/' . $data->tahun . '/detail" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-fill" viewBox="0 0 16 16">
+                    <path d="M3.904 1.777C4.978 1.289 6.427 1 8 1s3.022.289 4.096.777C13.125 2.245 14 2.993 14 4s-.875 1.755-1.904 2.223C11.022 6.711 9.573 7 8 7s-3.022-.289-4.096-.777C2.875 5.755 2 5.007 2 4s.875-1.755 1.904-2.223Z"/>
+                    <path d="M2 6.161V7c0 1.007.875 1.755 1.904 2.223C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777C13.125 8.755 14 8.007 14 7v-.839c-.457.432-1.004.751-1.49.972C11.278 7.693 9.682 8 8 8s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z"/>
+                    <path d="M2 9.161V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13s3.022-.289 4.096-.777C13.125 11.755 14 11.007 14 10v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z"/>
+                    <path d="M2 12.161V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z"/>
+                    </svg></a>';
+                } else {
+                    $button = '';
+                }
+                return '<div class="my-2 btn-group btn-group-sm" role="group" aria-label="Basic example">' . $button . '</div>';
+            })
+            ->addColumn('status', function ($data) {
+                if ($data->pengajuan == 1) {
+                    # code...
+                    $bg = 'success';
+                    $status = 'Aktif';
+                } else {
+                    $bg = 'danger';
+                    $status = 'Tidak Aktif';
+                }
+                return '<span class="badge rounded-pill bg-' . $bg . '">' . $status . '</span>';
+            })
+            ->rawColumns(['aksi', 'status'])
             ->make(true);
     }
 

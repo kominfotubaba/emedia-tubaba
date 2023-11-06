@@ -32,6 +32,7 @@ class MediaPengajuanController extends Controller
         }
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
         $pengajuan_data = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+        // $pengajuan_data = media_pengajuan::where('id_user', Auth::user()->id)->count();
         // dd($pengajuan_data);
         if (Auth::user()->role == 'user') {
             # code...
@@ -39,7 +40,7 @@ class MediaPengajuanController extends Controller
                 # code...
                 return view('admin.pengajuan.jenis', ['pengajuan_buka' => $tahun_hitung, 'pengajuan_data' => $pengajuan_data]);
             } else {
-                return redirect('/daftar');
+                return redirect('/daftar' . '/' . $tahun_buka . '/detail');
             }
         } else {
             return abort(404);
@@ -513,10 +514,10 @@ class MediaPengajuanController extends Controller
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        dd($httpcode);
+        // dd($httpcode);
         if ($httpcode == 200) {
             echo "true";
-        } elseif ($httpcode == 301) {
+        } elseif ($httpcode == 301 || $httpcode == 308) {
             echo "true";
         } else {
             echo "false";

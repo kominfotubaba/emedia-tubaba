@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('media_pengajuans', function (Blueprint $table) {
             $table->id();
+            // Data Badan Hukum
+            // Data Media
+            // Kualifikasi Media
+            // Perwakilan Media
+            // status dan parameter
             $table->string('id_user');
             $table->string('pengajuan_no');
             $table->string('jenis_media');
