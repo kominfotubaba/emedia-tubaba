@@ -593,7 +593,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-4">
+                            {{-- <div class="row mb-4">
                                 <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                     <div class="form-floating w-100">
                                         <select class="select-floating" id="lunasPBB" name="lunasPBB">
@@ -610,7 +610,7 @@
                                         <label class="ps-4">File PDF Bukti Lunas PBB Tahun Berjalan</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <hr class="mb-4">
 
@@ -1000,9 +1000,9 @@
                         required: true,
                         nospace: true,
                     },
-                    lunasPBB: {
-                        required: true,
-                    },
+                    // lunasPBB: {
+                    //     required: true,
+                    // },
                     jenisSerfikatUkwPerwakilan: {
                         required: true,
                     },
@@ -1220,14 +1220,14 @@
             minimumResultsForSearch: Infinity,
             placeholder: 'Pilih Status Lunas PBB Tahun Berjalan'
         });
-        $("#lunasPBB").change(function() {
-            var value = $(this).val();
-            if (value == 'belum') {
-                $('.fileLunasPBB').prop("hidden", true);
-            } else {
-                $('.fileLunasPBB').prop("hidden", false);
-            }
-        });
+        // $("#lunasPBB").change(function() {
+        //     var value = $(this).val();
+        //     if (value == 'belum') {
+        //         $('.fileLunasPBB').prop("hidden", true);
+        //     } else {
+        //         $('.fileLunasPBB').prop("hidden", false);
+        //     }
+        // });
         $('#jenisSerfikatUkwPerwakilan').select2({
             minimumResultsForSearch: Infinity,
             placeholder: 'Pilih Sertifikat Kompetensi Dewan Pers Perwakilan'
