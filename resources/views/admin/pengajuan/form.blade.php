@@ -760,6 +760,7 @@
                 </div>
             </div>
         </div>
+
         <div class="card-footer text-center border-0 pt-1">
             <button class="btn btn-icon btn-icon-start btn-outline-primary btn-prev" type="button">
                 <i data-acorn-icon="chevron-left"></i>
