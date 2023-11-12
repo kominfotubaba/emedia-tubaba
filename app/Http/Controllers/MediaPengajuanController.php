@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Mail\notifVerifikasiTolak;
 use App\Models\media_pengajuan;
+use App\Models\new_media_pengajuan;
 use App\Models\tahun;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -31,8 +33,8 @@ class MediaPengajuanController extends Controller
             $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
         }
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
-        $pengajuan_data = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-        // $pengajuan_data = media_pengajuan::where('id_user', Auth::user()->id)->count();
+        // $pengajuan_data = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+        $pengajuan_data = new_media_pengajuan::where('id_user', Auth::user()->id)->count();
         // dd($pengajuan_data);
         if (Auth::user()->role == 'user') {
             # code...
@@ -55,6 +57,19 @@ class MediaPengajuanController extends Controller
     public function create(Request $request)
     {
         //deklarasi
+        $data_id = $request->id;
+        $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
+        $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
+
+        $find = new_media_pengajuan::find($data_id);
+        $duplikat_data = $find->replicate();
+        $duplikat_data->created_at = Carbon::now();
+        $duplikat_data->pengajuan_no =  $tahun_buka . '_' . Str::random(10);
+        $duplikat_data->tahun_pengajuan =  $tahun_buka;
+        $duplikat_data->save();
+        return response()->json([
+            'text' => 'data sukses'
+        ]);
     }
 
     /**
@@ -71,80 +86,74 @@ class MediaPengajuanController extends Controller
         $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
         $pengajuan_no =  $tahun_buka . '_' . Str::random(10);
         $jenis_media = strtolower($request->jenis_media);
-        $nama_perusahaan = str_replace('  ', ' ', strtolower($request->nama_perusahaan));
-        $nama_pimred = strtolower($request->nama_pimred);
-        $alamat_perusahaan = strtolower($request->alamat_perusahaan);
-        $tlpn_perusahaan = strtolower($request->tlpn_perusahaan);
-        $email_perusahaan = strtolower($request->email_perusahaan);
-        $npwp_perusahaan = strtolower($request->npwp_perusahaan);
-        $akta_perusahaan = strtolower($request->akta_perusahaan);
-        $kumham_perusahaan = strtolower($request->kumham_perusahaan);
-        $wartawan_kompeten_perusahaan = strtolower($request->wartawan_kompeten_perusahaan);
-        $nama_percetakan = strtolower($request->nama_percetakan);
-        $alamat_percetakan = strtolower($request->alamat_percetakan);
-        // file
-        // $file_npwp_perusahaan = URL::to('/tmp/uploads/fileNpwpPerusahaan/' .  $request->file_npwp_perusahaan);
-        // $file_akta_perusahaan = URL::to('/tmp/uploads/fileAktaPerusahaan/' . $request->file_akta_perusahaan);
-        // $file_kumham_perusahaan = URL::to('/tmp/uploads/fileKumhamPerusahaan/' . $request->file_kumham_perusahaan);
-        // $file_dewan_pers_perusahaan = URL::to('/tmp/uploads/fileDewanPersPerusahaan/' . $request->file_dewan_pers_perusahaan);
-        // $file_spt_perusahaan = URL::to('/tmp/uploads/fileSptPerusahaan/' . $request->file_spt_perusahaan);
-        // $file_domisili_perusahaan = URL::to('/tmp/uploads/fileDomisiliPerusahaan/' . $request->file_domisili_perusahaan);
-        // $file_kuasa_perwakilan = URL::to('/tmp/uploads/fileKuasaPerwakilan/' . $request->file_kuasa_perwakilan);
-        // $file_kerjasama = URL::to('/tmp/uploads/fileKerjasama/' . $request->file_kerjasama);
-        $file_npwp_perusahaan = $request->file_npwp_perusahaan;
-        $file_akta_perusahaan = $request->file_akta_perusahaan;
-        $file_kumham_perusahaan = $request->file_kumham_perusahaan;
-        $file_wartawan_kompeten_perusahaan = $request->file_wartawan_kompeten_perusahaan;
-        $file_dewan_pers_perusahaan = $request->file_dewan_pers_perusahaan;
-        $file_afiliasi_perusahaan = $request->file_afiliasi_perusahaan;
-        $file_spt_perusahaan = $request->file_spt_perusahaan;
-        $file_domisili_perusahaan = $request->file_domisili_perusahaan;
-        $file_kuasa_perwakilan = $request->file_kuasa_perwakilan;
-        $file_kerjasama = $request->file_kerjasama;
-        $file_izin_ipp = $request->file_izin_ipp;
 
-        // perwakilan
-        $nama_media = strtolower($request->nama_media);
-        $nama_biro_perwakilan = strtolower($request->nama_biro_perwakilan);
-        $alamat_perwakilan = strtolower($request->alamat_perwakilan);
-        $tlpn_perwakilan = strtolower($request->tlpn_perwakilan);
-        $email_perwakilan = strtolower($request->email_perwakilan);
-        $ktp_perwakilan = strtolower($request->ktp_perwakilan);
-        $kk_perwakilan = strtolower($request->kk_perwakilan);
-        $npwp_perwakilan = strtolower($request->npwp_perwakilan);
-        $kompetensi_perwakilan = strtolower($request->kompetensi_perwakilan);
-        $jenis_rekening = strtolower($request->jenis_rekening);
-        $nama_bank = strtolower($request->nama_bank);
-        $pemilik_rekening = strtolower($request->pemilik_rekening);
-        $no_rekening = strtolower($request->no_rekening);
-        // file
-        // $file_ktp_perwakilan = URL::to('/tmp/uploads/fileKtpPerwakilan/' . $request->file_ktp_perwakilan);
-        // $file_kk_perwakilan = URL::to('/tmp/uploads/fileKkPerwakilan/' . $request->file_kk_perwakilan);
-        // $file_npwp_perwakilan = URL::to('/tmp/uploads/fileNpwpPerwakilan/' . $request->file_npwp_perwakilan);
-        // $file_kopetensi_perwakilan = URL::to('/tmp/uploads/fileKopetensiPerwakilan/' . $request->file_kopetensi_perwakilan);
-        // $file_afiliasi_perwakilan = URL::to('/tmp/uploads/fileAfiliasiPerwakilan/' . $request->file_afiliasi_perwakilan);
-        // $file_domisili_perwakilan = URL::to('/tmp/uploads/fileDomisiliPerwakilan/' . $request->file_domisili_perwakilan);
-        // $file_kode_etik_perwakilan = URL::to('/tmp/uploads/fileKodeEtikPerwakilan/' . $request->file_kode_etik_perwakilan);
-        // $file_pernyataan_media_perwakilan = URL::to('/tmp/uploads/filePernyataanMediaPerwakilan/' . $request->file_pernyataan_media_perwakilan);
-        // $file_rekening = URL::to('/tmp/uploads/fileRekening/' . $request->file_rekening);
-        // $file_signature_data = URL::to('/tmp/uploads/fileSignatureData/' . $request->file_signature_data);
-        $file_ktp_perwakilan = $request->file_ktp_perwakilan;
-        $file_kk_perwakilan = $request->file_kk_perwakilan;
-        $file_npwp_perwakilan = $request->file_npwp_perwakilan;
-        $file_kopetensi_perwakilan = $request->file_kopetensi_perwakilan;
-        $file_afiliasi_perwakilan = $request->file_afiliasi_perwakilan;
-        $file_domisili_perwakilan = $request->file_domisili_perwakilan;
-        $file_kode_etik_perwakilan = $request->file_kode_etik_perwakilan;
-        $file_pernyataan_media_perwakilan = $request->file_pernyataan_media_perwakilan;
-        $file_rekening = $request->file_rekening;
-        $file_signature_data = $request->file_signature_data;
+        $namaPerusahaan = str_replace('  ', ' ', strtolower($request->namaPerusahaan));
+        $namaPenanggungJawab = strtolower($request->namaPenanggungJawab);
+        $namaPimred = strtolower($request->namaPimred);
+        $kumhamPerusahaan = strtolower($request->kumhamPerusahaan);
+        $alamatPerusahaan = strtolower($request->alamatPerusahaan);
+        $tlpnPerusahaan = strtolower($request->tlpnPerusahaan);
+        $emailPerusahaan = strtolower($request->emailPerusahaan);
+        $npwpPerusahaan = strtolower($request->npwpPerusahaan);
+        $nibPerusahaan = strtolower($request->nibPerusahaan);
+        $noKbki = strtolower($request->noKbki);
+        $izinIpp = strtolower($request->izinIpp);
+        $namaPercetakan = strtolower($request->namaPercetakan);
+        $alamatProvPerusahaan = strtolower($request->alamatProvPerusahaan);
+        $alamatKabPerusahaan = strtolower($request->alamatKabPerusahaan);
+        $statusKswp = strtolower($request->statusKswp);
+        $noKlbi = strtolower($request->noKlbi);
+        $fileSuratPernyataanPimred = strtolower($request->fileSuratPernyataanPimred);
+        $fileKumhamPerusahaan = strtolower($request->fileKumhamPerusahaan);
+        $fileNpwpPerusahaan = strtolower($request->fileNpwpPerusahaan);
+        $fileNibPerusahaan = strtolower($request->fileNibPerusahaan);
+        $fileIzinIpp = strtolower($request->fileIzinIpp);
+        $namaMedia = strtolower($request->namaMedia);
+        $serfikatUkwPimred = strtolower($request->serfikatUkwPimred);
+        $namaBank = strtolower($request->namaBank);
+        $pemilikRekening = strtolower($request->pemilikRekening);
+        $noRekening = strtolower($request->noRekening);
+        $verifikasiDewanPers = strtolower($request->verifikasiDewanPers);
+        $jenisSerfikatUkwPimred = strtolower($request->jenisSerfikatUkwPimred);
+        $afiliasiPerusahaan = strtolower($request->afiliasiPerusahaan);
+        $domisiliRedaksiMedia = strtolower($request->domisiliRedaksiMedia);
+        $kanalKhusus = strtolower($request->kanalKhusus);
+        $jenisRekening = strtolower($request->jenisRekening);
+        $fileSerfikatUkwPimred = strtolower($request->fileSerfikatUkwPimred);
+        $fileAfiliasiPerusahaan = strtolower($request->fileAfiliasiPerusahaan);
+        $fileDomisiliRedaksiMedia = strtolower($request->fileDomisiliRedaksiMedia);
+        $fileKanalKhusus = strtolower($request->fileKanalKhusus);
+        $fileRekening = strtolower($request->fileRekening);
+        $tahunBerdiriMedia = strtolower($request->tahunBerdiriMedia);
+        $jenisJangkauanSiarMediaElektronik = strtolower($request->jenisJangkauanSiarMediaElektronik);
+        $jangkauanSiarMediaElektronik = strtolower($request->jangkauanSiarMediaElektronik);
+        $jumlahOplahMediaCetakPerMinggu = strtolower($request->jumlahOplahMediaCetakPerMinggu);
+        $fileJumlahOplahMediaCetakPerMinggu = strtolower($request->fileJumlahOplahMediaCetakPerMinggu);
+        $jumlahKontenBeritaAktif = strtolower($request->jumlahKontenBeritaAktif);
+        $namaPerwakilan = strtolower($request->namaPerwakilan);
+        $nomorKKPerwakilan = strtolower($request->nomorKKPerwakilan);
+        $nomorKtpPerwakilan = strtolower($request->nomorKtpPerwakilan);
+        $npwpPerwakilan = strtolower($request->npwpPerwakilan);
+        $serfikatUkwPerwakilan = strtolower($request->serfikatUkwPerwakilan);
+        $afiliasiPersPerwakilan = strtolower($request->afiliasiPersPerwakilan);
+        $alamatPerwakilan = strtolower($request->alamatPerwakilan);
+        $tlpnPerwakilan = strtolower($request->tlpnPerwakilan);
+        $emailPerwakilan = strtolower($request->emailPerwakilan);
+        $jenisSerfikatUkwPerwakilan = strtolower($request->jenisSerfikatUkwPerwakilan);
+        $alamatProvPerwakilan = strtolower($request->alamatProvPerwakilan);
+        $alamatKabPerwakilan = strtolower($request->alamatKabPerwakilan);
+        $alamatKecPerwakilan = strtolower($request->alamatKecPerwakilan);
+        $alamatKelPerwakilan = strtolower($request->alamatKelPerwakilan);
+        $fileNpwpPerwakilan = strtolower($request->fileNpwpPerwakilan);
+        $fileSerfikatUkwPerwakilan = strtolower($request->fileSerfikatUkwPerwakilan);
+        $fileafiliasiPersPerwakilan = strtolower($request->fileafiliasiPersPerwakilan);
 
         // checking
-        $pengajuan_cek = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-        $nama_perusahaan_cek = media_pengajuan::where('nama_perusahaan', $nama_perusahaan)->where('tahun_pengajuan', $tahun_buka)->count();
-        $ktp_cek = media_pengajuan::where('ktp_perwakilan', $ktp_perwakilan)->where('tahun_pengajuan', $tahun_buka)->count();
-        $kk_cek = media_pengajuan::where('kk_perwakilan', $kk_perwakilan)->where('tahun_pengajuan', $tahun_buka)->count();
-        $nama_media_cek = media_pengajuan::where('nama_media', $nama_media)->where('tahun_pengajuan', $tahun_buka)->count();
+        $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+        $nama_perusahaan_cek = new_media_pengajuan::where('namaPerusahaan', $namaPerusahaan)->where('tahun_pengajuan', $tahun_buka)->count();
+        $ktp_cek = new_media_pengajuan::where('nomorKtpPerwakilan', $nomorKtpPerwakilan)->where('tahun_pengajuan', $tahun_buka)->count();
+        $kk_cek = new_media_pengajuan::where('nomorKKPerwakilan', $nomorKKPerwakilan)->where('tahun_pengajuan', $tahun_buka)->count();
+        $nama_media_cek = new_media_pengajuan::where('namaMedia', $namaMedia)->where('tahun_pengajuan', $tahun_buka)->count();
 
         if ($nama_perusahaan_cek >= 1) {
             # code...
@@ -172,62 +181,79 @@ class MediaPengajuanController extends Controller
                 $icon = 'error';
                 $title = 'Operasi Gagal';
             } else {
-
                 // insert data
-                $pengajuan = new media_pengajuan();
+                $pengajuan = new new_media_pengajuan();
                 $pengajuan->id_user = Auth::user()->id;
                 $pengajuan->pengajuan_no = $pengajuan_no;
                 $pengajuan->jenis_media = $jenis_media;
-                $pengajuan->nama_perusahaan = $nama_perusahaan;
-                $pengajuan->nama_pimred = $nama_pimred;
-                $pengajuan->alamat_perusahaan = $alamat_perusahaan;
-                $pengajuan->tlpn_perusahaan = $tlpn_perusahaan;
-                $pengajuan->email_perusahaan = $email_perusahaan;
-                $pengajuan->npwp_perusahaan = $npwp_perusahaan;
-                $pengajuan->akta_perusahaan = $akta_perusahaan;
-                $pengajuan->kumham_perusahaan = $kumham_perusahaan;
-                $pengajuan->wartawan_kompeten_perusahaan = $wartawan_kompeten_perusahaan;
-                $pengajuan->nama_percetakan = $nama_percetakan;
-                $pengajuan->alamat_percetakan = $alamat_percetakan;
-                // file
-                $pengajuan->file_npwp_perusahaan = $file_npwp_perusahaan;
-                $pengajuan->file_akta_perusahaan = $file_akta_perusahaan;
-                $pengajuan->file_kumham_perusahaan = $file_kumham_perusahaan;
-                $pengajuan->file_wartawan_kompeten_perusahaan = $file_wartawan_kompeten_perusahaan;
-                $pengajuan->file_dewan_pers_perusahaan = $file_dewan_pers_perusahaan;
-                $pengajuan->file_afiliasi_perusahaan = $file_afiliasi_perusahaan;
-                $pengajuan->file_spt_perusahaan = $file_spt_perusahaan;
-                $pengajuan->file_domisili_perusahaan = $file_domisili_perusahaan;
-                $pengajuan->file_kuasa_perwakilan = $file_kuasa_perwakilan;
-                $pengajuan->file_kerjasama = $file_kerjasama;
-                $pengajuan->file_izin_ipp = $file_izin_ipp;
-                // perwakilan
-                $pengajuan->nama_media = $nama_media;
-                $pengajuan->nama_biro_perwakilan = $nama_biro_perwakilan;
-                $pengajuan->alamat_perwakilan = $alamat_perwakilan;
-                $pengajuan->tlpn_perwakilan = $tlpn_perwakilan;
-                $pengajuan->email_perwakilan = $email_perwakilan;
-                $pengajuan->ktp_perwakilan = $ktp_perwakilan;
-                $pengajuan->kk_perwakilan = $kk_perwakilan;
-                $pengajuan->npwp_perwakilan = $npwp_perwakilan;
-                $pengajuan->kompetensi_perwakilan = $kompetensi_perwakilan;
-                $pengajuan->jenis_rekening = $jenis_rekening;
-                $pengajuan->nama_bank = $nama_bank;
-                $pengajuan->pemilik_rekening = $pemilik_rekening;
-                $pengajuan->no_rekening = $no_rekening;
-                $pengajuan->tahun_pengajuan = $tahun_buka;
+                // DATA BADAN HUKUM
+                $pengajuan->namaPerusahaan = $namaPerusahaan;
+                $pengajuan->namaPenanggungJawab = $namaPenanggungJawab;
+                $pengajuan->namaPimred = $namaPimred;
+                $pengajuan->kumhamPerusahaan = $kumhamPerusahaan;
+                $pengajuan->alamatPerusahaan = $alamatPerusahaan;
+                $pengajuan->tlpnPerusahaan = $tlpnPerusahaan;
+                $pengajuan->emailPerusahaan = $emailPerusahaan;
+                $pengajuan->npwpPerusahaan = $npwpPerusahaan;
+                $pengajuan->nibPerusahaan = $nibPerusahaan;
+                $pengajuan->noKbki = $noKbki;
+                $pengajuan->izinIpp = $izinIpp;
+                $pengajuan->namaPercetakan = $namaPercetakan;
+                $pengajuan->alamatProvPerusahaan = $alamatProvPerusahaan;
+                $pengajuan->alamatKabPerusahaan = $alamatKabPerusahaan;
+                $pengajuan->statusKswp = $statusKswp;
+                $pengajuan->noKlbi = $noKlbi;
+                $pengajuan->fileSuratPernyataanPimred = $fileSuratPernyataanPimred;
+                $pengajuan->fileKumhamPerusahaan = $fileKumhamPerusahaan;
+                $pengajuan->fileNpwpPerusahaan = $fileNpwpPerusahaan;
+                $pengajuan->fileNibPerusahaan = $fileNibPerusahaan;
+                $pengajuan->fileIzinIpp = $fileIzinIpp;
+                // DATA MEDIA
+                $pengajuan->namaMedia = $namaMedia;
+                $pengajuan->serfikatUkwPimred = $serfikatUkwPimred;
+                $pengajuan->namaBank = $namaBank;
+                $pengajuan->pemilikRekening = $pemilikRekening;
+                $pengajuan->noRekening = $noRekening;
+                $pengajuan->verifikasiDewanPers = $verifikasiDewanPers;
+                $pengajuan->jenisSerfikatUkwPimred = $jenisSerfikatUkwPimred;
+                $pengajuan->afiliasiPerusahaan = $afiliasiPerusahaan;
+                $pengajuan->domisiliRedaksiMedia = $domisiliRedaksiMedia;
+                $pengajuan->kanalKhusus = $kanalKhusus;
+                $pengajuan->jenisRekening = $jenisRekening;
+                $pengajuan->fileSerfikatUkwPimred = $fileSerfikatUkwPimred;
+                $pengajuan->fileAfiliasiPerusahaan = $fileAfiliasiPerusahaan;
+                $pengajuan->fileDomisiliRedaksiMedia = $fileDomisiliRedaksiMedia;
+                $pengajuan->fileKanalKhusus = $fileKanalKhusus;
+                $pengajuan->fileRekening = $fileRekening;
+                // KUALIFIKASI MEDIA
+                $pengajuan->tahunBerdiriMedia = $tahunBerdiriMedia;
+                $pengajuan->jenisJangkauanSiarMediaElektronik = $jenisJangkauanSiarMediaElektronik;
+                $pengajuan->jangkauanSiarMediaElektronik = $jangkauanSiarMediaElektronik;
+                $pengajuan->jumlahOplahMediaCetakPerMinggu = $jumlahOplahMediaCetakPerMinggu;
+                $pengajuan->fileJumlahOplahMediaCetakPerMinggu = $fileJumlahOplahMediaCetakPerMinggu;
+                $pengajuan->jumlahKontenBeritaAktif = $jumlahKontenBeritaAktif;
+                //    PERWAKILAN MEDIA
+                $pengajuan->namaPerwakilan = $namaPerwakilan;
+                $pengajuan->nomorKKPerwakilan = $nomorKKPerwakilan;
+                $pengajuan->nomorKtpPerwakilan = $nomorKtpPerwakilan;
+                $pengajuan->npwpPerwakilan = $npwpPerwakilan;
+                $pengajuan->serfikatUkwPerwakilan = $serfikatUkwPerwakilan;
+                $pengajuan->afiliasiPersPerwakilan = $afiliasiPersPerwakilan;
+                $pengajuan->alamatPerwakilan = $alamatPerwakilan;
+                $pengajuan->tlpnPerwakilan = $tlpnPerwakilan;
+                $pengajuan->emailPerwakilan = $emailPerwakilan;
+                $pengajuan->jenisSerfikatUkwPerwakilan = $jenisSerfikatUkwPerwakilan;
+                $pengajuan->alamatProvPerwakilan = $alamatProvPerwakilan;
+                $pengajuan->alamatKabPerwakilan = $alamatKabPerwakilan;
+                $pengajuan->alamatKecPerwakilan = $alamatKecPerwakilan;
+                $pengajuan->alamatKelPerwakilan = $alamatKelPerwakilan;
+                $pengajuan->fileNpwpPerwakilan = $fileNpwpPerwakilan;
+                $pengajuan->fileSerfikatUkwPerwakilan = $fileSerfikatUkwPerwakilan;
+                $pengajuan->fileafiliasiPersPerwakilan = $fileafiliasiPersPerwakilan;
+                // status
                 $pengajuan->status = 'ajukan';
-                // file
-                $pengajuan->file_ktp_perwakilan = $file_ktp_perwakilan;
-                $pengajuan->file_kk_perwakilan = $file_kk_perwakilan;
-                $pengajuan->file_npwp_perwakilan = $file_npwp_perwakilan;
-                $pengajuan->file_kopetensi_perwakilan = $file_kopetensi_perwakilan;
-                $pengajuan->file_afiliasi_perwakilan = $file_afiliasi_perwakilan;
-                $pengajuan->file_domisili_perwakilan = $file_domisili_perwakilan;
-                $pengajuan->file_kode_etik_perwakilan = $file_kode_etik_perwakilan;
-                $pengajuan->file_pernyataan_media_perwakilan = $file_pernyataan_media_perwakilan;
-                $pengajuan->file_rekening = $file_rekening;
-                $pengajuan->file_signature_data = $file_signature_data;
+                $pengajuan->tahun_pengajuan = $tahun_buka;
+                //    end
                 $pengajuan->save();
 
                 $pesan = 'data Berhasil di Input';
@@ -270,6 +296,7 @@ class MediaPengajuanController extends Controller
     public function edit($no_pengajuan)
     {
         //
+
         //declare
         $count = tahun::select('tahun')->where('pengajuan', 1)->count();
         if ($count == 0) {
@@ -280,8 +307,8 @@ class MediaPengajuanController extends Controller
             $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
         }
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
-        $pengajuan_cek = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-        $media_data = media_pengajuan::where('pengajuan_no', $no_pengajuan)->get();
+        $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+        $media_data = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->get();
         return view('admin.pengajuan.form_edit', [
             'pengajuan_buka' => $tahun_hitung,
             'pengajuan_data' => $pengajuan_cek,

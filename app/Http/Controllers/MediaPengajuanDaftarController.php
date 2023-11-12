@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\media_jenis;
 use App\Models\media_pengajuan;
+use App\Models\new_media_pengajuan;
 use App\Models\tahun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,13 +37,15 @@ class MediaPengajuanDaftarController extends Controller
         }
 
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
-        $pengajuan_cek = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-        $pengajuan_tahun = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun)->count();
+        $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+        $pengajuan_tahun = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun)->count();
+        $data_pengajuan = new_media_pengajuan::where('id_user', Auth::user()->id)->orderByDesc('tahun_pengajuan')->get();
         return view('admin.pengajuan.list', [
             'pengajuan_buka' => $tahun_hitung,
             'pengajuan_data' => $pengajuan_cek,
             'pengajuan_tahun' => $pengajuan_tahun,
-            'tahun' => $tahun
+            'data_pengajuan' => $data_pengajuan,
+            'tahun' => $tahun,
         ]);
     }
 
@@ -79,10 +82,15 @@ class MediaPengajuanDaftarController extends Controller
         $tahun = $request->segment(2);
         if (Auth::user()->role == 'user') {
             # code...
-            // $data = media_pengajuan::where('id_user', Auth::user()->id)->get();
-            $data = media_pengajuan::where('tahun_pengajuan', $tahun)->where('id_user', Auth::user()->id)->join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
+            // $data = media_pengajuan::where('tahun_pengajuan', $tahun)->where('id_user', Auth::user()->id)->join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
+            $data = new_media_pengajuan::where('tahun_pengajuan', $tahun)
+                ->where('id_user', Auth::user()->id)->join('tahuns', 'new_media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')
+                ->orderBy('new_media_pengajuans.id', 'desc')->get();
         } else {
-            $data = media_pengajuan::where('tahun_pengajuan', $tahun)->join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
+            // $data = media_pengajuan::where('tahun_pengajuan', $tahun)->join('tahuns', 'media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')->orderBy('media_pengajuans.id', 'desc')->get();
+            $data = new_media_pengajuan::where('tahun_pengajuan', $tahun)
+                ->join('tahuns', 'new_media_pengajuans.tahun_pengajuan', '=', 'tahuns.tahun')
+                ->orderBy('new_media_pengajuans.id', 'desc')->get();
         }
         return DataTables()->of($data)
             ->addColumn('action', function ($data) {

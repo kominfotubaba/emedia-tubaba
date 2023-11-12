@@ -38,7 +38,7 @@
                             <div class="col-12 col-sm-7 col-lg-9 col-xxl-10 text-end mb-1">
                                 <div class="d-inline-block">
                                     @if ($pengajuan_tahun == 0)
-                                        <button class="btn btn-sm btn-outline-muted" type="button">
+                                        <button id="addPengajuan" class="btn btn-sm btn-outline-muted" type="button">
                                             Pengajuan
                                         </button>
                                     @endif
@@ -95,6 +95,31 @@
             </section>
         </div>
     </main>
+
+    <div class="modal fade" id="addModalMenu" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pengajuan Baru {{ $tahun }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="w-100">
+                        <select id="dataTahunPengajuan">
+                            <option label="&nbsp;">-- Pilih Data Untuk Pengajuan {{ $tahun }} --</option>
+                            @foreach ($data_pengajuan as $dp)
+                                <option value="{{ $dp->id }}">{{ $dp->tahun_pengajuan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="savePengajuanBaru">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('script')
     <script>
@@ -132,12 +157,12 @@
                         name: 'pengajuan_no'
                     },
                     {
-                        data: 'nama_perusahaan',
-                        name: 'nama_perusahaan'
+                        data: 'namaPerusahaan',
+                        name: 'namaPerusahaan'
                     },
                     {
-                        data: 'nama_media',
-                        name: 'nama_media'
+                        data: 'namaMedia',
+                        name: 'namaMedia'
                     },
                     {
                         data: 'jenis_media',
@@ -163,9 +188,45 @@
             });
         });
 
+        /**@argument
+         * Select
+         **/
+        jQuery('#dataTahunPengajuan').select2({
+            dropdownParent: $('#addModalMenu'),
+            placeholder: 'Pilih Data Pengajuan'
+        });
         /**
          * button
          **/
+        $('#addPengajuan').click(function(e) {
+            e.preventDefault();
+            $('#addModalMenu').modal('show');
+        });
+        $('#savePengajuanBaru').click(function(e) {
+            e.preventDefault();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "/pengajuan/create",
+                data: {
+                    id: $('#dataTahunPengajuan').val()
+                },
+                success: function(response) {
+                    console.log(response.text);
+                    $('#tbDaftarPengajuan').DataTable().ajax.reload();
+                    $('#addPengajuan').prop('hidden', true)
+                    $('#savePengajuanBaru').prop('disabled', true)
+                    $('#addModalMenu').modal('hide');
+                }
+            });
+        });
+
+
         $(document).on('click', '.verifikasi', function(e) {
             e.preventDefault();
             var noPengajuan = $(this).attr('data-id');

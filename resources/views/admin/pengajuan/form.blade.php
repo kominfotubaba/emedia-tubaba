@@ -59,8 +59,8 @@
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-12 mb-lg-0">
                                         <div class="form-floating mb-3">
-                                            <div class="dropzone dropzone-floating-label" id="fileSuratPernyataanPimred"
-                                                name="suratPernyataanPimred"></div>
+                                            <div class="dropzone dropzone-floating-label"
+                                                id="fileSuratPernyataanPimred"></div>
                                             <label class="ps-4">File PDF
                                                 Surat Pernyataan Sebagai Pimred dari Badan Hukum</label>
                                         </div>
@@ -328,7 +328,7 @@
                                 <div class="form-floating">
                                     <input id="serfikatUkwPimred" name="serfikatUkwPimred" type="text"
                                         class="form-control form-control-sm" placeholder="form-control">
-                                    <label class="ps-4">Nomor Sertifikat Pimred Perusahaan</label>
+                                    <label class="ps-4">Nomor Sertifikat Pimred Media</label>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
@@ -696,7 +696,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-12 col-12 mb-2">
+                                    {{-- <div class="col-lg-6 col-md-12 col-12 mb-2">
                                         <div class="w-100">
                                             <select id="alamatKecPerwakilan" name="alamatKecPerwakilan" hidden>
                                                 <option label="&nbsp;"></option>
@@ -709,7 +709,7 @@
                                                 <option label="&nbsp;"></option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-lg-12 col-md-12 col-12 mb-lg-2 mb-md-2 mb-2">
                                         <div class="form-floating">
@@ -757,7 +757,8 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end p-2">
-                            <button id="kirimData" type="submit" class="btn btn-primary">Kirim Data</button>
+                            <button id="kirimData" type="submit" class="btn btn-primary" disabled>Kirim
+                                Data</button>
                         </div>
                     </div>
                 </div>
@@ -798,11 +799,11 @@
 
             jQuery.validator.addMethod("synchronousRemote", function(value, element) {
                 if ($('#jenisPengajuan').val() == 'siber') {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+                    // $.ajaxSetup({
+                    //     headers: {
+                    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    //     }
+                    // });
 
                     function cekLink() {
                         var params = false;
@@ -1006,9 +1007,9 @@
                     jenisSerfikatUkwPerwakilan: {
                         required: true,
                     },
-                    serfikatUkwPerwakilan: {
-                        required: true,
-                    },
+                    // serfikatUkwPerwakilan: {
+                    //     required: true,
+                    // },
                     afiliasiPersPerwakilan: {
                         required: true,
                     },
@@ -1133,6 +1134,14 @@
             minimumResultsForSearch: Infinity,
             placeholder: 'Pilih Jenis Sertifikat UKW Pimred'
         });
+        $("#jenisSerfikatUkwPimred").change(function() {
+            var value = $(this).val();
+            if (value == 'belum') {
+                $('#serfikatUkwPerwakilan').prop("required", true);
+            } else {
+                $('#serfikatUkwPerwakilan').prop("required", false);
+            }
+        });
         $('#afiliasiPerusahaan').select2({
             minimumResultsForSearch: Infinity,
             placeholder: 'Pilih Jenis Afiliasi Organisasi Pers Media'
@@ -1253,23 +1262,23 @@
             select2Data(urlKabupaten + '/' + alamatProvPerwakilan + '.json',
                 '#alamatKabPerwakilan', 'Pilih Kabupaten')
         });
-        $("#alamatKabPerwakilan").change(function() {
-            $('#alamatKecPerwakilan').show()
-            var alamatKabPerwakilan = $(this).val()
-            // console.log($('#alamatProvPerusahaan option:selected').text());
-            $('#alamatKelPerwakilan').val(null).trigger('change');
-            $('#alamatKecPerwakilan').val(null).trigger('change');
-            select2Data(urlKecamatan + '/' + alamatKabPerwakilan + '.json',
-                '#alamatKecPerwakilan', 'Pilih Kecamatan')
-        });
-        $("#alamatKecPerwakilan").change(function() {
-            $('#alamatKelPerwakilan').show()
-            var alamatKecPerwakilan = $(this).val()
-            // console.log($('#alamatProvPerusahaan option:selected').text());
-            $('#alamatKelPerwakilan').val(null).trigger('change');
-            select2Data(urlKelurahan + '/' + alamatKecPerwakilan + '.json',
-                '#alamatKelPerwakilan', 'Pilih Kelurahan')
-        });
+        // $("#alamatKabPerwakilan").change(function() {
+        //     $('#alamatKecPerwakilan').show()
+        //     var alamatKabPerwakilan = $(this).val()
+        //     // console.log($('#alamatProvPerusahaan option:selected').text());
+        //     $('#alamatKelPerwakilan').val(null).trigger('change');
+        //     $('#alamatKecPerwakilan').val(null).trigger('change');
+        //     select2Data(urlKecamatan + '/' + alamatKabPerwakilan + '.json',
+        //         '#alamatKecPerwakilan', 'Pilih Kecamatan')
+        // });
+        // $("#alamatKecPerwakilan").change(function() {
+        //     $('#alamatKelPerwakilan').show()
+        //     var alamatKecPerwakilan = $(this).val()
+        //     // console.log($('#alamatProvPerusahaan option:selected').text());
+        //     $('#alamatKelPerwakilan').val(null).trigger('change');
+        //     select2Data(urlKelurahan + '/' + alamatKecPerwakilan + '.json',
+        //         '#alamatKelPerwakilan', 'Pilih Kelurahan')
+        // });
     });
 
     /**
@@ -1369,7 +1378,7 @@
          *  Perwakilan Media
          **/
         upload_file('dropzoneNpwpPerwakilan', '#fileNpwpPerwakilan')
-        upload_file('dropzoneLunasPBB', '#fileLunasPBB')
+        // upload_file('dropzoneLunasPBB', '#fileLunasPBB')
         upload_file('dropzoneSerfikatUkwPerwakilan', '#fileSerfikatUkwPerwakilan')
         upload_file('dropzoneAfiliasiPersPerwakilan', '#fileAfiliasiPersPerwakilan')
     });
@@ -1454,80 +1463,184 @@
         /**
          * kirim data
          **/
+        $('#pernyataanCheckbox').change(function(e) {
+            e.preventDefault();
+            if ($('#pernyataanCheckbox').is(":checked") == true) {
+                $("#kirimData").prop('disabled', false);
+            } else {
+                $("#kirimData").prop('disabled', true);
+            }
+        });
+
         // submit data
         $('#kirimData').click(function(e) {
             e.preventDefault();
             // validasi
             const validasi = $('.validasi').valid();
 
-            /**
-             * data
-             **/
-            // file
-            // perusahaan
-            var fileNpwpPerusahaan = $('#fileNpwpPerusahaan .dz-details span').text();
-            var fileAktaPerusahaan = $('#fileAktaPerusahaan .dz-details span').text();
-            var fileKumhamPerusahaan = $('#fileKumhamPerusahaan .dz-details span').text();
-            var fileWartawanKompetenPerusahaan = $('#fileWartawanKompetenPerusahaan .dz-details span')
-                .text();
-            var fileDewanPersPerusahaan = $('#fileDewanPersPerusahaan .dz-details span').text();
-            var fileAfiliasiPerusahaan = $('#fileAfiliasiPerusahaan .dz-details span').text();
-            var fileSptPerusahaan = $('#fileSptPerusahaan .dz-details span').text();
-            var fileDomisiliPerusahaan = $('#fileDomisiliPerusahaan .dz-details span').text();
-            var fileKuasaPerwakilan = $('#fileKuasaPerwakilan .dz-details span').text();
-            var fileKerjasama = $('#fileKerjasama .dz-details span').text();
-            var fileIzinIpp = $('#fileIzinIpp .dz-details span').text();
-            //   perwakilan
-            var fileKtpPerwakilan = $('#fileKtpPerwakilan .dz-details span').text();
-            var fileKkPerwakilan = $('#fileKKPerwakilan .dz-details span').text();
-            var fileNpwpPerwakilan = $('#fileNpwpPerwakilan .dz-details span').text();
-            var fileKopetensiPerwakilan = $('#fileKopetensiPerwakilan .dz-details span').text();
-            var fileAfiliasiPerwakilan = $('#fileAfiliasiPerwakilan .dz-details span').text();
-            var fileDomisiliPerwakilan = $('#fileDomisiliPerwakilan .dz-details span').text();
-            var fileKodeEtikPerwakilan = $('#fileKodeEtikPerwakilan .dz-details span').text();
-            var filePernyataanMediaPerwakilan = $('#filePernyataanMediaPerwakilan .dz-details span')
-                .text();
-            var fileRekening = $('#fileRekening .dz-details span').text();
-            var fileSignatureData = $('#signatureData').val();
+            // /**
+            //  * data
+            //  **/
+            // // file
+            // // perusahaan
+            // var fileNpwpPerusahaan = $('#fileNpwpPerusahaan .dz-details span').text();
+            // var fileAktaPerusahaan = $('#fileAktaPerusahaan .dz-details span').text();
+            // var fileKumhamPerusahaan = $('#fileKumhamPerusahaan .dz-details span').text();
+            // var fileWartawanKompetenPerusahaan = $('#fileWartawanKompetenPerusahaan .dz-details span')
+            //     .text();
+            // var fileDewanPersPerusahaan = $('#fileDewanPersPerusahaan .dz-details span').text();
+            // var fileAfiliasiPerusahaan = $('#fileAfiliasiPerusahaan .dz-details span').text();
+            // var fileSptPerusahaan = $('#fileSptPerusahaan .dz-details span').text();
+            // var fileDomisiliPerusahaan = $('#fileDomisiliPerusahaan .dz-details span').text();
+            // var fileKuasaPerwakilan = $('#fileKuasaPerwakilan .dz-details span').text();
+            // var fileKerjasama = $('#fileKerjasama .dz-details span').text();
+            // var fileIzinIpp = $('#fileIzinIpp .dz-details span').text();
+            // //   perwakilan
+            // var fileKtpPerwakilan = $('#fileKtpPerwakilan .dz-details span').text();
+            // var fileKkPerwakilan = $('#fileKKPerwakilan .dz-details span').text();
+            // var fileNpwpPerwakilan = $('#fileNpwpPerwakilan .dz-details span').text();
+            // var fileKopetensiPerwakilan = $('#fileKopetensiPerwakilan .dz-details span').text();
+            // var fileAfiliasiPerwakilan = $('#fileAfiliasiPerwakilan .dz-details span').text();
+            // var fileDomisiliPerwakilan = $('#fileDomisiliPerwakilan .dz-details span').text();
+            // var fileKodeEtikPerwakilan = $('#fileKodeEtikPerwakilan .dz-details span').text();
+            // var filePernyataanMediaPerwakilan = $('#filePernyataanMediaPerwakilan .dz-details span')
+            //     .text();
+            // var fileRekening = $('#fileRekening .dz-details span').text();
+            // var fileSignatureData = $('#signatureData').val();
 
-            // data
-            // perusahaan
-            var jenisMedia = $('#jenisPengajuan').val();
-            var namaPerusahaan = $('#namaPerusahaan').val();
-            var namaPimred = $('#namaPimred').val();
-            var alamatPerusahaan = $('#alamatPerusahaan').val();
-            var alamatProvPerusahaan = $('#alamatProvPerusahaan option:selected').text();
-            var alamatKabPerusahaan = $('#alamatKabPerusahaan option:selected').text();
-            var alamatKecPerusahaan = $('#alamatKecPerusahaan option:selected').text();
-            var alamatKelPerusahaan = $('#alamatKelPerusahaan option:selected').text();
-            var tlpnPerusahaan = $('#tlpnPerusahaan').val();
-            var emailPerusahaan = $('#emailPerusahaan').val();
-            var npwpPerusahaan = $('#npwpPerusahaan').val();
-            var aktaPerusahaan = $('#aktaPerusahaan').val();
-            var kumhamPerusahaan = $('#kumhamPerusahaan').val();
-            var wartawanKompetenPerusahaan = $('#wartawanKompetenPerusahaan').val();
-            var namaPercetakan = $('#namaPercetakan').val();
-            var alamatPercetakan = $('#alamatPercetakan').val();
-            // perwakilan
-            var namaMedia = $('#namaMedia').val();
-            var namaBiroPerwakilan = $('#namaBiroPerwakilan').val();
-            var alamatPerwakilan = $('#alamatPerwakilan').val();
-            var alamatProvPerwakilan = $('#alamatProvPerwakilan option:selected').text();
-            var alamatKabPerwakilan = $('#alamatKabPerwakilan option:selected').text();
-            var alamatKecPerwakilan = $('#alamatKecPerwakilan option:selected').text();
-            var alamatKelPerwakilan = $('#alamatKelPerwakilan option:selected').text();
-            var tlpnPerwakilan = $('#tlpnPerwakilan').val();
-            var emailPerwakilan = $('#emailPerwakilan').val();
-            var ktpPerwakilan = $('#ktpPerwakilan').val();
-            var kkPerwakilan = $('#kkPerwakilan').val();
-            var npwpPerwakilan = $('#npwpPerwakilan').val();
-            var kompetensiPerwakilan = $('#kompetensiPerwakilan').val();
-            var jenisRekening = $('#jenisRekening').val();
-            var namaBank = $('#namaBank').val();
-            var pemilikRekening = $('#pemilikRekening').val();
-            var noRekening = $('#noRekening').val();
-            var pernyataanCheckbox = $('#pernyataanCheckbox').val();
+            // // data
+            // // perusahaan
+            // var jenisMedia = $('#jenisPengajuan').val();
+            // var namaPerusahaan = $('#namaPerusahaan').val();
+            // var namaPimred = $('#namaPimred').val();
+            // var alamatPerusahaan = $('#alamatPerusahaan').val();
+            // var alamatProvPerusahaan = $('#alamatProvPerusahaan option:selected').text();
+            // var alamatKabPerusahaan = $('#alamatKabPerusahaan option:selected').text();
+            // var alamatKecPerusahaan = $('#alamatKecPerusahaan option:selected').text();
+            // var alamatKelPerusahaan = $('#alamatKelPerusahaan option:selected').text();
+            // var tlpnPerusahaan = $('#tlpnPerusahaan').val();
+            // var emailPerusahaan = $('#emailPerusahaan').val();
+            // var npwpPerusahaan = $('#npwpPerusahaan').val();
+            // var aktaPerusahaan = $('#aktaPerusahaan').val();
+            // var kumhamPerusahaan = $('#kumhamPerusahaan').val();
+            // var wartawanKompetenPerusahaan = $('#wartawanKompetenPerusahaan').val();
+            // var namaPercetakan = $('#namaPercetakan').val();
+            // var alamatPercetakan = $('#alamatPercetakan').val();
+            // // perwakilan
+            // var namaMedia = $('#namaMedia').val();
+            // var namaBiroPerwakilan = $('#namaBiroPerwakilan').val();
+            // var alamatPerwakilan = $('#alamatPerwakilan').val();
+            // var alamatProvPerwakilan = $('#alamatProvPerwakilan option:selected').text();
+            // var alamatKabPerwakilan = $('#alamatKabPerwakilan option:selected').text();
+            // var alamatKecPerwakilan = $('#alamatKecPerwakilan option:selected').text();
+            // var alamatKelPerwakilan = $('#alamatKelPerwakilan option:selected').text();
+            // var tlpnPerwakilan = $('#tlpnPerwakilan').val();
+            // var emailPerwakilan = $('#emailPerwakilan').val();
+            // var ktpPerwakilan = $('#ktpPerwakilan').val();
+            // var kkPerwakilan = $('#kkPerwakilan').val();
+            // var npwpPerwakilan = $('#npwpPerwakilan').val();
+            // var kompetensiPerwakilan = $('#kompetensiPerwakilan').val();
+            // var jenisRekening = $('#jenisRekening').val();
+            // var namaBank = $('#namaBank').val();
+            // var pemilikRekening = $('#pemilikRekening').val();
+            // var noRekening = $('#noRekening').val();
+            // var pernyataanCheckbox = $('#pernyataanCheckbox').val();
 
+            var data = {
+                // param
+                jenis_media: $('#jenisPengajuan').val(),
+                /**
+                 * DATA BADAN HUKUM
+                 **/
+                //  input
+                namaPerusahaan: $('#namaPerusahaan').val(),
+                namaPenanggungJawab: $('#namaPenanggungJawab').val(),
+                namaPimred: $('#namaPimred').val(),
+                kumhamPerusahaan: $('#kumhamPerusahaan').val(),
+                alamatPerusahaan: $('#alamatPerusahaan').val(),
+                tlpnPerusahaan: $('#tlpnPerusahaan').val(),
+                emailPerusahaan: $('#emailPerusahaan').val(),
+                npwpPerusahaan: $('#npwpPerusahaan').val(),
+                nibPerusahaan: $('#nibPerusahaan').val(),
+                noKbki: $('#noKbki').val(),
+                izinIpp: $('#izinIpp').val(),
+                namaPercetakan: $('#namaPercetakan').val(),
+                // select
+                alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
+                alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
+                statusKswp: $('#statusKswp option:selected').text(),
+                noKlbi: $('#noKlbi option:selected').text(),
+                // file
+                fileSuratPernyataanPimred: $('#fileSuratPernyataanPimred .dz-details span').text(),
+                fileKumhamPerusahaan: $('#fileKumhamPerusahaan .dz-details span').text(),
+                fileNpwpPerusahaan: $('#fileNpwpPerusahaan .dz-details span').text(),
+                fileNibPerusahaan: $('#fileNibPerusahaan .dz-details span').text(),
+                fileIzinIpp: $('#fileIzinIpp .dz-details span').text(),
+
+                /**
+                 * DATA MEDIA
+                 **/
+                //  input
+                namaMedia: $('#namaMedia').val(),
+                serfikatUkwPimred: $('#serfikatUkwPimred').val(),
+                namaBank: $('#namaBank').val(),
+                pemilikRekening: $('#pemilikRekening').val(),
+                noRekening: $('#noRekening').val(),
+                // select
+                verifikasiDewanPers: $('#verifikasiDewanPers option:selected').text(),
+                jenisSerfikatUkwPimred: $('#jenisSerfikatUkwPimred option:selected').text(),
+                afiliasiPerusahaan: $('#afiliasiPerusahaan option:selected').text(),
+                domisiliRedaksiMedia: $('#domisiliRedaksiMedia option:selected').text(),
+                kanalKhusus: $('#kanalKhusus option:selected').text(),
+                jenisRekening: $('#jenisRekening option:selected').text(),
+                // file
+                fileSerfikatUkwPimred: $('#fileSerfikatUkwPimred .dz-details span').text(),
+                fileAfiliasiPerusahaan: $('#fileAfiliasiPerusahaan .dz-details span').text(),
+                fileDomisiliRedaksiMedia: $('#fileDomisiliRedaksiMedia .dz-details span').text(),
+                fileKanalKhusus: $('#fileKanalKhusus .dz-details span').text(),
+                fileRekening: $('#fileRekening .dz-details span').text(),
+
+                /**
+                 * KUALIFIKASI MEDIA
+                 **/
+                // select
+                tahunBerdiriMedia: $('#tahunBerdiriMedia option:selected').text(),
+                jenisJangkauanSiarMediaElektronik: $(
+                    '#jenisJangkauanSiarMediaElektronik option:selected').text(),
+                jangkauanSiarMediaElektronik: $('#jangkauanSiarMediaElektronik option:selected')
+                    .text(),
+                jumlahOplahMediaCetakPerMinggu: $('#jumlahOplahMediaCetakPerMinggu option:selected')
+                    .text(),
+                // file
+                fileJumlahOplahMediaCetakPerMinggu: $(
+                    '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
+                jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif .dz-details span').text(),
+
+                /**
+                 * PERWAKILAN MEDIA
+                 **/
+                //  input
+                namaPerwakilan: $('#namaPerwakilan').val(),
+                nomorKKPerwakilan: $('#nomorKKPerwakilan').val(),
+                nomorKtpPerwakilan: $('#nomorKtpPerwakilan').val(),
+                npwpPerwakilan: $('#npwpPerwakilan').val(),
+                serfikatUkwPerwakilan: $('#serfikatUkwPerwakilan').val(),
+                afiliasiPersPerwakilan: $('#afiliasiPersPerwakilan').val(),
+                alamatPerwakilan: $('#alamatPerwakilan').val(),
+                tlpnPerwakilan: $('#tlpnPerwakilan').val(),
+                emailPerwakilan: $('#emailPerwakilan').val(),
+                // select
+                jenisSerfikatUkwPerwakilan: $('#jenisSerfikatUkwPerwakilan option:selected').text(),
+                alamatProvPerwakilan: $('#alamatProvPerwakilan option:selected').text(),
+                alamatKabPerwakilan: $('#alamatKabPerwakilan option:selected').text(),
+                alamatKecPerwakilan: $('#alamatKecPerwakilan option:selected').text(),
+                alamatKelPerwakilan: $('#alamatKelPerwakilan option:selected').text(),
+                // file
+                fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
+                fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span').text(),
+                fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
+                    .text(),
+            }
             /**
              *file
              **/
@@ -1549,66 +1662,7 @@
                 $.ajax({
                     type: "POST",
                     url: "/pengajuan/store",
-                    data: {
-                        // perusahaan
-                        jenis_media: jenisMedia,
-                        nama_perusahaan: namaPerusahaan,
-                        nama_pimred: namaPimred,
-                        alamat_perusahaan: alamatPerusahaan,
-                        alamat_prov_perusahaan: alamatProvPerusahaan,
-                        alamat_kab_perusahaan: alamatKabPerusahaan,
-                        alamat_kec_perusahaan: alamatKecPerusahaan,
-                        alamat_kel_perusahaan: alamatKelPerusahaan,
-                        tlpn_perusahaan: tlpnPerusahaan,
-                        email_perusahaan: emailPerusahaan,
-                        npwp_perusahaan: npwpPerusahaan,
-                        akta_perusahaan: aktaPerusahaan,
-                        kumham_perusahaan: kumhamPerusahaan,
-                        wartawan_kompeten_perusahaan: wartawanKompetenPerusahaan,
-                        nama_percetakan: namaPercetakan,
-                        alamat_percetakan: alamatPercetakan,
-                        // file
-                        file_npwp_perusahaan: fileNpwpPerusahaan,
-                        file_akta_perusahaan: fileAktaPerusahaan,
-                        file_kumham_perusahaan: fileKumhamPerusahaan,
-                        file_wartawan_kompeten_perusahaan: fileWartawanKompetenPerusahaan,
-                        file_dewan_pers_perusahaan: fileDewanPersPerusahaan,
-                        file_afiliasi_perusahaan: fileAfiliasiPerusahaan,
-                        file_spt_perusahaan: fileSptPerusahaan,
-                        file_domisili_perusahaan: fileDomisiliPerusahaan,
-                        file_kuasa_perwakilan: fileKuasaPerwakilan,
-                        file_kerjasama: fileKerjasama,
-                        file_izin_ipp: fileIzinIpp,
-                        // perwakilan
-                        nama_media: namaMedia,
-                        nama_biro_perwakilan: namaBiroPerwakilan,
-                        alamat_perwakilan: alamatPerwakilan,
-                        alamat_prov_perwakilan: alamatProvPerwakilan,
-                        alamat_kab_perwakilan: alamatKabPerwakilan,
-                        alamat_kec_perwakilan: alamatKecPerwakilan,
-                        alamat_kel_perwakilan: alamatKelPerwakilan,
-                        tlpn_perwakilan: tlpnPerwakilan,
-                        email_perwakilan: emailPerwakilan,
-                        ktp_perwakilan: ktpPerwakilan,
-                        kk_perwakilan: kkPerwakilan,
-                        npwp_perwakilan: npwpPerwakilan,
-                        kompetensi_perwakilan: kompetensiPerwakilan,
-                        jenis_rekening: jenisRekening,
-                        nama_bank: namaBank,
-                        pemilik_rekening: pemilikRekening,
-                        no_rekening: noRekening,
-                        // file
-                        file_ktp_perwakilan: fileKtpPerwakilan,
-                        file_kk_perwakilan: fileKkPerwakilan,
-                        file_npwp_perwakilan: fileNpwpPerwakilan,
-                        file_kopetensi_perwakilan: fileKopetensiPerwakilan,
-                        file_afiliasi_perwakilan: fileAfiliasiPerwakilan,
-                        file_domisili_perwakilan: fileDomisiliPerwakilan,
-                        file_kode_etik_perwakilan: fileKodeEtikPerwakilan,
-                        file_pernyataan_media_perwakilan: filePernyataanMediaPerwakilan,
-                        file_rekening: fileRekening,
-                        file_signature_data: fileSignatureData,
-                    },
+                    data: data,
                     success: function(response) {
                         Swal.fire({
                             toast: false,
@@ -1628,6 +1682,12 @@
                 });
             }
         });
+
+        // if ($("#pernyataanCheckbox").prop("checked", true) == true) {
+        //     console.log(1);
+        // } else {
+        //     console.log(0);
+        // }
     });
 
     /**

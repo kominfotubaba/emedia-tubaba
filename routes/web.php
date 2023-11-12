@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/edit/{no_pengajuan}', [MediaPengajuanController::class, 'edit'])->name('pengajuan.edit');
         Route::get('/cek_data/{no_pengajuan}', [MediaPengajuanController::class, 'show_data'])->name('pengajuan.cek_data');
         Route::put('/update', [MediaPengajuanController::class, 'update'])->name('pengajuan.update');
+        Route::POST('/create', [MediaPengajuanController::class, 'create'])->name('pengajuan.create');
     });
     // admin
     Route::group(['prefix' => 'pengajuan', 'middleware' => ['role:admin']], function () {
