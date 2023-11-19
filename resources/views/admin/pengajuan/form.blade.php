@@ -292,7 +292,7 @@
                         <hr class="mb-4">
 
                         <div class="row mb-3">
-                            <h2 class="small-title mb-md-0 mb-2">Status Verifikasi</h2>
+                            <h2 class="small-title mb-md-0 mb-2">Status Verifikasi Media</h2>
                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating w-100">
                                     <select class="select-floating" id="verifikasiDewanPers"
@@ -1611,10 +1611,10 @@
                     .text(),
                 jumlahOplahMediaCetakPerMinggu: $('#jumlahOplahMediaCetakPerMinggu option:selected')
                     .text(),
+                jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif option:selected').text(),
                 // file
                 fileJumlahOplahMediaCetakPerMinggu: $(
                     '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
-                jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif .dz-details span').text(),
 
                 /**
                  * PERWAKILAN MEDIA

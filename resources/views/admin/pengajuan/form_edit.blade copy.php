@@ -1,13 +1,14 @@
 @foreach ($media_data as $md)
-    <div class="container">
-        <!-- Title and Top Buttons Start -->
-        <div class="page-title-container">
-            <div class="row">
-                <!-- Title Start -->
-                <div class="col-12 col-md-7">
-                    <h1 class="mb-0 pb-0 display-4 text-capitalize" id="title">Edit Pengajuan media
-                        {{ $md->jenis_media }}</h1>
-                    <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+<div class="container">
+    <!-- Title and Top Buttons Start -->
+    <div class="page-title-container">
+        <div class="row">
+            <!-- Title Start -->
+            <div class="col-12 col-md-7">
+                <h1 class="mb-0 pb-0 display-4 text-capitalize" id="title">Edit Pengajuan media
+                    {{ $md->jenis_media }}
+                </h1>
+                <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
                                                                                                                                                                                                                             <ul class="breadcrumb pt-0">
                                                                                                                                                                                                                                 <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
                                                                                                                                                                                                                                 <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
@@ -15,658 +16,586 @@
                                                                                                                                                                                                                                 <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
                                                                                                                                                                                                                             </ul>
                                                                                                                                                                                                                         </nav> -->
-                </div>
-                <!-- Title End -->
             </div>
+            <!-- Title End -->
         </div>
-        <!-- Title and Top Buttons End -->
-
-        <!-- Content Start -->
-        <form class="validasi" novalidate>
-            <section class="scroll-section">
-                <div class="h3 text-primary text-capitalize">Data Perusahaan</div>
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-                            <div class="row mb-4">
-                                <h2 class="small-title">Nama Perusahaan</h2>
-                                <div class="form-floating">
-                                    <input id="namaPerusahaan" name="namaPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control"
-                                        value="{{ $md->nama_perusahaan }}">
-                                    <div id="pengajuanNo" data-nopengajuan="{{ $md->pengajuan_no }}"></div>
-                                    <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}"></div>
-                                    <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title">Nama Pimpinan Perusahaan</h2>
-                                <div class="form-floating">
-                                    <input id="namaPimred" name="namaPimred" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control"
-                                        value="{{ $md->nama_pimred }}">
-                                    <label class="ps-4">Nama Pimpinan Perusahaan</label>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title">Kontak</h2>
-                                <div class="col-lg-4 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                    <div class="form-floating">
-                                        <input id="alamatPerusahaan" name="alamatPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->alamat_perusahaan }}">
-                                        <label class="ps-4">Alamat Perusahaan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->tlpn_perusahaan }}">
-                                        <label class="ps-4">No Telpon Perusahaan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="emailPerusahaan" name="emailPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->email_perusahaan }}">
-                                        <label class="ps-4">Email Perusahaan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- cok disini tambahin 2 kolom lagi  --}}
-                            {{-- 1.  nama media cetak harian  --}}
-                            <hr class="mb-4">
-
-                            {{-- 2. nama dan alamat percetakan --}}
-                            {{-- opsional harian --}}
-                            @if ($md->jenis_media == 'harian')
-                                <div class="row mb-4">
-                                    <h2 class="small-title">Percetakan</h2>
-                                    <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                        <div class="form-floating">
-                                            <input id="namaPercetakan" name="namaPercetakan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control"
-                                                value="{{ $md->nama_percetakan }}">
-                                            <label class="ps-4">Nama Percetakan</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12 mb-md-0 mb-2">
-                                        <div class="form-floating">
-                                            <input id="alamatPercetakan" name="alamatPercetakan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control"
-                                                value="{{ $md->alamat_percetakan }}">
-                                            <label class="ps-4">Alamat Percetakan</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr class="mb-4">
-                            @endif
-
-                            {{-- opsional Elektronik --}}
-                            @if ($md->jenis_media == 'elektronik')
-                                <div class="row mb-4">
-                                    <h2 class="small-title mb-md-0 mb-2">Dokumen izin Penyelenggaraan Penyiaran</h2>
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileIzinIpp"></div>
-                                        <label class="ps-4">File izin Penyelenggaraan Penyiaran</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileIzinIpp/{{ $md->file_izin_ipp }}" target="_blank"
-                                            type="button" class="btn btn-quaternary mb-1">Cek
-                                            Izin IPP</a>
-                                    </div>
-                                </div>
-
-                                <hr class="mb-4">
-                            @endif
-
-
-                            <div class="row mb-4">
-                                <h2 class="small-title">NPWP Perusahaan</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input id="npwpPerusahaan" name="npwpPerusahaan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control"
-                                                value="{{ $md->npwp_perusahaan }}">
-                                            <label class="ps-4">No NPWP Perusahaan</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileNpwpPerusahaan/{{ $md->file_npwp_perusahaan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            Npwp</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileNpwpPerusahaan"
-                                            name="fileNpwpPerusahaan"></div>
-                                        <label class="ps-4">File
-                                            NPWP Perusahaan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Akta Pendirian dan Perubahan Perusahaan</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="aktaPerusahaan" name="aktaPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->akta_perusahaan }}">
-                                        <label class="ps-4">No Akta Pendirian Perusahaan</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileAktaPerusahaan/{{ $md->file_akta_perusahaan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileAktaPerusahaan">
-                                        </div>
-                                        <label class="ps-4">File Akta Pendirian dan Perubahan Perusahaan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Pengesahan Kemenkumham Perusahaan</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->kumham_perusahaan }}">
-                                        <label class="ps-4">No Pengesahan Kemenkumham Perusahaan</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileKumhamPerusahaan/{{ $md->file_kumham_perusahaan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileKumhamPerusahaan">
-                                        </div>
-                                        <label class="ps-4">File Pengesahan Kemenkumham Perusahaan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Wartawan Kompeten Perusahaan</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="wartawanKompetenPerusahaan" name="wartawanKompetenPerusahaan"
-                                            type="text" class="form-control form-control-sm"
-                                            placeholder="form-control"
-                                            value="{{ $md->wartawan_kompeten_perusahaan }}"">
-                                        <label class="ps-4">Jumlah Wartawan
-                                            Kompeten</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileWartawanKompetenPerusahaan/{{ $md->file_wartawan_kompeten_perusahaan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label"
-                                            id="fileWartawanKompetenPerusahaan">
-                                        </div>
-                                        <label class="ps-4">File Wartawan Kompeten Perusahaan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Laporan SPT Pajak Tahunan Perusahaan</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileSptPerusahaan"></div>
-                                    <label class="ps-4">File Laporan Pajak Perusahaan</label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileSptPerusahaan/{{ $md->file_spt_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Verifikasi Dewan Pers Perusahaan</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileDewanPersPerusahaan">
-                                    </div>
-                                    <label class="ps-4">File Verifikasi Dewan Pers Perusahaan</label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileDewanPersPerusahaan/{{ $md->file_dewan_pers_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perusahaan Pers (Perusahaan)
-                                </h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileAfiliasiPerusahaan"></div>
-                                    <label class="ps-4">File Afiliasi Organisasi Pers</label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileAfiliasiPerusahaan/{{ $md->file_afiliasi_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Surat Pernyataan Nama Media dan Domisili</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileDomisiliPerusahaan">
-                                    </div>
-                                    <label class="ps-4">File Surat Pernyataan Nama Media dan Domisili </label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileDomisiliPerusahaan/{{ $md->file_domisili_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title">Surat Kuasa Perwakilan Media</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileKuasaPerwakilan"></div>
-                                    <label class="ps-4">File Surat Kuasa Perwakilan Media</label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileKuasaPerwakilan/{{ $md->file_kuasa_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Surat Permohonan Kerjasama dan CV Perusahaan
-                                </h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileKerjasama"></div>
-                                    <label class="ps-4">Surat Permohonan Kerjasama</label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileKerjasama/{{ $md->file_kerjasama }}" target="_blank"
-                                        type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                        </section>
-                    </div>
-                </div>
-
-                <div class="h3 text-primary">Data Perwakilan</div>
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-md-0 mb-2">Nama Media</h2>
-                                <div class="col-lg-12 col-md-12 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="namaMedia" name="namaMedia" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->nama_media }}">
-                                        <label class="ps-4">Nama Media</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title">Nama Biro Perwakilan Media</h2>
-                                <div class="form-floating">
-                                    <input id="namaBiroPerwakilan" name="namaBiroPerwakilan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control"
-                                        value="{{ $md->nama_biro_perwakilan }}">
-                                    <label class="ps-4">Nama Biro Perwakilan Media</label>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title">Kontak Perwakilan</h2>
-                                <div class="col-lg-4 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                    <div class="form-floating">
-                                        <input id="alamatPerwakilan" name="alamatPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->alamat_perwakilan }}">
-                                        <label class="ps-4">Alamat Perwakilan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->tlpn_perwakilan }}">
-                                        <label class="ps-4">No Telpon Perwakilan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="emailPerwakilan" name="emailPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->email_perwakilan }}">
-                                        <label class="ps-4">Email Perwakilan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-1">KTP Perwakilan</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="ktpPerwakilan" name="ktpPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->ktp_perwakilan }}">
-                                        <label class="ps-4">No KTP Perwakilan</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileKtpPerwakilan/{{ $md->file_ktp_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileKtpPerwakilan">
-                                        </div>
-                                        <label class="ps-4">File KTP Perwakilan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-1">KK Perwakilan</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="kkPerwakilan" name="kkPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->kk_perwakilan }}">
-                                        <label class="ps-4">No KK Perwakilan</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileKKPerwakilan/{{ $md->file_kk_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileKKPerwakilan"></div>
-                                        <label class="ps-4">File KK Perwakilan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-1">NPWP Perwakilan</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="npwpPerwakilan" name="npwpPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->npwp_perwakilan }}">
-                                        <label class="ps-4">No NPWP Perwakilan</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileNpwpPerwakilan/{{ $md->file_npwp_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileNpwpPerwakilan">
-                                        </div>
-                                        <label class="ps-4">File NPWP Perwakilan </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-1">Dokumen Kompetensi Perwakilan Media</h2>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="kompetensiPerwakilan" name="kompetensiPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->kompetensi_perwakilan }}">
-                                        <label class="ps-4">Jenis Kompetensi Perwakilan Media</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileKopetensiPerwakilan/{{ $md->file_kopetensi_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileKopetensiPerwakilan">
-                                        </div>
-                                        <label class="ps-4">File Dokumen Kompetensi Perwakilan Media</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-1">Afiliasi Organisasi Pers (Organisasi Wartawan)</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileAfiliasiPerwakilan">
-                                    </div>
-                                    <label class="ps-4">File Afiliasi Organisasi Pers (Organisasi Wartawan)
-                                    </label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileAfiliasiPerwakilan/{{ $md->file_afiliasi_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-1">Keterangan Domisili Perwakilan Media</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileDomisiliPerwakilan">
-                                    </div>
-                                    <label class="ps-4">File Keterangan Domisili Perwakilan Media</label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileDomisiliPerwakilan/{{ $md->file_domisili_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title mb-1">Surat Pernyataan Mematuhi Kode Etik Jurnalistik</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileKodeEtikPerwakilan">
-                                    </div>
-                                    <label class="ps-4">File Surat Pernyataan Mematuhi Kode Etik
-                                        Jurnalistik</label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/fileKodeEtikPerwakilan/{{ $md->file_kode_etik_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <h2 class="small-title">Surat Pernyataan 1 Perusahaan 1 Media</h2>
-                                <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="filePernyataanMediaPerwakilan">
-                                    </div>
-                                    <label class="ps-4">File Surat Pernyataan 1 Perusahaan 1 Media </label>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <a href="/tmp/uploads/filePernyataanMediaPerwakilan/{{ $md->file_pernyataan_media_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                        </section>
-                    </div>
-                </div>
-
-                <div class="h3 text-primary">Data Rekening</div>
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-                            <div class="row mb-4">
-                                <h2 class="small-title">Rekening Bank</h2>
-                                <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-
-                                    <div class="top-label mb-2 w-100">
-                                        <select name="jenisRekening" id="jenisRekening">
-                                            <option value="{{ $md->jenis_rekening }}">{{ $md->jenis_rekening }}
-                                            </option>
-                                            <option value="perusahaan">perusahaan</option>
-                                            <option value="perwakilan">Perwakilan</option>
-                                        </select>
-                                        <span>Jenis Rekening</span>
-                                    </div>
-
-                                    <div class="form-floating mb-2">
-                                        <input id="namaBank" name="namaBank" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->nama_bank }}">
-                                        <label class="ps-4">Nama Bank</label>
-                                    </div>
-                                    <div class="form-floating mb-2">
-                                        <input id="pemilikRekening" name="pemilikRekening" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->pemilik_rekening }}">
-                                        <label class="ps-4">Nama Pemilik Rekening</label>
-                                    </div>
-                                    <div class="form-floating mb-2">
-                                        <input id="noRekening" name="noRekening" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->no_rekening }}">
-                                        <label class="ps-4">No Rekening Perusahaan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                    <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileRekening"></div>
-                                        <label class="ps-4">File
-                                            Rekening Perusahaan</label>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <a href="/tmp/uploads/fileRekening/{{ $md->file_rekening }}" target="_blank"
-                                            type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-
-                <div class="h3 text-primary">Signature</div>
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-                            <div class="container">
-                                <h2 class="small-title">Tanda Tangan Disini</h2>
-                                <div class="d-flex justify-content-center mb-2">
-                                    <canvas id="signature-pad" style="width: 300px; height: 200px;"
-                                        class="border signature-pad "></canvas>
-                                </div>
-                                <input id="signatureData" type="text" value="{{ $md->file_signature_data }}"
-                                    disabled hidden>
-                                <div class="d-flex justify-content-end p-3">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button id="saveTtdPng" class="btn btn-success">Simpan</button>
-                                        <button id="clearTtd" class="btn btn-danger">Ulangi</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="col-12 p-2">
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="pernyataanCheckbox" name="pernyataanCheckbox">
-                                    <label class="form-check-label" for="invalidCheck">
-                                        Saya menyatakan bahwa data yang saya isi adalah sebenar-benarnya, jika ada
-                                        pemalsuan data yang ditemukan maka saya siap diproses sesuai dengan hukum
-                                        yang
-                                        berlaku.
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end p-2">
-                                <button id="kirimData" type="submit" class="btn btn-primary">Kirim Data</button>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-
-            </section>
-        </form>
-        <!-- Content End -->
     </div>
+    <!-- Title and Top Buttons End -->
+
+    <!-- Content Start -->
+    <form class="validasi" novalidate>
+        <section class="scroll-section">
+            <div class="h3 text-primary text-capitalize">Data Perusahaan</div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <section class="scroll-section" id="breakpointSpecificResponsive">
+                        <div class="row mb-4">
+                            <h2 class="small-title">Nama Perusahaan</h2>
+                            <div class="form-floating">
+                                <input id="namaPerusahaan" name="namaPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nama_perusahaan }}">
+                                <div id="pengajuanNo" data-nopengajuan="{{ $md->pengajuan_no }}"></div>
+                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}"></div>
+                                <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title">Nama Pimpinan Perusahaan</h2>
+                            <div class="form-floating">
+                                <input id="namaPimred" name="namaPimred" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nama_pimred }}">
+                                <label class="ps-4">Nama Pimpinan Perusahaan</label>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title">Kontak</h2>
+                            <div class="col-lg-4 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                <div class="form-floating">
+                                    <input id="alamatPerusahaan" name="alamatPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->alamat_perusahaan }}">
+                                    <label class="ps-4">Alamat Perusahaan</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->tlpn_perusahaan }}">
+                                    <label class="ps-4">No Telpon Perusahaan</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="emailPerusahaan" name="emailPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->email_perusahaan }}">
+                                    <label class="ps-4">Email Perusahaan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- cok disini tambahin 2 kolom lagi  --}}
+                        {{-- 1.  nama media cetak harian  --}}
+                        <hr class="mb-4">
+
+                        {{-- 2. nama dan alamat percetakan --}}
+                        {{-- opsional harian --}}
+                        @if ($md->jenis_media == 'harian')
+                        <div class="row mb-4">
+                            <h2 class="small-title">Percetakan</h2>
+                            <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                <div class="form-floating">
+                                    <input id="namaPercetakan" name="namaPercetakan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nama_percetakan }}">
+                                    <label class="ps-4">Nama Percetakan</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="alamatPercetakan" name="alamatPercetakan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->alamat_percetakan }}">
+                                    <label class="ps-4">Alamat Percetakan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+                        @endif
+
+                        {{-- opsional Elektronik --}}
+                        @if ($md->jenis_media == 'elektronik')
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Dokumen izin Penyelenggaraan Penyiaran</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileIzinIpp"></div>
+                                <label class="ps-4">File izin Penyelenggaraan Penyiaran</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileIzinIpp/{{ $md->file_izin_ipp }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    Izin IPP</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+                        @endif
+
+
+                        <div class="row mb-4">
+                            <h2 class="small-title">NPWP Perusahaan</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input id="npwpPerusahaan" name="npwpPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->npwp_perusahaan }}">
+                                        <label class="ps-4">No NPWP Perusahaan</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileNpwpPerusahaan/{{ $md->file_npwp_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        Npwp</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileNpwpPerusahaan" name="fileNpwpPerusahaan"></div>
+                                    <label class="ps-4">File
+                                        NPWP Perusahaan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Akta Pendirian dan Perubahan Perusahaan</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="aktaPerusahaan" name="aktaPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->akta_perusahaan }}">
+                                    <label class="ps-4">No Akta Pendirian Perusahaan</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileAktaPerusahaan/{{ $md->file_akta_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileAktaPerusahaan">
+                                    </div>
+                                    <label class="ps-4">File Akta Pendirian dan Perubahan Perusahaan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Pengesahan Kemenkumham Perusahaan</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->kumham_perusahaan }}">
+                                    <label class="ps-4">No Pengesahan Kemenkumham Perusahaan</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileKumhamPerusahaan/{{ $md->file_kumham_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileKumhamPerusahaan">
+                                    </div>
+                                    <label class="ps-4">File Pengesahan Kemenkumham Perusahaan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Wartawan Kompeten Perusahaan</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="wartawanKompetenPerusahaan" name="wartawanKompetenPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->wartawan_kompeten_perusahaan }}"">
+                                        <label class=" ps-4">Jumlah Wartawan
+                                    Kompeten</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileWartawanKompetenPerusahaan/{{ $md->file_wartawan_kompeten_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileWartawanKompetenPerusahaan">
+                                    </div>
+                                    <label class="ps-4">File Wartawan Kompeten Perusahaan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Laporan SPT Pajak Tahunan Perusahaan</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileSptPerusahaan"></div>
+                                <label class="ps-4">File Laporan Pajak Perusahaan</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileSptPerusahaan/{{ $md->file_spt_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Verifikasi Dewan Pers Perusahaan</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileDewanPersPerusahaan">
+                                </div>
+                                <label class="ps-4">File Verifikasi Dewan Pers Perusahaan</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileDewanPersPerusahaan/{{ $md->file_dewan_pers_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perusahaan Pers (Perusahaan)
+                            </h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileAfiliasiPerusahaan"></div>
+                                <label class="ps-4">File Afiliasi Organisasi Pers</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileAfiliasiPerusahaan/{{ $md->file_afiliasi_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Surat Pernyataan Nama Media dan Domisili</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileDomisiliPerusahaan">
+                                </div>
+                                <label class="ps-4">File Surat Pernyataan Nama Media dan Domisili </label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileDomisiliPerusahaan/{{ $md->file_domisili_perusahaan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title">Surat Kuasa Perwakilan Media</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileKuasaPerwakilan"></div>
+                                <label class="ps-4">File Surat Kuasa Perwakilan Media</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileKuasaPerwakilan/{{ $md->file_kuasa_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Surat Permohonan Kerjasama dan CV Perusahaan
+                            </h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileKerjasama"></div>
+                                <label class="ps-4">Surat Permohonan Kerjasama</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileKerjasama/{{ $md->file_kerjasama }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+
+            <div class="h3 text-primary">Data Perwakilan</div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <section class="scroll-section" id="breakpointSpecificResponsive">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-md-0 mb-2">Nama Media</h2>
+                            <div class="col-lg-12 col-md-12 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="namaMedia" name="namaMedia" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nama_media }}">
+                                    <label class="ps-4">Nama Media</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title">Nama Biro Perwakilan Media</h2>
+                            <div class="form-floating">
+                                <input id="namaBiroPerwakilan" name="namaBiroPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nama_biro_perwakilan }}">
+                                <label class="ps-4">Nama Biro Perwakilan Media</label>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title">Kontak Perwakilan</h2>
+                            <div class="col-lg-4 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                <div class="form-floating">
+                                    <input id="alamatPerwakilan" name="alamatPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->alamat_perwakilan }}">
+                                    <label class="ps-4">Alamat Perwakilan</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->tlpn_perwakilan }}">
+                                    <label class="ps-4">No Telpon Perwakilan</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="emailPerwakilan" name="emailPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->email_perwakilan }}">
+                                    <label class="ps-4">Email Perwakilan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-1">KTP Perwakilan</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="ktpPerwakilan" name="ktpPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->ktp_perwakilan }}">
+                                    <label class="ps-4">No KTP Perwakilan</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileKtpPerwakilan/{{ $md->file_ktp_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileKtpPerwakilan">
+                                    </div>
+                                    <label class="ps-4">File KTP Perwakilan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-1">KK Perwakilan</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="kkPerwakilan" name="kkPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->kk_perwakilan }}">
+                                    <label class="ps-4">No KK Perwakilan</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileKKPerwakilan/{{ $md->file_kk_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileKKPerwakilan"></div>
+                                    <label class="ps-4">File KK Perwakilan</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-1">NPWP Perwakilan</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="npwpPerwakilan" name="npwpPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->npwp_perwakilan }}">
+                                    <label class="ps-4">No NPWP Perwakilan</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileNpwpPerwakilan/{{ $md->file_npwp_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileNpwpPerwakilan">
+                                    </div>
+                                    <label class="ps-4">File NPWP Perwakilan </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-1">Dokumen Kompetensi Perwakilan Media</h2>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <input id="kompetensiPerwakilan" name="kompetensiPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->kompetensi_perwakilan }}">
+                                    <label class="ps-4">Jenis Kompetensi Perwakilan Media</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileKopetensiPerwakilan/{{ $md->file_kopetensi_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileKopetensiPerwakilan">
+                                    </div>
+                                    <label class="ps-4">File Dokumen Kompetensi Perwakilan Media</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-1">Afiliasi Organisasi Pers (Organisasi Wartawan)</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileAfiliasiPerwakilan">
+                                </div>
+                                <label class="ps-4">File Afiliasi Organisasi Pers (Organisasi Wartawan)
+                                </label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileAfiliasiPerwakilan/{{ $md->file_afiliasi_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-1">Keterangan Domisili Perwakilan Media</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileDomisiliPerwakilan">
+                                </div>
+                                <label class="ps-4">File Keterangan Domisili Perwakilan Media</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileDomisiliPerwakilan/{{ $md->file_domisili_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title mb-1">Surat Pernyataan Mematuhi Kode Etik Jurnalistik</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="fileKodeEtikPerwakilan">
+                                </div>
+                                <label class="ps-4">File Surat Pernyataan Mematuhi Kode Etik
+                                    Jurnalistik</label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/fileKodeEtikPerwakilan/{{ $md->file_kode_etik_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="row mb-4">
+                            <h2 class="small-title">Surat Pernyataan 1 Perusahaan 1 Media</h2>
+                            <div class="form-floating">
+                                <div class="dropzone dropzone-floating-label" id="filePernyataanMediaPerwakilan">
+                                </div>
+                                <label class="ps-4">File Surat Pernyataan 1 Perusahaan 1 Media </label>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <a href="/tmp/uploads/filePernyataanMediaPerwakilan/{{ $md->file_pernyataan_media_perwakilan }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                    File</a>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+
+            <div class="h3 text-primary">Data Rekening</div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <section class="scroll-section" id="breakpointSpecificResponsive">
+                        <div class="row mb-4">
+                            <h2 class="small-title">Rekening Bank</h2>
+                            <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+
+                                <div class="top-label mb-2 w-100">
+                                    <select name="jenisRekening" id="jenisRekening">
+                                        <option value="{{ $md->jenis_rekening }}">{{ $md->jenis_rekening }}
+                                        </option>
+                                        <option value="perusahaan">perusahaan</option>
+                                        <option value="perwakilan">Perwakilan</option>
+                                    </select>
+                                    <span>Jenis Rekening</span>
+                                </div>
+
+                                <div class="form-floating mb-2">
+                                    <input id="namaBank" name="namaBank" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nama_bank }}">
+                                    <label class="ps-4">Nama Bank</label>
+                                </div>
+                                <div class="form-floating mb-2">
+                                    <input id="pemilikRekening" name="pemilikRekening" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->pemilik_rekening }}">
+                                    <label class="ps-4">Nama Pemilik Rekening</label>
+                                </div>
+                                <div class="form-floating mb-2">
+                                    <input id="noRekening" name="noRekening" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->no_rekening }}">
+                                    <label class="ps-4">No Rekening Perusahaan</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                <div class="form-floating">
+                                    <div class="dropzone dropzone-floating-label" id="fileRekening"></div>
+                                    <label class="ps-4">File
+                                        Rekening Perusahaan</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="/tmp/uploads/fileRekening/{{ $md->file_rekening }}" target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
+                                        File</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="h3 text-primary">Signature</div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <section class="scroll-section" id="breakpointSpecificResponsive">
+                        <div class="container">
+                            <h2 class="small-title">Tanda Tangan Disini</h2>
+                            <div class="d-flex justify-content-center mb-2">
+                                <canvas id="signature-pad" style="width: 300px; height: 200px;" class="border signature-pad "></canvas>
+                            </div>
+                            <input id="signatureData" type="text" value="{{ $md->file_signature_data }}" disabled hidden>
+                            <div class="d-flex justify-content-end p-3">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button id="saveTtdPng" class="btn btn-success">Simpan</button>
+                                    <button id="clearTtd" class="btn btn-danger">Ulangi</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="col-12 p-2">
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="pernyataanCheckbox" name="pernyataanCheckbox">
+                                <label class="form-check-label" for="invalidCheck">
+                                    Saya menyatakan bahwa data yang saya isi adalah sebenar-benarnya, jika ada
+                                    pemalsuan data yang ditemukan maka saya siap diproses sesuai dengan hukum
+                                    yang
+                                    berlaku.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end p-2">
+                            <button id="kirimData" type="submit" class="btn btn-primary">Kirim Data</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </section>
+    </form>
+    <!-- Content End -->
+</div>
 @endforeach
 <script>
     /**

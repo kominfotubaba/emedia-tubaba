@@ -205,11 +205,11 @@
         $('#savePengajuanBaru').click(function(e) {
             e.preventDefault();
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
             $.ajax({
                 type: "POST",
                 url: "/pengajuan/create",
@@ -230,11 +230,11 @@
         $(document).on('click', '.verifikasi', function(e) {
             e.preventDefault();
             var noPengajuan = $(this).attr('data-id');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
             $.ajax({
                 type: "GET",
                 url: "/pengajuan/verifikasi/" + noPengajuan,
@@ -247,11 +247,11 @@
         $(document).on('click', '.cekdaftar', function(e) {
             e.preventDefault();
             var noPengajuan = $(this).attr('data-id');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
             $.ajax({
                 type: "GET",
                 url: "/pengajuan/cek_data/" + noPengajuan,
@@ -264,16 +264,17 @@
         $(document).on('click', '.editdaftar', function(e) {
             e.preventDefault();
             var noPengajuan = $(this).attr('data-id');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
             $.ajax({
                 type: "GET",
                 url: "/pengajuan/edit/" + noPengajuan,
                 success: function(response) {
-                    $("main").load("/pengajuan/edit/" + noPengajuan);
+                    // $("main").load("/pengajuan/edit/" + noPengajuan);
+                    window.open("/pengajuan/edit/" + noPengajuan, "_parent")
                 }
             });
         });

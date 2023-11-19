@@ -120,19 +120,19 @@ return new class extends Migration
             $table->string('nomorKKPerwakilan')->nullable();
             $table->string('nomorKtpPerwakilan')->nullable();
             $table->string('npwpPerwakilan')->nullable();
+            $table->string('fileNpwpPerwakilan')->nullable();
+            $table->string('jenisSerfikatUkwPerwakilan')->nullable();
             $table->string('serfikatUkwPerwakilan')->nullable();
+            $table->string('fileSerfikatUkwPerwakilan')->nullable();
             $table->string('afiliasiPersPerwakilan')->nullable();
+            $table->string('fileafiliasiPersPerwakilan')->nullable();
             $table->string('alamatPerwakilan')->nullable();
             $table->string('tlpnPerwakilan')->nullable();
             $table->string('emailPerwakilan')->nullable();
-            $table->string('jenisSerfikatUkwPerwakilan')->nullable();
             $table->string('alamatProvPerwakilan')->nullable();
             $table->string('alamatKabPerwakilan')->nullable();
             $table->string('alamatKecPerwakilan')->nullable();
             $table->string('alamatKelPerwakilan')->nullable();
-            $table->string('fileNpwpPerwakilan')->nullable();
-            $table->string('fileSerfikatUkwPerwakilan')->nullable();
-            $table->string('fileafiliasiPersPerwakilan')->nullable();
 
             // status dan parameter
             $table->enum('status', ['ajukan', 'edit', 'tolak', 'terima']);
