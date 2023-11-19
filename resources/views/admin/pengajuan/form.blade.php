@@ -1053,7 +1053,7 @@
         }
 
         var wizard = new Wizard(document.getElementById('wizardBasic'), {
-            // topNav: false,
+            topNav: false,
             handleButtonClicks: false,
             lastEnd: false,
             onNextClick: function(params) {

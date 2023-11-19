@@ -46,9 +46,10 @@
                                                     class="form-control form-control-sm" placeholder="form-control"
                                                     value="{{ $md->namaPerusahaan }}">
                                                 <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
-                                                <div id="pengajuanNo" data-noPengajuan="{{ $md->pengajuan_no }}">
+                                                <div id="pengajuanNo" data-noPengajuan="{{ $md->pengajuan_no }}" hidden>
                                                     {{ $md->pengajuan_no }}</div>
-                                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}">
+                                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}"
+                                                    hidden>
                                                     {{ $md->jenis_media }}</div>
                                             </div>
 
@@ -1181,7 +1182,7 @@
             }
 
             var wizard = new Wizard(document.getElementById('wizardBasic1'), {
-                // topNav: false,
+                topNav: false,
                 handleButtonClicks: false,
                 lastEnd: false,
             });
