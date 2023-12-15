@@ -1,0 +1,81 @@
+/* ================= Navbar ================= */
+nav {
+  transition: 0.5s;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 15px;
+
+  .navbar {
+    .navbar-brand {
+      img {
+        height: 37px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.5s;
+    }
+
+    a:hover,:focus {
+      color: var(--gold);
+    }
+    
+  }
+
+  .modif-drop{
+    background-color: rgba(65, 0, 0, 0.8);
+    a{
+      color: white;
+    }
+     a:hover{
+      background-color: rgba(65, 0, 0, 0.8);
+     }
+  }
+}
+
+// /* ============ Navbar OnScroll ============= */
+.nav-color {
+  background-color: rgba(65, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  border-radius: 50px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  nav {
+    .navbar {
+      .navbar-brand {
+        img {
+          height: 30px;
+        }
+      }
+
+      a {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    .navbar {
+      .navbar-brand {
+        img {
+          height: 23px;
+        }
+      }
+
+      a {
+        font-size: 12px !important;
+      }
+    }
+  }
+}

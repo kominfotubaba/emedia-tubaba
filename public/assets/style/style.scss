@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Barlow:400,500,700");
+@font-face {
+  font-family: tubaba-bold;
+  src: url(../font/tubaba-fonts/Tubaba-Bold.ttf);
+}
+
+@font-face {
+  font-family: tubaba;
+  src: url(../font/tubaba-fonts/Tubaba-Regular.ttf);
+}
+
+:root {
+  --maroon: #68272e;
+  --gold: #f1e212b4;
+  --calm: #fcefd5;
+  --calm2: #fdedcd;
+  --abu-abu: #eaeaea;
+  --hijau: #00ac69;
+  --ashu: #797979b6;
+}
+
+/* ================= Body ================= */
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+  // font-family: tubaba;
+  font-family: "Barlow", sans-serif;
+
+  .border-all {
+    border-radius: 0px;
+  }
+
+  .bold {
+    font-family: tubaba-bold;
+  }
+
+  .bg-img {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+
+    img {
+      height: 50vh;
+      width: auto;
+      opacity: 0.1;
+    }
+  }
+}
+
+@import "layout/navbar";
+@import "layout/dash_carousel";
+@import "layout/berita_terbaru";
+@import "layout/dash_pengumuman";
+@import "layout/dash_informasi";
+@import "layout/data_per_pers";
+@import "layout/login";
+@import "layout/footer";

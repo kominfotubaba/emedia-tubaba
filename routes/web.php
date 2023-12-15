@@ -11,6 +11,7 @@ use App\Http\Controllers\MediaPengajuanDaftarController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaketController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard-peng');
+    // return view('dashboard-peng');
+    return view('index');
 });
+Route::get('/data-perusahaan', [HomeController::class, 'data_perusahaan']);
+Route::get('/data-media', [HomeController::class, 'data_media']);
+Route::get('/data-perwakilan-media', [HomeController::class, 'data_perwakilan_media']);
+Route::get('/data-all', [HomeController::class, 'data_all']);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);

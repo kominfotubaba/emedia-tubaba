@@ -1,0 +1,118 @@
+.pengumuman {
+  height: 100vh;
+  width: auto;
+  margin: 2rem;
+
+  .file-peng {
+    .card {
+      height: 93vh;
+      width: auto;
+      border-color: var(--abu-abu);
+      border-radius: 12px;
+      embed {
+        height: 100%;
+        width: 100%;
+        border-radius: 12px;
+      }
+    }
+  }
+
+  .sub-peng {
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  .txt {
+    .txt-jud {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .txt-inf {
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
+
+  .link-peng {
+    text-align: end;
+
+    .btn-outline-peng {
+      border-color: var(--abu-abu);
+      border-radius: 5px;
+      font-weight: bold;
+      background-color: white;
+      transition: 0.5s;
+      a {
+        color: #000;
+        text-decoration: none;
+        transition: 0.5s;
+      }
+    }
+
+    .btn-outline-peng:hover {
+      background-color: var(--maroon);
+      border-color: var(--maroon);
+
+      a {
+        color: var(--abu-abu);
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .sub-peng {
+      font-size: 30px !important;
+    }
+
+    .txt {
+      .txt-jud {
+        font-size: 17px;
+      }
+
+      .txt-inf {
+        font-size: 12px;
+      }
+    }
+
+    .link-peng {
+      margin-top: 7px;
+      .btn-outline-peng {
+        font-size: 12px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: auto;
+
+    .file-peng {
+      .card {
+        height: 75vh;
+      }
+    }
+
+    .sub-peng {
+      font-size: 30px !important;
+    }
+
+    .txt {
+      .txt-jud {
+        font-size: 15px;
+      }
+
+      .txt-inf {
+        font-size: 10px;
+      }
+    }
+
+    .link-peng {
+      .btn-outline-peng {
+        margin-top: 0;
+        font-size: 10px;
+      }
+    }
+  }
+}

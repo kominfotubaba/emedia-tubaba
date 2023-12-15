@@ -11,7 +11,7 @@ class Select2Controls {
     constructor() {
         // Initialization of the page plugins
         if (!jQuery().select2) {
-            console.log("select2 is null!");
+            console.log('select2 is null!');
             return;
         }
 
@@ -26,43 +26,39 @@ class Select2Controls {
         this._initTopLabel();
         this._initFilled();
         this._initFloatingLabel();
-        this._initFloatingLabelClass();
     }
 
     // Basic single select2
     _initSelect2Basic() {
-        jQuery("#select2Basic").select2({ placeholder: "" });
+        jQuery('#select2Basic').select2({ placeholder: '' });
     }
 
     // Basic jenisPengajuan
     _initjenisPengajuan() {
-        jQuery("#jenisPengajuan").select2({ placeholder: "" });
+        jQuery('#jenisPengajuan').select2({ placeholder: '' });
     }
 
     // Basic multiple select2
     _initSelect2Multiple() {
-        jQuery("#select2Multiple").select2({});
+        jQuery('#select2Multiple').select2({});
     }
 
     // Basic select2 tags
     _initTags() {
-        jQuery("#select2Tags").select2({});
+        jQuery('#select2Tags').select2({});
     }
 
     // No search field
     _initSearchHidden() {
-        jQuery("#select2SearchHidden").select2({
-            minimumResultsForSearch: Infinity,
-            placeholder: "",
-        });
+        jQuery('#select2SearchHidden').select2({ minimumResultsForSearch: Infinity, placeholder: '' });
     }
 
     // Ajax api connection
     _initAjax() {
-        jQuery("#select2Ajax").select2({
+        jQuery('#select2Ajax').select2({
             ajax: {
-                url: "https://node-api.coloredstrategies.com/products",
-                dataType: "json",
+                url: 'https://node-api.coloredstrategies.com/products',
+                dataType: 'json',
                 delay: 250,
                 data: function (params) {
                     return {
@@ -77,20 +73,16 @@ class Select2Controls {
                 },
                 cache: true,
             },
-            placeholder: "Search",
+            placeholder: 'Search',
             escapeMarkup: function (markup) {
                 return markup;
             },
             minimumInputLength: 1,
             templateResult: function formatResult(result) {
                 if (result.loading) return result.text;
-                var markup =
-                    '<div class="clearfix"><div>' + result.Name + "</div>";
+                var markup = '<div class="clearfix"><div>' + result.Name + '</div>';
                 if (result.Description) {
-                    markup +=
-                        '<div class="text-muted">' +
-                        result.Description +
-                        "</div>";
+                    markup += '<div class="text-muted">' + result.Description + '</div>';
                 }
                 return markup;
             },
@@ -102,25 +94,22 @@ class Select2Controls {
 
     // Using data- attributes
     _initDataApi() {
-        jQuery("#selectDataApi").select2({
-            minimumResultsForSearch: Infinity,
-            placeholder: "",
-        });
+        jQuery('#selectDataApi').select2({ minimumResultsForSearch: Infinity, placeholder: '' });
     }
 
     // Basic templating with circles
     _initTemplating() {
-        jQuery("#selectTemplating").select2({
+        jQuery('#selectTemplating').select2({
             minimumResultsForSearch: Infinity,
-            placeholder: "",
+            placeholder: '',
             templateSelection: function formatText(item) {
                 if (jQuery(item.element).val()) {
                     return jQuery(
                         '<div><span class="align-middle d-inline-block option-circle me-2 rounded-xl ' +
-                            jQuery(item.element).data("class") +
-                            '"></span> <span class="align-middle d-inline-block lh-1">' +
-                            item.text +
-                            "</span></div>"
+                        jQuery(item.element).data('class') +
+                        '"></span> <span class="align-middle d-inline-block lh-1">' +
+                        item.text +
+                        '</span></div>',
                     );
                 }
             },
@@ -128,10 +117,10 @@ class Select2Controls {
                 if (jQuery(item.element).val()) {
                     return jQuery(
                         '<div><span class="align-middle d-inline-block option-circle me-2 rounded-xl ' +
-                            jQuery(item.element).data("class") +
-                            '"></span> <span class="align-middle d-inline-block lh-1">' +
-                            item.text +
-                            "</span></div>"
+                        jQuery(item.element).data('class') +
+                        '"></span> <span class="align-middle d-inline-block lh-1">' +
+                        item.text +
+                        '</span></div>',
                     );
                 }
             },
@@ -140,57 +129,35 @@ class Select2Controls {
 
     // Top label input select2
     _initTopLabel() {
-        jQuery("#selectTopLabel").select2({
-            minimumResultsForSearch: Infinity,
-            placeholder: "",
-        });
+        jQuery('#selectTopLabel').select2({ minimumResultsForSearch: Infinity, placeholder: '' });
     }
 
     // Filled input select2
     _initFilled() {
-        jQuery("#selectFilled").select2({ minimumResultsForSearch: Infinity });
+        jQuery('#selectFilled').select2({ minimumResultsForSearch: Infinity });
     }
 
     // Floating label input select2
     _initFloatingLabel() {
         const _this = this;
-        jQuery("#selectFloating")
-            .select2({ minimumResultsForSearch: Infinity, placeholder: "" })
-            .on("select2:open", function (e) {
-                jQuery(this).addClass("show");
+        jQuery('#selectFloating')
+            .select2({ minimumResultsForSearch: Infinity, placeholder: '' })
+            .on('select2:open', function (e) {
+                jQuery(this).addClass('show');
             })
-            .on("select2:close", function (e) {
+            .on('select2:close', function (e) {
                 _this._addFullClassToSelect2(this);
-                jQuery(this).removeClass("show");
+                jQuery(this).removeClass('show');
             });
-        this._addFullClassToSelect2(jQuery("#selectFloating"));
-    }
-    _initFloatingLabelClass() {
-        const _this = this;
-        jQuery(".selectFloating")
-            .select2({ minimumResultsForSearch: Infinity, placeholder: "" })
-            .on("select2:open", function (e) {
-                jQuery(this).addClass("show");
-            })
-            .on("select2:close", function (e) {
-                _this._addFullClassToSelect2(this);
-                jQuery(this).removeClass("show");
-            });
-        this._addFullClassToSelect2(jQuery(".selectFloating"));
+        this._addFullClassToSelect2(jQuery('#selectFloating'));
     }
 
     // Helper method for floating label Select2
     _addFullClassToSelect2(el) {
-        if (jQuery(el).val() !== "" && jQuery(el).val() !== null) {
-            jQuery(el)
-                .parent()
-                .find(".select2.select2-container")
-                .addClass("full");
+        if (jQuery(el).val() !== '' && jQuery(el).val() !== null) {
+            jQuery(el).parent().find('.select2.select2-container').addClass('full');
         } else {
-            jQuery(el)
-                .parent()
-                .find(".select2.select2-container")
-                .removeClass("full");
+            jQuery(el).parent().find('.select2.select2-container').removeClass('full');
         }
     }
 }
