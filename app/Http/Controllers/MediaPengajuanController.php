@@ -182,7 +182,7 @@ class MediaPengajuanController extends Controller
                 $title = 'Operasi Gagal';
             } else {
                 $cek_ketersediaan_data = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-                dd($cek_ketersediaan_data);
+                // dd($cek_ketersediaan_data);
                 if ($cek_ketersediaan_data == 0) {
                     # code...
                     // insert data
