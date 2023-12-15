@@ -568,9 +568,11 @@
                                                     @else
                                                         <option label="&nbsp;"></option>
                                                     @endif
-                                                    <option value="sebelum 2010">Sebelum 2010</option>
-                                                    <option value="2010 sampai 2020">2010 Sampai 2020</option>
-                                                    <option value="sesudah 2020">Sesudah 2020</option>
+                                                    @php
+                                                        for ($i = date('Y'); $i >= date('Y') - 100; $i -= 1) {
+                                                            echo '<option value="' . $i . '">' . $i . '</option>';
+                                                        }
+                                                    @endphp
                                                 </select>
                                             </div>
                                         </div>
@@ -1071,25 +1073,25 @@
                             nospace: true,
                         },
                         afiliasiPerusahaan: {
-                            required: true,
+                            // required: true,
                         },
                         domisiliRedaksiMedia: {
-                            required: true,
+                            // required: true,
                         },
                         kanalKhusus: {
-                            required: true,
+                            // required: true,
                         },
                         jenisRekening: {
-                            required: true,
+                            // required: true,
                         },
                         namaBank: {
-                            required: true,
+                            // required: true,
                         },
                         pemilikRekening: {
-                            required: true,
+                            // required: true,
                         },
                         noRekening: {
-                            required: true,
+                            // required: true,
                             number: true,
                         },
 
@@ -1097,44 +1099,44 @@
                          * KUALIFIKASI MEDIA
                          **/
                         tahunBerdiriMedia: {
-                            required: true,
+                            // required: true,
                         },
                         jenisJangkauanSiarMediaElektronik: {
-                            required: true,
+                            // required: true,
                         },
                         jangkauanSiarMediaElektronik: {
-                            required: true,
+                            // required: true,
                         },
                         jumlahOplahMediaCetakPerMinggu: {
-                            required: true,
+                            // required: true,
                         },
                         jumlahKontenBeritaAktif: {
-                            required: true,
+                            // required: true,
                         },
 
                         /**
                          * PERWAKILAN MEDIA
                          **/
                         namaPerwakilan: {
-                            required: true,
+                            // required: true,
                         },
                         nomorKKPerwakilan: {
-                            required: true,
+                            // required: true,
                             nospace: true,
                         },
                         nomorKtpPerwakilan: {
-                            required: true,
+                            // required: true,
                             nospace: true,
                         },
                         npwpPerwakilan: {
-                            required: true,
+                            // required: true,
                             nospace: true,
                         },
                         // lunasPBB: {
                         //     required: true,
                         // },
                         jenisSerfikatUkwPerwakilan: {
-                            required: true,
+                            // required: true,
                         },
                         // serfikatUkwPerwakilan: {
                         //     required: true,
@@ -1143,26 +1145,26 @@
                             // required: true,
                         },
                         alamatProvPerwakilan: {
-                            required: true,
+                            // required: true,
                         },
                         alamatKabPerwakilan: {
-                            required: true,
+                            // required: true,
                         },
                         alamatKecPerwakilan: {
-                            required: true,
+                            // required: true,
                         },
                         alamatKelPerwakilan: {
-                            required: true,
+                            // required: true,
                         },
                         alamatPerwakilan: {
-                            required: true,
+                            // required: true,
                         },
                         tlpnPerwakilan: {
-                            required: true,
+                            // required: true,
                             number: true,
                         },
                         emailPerwakilan: {
-                            required: true,
+                            // required: true,
                             email: true,
                         },
 

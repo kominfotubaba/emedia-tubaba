@@ -947,25 +947,25 @@
                         nospace: true,
                     },
                     afiliasiPerusahaan: {
-                        required: true,
+                        // required: true,
                     },
                     domisiliRedaksiMedia: {
-                        required: true,
+                        // required: true,
                     },
                     kanalKhusus: {
-                        required: true,
+                        // required: true,
                     },
                     jenisRekening: {
-                        required: true,
+                        // required: true,
                     },
                     namaBank: {
-                        required: true,
+                        // required: true,
                     },
                     pemilikRekening: {
-                        required: true,
+                        // required: true,
                     },
                     noRekening: {
-                        required: true,
+                        // required: true,
                         number: true,
                     },
 
@@ -973,19 +973,19 @@
                      * KUALIFIKASI MEDIA
                      **/
                     tahunBerdiriMedia: {
-                        required: true,
+                        // required: true,
                     },
                     jenisJangkauanSiarMediaElektronik: {
-                        required: true,
+                        // required: true,
                     },
                     jangkauanSiarMediaElektronik: {
-                        required: true,
+                        // required: true,
                     },
                     jumlahOplahMediaCetakPerMinggu: {
-                        required: true,
+                        // required: true,
                     },
                     jumlahKontenBeritaAktif: {
-                        required: true,
+                        // required: true,
                     },
 
                     /**
