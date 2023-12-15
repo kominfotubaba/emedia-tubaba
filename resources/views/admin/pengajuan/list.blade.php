@@ -37,10 +37,12 @@
                             </div>
                             <div class="col-12 col-sm-7 col-lg-9 col-xxl-10 text-end mb-1">
                                 <div class="d-inline-block">
-                                    @if ($pengajuan_tahun == 0)
-                                        <button id="addPengajuan" class="btn btn-sm btn-outline-muted" type="button">
-                                            Pengajuan
-                                        </button>
+                                    @if ($pengajuan_buka == 1)
+                                        @if ($pengajuan_tahun == 0)
+                                            <button id="addPengajuan" class="btn btn-sm btn-outline-muted" type="button">
+                                                Pengajuan
+                                            </button>
+                                        @endif
                                     @endif
                                     <button class="btn btn-icon btn-icon-only btn-outline-muted btn-sm datatable-print"
                                         type="button" data-datatable="#tbDaftarPengajuan">
