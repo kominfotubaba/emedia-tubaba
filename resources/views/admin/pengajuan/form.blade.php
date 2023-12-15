@@ -463,9 +463,14 @@
                                 <div class="form-floating w-100">
                                     <select class="select-floating" id="tahunBerdiriMedia" name="tahunBerdiriMedia">
                                         <option label="&nbsp;"></option>
-                                        <option value="sebelum 2010">Sebelum 2010</option>
+                                        {{-- <option value="sebelum 2010">Sebelum 2010</option>
                                         <option value="2010 sampai 2020">2010 Sampai 2020</option>
-                                        <option value="sesudah 2020">Sesudah 2020</option>
+                                        <option value="sesudah 2020">Sesudah 2020</option> --}}
+                                        @php
+                                            for ($i = date('Y'); $i >= date('Y') - 100; $i -= 1) {
+                                                echo '<option value="' . $i . '">' . $i . '</option>';
+                                            }
+                                        @endphp
                                     </select>
                                 </div>
                             </div>
@@ -1053,7 +1058,7 @@
         }
 
         var wizard = new Wizard(document.getElementById('wizardBasic'), {
-            topNav: false,
+            topNav: true,
             handleButtonClicks: false,
             lastEnd: false,
             onNextClick: function(params) {
