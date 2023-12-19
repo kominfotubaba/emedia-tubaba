@@ -8,13 +8,10 @@
             <div class="row mb-4 mt-2 mt-md-0 mt-lg-0">
                 <div class="col-12 jud">Data Perwakilan Media</div>
                 <div class="col-12 mt-2">
-                    Data yang ditampilkan diperoleh dari form pendaftaran kerjasama
-                    antara Pemerintah Kabupaten Tulang Bawang Barat dengan Perusahaan
-                    Pers pada aplikasi e-media yang diinput langsung oleh pihak
-                    perusahaan pers dan diverifikasi dengan data Dewan Pers. Jika
-                    terdapat ketidak sesuaian data dapat menghubungi Dinas Komunikasi
-                    dan Informatika Pemerintah Kabupaten Tulang Bawang Barat melalui
-                    email kominfo@tubaba.go.id.
+
+                    Informasi, Data dan Dokumen yang diinput/diunggah sesuai dengan aslinya dan dapat dipertanggungjawabkan
+                    legalitasnya. Bilamana terdapat kesulitan dalam menginput/mengunggah informasi, data dan dokumen dapat
+                    menghubungi Diskominfo Tubaba melalui email dengan alamat kominfo@tubaba.go.id
                 </div>
             </div>
 
