@@ -133,7 +133,7 @@
                             column.header().replaceChildren(input);
 
                             // Event listener for user input
-                            input.addEventListener('keypress', () => {
+                            input.addEventListener('keypress', (e) => {
                                 if (e.keyCode == '13') {
                                     if (column.search() !== this.value) {
                                         column.search(input.value).draw();
