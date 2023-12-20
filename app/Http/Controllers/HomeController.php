@@ -21,6 +21,11 @@ class HomeController extends Controller
     {
         return view('data-perwakilan-media');
     }
+    public function data_verifikasi()
+    {
+        return view('data-verifikasi');
+    }
+
     public function data_all(Request $request)
     {
         $param = $request->param;

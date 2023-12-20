@@ -31,6 +31,7 @@ Route::get('/', function () {
 Route::get('/data-perusahaan', [HomeController::class, 'data_perusahaan']);
 Route::get('/data-media', [HomeController::class, 'data_media']);
 Route::get('/data-perwakilan-media', [HomeController::class, 'data_perwakilan_media']);
+Route::get('/data-verifikasi', [HomeController::class, 'data_verifikasi']);
 Route::get('/data-all', [HomeController::class, 'data_all']);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {

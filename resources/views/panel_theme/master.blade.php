@@ -55,7 +55,7 @@
             <div class="navbar nav-color">
                 <div class="container-fluid">
                     <a class="navbar-brand m-0 ps-1 ps-md-3 ps-lg-3" href="/">
-                        <img src="/assets/img/nav.svg" alt="">
+                        <img src="/assets/logo/guwai.png" alt="">
                     </a>
                     <ul class="nav justify-content-end mt-0 mb-0 p-0">
                         <li class="nav-link m-0 p-1 p-md-2 p-lg-3">

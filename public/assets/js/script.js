@@ -31,12 +31,15 @@ $(document).ready(function () {
     autoplayHoverPause: true,
     smartSpeed: 500,
     responsive: {
-      0: {
-        items: 2,
-      },
-      600: {
-        items: 4,
-      },
+        0: {
+            items: 2,
+        },
+        768: {
+            items: 3,
+        },
+        1024: {
+            items: 4,
+        },
     },
   });
 });

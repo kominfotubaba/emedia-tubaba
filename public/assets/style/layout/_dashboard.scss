@@ -1,0 +1,236 @@
+.dash-carousel {
+    margin: 0;
+    padding: 0;
+    img {
+        height: 75vh;
+        width: 100vw;
+        object-fit: cover;
+    }
+}
+
+.dash-pilihan {
+    margin: 2rem;
+    color: var(--maroon);
+    font-size: 45px;
+
+    a {
+        text-decoration: none;
+        color: var(--maroon);
+        font-size: 20px;
+        font-weight: 500;
+
+        .card {
+            border: none;
+            // border-color: var(--calm);
+            // border-radius: 30px;
+
+            .icon {
+                border: none;
+                background-color: blanchedalmond;
+                // margin-top: 20px;
+                margin-bottom: 10px;
+                margin-left: 35px;
+                margin-right: 35px;
+                border-radius: 25px;
+                padding: 20px;
+
+                img {
+                    height: 110px;
+                    width: auto;
+                }
+            }
+        }
+    }
+    a:hover {
+        font-weight: bold;
+        // .card {
+        //   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+        // }
+    }
+}
+
+.dash-informasi {
+    margin: 2rem;
+    background-color: var(--calm);
+    box-shadow:
+        rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 12px;
+
+    .head {
+        font-size: x-large;
+        text-align: center;
+        background-color: var(--maroon);
+        color: white;
+        font-weight: bold;
+        border-radius: 7px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .card {
+        margin: 0;
+        padding: 0;
+        height: 40vh;
+        width: auto;
+        background-color: transparent;
+        border: none;
+        box-sizing: border-box;
+        background-color: transparent;
+        border-color: transparent;
+        transition: transform 1s;
+
+        img {
+            height: 30vh;
+            width: auto;
+        }
+
+        .btn-outline-maroon {
+            border-color: var(--maroon);
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.6s;
+        }
+    }
+    .card:hover {
+        -ms-transform: scale(1.2); /* IE 9 */
+        -webkit-transform: scale(1.2); /* Safari 3-8 */
+        transform: scale(1.05);
+
+        .btn-outline-maroon {
+            border-color: var(--maroon);
+            background-color: var(--maroon);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dash-carousel {
+        img {
+            height: auto !important;
+            width: 100vw !important;
+            object-fit: cover;
+        }
+    }
+
+    .dash-pilihan {
+        font-size: 35px;
+        a {
+            font-size: 18px;
+
+            .card {
+                .icon {
+                    margin-bottom: 7px;
+                    margin-left: 30px;
+                    margin-right: 30px;
+                    border-radius: 25px;
+                    padding: 15px;
+
+                    img {
+                        height: 100px;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .dash-informasi {
+        .head {
+            font-size: 20px;
+        }
+
+        .card {
+            height: 25vh;
+            width: auto;
+
+            img {
+                height: 15vh;
+                width: auto;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .dash-carousel {
+        img {
+            height: auto !important;
+            width: 100vw !important;
+            object-fit: cover;
+        }
+    }
+
+    .dash-pilihan {
+        font-size: 25px;
+        a {
+            font-size: 8px;
+            font-weight: bold;
+
+            .card {
+                .icon {
+                    margin-bottom: 7px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    border-radius: 15px;
+                    padding: 10px;
+
+                    img {
+                        height: 50px;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .dash-informasi {
+        .head {
+            font-size: 12px;
+        }
+
+        .card {
+            height: auto;
+            img {
+                height: auto;
+                width: 100%;
+            }
+
+            .btn-outline-maroon {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 321px) {
+    .dash-pilihan {
+        font-size: 20px;
+        a {
+            font-size: 8px;
+
+            .card {
+                padding: 0;
+                margin: 0;
+                .icon {
+                    margin-top: 10px;
+                    padding: 5px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    border-radius: 5px;
+                    padding: 10px;
+
+                    img {
+                        height: 40px;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
