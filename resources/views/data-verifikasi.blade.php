@@ -45,6 +45,7 @@
         </div>
     </section>
 @endsection
+
 {{-- @push('script')
     <script>
         // PAGE DATA PERUSAHAAN PERS
