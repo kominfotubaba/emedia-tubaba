@@ -31,7 +31,7 @@
                         @endif
                         <select name="jenis" id="jenisPengajuan">
                             <option label="&nbsp;"></option>
-                            <option value="harian">Media Cetak Harian</option>
+                            <option value="cetak">Media Cetak</option>
                             <option value="siber">Media Siber</option>
                             <option value="elektronik">Media Elektronik</option>
                         </select>
