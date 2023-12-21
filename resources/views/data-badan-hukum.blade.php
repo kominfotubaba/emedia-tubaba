@@ -37,8 +37,8 @@
                                 <th scope="col">Provinsi</th>
                                 <th scope="col">Telp</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Status KSWP</th>
-                                <th scope="col">NPWP</th>
+                                {{-- <th scope="col">Status KSWP</th> --}}
+                                {{-- <th scope="col">NPWP</th> --}}
                                 <th scope="col">NIB</th>
                                 <th scope="col">KBLI</th>
                                 <th scope="col">KBKI</th>
@@ -102,6 +102,9 @@
                 ],
                 responsive: false,
                 ajax: '/data-all?param=badan',
+                render: function(data, type, row) {
+                    return '<span style="white-space:nowrap">' + data + "</span>";
+                },
                 columns: [{
                         'data': null,
                         'sortable': false,
