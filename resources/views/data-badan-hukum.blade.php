@@ -42,8 +42,8 @@
                                 <th scope="col">NIB</th>
                                 <th scope="col">KBLI</th>
                                 <th scope="col">KBKI</th>
-                                <th scope="col">IPP ()</th>
-                                <th scope="col">Nama Percetakan</th>
+                                <th scope="col">No IPP</th>
+                                <th scope="col">Perusahaan Percetakan</th>
                                 <th scope="col">Alamat Percetakan</th>
                             </tr>
                         </thead>
