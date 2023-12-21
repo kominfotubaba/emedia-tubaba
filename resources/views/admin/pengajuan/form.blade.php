@@ -250,7 +250,7 @@
                             </div>
                         @endif
 
-                        @if ($media_jenis == 'harian')
+                        @if ($media_jenis == 'cetak')
                             <hr class="mb-4">
 
                             <div class="row mb-4">
@@ -1375,7 +1375,7 @@
         /**
          *  Kualifikasi Media
          **/
-        if ($('#jenisPengajuan').val() == 'harian') {
+        if ($('#jenisPengajuan').val() == 'cetak') {
             upload_file('dropzoneJumlahOplahMediaCetakPerMinggu', '#fileJumlahOplahMediaCetakPerMinggu')
         }
 
