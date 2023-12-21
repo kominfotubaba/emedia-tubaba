@@ -14,7 +14,12 @@
                     menghubungi Diskominfo Tubaba melalui email dengan alamat kominfo@tubaba.go.id
                 </div>
             </div>
-
+            <select name="" id="">
+                <option value="">all</option>
+                <option value="">siber</option>
+                <option value="">cetak</option>
+                <option value="">eletronik</option>
+            </select>
             <div class="data mt-3 m-0 p-0">
                 <div class="table-responsive">
                     <table id="myTables"
@@ -37,7 +42,7 @@
                                 <th scope="col">NIB</th>
                                 <th scope="col">KBLI</th>
                                 <th scope="col">KBKI</th>
-                                <th scope="col">IZIN IPP</th>
+                                <th scope="col">IPP ()</th>
                                 <th scope="col">Nama Percetakan</th>
                                 <th scope="col">Alamat Percetakan</th>
                             </tr>
