@@ -93,68 +93,67 @@
         <div class="content">
             <div>
                 <div class="d-flex justify-content-center">
-                    <div class="name-app text-center">
-                        E-MEDIA TUBABA 2023
+                    <div class="name-app text-center mt-3">
+                        EMEDIA TUBABA
                     </div>
                 </div>
                 <div class="ttg">
                     <div class="row">
                         <div class="col-12">
                             <div class="line mb-3 mt-3"></div>
-                            <div class="row mb-0">
-                                <div class="col-12 col-md-6 col-lg-7 col-12">
-                                    <div class="text-lg-start text-md-start fw-light fst-italic">Website ini dikelola
+
+                            <div class="d-lg-flex d-md-flex d-grid">
+                                <div>
+                                    <div
+                                        class="logo mt-1 d-flex justify-content-lg-start justify-content-md-start justify-content-center">
+                                        <img class="img-fluid m-0 p-0" src="/assets/img/kominfo-putih.svg"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="text-lg text-md text-center mt-lg-0 mt-md-0 mt-2 ms-lg-4 ms-md-4 ms-0">
+                                    <div class="text-lg-start text-md-start fw-light fst-italic">Aplikasi ini
+                                        dikelola
                                         Oleh:
                                     </div>
-                                    <div class="mt-1 mt-md-2 mt-lg-2 bold">
-                                        Dinas Komuniasi dan Informatika Kabupaten Tulang Bawang Barat
-                                    </div>
-                                    <div class="bold">
-                                        Komplek Kantor Pemda Tulang Bawang Barat
-                                    </div>
-                                    <div class="bold">
-                                        <a href="https://maps.app.goo.gl/AKVJppedkiM9Tozv6"> Panaragan, Kec.
-                                            Tulang Bawang Tengah,
-                                            Kab. Tulang Bawang Barat,
-                                            Lampung 34693</a>
+                                    <div class="mt-lg-1 mt-md-1 mt-0">
+                                        <span class="bold">Diskominfo Tubaba</span> <span class="cc">| Versi
+                                            3.2</span>
                                     </div>
                                 </div>
-
-                                <div class="col-12 col-md-3 col-lg-2 mt-2 mt-md-0 mt-lg-0">
+                                <div class="ms-lg-auto ms-md-auto ms-0">
                                     <div class="d-grid icon">
                                         <div class="fw-light fst-italic mb-1 mb-md-2 mb-lg-2">Contact:</div>
-                                        <div class="m-0 p-0">
-                                            <a href="#">
-                                                <i class="fa-solid fa-square-envelope"></i> kominfo@tubaba.go.id
-                                            </a>
-                                        </div>
-                                        <div class="m-0 p-0">
-                                            <a href="https://www.instagram.com/kominfo.tubaba/">
-                                                <i class="fa-brands fa-square-instagram"></i> kominfo.tubaba
-                                            </a>
-                                        </div>
-                                        <div class="m-0 p-0">
-                                            <a href="https://web.facebook.com/kominfotubaba">
-                                                <i class="fa-brands fa-square-facebook"></i> kominfotubaba
-                                            </a>
+                                        <div class="row">
+                                            <div class="col-lg-auto col-md-auto col-6">
+                                                <div class="m-0 p-0">
+                                                    <a href="#">
+                                                        <i class="fa-solid fa-square-envelope"></i>
+                                                        kominfo@tubaba.go.id
+                                                    </a>
+                                                </div>
+                                                <div class="m-0 p-0">
+                                                    <a href="https://www.instagram.com/kominfo.tubaba/">
+                                                        <i class="fa-brands fa-square-instagram"></i>
+                                                        kominfo.tubaba
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-auto col-md-auto col-6">
+                                                <div class="m-0 p-0">
+                                                    <a href="https://web.facebook.com/kominfotubaba">
+                                                        <i class="fa-brands fa-square-facebook"></i>
+                                                        kominfotubaba
+                                                    </a>
+                                                </div>
+                                                <div class="m-0 p-0">
+                                                    <a href="https://www.tiktok.com/@kominfotubaba">
+                                                        <i class="fa-brands fa-tiktok"></i>kominfotubaba
+                                                        {{-- <i class="fa-brands fa-square-tiktok"></i> kominfotubaba --}}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div
-                                    class="col-12 col-md-3 col-lg-3 col-12 d-grid justify-content-center justify-content-md-end align-items-end mt-2 mt-md-0 mt-lg-0">
-                                    <div>
-                                        <div
-                                            class="d-flex justify-content-md-end justify-content-center align-items-end logo">
-                                            <img class="img-fluid m-0 p-0" src="/assets/img/pemkab-kominfo-putih.png"
-                                                alt="">
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="d-flex justify-content-lg-end justify-content-md-end justify-content-center align-items-end cc mt-2">
-                                        <ul class="m-0 p-0 text-end">© 2023 Diskominfo Tubaba | V.3.2</ul>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>

@@ -301,7 +301,7 @@ nav .modif-drop a:hover {
   margin-top: 20vh;
 }
 .data-perpers .content .logo {
-  height: 60px;
+  height: 100px;
   width: auto;
 }
 .data-perpers .content .jud {
@@ -339,17 +339,54 @@ nav .modif-drop a:hover {
 .data-perpers .content table a:hover {
   font-weight: bold;
 }
+.data-perpers .content thead tr .nom {
+  max-width: 50px !important;
+  text-align: center;
+}
+.data-perpers .content thead tr .nom input {
+  max-width: 50px !important;
+  font-weight: bold;
+  border: none;
+  text-align: center;
+  padding: 5px;
+  border-radius: 7px;
+}
+.data-perpers .content thead tr .xx {
+  max-width: 350px !important;
+}
+.data-perpers .content thead tr .xx input {
+  max-width: 350px !important;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  border-radius: 7px;
+}
+.data-perpers .content tbody tr .hasu {
+  text-align: center;
+}
+.data-perpers .content .pagination .paginate_button {
+  background-color: aqua !important;
+}
+@media only screen and (max-width: 768px) {
+  .data-perpers .content {
+    margin-top: 15vh !important;
+    font-size: 15px;
+  }
+  .data-perpers .content .logo {
+    height: 70px;
+  }
+}
 @media only screen and (max-width: 600px) {
   .data-perpers {
     margin-left: 1rem;
     margin-right: 1rem;
   }
   .data-perpers .content {
-    margin-top: 10vh !important;
+    margin-top: 11vh !important;
     font-size: 15px;
   }
   .data-perpers .content .logo {
-    height: 35px;
+    height: 50px;
   }
   .data-perpers .content .jud {
     font-size: 20px;
@@ -613,7 +650,7 @@ footer .content {
   padding-bottom: 10px;
 }
 footer .content .logo img {
-  height: 50px;
+  height: 75px;
   width: auto;
 }
 footer .content .name-app {

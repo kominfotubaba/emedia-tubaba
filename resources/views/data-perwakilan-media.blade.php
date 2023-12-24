@@ -2,8 +2,8 @@
 @section('content')
     <section class="data-perpers">
         <div class="content">
-            <div class="logo d-flex justify-content-end">
-                <img class="img-fluid" src="/assets/img/logo-gabung.png" alt="" />
+            <div class="logo d-flex justify-content-end pe-lg-4 pe-md-4 pe-3">
+                <img class="img-fluid" src="/assets/img/pemda.svg" alt="" />
             </div>
             <div class="row mb-4 mt-2 mt-md-0 mt-lg-0">
                 <div class="col-12 jud">Data Perwakilan Media</div>
@@ -20,16 +20,16 @@
                     <table id="myTable" class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama Lengkap</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">Kabupaten</th>
-                                <th scope="col">Provinsi</th>
-                                <th scope="col">Telp</th>
+                                <th class="nom" scope="col">No</th>
+                                <th class="xx" scope="col">Nama Lengkap</th>
+                                <th class="xx" scope="col">Alamat</th>
+                                <th class="xx" scope="col">Kabupaten</th>
+                                <th class="xx" scope="col">Provinsi</th>
+                                {{-- <th scope="col">Telp</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">NPWP</th>
-                                <th scope="col">Sertifikasi Kompetensi</th>
-                                <th scope="col">Afiliasi Organisasi Pers</th>
+                                <th scope="col">NPWP</th> --}}
+                                <th class="xx" scope="col">Sertifikasi Kompetensi</th>
+                                <th class="xx" scope="col">Afiliasi Organisasi Pers</th>
                             </tr>
                         </thead>
                         {{-- <tbody>
@@ -91,15 +91,15 @@
                     {
                         data: 'provinsi_perwakilan',
                     },
-                    {
-                        data: 'tlpn_perwakilan',
-                    },
-                    {
-                        data: 'email_perwakilan',
-                    },
-                    {
-                        data: 'npwp_perwakilan',
-                    },
+                    // {
+                    //     data: 'tlpn_perwakilan',
+                    // },
+                    // {
+                    //     data: 'email_perwakilan',
+                    // },
+                    // {
+                    //     data: 'npwp_perwakilan',
+                    // },
                     {
                         data: 'kompetensi_perwakilan',
                     },
@@ -136,6 +136,14 @@
                                 }
                             });
                         });
+
+                    var data = $(this.api().columns(0).nodes()).each(function() {
+                        // $(this).css("background-color", "yellow");
+                        $(this).attr('class', 'hasu');
+                    });
+                    $(this.api().columns().nodes()).each(function() {
+                        $(this).css("text-wrap", "wrap");
+                    });
                 }
             });
         });

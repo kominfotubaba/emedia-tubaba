@@ -2,8 +2,8 @@
 @section('content')
     <section class="data-perpers">
         <div class="content">
-            <div class="logo d-flex justify-content-end">
-                <img class="img-fluid" src="/assets/img/logo-gabung.png" alt="" />
+            <div class="logo d-flex justify-content-end pe-lg-4 pe-md-4 pe-3">
+                <img class="img-fluid" src="/assets/img/pemda.svg" alt="" />
             </div>
             <div class="row mb-4 mt-2 mt-md-0 mt-lg-0">
                 <div class="col-12 jud">Data Badan Hukum</div>
@@ -14,37 +14,37 @@
                     menghubungi Diskominfo Tubaba melalui email dengan alamat kominfo@tubaba.go.id
                 </div>
             </div>
-            <select name="" id="">
+            {{-- <select name="" id="">
                 <option value="">all</option>
                 <option value="">siber</option>
                 <option value="">cetak</option>
                 <option value="">eletronik</option>
-            </select>
+            </select> --}}
             <div class="data mt-3 m-0 p-0">
                 <div class="table-responsive">
                     <table id="myTables"
                         class="table data-table data-table-pagination data-table-standard responsive nowrap">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama Badan Hukum</th>
-                                <th scope="col">Penanggung Jawab</th>
-                                <th scope="col">Pimpinan Redaksi</th>
-                                <th scope="col">Surat Pernyataan Pimred</th>
-                                <th scope="col">No Pengesahan KemenkumHAM</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">Kabupaten</th>
-                                <th scope="col">Provinsi</th>
-                                <th scope="col">Telp</th>
-                                <th scope="col">Email</th>
+                                <th class="nom" scope="col">No</th>
+                                <th class="xx" scope="col">Nama Perusahaan</th>
+                                <th class="xx" scope="col">Penanggung Jawab</th>
+                                <th class="xx" scope="col">Nama Pimred</th>
+                                {{-- <th scope="col">Surat Pernyataan Pimred</th> --}}
+                                <th class="xx" scope="col">No AHU</th>
+                                <th class="xx" scope="col">Alamat</th>
+                                <th class="xx" scope="col">Kabupaten/Kota</th>
+                                <th class="xx" scope="col">Provinsi</th>
+                                <th class="xx" scope="col">Telp</th>
+                                <th class="xx" scope="col">Email</th>
                                 {{-- <th scope="col">Status KSWP</th> --}}
                                 {{-- <th scope="col">NPWP</th> --}}
-                                <th scope="col">NIB</th>
-                                <th scope="col">KBLI</th>
-                                <th scope="col">KBKI</th>
-                                <th scope="col">No IPP</th>
-                                <th scope="col">Perusahaan Percetakan</th>
-                                <th scope="col">Alamat Percetakan</th>
+                                <th class="xx" scope="col">NIB</th>
+                                <th class="xx" scope="col">KBLI</th>
+                                <th class="xx" scope="col">KBKI</th>
+                                <th class="xx" scope="col">No IPP</th>
+                                <th class="xx" scope="col">Perusahaan Percetakan</th>
+                                <th class="xx" scope="col">Alamat Percetakan</th>
                             </tr>
                         </thead>
 
@@ -89,6 +89,8 @@
         $(document).ready(function() {
             $("#myTables").DataTable({
                 // dom: "Bfrltip",
+                //             columnDefs: [{ width: 200, targets: 0 }],
+                // fixedColumns: true,
                 ordering: false,
                 processing: true,
                 serverSide: true,
@@ -110,6 +112,7 @@
                         'sortable': false,
                         render: function(data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1
+                            // return '<span>a</span>';
                         },
 
                     },
@@ -122,9 +125,9 @@
                     {
                         data: 'nama_pimred',
                     },
-                    {
-                        data: 'surat_pernyataan_pimred',
-                    },
+                    // {
+                    //     data: 'surat_pernyataan_pimred',
+                    // },
                     {
                         data: 'kumham_perusahaan',
                     },
@@ -143,12 +146,12 @@
                     {
                         data: 'email_perusahaan',
                     },
-                    {
-                        data: 'status_kswp',
-                    },
-                    {
-                        data: 'npwp_perusahaan',
-                    },
+                    // {
+                    //     data: 'status_kswp',
+                    // },
+                    // {
+                    //     data: 'npwp_perusahaan',
+                    // },
                     {
                         data: 'nib_perusahaan',
                     },
@@ -197,6 +200,17 @@
                                 }
                             });
                         });
+
+
+                    var data = $(this.api().columns(0).nodes()).each(function() {
+                        // $(this).css("background-color", "yellow");
+                        $(this).attr('class', 'hasu');
+                        // $(this).css("background-color", "yellow");
+                    });
+
+                    $(this.api().columns().nodes()).each(function() {
+                        $(this).css("text-wrap", "wrap");
+                    });
                 }
             });
         });

@@ -1,87 +1,134 @@
 .data-perpers {
-  margin: 2rem;
-
-  .content {
-    margin-top: 20vh;
-    .logo {
-      height: 60px;
-      width: auto;
-    }
-
-    .jud {
-      font-size: xx-large;
-      font-weight: bolder;
-    }
-
-    .src {
-      .input-group,
-      .form-control {
-        border-color: var(--maroon) !important;
-      }
-
-      .btn {
-        border-color: var(--maroon) !important;
-        background-color: var(--maroon);
-        color: white;
-        font-weight: bolder;
-      }
-
-      // .btn:hover {
-      //   border-color: var(--maroon) !important;
-      //   background-color: var(--calm);
-      //   color: var(--maroon);
-      // }
-    }
-
-    .header_wrap {
-      padding: 30px 0;
-
-      .num_rows {
-        width: 20%;
-        float: left;
-      }
-
-      .tb_search {
-        width: 20%;
-        float: right;
-      }
-    }
-
-    table {
-      thead {
-        background-color: var(--calm);
-      }
-
-      a{
-        text-decoration: none;
-        transition: 0.5s;
-      }
-      a:hover{
-        font-weight: bold;
-      }
-    }
-  }
-
-  // @media only screen and (max-width: 768px) {
-  //   .jud {
-  //     font-size: x-large !important;
-  //   }
-  // }
-
-  @media only screen and (max-width: 600px) {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 2rem;
 
     .content {
-      margin-top: 10vh !important;
-      font-size: 15px;
-      .logo {
-        height: 35px;
-      }
+        margin-top: 20vh;
+        .logo {
+            height: 100px;
+            width: auto;
+        }
 
-      .jud {
-        font-size: 20px;
-      }
+        .jud {
+            font-size: xx-large;
+            font-weight: bolder;
+        }
+
+        .src {
+            .input-group,
+            .form-control {
+                border-color: var(--maroon) !important;
+            }
+
+            .btn {
+                border-color: var(--maroon) !important;
+                background-color: var(--maroon);
+                color: white;
+                font-weight: bolder;
+            }
+
+            // .btn:hover {
+            //   border-color: var(--maroon) !important;
+            //   background-color: var(--calm);
+            //   color: var(--maroon);
+            // }
+        }
+
+        .header_wrap {
+            padding: 30px 0;
+
+            .num_rows {
+                width: 20%;
+                float: left;
+            }
+
+            .tb_search {
+                width: 20%;
+                float: right;
+            }
+        }
+
+        table {
+            thead {
+                background-color: var(--calm);
+            }
+
+            a {
+                text-decoration: none;
+                transition: 0.5s;
+            }
+            a:hover {
+                font-weight: bold;
+            }
+        }
+
+        thead {
+            tr {
+                .nom {
+                    max-width: 50px !important;
+                    text-align: center;
+                    input {
+                        max-width: 50px !important;
+                        font-weight: bold;
+                        border: none;
+                        text-align: center;
+                        padding: 5px;
+                        border-radius: 7px;
+                    }
+                }
+
+                .xx {
+                    max-width: 350px !important;
+                    input {
+                        max-width: 350px !important;
+                        font-weight: bold;
+                        border: none;
+                        // border-color: var(--maroon);
+                        padding: 5px;
+                        border-radius: 7px;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                .hasu {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pagination {
+            .paginate_button {
+                background-color: aqua !important;
+            }
+        }
     }
-  }
+
+    @media only screen and (max-width: 768px) {
+        .content {
+            margin-top: 15vh !important;
+            font-size: 15px;
+            .logo {
+                height: 70px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        .content {
+            margin-top: 11vh !important;
+            font-size: 15px;
+            .logo {
+                height: 50px;
+            }
+
+            .jud {
+                font-size: 20px;
+            }
+        }
+    }
 }

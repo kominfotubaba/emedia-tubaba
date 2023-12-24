@@ -2,8 +2,8 @@
 @section('content')
     <section class="data-perpers">
         <div class="content">
-            <div class="logo d-flex justify-content-end">
-                <img class="img-fluid" src="/assets/img/logo-gabung.png" alt="" />
+            <div class="logo d-flex justify-content-end pe-lg-4 pe-md-4 pe-3">
+                <img class="img-fluid" src="/assets/img/pemda.svg" alt="" />
             </div>
             <div class="row mb-4 mt-2 mt-md-0 mt-lg-0">
                 <div class="col-12 jud">Data Media</div>
@@ -20,16 +20,16 @@
                     <table id="myTable" class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama Media</th>
-                                <th scope="col">Jenis Media</th>
-                                <th scope="col">Tahun Berdiri</th>
-                                <th scope="col">Status Verifikasi</th>
-                                <th scope="col">Sertifikasi Pimred</th>
-                                <th scope="col">No Sertifikasi Pimred</th>
-                                <th scope="col">Afiliasi Organisasi Pers</th>
-                                <th scope="col">Domisili Redaksi Media</th>
-                                <th scope="col">Kanal Program Tubaba</th>
+                                <th class="nom" scope="col">No</th>
+                                <th class="xx" scope="col">Nama Media</th>
+                                <th class="xx" scope="col">Jenis Media</th>
+                                <th class="xx" scope="col">Tahun Berdiri</th>
+                                <th class="xx" scope="col">Status Verifikasi</th>
+                                <th class="xx" scope="col">Sertifikasi Pimred</th>
+                                <th class="xx" scope="col">No Sertifikasi Pimred</th>
+                                <th class="xx" scope="col">Afiliasi Organisasi Pers</th>
+                                <th class="xx" scope="col">Domisili Redaksi Media</th>
+                                <th class="xx" scope="col">Kanal Program Tubaba</th>
                             </tr>
                         </thead>
                         {{-- <tbody>
@@ -138,6 +138,14 @@
                                 }
                             });
                         });
+
+                    var data = $(this.api().columns(0).nodes()).each(function() {
+                        // $(this).css("background-color", "yellow");
+                        $(this).attr('class', 'hasu');
+                    });
+                    $(this.api().columns().nodes()).each(function() {
+                        $(this).css("text-wrap", "wrap");
+                    });
                 }
             });
         });

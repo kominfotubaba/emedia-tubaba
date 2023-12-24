@@ -2,8 +2,8 @@
 @section('content')
     <section class="data-perpers">
         <div class="content">
-            <div class="logo d-flex justify-content-end">
-                <img class="img-fluid" src="/assets/img/logo-gabung.png" alt="" />
+            <div class="logo d-flex justify-content-end pe-lg-4 pe-md-4 pe-3">
+                <img class="img-fluid" src="/assets/img/pemda.svg" alt="" />
             </div>
             <div class="row mb-4 mt-2 mt-md-0 mt-lg-0">
                 <div class="col-12 jud">Data Verifikasi</div>
