@@ -105,7 +105,7 @@
                 </a>
             </div>
             <div class="item d-flex justify-content-center">
-                <a href="#">
+                <a href="assets/pengumuman/Manual_Book_Pendaftaran_Emedia.pdf">
                     <div class="card">
                         <img src="/assets/img/manual-book.svg" alt="">
                         <button class="btn btn-sm btn-outline-maroon mt-2">Download</button>
