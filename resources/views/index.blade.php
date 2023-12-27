@@ -81,7 +81,7 @@
         <div class="text-center head p-2 mb-lg-5 mb-md-4 mb-3">Informasi Persyaratan & Panduan Penggunaan</div>
         <div id="owl-apk" class="owl-carousel owl-theme pb-lg-4 pb-mb-4 pb-2">
             <div class="item d-flex justify-content-center">
-                <a href="#">
+                <a href="/assets/pengumuman/pengumuman_registrasi_emedia_sign.pdf">
                     <div class="card">
                         <img src="/assets/img/syarat-cetak.svg" alt="">
                         <button class="btn btn-sm btn-outline-maroon mt-2">Download</button>
@@ -89,7 +89,7 @@
                 </a>
             </div>
             <div class="item d-flex justify-content-center">
-                <a href="#">
+                <a href="/assets/pengumuman/pengumuman_registrasi_emedia_sign.pdf">
                     <div class="card">
                         <img src="/assets/img/syarat-elektronik.svg" alt="">
                         <button class="btn btn-sm btn-outline-maroon mt-2">Download</button>
@@ -97,7 +97,7 @@
                 </a>
             </div>
             <div class="item d-flex justify-content-center">
-                <a href="#">
+                <a href="/assets/pengumuman/pengumuman_registrasi_emedia_sign.pdf">
                     <div class="card">
                         <img src="/assets/img/syarat-siber.svg" alt="">
                         <button class="btn btn-sm btn-outline-maroon mt-2">Download</button>
@@ -105,7 +105,7 @@
                 </a>
             </div>
             <div class="item d-flex justify-content-center">
-                <a href="assets/pengumuman/Manual_Book_Pendaftaran_Emedia.pdf">
+                <a href="/assets/pengumuman/Manual_Book_Pendaftaran_Emedia.pdf">
                     <div class="card">
                         <img src="/assets/img/manual-book.svg" alt="">
                         <button class="btn btn-sm btn-outline-maroon mt-2">Download</button>
