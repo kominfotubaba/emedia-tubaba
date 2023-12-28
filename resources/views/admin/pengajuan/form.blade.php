@@ -193,23 +193,23 @@
                         <hr class="mb-4">
 
                         <div class="row mb-3">
-                            <h2 class="small-title mb-md-0 mb-2">Nomor KLBI</h2>
+                            <h2 class="small-title mb-md-0 mb-2">Nomor KBLI</h2>
                             <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating w-100">
                                     <select class="select-floating" id="noKlbi" name="noKlbi">
                                         <option label="&nbsp;"></option>
-                                        <option value="63911">KLBI 63911</option>
-                                        <option value="63912">KLBI 63912</option>
-                                        <option value="60201">KLBI 60201</option>
-                                        <option value="60202">KLBI 60202</option>
-                                        <option value="60101">KLBI 60101</option>
-                                        <option value="60102">KLBI 60102</option>
-                                        <option value="58130">KLBI 58130</option>
-                                        <option value="63122">KLBI 63122</option>
-                                        <option value="63990">KLBI 63990</option>
-                                        <option value="74130">KLBI 74130</option>
-                                        <option value="18111">KLBI 18111</option>
-                                        <option value="73100">KLBI 73100</option>
+                                        <option value="63911">KBLI 63911</option>
+                                        <option value="63912">KBLI 63912</option>
+                                        <option value="60201">KBLI 60201</option>
+                                        <option value="60202">KBLI 60202</option>
+                                        <option value="60101">KBLI 60101</option>
+                                        <option value="60102">KBLI 60102</option>
+                                        <option value="58130">KBLI 58130</option>
+                                        <option value="63122">KBLI 63122</option>
+                                        <option value="63990">KBLI 63990</option>
+                                        <option value="74130">KBLI 74130</option>
+                                        <option value="18111">KBLI 18111</option>
+                                        <option value="73100">KBLI 73100</option>
                                     </select>
                                 </div>
                             </div>
@@ -1125,7 +1125,7 @@
         });
         $('#noKlbi').select2({
             minimumResultsForSearch: Infinity,
-            placeholder: 'Pilih Nomor KLBI Perusahaan'
+            placeholder: 'Pilih Nomor KBLI Perusahaan'
         });
 
         /**
