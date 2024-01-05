@@ -1068,6 +1068,8 @@ class MediaPengajuanController extends Controller
                     if (!($o == 0)) {
                         # code...
                         $print = $o;
+                    } else {
+                        $print = null;
                     }
                 }
                 // dd($print);
