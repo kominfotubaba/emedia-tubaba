@@ -1053,9 +1053,8 @@ class MediaPengajuanController extends Controller
 
             // $directory = __DIR__;
             foreach ($data as $key => $value) {
-                // $directory =  public_path('tmp/uploads/' . strtolower($key));
-                // $images = glob($directory . "/*");
-                $out[] = [$key => $value];
+                $directory =  public_path('tmp/uploads/' . strtolower($key));
+                $images = glob($directory . "/*");
 
                 // foreach ($out as $o) {
                 //     # code...
@@ -1086,7 +1085,7 @@ class MediaPengajuanController extends Controller
             //         $out[] = 0;
             //     }
             // }
-            dd($out);
+            dd($images);
             // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
             $pesan = 'data berhasil diupdate';
