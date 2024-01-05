@@ -1054,7 +1054,7 @@ class MediaPengajuanController extends Controller
             // $directory = __DIR__;
             foreach ($data as $key => $value) {
                 $directory =  public_path('tmp/uploads/' . strtolower($key));
-                $images = glob($directory . "/*", GLOB_BRACE);
+                $images = glob($directory . "/*");
                 foreach ($images as $img) {
                     if (strtolower(pathinfo($img)['basename']) == $value) {
                         # code...
