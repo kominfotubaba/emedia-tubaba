@@ -13,7 +13,7 @@
 @include('panel.head')
 <style>
     input[type="checkbox"]:checked {
-        background: red;
+        /* background: green; */
     }
 </style>
 

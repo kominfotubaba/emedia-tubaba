@@ -42,7 +42,20 @@
                                 <p class="card-text text-alternate mb-4"></p>
                                 <form class="tooltip-end-bottom validasi">
                                     <div class="row mb-3">
-                                        <h2 class="small-title">Perusahaan/Badan Hukum</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title">Perusahaan/Badan Hukum</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiBadanHukum" checked>
+                                                    <label class="form-check-label" for="verifikasiBadanHukum">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-6 col-12 mb-md-0">
                                             <div class="form-floating mb-3">
                                                 <input id="namaPerusahaan" name="namaPerusahaan" type="text"
@@ -90,7 +103,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title">Pengesahan Kemenkumham Perusahaan</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title">Pengesahan Kemenkumham Perusahaan</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiPengesahanKemkumham" checked>
+                                                    <label class="form-check-label" for="verifikasiPengesahanKemkumham">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
                                                 <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text"
@@ -112,7 +138,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Kontak Perusahaan</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title mb-md-0 mb-2">Kontak Perusahaan</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiKontakPerusahaan" checked>
+                                                    <label class="form-check-label" for="verifikasiKontakPerusahaan">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
                                             <div class="row mb-3">
                                                 <div class="col-lg-6 col-md-12 col-12">
@@ -165,7 +204,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Status KSWP</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title mb-md-0 mb-2">Status KSWP</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiStatusKswp" checked>
+                                                    <label class="form-check-label" for="verifikasiStatusKswp">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
                                                 <select class="select-floating" id="statusKswp" name="statusKswp">
@@ -185,7 +237,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title">NPWP Perusahaan/Badan Hukum</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title">NPWP Perusahaan/Badan Hukum</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiNpwpPerusahaan" checked>
+                                                    <label class="form-check-label" for="verifikasiNpwpPerusahaan">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                             <div class="form-floating">
                                                 <input id="npwpPerusahaan" name="npwpPerusahaan" type="text"
@@ -209,7 +274,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title">Nomor Induk Berusaha Perusahaan/Badan Hukum</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title">Nomor Induk Berusaha Perusahaan/Badan Hukum</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiNib" checked>
+                                                    <label class="form-check-label" for="verifikasiNib">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                             <div class="form-floating">
                                                 <input id="nibPerusahaan" name="nibPerusahaan" type="text"
@@ -233,7 +311,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Nomor KLBI</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title mb-md-0 mb-2">Nomor KLBI</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiNoKlbi" checked>
+                                                    <label class="form-check-label" for="verifikasiNoKlbi">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
                                                 <select class="select-floating" id="noKlbi" name="noKlbi">
@@ -263,7 +354,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Nomor KBKI</h2>
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <h2 class="small-title mb-md-0 mb-2">Nomor KBKI</h2>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiNoKbki" checked>
+                                                    <label class="form-check-label" for="verifikasiNoKbki">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
                                                 <input id="noKbki" name="noKbki" type="text"
@@ -279,8 +383,21 @@
                                         <hr class="mb-4">
 
                                         <div class="row mb-4">
-                                            <h2 class="small-title mb-md-0 mb-2">Dokumen izin Penyelenggaraan Penyiaran
-                                            </h2>
+                                            <div class="row">
+                                                <div class="col-11">
+                                                    <h2 class="small-title mb-md-0 mb-2">Dokumen izin Penyelenggaraan
+                                                        Penyiaran</h2>
+                                                </div>
+                                                <div class="col-1">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="verifikasiIpp" checked>
+                                                        <label class="form-check-label" for="verifikasiIpp">
+                                                            VERIFIKASI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating">
                                                     <input id="izinIpp" name="izinIpp" type="text"
@@ -300,7 +417,7 @@
                                         </div>
                                     @endif
 
-                                    @if ($md->jenis_media == 'harian')
+                                    @if ($md->jenis_media == 'cetak')
                                         <hr class="mb-4">
 
                                         <div class="row mb-4">
@@ -1714,48 +1831,43 @@
          * button
          **/
         $(document).ready(function() {
-            // $('#terima').click(function(e) {
-            //     e.preventDefault();
-            //     var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
-            //     // console.log(getDataCalculate());
-            //     if ($('#statusKswp option:selected').text()) {
-            //         if ($('#statusKswp option:selected').text().toLowerCase() == 'kswp valid') {
-            //             console.log('a');
-            //         }
-            //     }
+            $('#terima').click(function(e) {
+                e.preventDefault();
+                var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
+                console.log(getDataCalculate());
 
-            //     $.ajaxSetup({
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         }
-            //     });
-            //     $.ajax({
-            //         type: "post",
-            //         url: "{{ Route('verifikasi.post') }}",
-            //         data: {
-            //             pengajuan_no: pengajuanNo,
-            //             keterangan: 'verify',
-            //             status: 'terima',
-            //             data: getDataCalculate()
-            //         },
-            //         success: function(response) {
-            //             Swal.fire({
-            //                 toast: false,
-            //                 position: 'center',
-            //                 icon: response.icon,
-            //                 title: response.title,
-            //                 text: response.massage,
-            //                 showConfirmButton: true,
-            //             });
-            //             if (response.icon == 'success') {
-            //                 setTimeout(function() {
-            //                     //your code to be executed after 1 second
-            //                     window.location.href = "/daftar";
-            //                 }, 3000);
-            //             }
-            //         }
-            //     });
-            // });
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "post",
+                    url: "{{ Route('verifikasi.post') }}",
+                    data: {
+                        pengajuan_no: pengajuanNo,
+                        keterangan: 'verify',
+                        status: 'terima',
+                        data: getDataCalculate()
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            toast: false,
+                            position: 'center',
+                            icon: response.icon,
+                            title: response.title,
+                            text: response.massage,
+                            showConfirmButton: true,
+                        });
+                        if (response.icon == 'success') {
+                            setTimeout(function() {
+                                //your code to be executed after 1 second
+                                window.location.href = "/daftar";
+                            }, 3000);
+                        }
+                    }
+                });
+            });
 
             /**
              * setting ttd
@@ -2014,179 +2126,6 @@
             //         });
             //     }
             // });
-
-            $('#terima').click(function(e) {
-                e.preventDefault();
-                // validasi
-                // $(this).prop('disabled', true);
-                const validasi = $('.validasi').valid();
-                // var wartawanKompetenPerusahaan = $('#wartawanKompetenPerusahaan').val();
-                // var namaPercetakan = $('#namaPercetakan').val();
-                // var alamatPercetakan = $('#alamatPercetakan').val();
-                // // perwakilan
-                // var namaMedia = $('#namaMedia').val();
-                // var namaBiroPerwakilan = $('#namaBiroPerwakilan').val();
-                // var alamatPerwakilan = $('#alamatPerwakilan').val();
-                // var alamatProvPerwakilan = $('#alamatProvPerwakilan option:selected').text();
-                // var alamatKabPerwakilan = $('#alamatKabPerwakilan option:selected').text();
-                // var alamatKecPerwakilan = $('#alamatKecPerwakilan option:selected').text();
-                // var alamatKelPerwakilan = $('#alamatKelPerwakilan option:selected').text();
-                // var tlpnPerwakilan = $('#tlpnPerwakilan').val();
-                // var emailPerwakilan = $('#emailPerwakilan').val();
-                // var ktpPerwakilan = $('#ktpPerwakilan').val();
-                // var kkPerwakilan = $('#kkPerwakilan').val();
-                // var npwpPerwakilan = $('#npwpPerwakilan').val();
-                // var kompetensiPerwakilan = $('#kompetensiPerwakilan').val();
-                // var jenisRekening = $('#jenisRekening').val();
-                // var namaBank = $('#namaBank').val();
-                // var pemilikRekening = $('#pemilikRekening').val();
-                // var noRekening = $('#noRekening').val();
-                // var pernyataanCheckbox = $('#pernyataanCheckbox').val();
-                var data = {
-                    // param
-                    jenis_media: $('#pengajuanJenisMedia').attr('data-jenisMedia'),
-                    pengajuan_no: $('#pengajuanNo').attr('data-noPengajuan'),
-                    /**
-                     * DATA BADAN HUKUM
-                     **/
-                    //  input
-                    namaPerusahaan: $('#namaPerusahaan').val(),
-                    namaPenanggungJawab: $('#namaPenanggungJawab').val(),
-                    namaPimred: $('#namaPimred').val(),
-                    kumhamPerusahaan: $('#kumhamPerusahaan').val(),
-                    alamatPerusahaan: $('#alamatPerusahaan').val(),
-                    tlpnPerusahaan: $('#tlpnPerusahaan').val(),
-                    emailPerusahaan: $('#emailPerusahaan').val(),
-                    npwpPerusahaan: $('#npwpPerusahaan').val(),
-                    nibPerusahaan: $('#nibPerusahaan').val(),
-                    noKbki: $('#noKbki').val(),
-                    izinIpp: $('#izinIpp').val(),
-                    namaPercetakan: $('#namaPercetakan').val(),
-                    // select
-                    alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
-                    alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
-                    statusKswp: $('#statusKswp option:selected').text(),
-                    noKlbi: $('#noKlbi option:selected').text(),
-                    // file
-                    fileSuratPernyataanPimred: $('#fileSuratPernyataanPimred .dz-details span')
-                        .text(),
-                    fileKumhamPerusahaan: $('#fileKumhamPerusahaan .dz-details span').text(),
-                    fileNpwpPerusahaan: $('#fileNpwpPerusahaan .dz-details span').text(),
-                    fileNibPerusahaan: $('#fileNibPerusahaan .dz-details span').text(),
-                    fileIzinIpp: $('#fileIzinIpp .dz-details span').text(),
-
-                    /**
-                     * DATA MEDIA
-                     **/
-                    //  input
-                    namaMedia: $('#namaMedia').val(),
-                    serfikatUkwPimred: $('#serfikatUkwPimred').val(),
-                    namaBank: $('#namaBank').val(),
-                    pemilikRekening: $('#pemilikRekening').val(),
-                    noRekening: $('#noRekening').val(),
-                    // select
-                    verifikasiDewanPers: $('#verifikasiDewanPers option:selected').text(),
-                    jenisSerfikatUkwPimred: $('#jenisSerfikatUkwPimred option:selected').text(),
-                    afiliasiPerusahaan: $('#afiliasiPerusahaan option:selected').text(),
-                    domisiliRedaksiMedia: $('#domisiliRedaksiMedia option:selected').text(),
-                    kanalKhusus: $('#kanalKhusus option:selected').text(),
-                    jenisRekening: $('#jenisRekening option:selected').text(),
-                    // file
-                    fileSerfikatUkwPimred: $('#fileSerfikatUkwPimred .dz-details span').text(),
-                    fileAfiliasiPerusahaan: $('#fileAfiliasiPerusahaan .dz-details span').text(),
-                    fileDomisiliRedaksiMedia: $('#fileDomisiliRedaksiMedia .dz-details span')
-                        .text(),
-                    fileKanalKhusus: $('#fileKanalKhusus .dz-details span').text(),
-                    fileRekening: $('#fileRekening .dz-details span').text(),
-
-                    /**
-                     * KUALIFIKASI MEDIA
-                     **/
-                    // select
-                    tahunBerdiriMedia: $('#tahunBerdiriMedia option:selected').text(),
-                    jenisJangkauanSiarMediaElektronik: $(
-                        '#jenisJangkauanSiarMediaElektronik option:selected').text(),
-                    jangkauanSiarMediaElektronik: $('#jangkauanSiarMediaElektronik option:selected')
-                        .text(),
-                    jumlahOplahMediaCetakPerMinggu: $(
-                            '#jumlahOplahMediaCetakPerMinggu option:selected')
-                        .text(),
-                    jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif option:selected').text(),
-                    // file
-                    fileJumlahOplahMediaCetakPerMinggu: $(
-                        '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
-
-                    /**
-                     * PERWAKILAN MEDIA
-                     **/
-                    //  input
-                    namaPerwakilan: $('#namaPerwakilan').val(),
-                    nomorKKPerwakilan: $('#nomorKKPerwakilan').val(),
-                    nomorKtpPerwakilan: $('#nomorKtpPerwakilan').val(),
-                    npwpPerwakilan: $('#npwpPerwakilan').val(),
-                    serfikatUkwPerwakilan: $('#serfikatUkwPerwakilan').val(),
-                    afiliasiPersPerwakilan: $('#afiliasiPersPerwakilan').val(),
-                    alamatPerwakilan: $('#alamatPerwakilan').val(),
-                    tlpnPerwakilan: $('#tlpnPerwakilan').val(),
-                    emailPerwakilan: $('#emailPerwakilan').val(),
-                    // select
-                    jenisSerfikatUkwPerwakilan: $('#jenisSerfikatUkwPerwakilan option:selected')
-                        .text(),
-                    alamatProvPerwakilan: $('#alamatProvPerwakilan option:selected').text(),
-                    alamatKabPerwakilan: $('#alamatKabPerwakilan option:selected').text(),
-                    alamatKecPerwakilan: $('#alamatKecPerwakilan option:selected').text(),
-                    alamatKelPerwakilan: $('#alamatKelPerwakilan option:selected').text(),
-                    // file
-                    fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
-                    fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span')
-                        .text(),
-                    fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
-                        .text(),
-                }
-                console.log(data);
-                /**
-                 *file
-                 **/
-                if (!validasi) {
-                    Swal.fire({
-                        toast: false,
-                        position: 'center',
-                        icon: 'error',
-                        title: 'Cek Data',
-                        text: 'Perhatikan Dengan Seksama Sebelum Kirim Data',
-                        showConfirmButton: true,
-                    });
-                } else {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        type: "POST",
-                        url: "/pengajuan/verifikasi",
-                        data: data,
-                        success: function(response) {
-                            Swal.fire({
-                                toast: false,
-                                position: 'center',
-                                icon: response.icon,
-                                title: response.title,
-                                text: response.massage,
-                                showConfirmButton: true,
-                            });
-                            if (response.icon == 'success') {
-                                setTimeout(function() {
-                                    //your code to be executed after 1 second
-                                    window.location.href = "/daftar/" + response
-                                        .tahun_buka + "/" + "detail";
-                                }, 1500);
-                            }
-                            // $(this).prop('disabled', false);
-                        }
-                    });
-                }
-            });
 
             $('.dz-preview').click(function(e) {
                 e.preventDefault();

@@ -486,100 +486,72 @@ class MediaPengajuanController extends Controller
         } else {
             // update
             $data = [
-                // 'jenis_media' => $jenis_media,
-                // 'namaPerusahaan' => $namaPerusahaan,
-                // 'namaPenanggungJawab' => $namaPenanggungJawab,
-                // 'namaPimred' => $namaPimred,
-                // 'kumhamPerusahaan' => $kumhamPerusahaan,
-                // 'alamatPerusahaan' => $alamatPerusahaan,
-                // 'tlpnPerusahaan' => $tlpnPerusahaan,
-                // 'emailPerusahaan' => $emailPerusahaan,
-                // 'npwpPerusahaan' => $npwpPerusahaan,
-                // 'nibPerusahaan' => $nibPerusahaan,
-                // 'noKbki' => $noKbki,
-                // 'izinIpp' => $izinIpp,
-                // 'namaPercetakan' => $namaPercetakan,
-                // 'alamatProvPerusahaan' => $alamatProvPerusahaan,
-                // 'alamatKabPerusahaan' => $alamatKabPerusahaan,
-                // 'statusKswp' => $statusKswp,
-                // 'noKlbi' => $noKlbi,
+                'jenis_media' => $jenis_media,
+                'namaPerusahaan' => $namaPerusahaan,
+                'namaPenanggungJawab' => $namaPenanggungJawab,
+                'namaPimred' => $namaPimred,
+                'kumhamPerusahaan' => $kumhamPerusahaan,
+                'alamatPerusahaan' => $alamatPerusahaan,
+                'tlpnPerusahaan' => $tlpnPerusahaan,
+                'emailPerusahaan' => $emailPerusahaan,
+                'npwpPerusahaan' => $npwpPerusahaan,
+                'nibPerusahaan' => $nibPerusahaan,
+                'noKbki' => $noKbki,
+                'izinIpp' => $izinIpp,
+                'namaPercetakan' => $namaPercetakan,
+                'alamatProvPerusahaan' => $alamatProvPerusahaan,
+                'alamatKabPerusahaan' => $alamatKabPerusahaan,
+                'statusKswp' => $statusKswp,
+                'noKlbi' => $noKlbi,
                 'fileSuratPernyataanPimred' => $fileSuratPernyataanPimred,
                 'fileKumhamPerusahaan' => $fileKumhamPerusahaan,
                 'fileNpwpPerusahaan' => $fileNpwpPerusahaan,
                 'fileNibPerusahaan' => $fileNibPerusahaan,
                 'fileIzinIpp' => $fileIzinIpp,
-                // 'namaMedia' => $namaMedia,
-                // 'serfikatUkwPimred' => $serfikatUkwPimred,
-                // 'namaBank' => $namaBank,
-                // 'pemilikRekening' => $pemilikRekening,
-                // 'noRekening' => $noRekening,
-                // 'verifikasiDewanPers' => $verifikasiDewanPers,
-                // 'jenisSerfikatUkwPimred' => $jenisSerfikatUkwPimred,
-                // 'afiliasiPerusahaan' => $afiliasiPerusahaan,
-                // 'domisiliRedaksiMedia' => $domisiliRedaksiMedia,
-                // 'kanalKhusus' => $kanalKhusus,
-                // 'jenisRekening' => $jenisRekening,
+                'namaMedia' => $namaMedia,
+                'serfikatUkwPimred' => $serfikatUkwPimred,
+                'namaBank' => $namaBank,
+                'pemilikRekening' => $pemilikRekening,
+                'noRekening' => $noRekening,
+                'verifikasiDewanPers' => $verifikasiDewanPers,
+                'jenisSerfikatUkwPimred' => $jenisSerfikatUkwPimred,
+                'afiliasiPerusahaan' => $afiliasiPerusahaan,
+                'domisiliRedaksiMedia' => $domisiliRedaksiMedia,
+                'kanalKhusus' => $kanalKhusus,
+                'jenisRekening' => $jenisRekening,
                 'fileSerfikatUkwPimred' => $fileSerfikatUkwPimred,
                 'fileAfiliasiPerusahaan' => $fileAfiliasiPerusahaan,
                 'fileDomisiliRedaksiMedia' => $fileDomisiliRedaksiMedia,
                 'fileKanalKhusus' => $fileKanalKhusus,
                 'fileRekening' => $fileRekening,
-                // 'tahunBerdiriMedia' => $tahunBerdiriMedia,
-                // 'jenisJangkauanSiarMediaElektronik' => $jenisJangkauanSiarMediaElektronik,
-                // 'jangkauanSiarMediaElektronik' => $jangkauanSiarMediaElektronik,
-                // 'jumlahOplahMediaCetakPerMinggu' => $jumlahOplahMediaCetakPerMinggu,
+                'tahunBerdiriMedia' => $tahunBerdiriMedia,
+                'jenisJangkauanSiarMediaElektronik' => $jenisJangkauanSiarMediaElektronik,
+                'jangkauanSiarMediaElektronik' => $jangkauanSiarMediaElektronik,
+                'jumlahOplahMediaCetakPerMinggu' => $jumlahOplahMediaCetakPerMinggu,
                 'fileJumlahOplahMediaCetakPerMinggu' => $fileJumlahOplahMediaCetakPerMinggu,
-                // 'jumlahKontenBeritaAktif' => $jumlahKontenBeritaAktif,
-                // 'namaPerwakilan' => $namaPerwakilan,
-                // 'nomorKKPerwakilan' => $nomorKKPerwakilan,
-                // 'nomorKtpPerwakilan' => $nomorKtpPerwakilan,
-                // 'npwpPerwakilan' => $npwpPerwakilan,
-                // 'serfikatUkwPerwakilan' => $serfikatUkwPerwakilan,
-                // 'afiliasiPersPerwakilan' => $afiliasiPersPerwakilan,
-                // 'alamatPerwakilan' => $alamatPerwakilan,
-                // 'tlpnPerwakilan' => $tlpnPerwakilan,
-                // 'emailPerwakilan' => $emailPerwakilan,
-                // 'jenisSerfikatUkwPerwakilan' => $jenisSerfikatUkwPerwakilan,
-                // 'alamatProvPerwakilan' => $alamatProvPerwakilan,
-                // 'alamatKabPerwakilan' => $alamatKabPerwakilan,
-                // 'alamatKecPerwakilan' => $alamatKecPerwakilan,
-                // 'alamatKelPerwakilan' => $alamatKelPerwakilan,
+                'jumlahKontenBeritaAktif' => $jumlahKontenBeritaAktif,
+                'namaPerwakilan' => $namaPerwakilan,
+                'nomorKKPerwakilan' => $nomorKKPerwakilan,
+                'nomorKtpPerwakilan' => $nomorKtpPerwakilan,
+                'npwpPerwakilan' => $npwpPerwakilan,
+                'serfikatUkwPerwakilan' => $serfikatUkwPerwakilan,
+                'afiliasiPersPerwakilan' => $afiliasiPersPerwakilan,
+                'alamatPerwakilan' => $alamatPerwakilan,
+                'tlpnPerwakilan' => $tlpnPerwakilan,
+                'emailPerwakilan' => $emailPerwakilan,
+                'jenisSerfikatUkwPerwakilan' => $jenisSerfikatUkwPerwakilan,
+                'alamatProvPerwakilan' => $alamatProvPerwakilan,
+                'alamatKabPerwakilan' => $alamatKabPerwakilan,
+                'alamatKecPerwakilan' => $alamatKecPerwakilan,
+                'alamatKelPerwakilan' => $alamatKelPerwakilan,
                 'fileNpwpPerwakilan' => $fileNpwpPerwakilan,
                 'fileSerfikatUkwPerwakilan' => $fileSerfikatUkwPerwakilan,
                 'fileafiliasiPersPerwakilan' => $fileafiliasiPersPerwakilan,
-                // 'keterangan' => '',
-                // 'status' => 'edit'
+                'keterangan' => '',
+                'status' => 'edit'
             ];
 
-            // $directory = __DIR__;
-            foreach ($data as $key => $value) {
-                $directory =  public_path('tmp/uploads/' . $key);
-                $images = glob($directory . "/*", GLOB_BRACE);
-                foreach ($images as $img) {
-                    if (strtolower(pathinfo($img)['basename']) == $value) {
-                        # code...
-                        $out[] = pathinfo($img)['basename'];
-                    } else {
-                        $out[] = 0;
-                    }
-                }
-                foreach ($out as $o) {
-                    # code...
-                    if (!($o == 0)) {
-                        # code...
-                        $print = $o;
-                    }
-                }
-                // dd($key);
-                if ($print) {
-                    # code...
-                    // dd($print);
-                    $path[] =  'tmp/uploads/' . strtolower($key);
-                    // rename($path . '/' . $print, $path . '/' . $value);
-                }
-            }
-            dd($path);
-            // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
+            $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
             $pesan = 'data berhasil diupdate';
             $icon = 'success';
@@ -725,11 +697,12 @@ class MediaPengajuanController extends Controller
      */
     public function verifikasi(Request $request)
     {
-        // $pengajuan_no = $request->pengajuan_no;
-        // $keterangan = $request->keterangan;
-        // $status = $request->status;
-        // $data = $request->data;
+        $pengajuan_no = $request->pengajuan_no;
+        $keterangan = $request->keterangan;
+        $status = $request->status;
+        $data = $request->data;
 
+        dd(trim(preg_replace('/\s\s+/', ' ', $data['domisiliRedaksiMedia'])));
         // function mapped_implode($glue, $array, $symbol = '. ')
         // {
         //     return implode(
@@ -753,6 +726,8 @@ class MediaPengajuanController extends Controller
         //     'users.email as useremail',
         //     'new_media_pengajuans.status as status'
         // )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
+
+
 
 
 
@@ -891,386 +866,5 @@ class MediaPengajuanController extends Controller
         // $pengajuan_no =  $tahun_buka . '_' . Str::random(10);
         // $jenis_media = strtolower($request->jenis_media);
 
-        $pengajuan_no =  $request->pengajuan_no;
-        $jenis_media = strtolower($request->jenis_media);
-        $namaPerusahaan = str_replace('  ', ' ', strtolower($request->namaPerusahaan));
-        $namaPenanggungJawab = strtolower($request->namaPenanggungJawab);
-        $namaPimred = strtolower($request->namaPimred);
-        $kumhamPerusahaan = strtolower($request->kumhamPerusahaan);
-        $alamatPerusahaan = strtolower($request->alamatPerusahaan);
-        $tlpnPerusahaan = strtolower($request->tlpnPerusahaan);
-        $emailPerusahaan = strtolower($request->emailPerusahaan);
-        $npwpPerusahaan = strtolower($request->npwpPerusahaan);
-        $nibPerusahaan = strtolower($request->nibPerusahaan);
-        $noKbki = strtolower($request->noKbki);
-        $izinIpp = strtolower($request->izinIpp);
-        $namaPercetakan = strtolower($request->namaPercetakan);
-        $alamatProvPerusahaan = strtolower($request->alamatProvPerusahaan);
-        $alamatKabPerusahaan = strtolower($request->alamatKabPerusahaan);
-        $statusKswp = strtolower($request->statusKswp);
-        $noKlbi = strtolower($request->noKlbi);
-        $fileSuratPernyataanPimred = strtolower($request->fileSuratPernyataanPimred);
-        $fileKumhamPerusahaan = strtolower($request->fileKumhamPerusahaan);
-        $fileNpwpPerusahaan = strtolower($request->fileNpwpPerusahaan);
-        $fileNibPerusahaan = strtolower($request->fileNibPerusahaan);
-        $fileIzinIpp = strtolower($request->fileIzinIpp);
-        $namaMedia = strtolower($request->namaMedia);
-        $serfikatUkwPimred = strtolower($request->serfikatUkwPimred);
-        $namaBank = strtolower($request->namaBank);
-        $pemilikRekening = strtolower($request->pemilikRekening);
-        $noRekening = strtolower($request->noRekening);
-        $verifikasiDewanPers = strtolower($request->verifikasiDewanPers);
-        $jenisSerfikatUkwPimred = strtolower($request->jenisSerfikatUkwPimred);
-        $afiliasiPerusahaan = strtolower($request->afiliasiPerusahaan);
-        $domisiliRedaksiMedia = strtolower($request->domisiliRedaksiMedia);
-        $kanalKhusus = strtolower($request->kanalKhusus);
-        $jenisRekening = strtolower($request->jenisRekening);
-        $fileSerfikatUkwPimred = strtolower($request->fileSerfikatUkwPimred);
-        $fileAfiliasiPerusahaan = strtolower($request->fileAfiliasiPerusahaan);
-        $fileDomisiliRedaksiMedia = strtolower($request->fileDomisiliRedaksiMedia);
-        $fileKanalKhusus = strtolower($request->fileKanalKhusus);
-        $fileRekening = strtolower($request->fileRekening);
-        $tahunBerdiriMedia = strtolower($request->tahunBerdiriMedia);
-        $jenisJangkauanSiarMediaElektronik = strtolower($request->jenisJangkauanSiarMediaElektronik);
-        $jangkauanSiarMediaElektronik = strtolower($request->jangkauanSiarMediaElektronik);
-        $jumlahOplahMediaCetakPerMinggu = strtolower($request->jumlahOplahMediaCetakPerMinggu);
-        $fileJumlahOplahMediaCetakPerMinggu = strtolower($request->fileJumlahOplahMediaCetakPerMinggu);
-        $jumlahKontenBeritaAktif = strtolower($request->jumlahKontenBeritaAktif);
-        $namaPerwakilan = strtolower($request->namaPerwakilan);
-        $nomorKKPerwakilan = strtolower($request->nomorKKPerwakilan);
-        $nomorKtpPerwakilan = strtolower($request->nomorKtpPerwakilan);
-        $npwpPerwakilan = strtolower($request->npwpPerwakilan);
-        $serfikatUkwPerwakilan = strtolower($request->serfikatUkwPerwakilan);
-        $afiliasiPersPerwakilan = strtolower($request->afiliasiPersPerwakilan);
-        $alamatPerwakilan = strtolower($request->alamatPerwakilan);
-        $tlpnPerwakilan = strtolower($request->tlpnPerwakilan);
-        $emailPerwakilan = strtolower($request->emailPerwakilan);
-        $jenisSerfikatUkwPerwakilan = strtolower($request->jenisSerfikatUkwPerwakilan);
-        $alamatProvPerwakilan = strtolower($request->alamatProvPerwakilan);
-        $alamatKabPerwakilan = strtolower($request->alamatKabPerwakilan);
-        $alamatKecPerwakilan = strtolower($request->alamatKecPerwakilan);
-        $alamatKelPerwakilan = strtolower($request->alamatKelPerwakilan);
-        $fileNpwpPerwakilan = strtolower($request->fileNpwpPerwakilan);
-        $fileSerfikatUkwPerwakilan = strtolower($request->fileSerfikatUkwPerwakilan);
-        $fileafiliasiPersPerwakilan = strtolower($request->fileafiliasiPersPerwakilan);
-
-        $tahun = tahun::select('tahun')->where('pengajuan_edit', 1)->get();
-        $tahun_edit = json_decode(json_encode($tahun[0]->tahun));
-        $nama_perusahaan_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('namaPerusahaan', $namaPerusahaan)->where('tahun_pengajuan', $tahun_edit)->count();
-        $nama_media_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('namaMedia', $namaMedia)->where('tahun_pengajuan', $tahun_edit)->count();
-        $ktp_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('nomorKtpPerwakilan', $nomorKtpPerwakilan)->where('tahun_pengajuan', $tahun_edit)->count();
-        $kk_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('nomorKKPerwakilan', $nomorKKPerwakilan)->where('tahun_pengajuan', $tahun_edit)->count();
-
-
-        // dd([$pengajuan_no, $nama_perusahaan_cek, $jenis_media]);
-
-        if ($nama_perusahaan_cek >= 1) {
-            # code...
-            $pesan = 'Pengajuan Nama Perusahaan Telah Digunakan';
-            $icon = 'error';
-            $title = 'Operasi Gagal';
-        } elseif ($nama_media_cek >= 1) {
-            # code...
-            $pesan = 'Nama Media Telah Digunakan';
-            $icon = 'error';
-            $title = 'Operasi Gagal';
-        } elseif ($ktp_cek >= 1) {
-            # code...
-            $pesan = 'Pengajuan KTP Telah Digunakan';
-            $icon = 'error';
-            $title = 'Operasi Gagal';
-        } elseif ($kk_cek >= 1) {
-            $pesan = 'Pengajuan KK Telah Digunakan';
-            $icon = 'error';
-            $title = 'Operasi Gagal';
-        } else {
-            // update
-            $data = [
-                // 'jenis_media' => $jenis_media,
-                // 'namaPerusahaan' => $namaPerusahaan,
-                // 'namaPenanggungJawab' => $namaPenanggungJawab,
-                // 'namaPimred' => $namaPimred,
-                // 'kumhamPerusahaan' => $kumhamPerusahaan,
-                // 'alamatPerusahaan' => $alamatPerusahaan,
-                // 'tlpnPerusahaan' => $tlpnPerusahaan,
-                // 'emailPerusahaan' => $emailPerusahaan,
-                // 'npwpPerusahaan' => $npwpPerusahaan,
-                // 'nibPerusahaan' => $nibPerusahaan,
-                // 'noKbki' => $noKbki,
-                // 'izinIpp' => $izinIpp,
-                // 'namaPercetakan' => $namaPercetakan,
-                // 'alamatProvPerusahaan' => $alamatProvPerusahaan,
-                // 'alamatKabPerusahaan' => $alamatKabPerusahaan,
-                // 'statusKswp' => $statusKswp,
-                // 'noKlbi' => $noKlbi,
-                'fileSuratPernyataanPimred' => $fileSuratPernyataanPimred,
-                'fileKumhamPerusahaan' => $fileKumhamPerusahaan,
-                'fileNpwpPerusahaan' => $fileNpwpPerusahaan,
-                'fileNibPerusahaan' => $fileNibPerusahaan,
-                'fileIzinIpp' => $fileIzinIpp,
-                // 'namaMedia' => $namaMedia,
-                // 'serfikatUkwPimred' => $serfikatUkwPimred,
-                // 'namaBank' => $namaBank,
-                // 'pemilikRekening' => $pemilikRekening,
-                // 'noRekening' => $noRekening,
-                // 'verifikasiDewanPers' => $verifikasiDewanPers,
-                // 'jenisSerfikatUkwPimred' => $jenisSerfikatUkwPimred,
-                // 'afiliasiPerusahaan' => $afiliasiPerusahaan,
-                // 'domisiliRedaksiMedia' => $domisiliRedaksiMedia,
-                // 'kanalKhusus' => $kanalKhusus,
-                // 'jenisRekening' => $jenisRekening,
-                'fileSerfikatUkwPimred' => $fileSerfikatUkwPimred,
-                'fileAfiliasiPerusahaan' => $fileAfiliasiPerusahaan,
-                'fileDomisiliRedaksiMedia' => $fileDomisiliRedaksiMedia,
-                'fileKanalKhusus' => $fileKanalKhusus,
-                'fileRekening' => $fileRekening,
-                // 'tahunBerdiriMedia' => $tahunBerdiriMedia,
-                // 'jenisJangkauanSiarMediaElektronik' => $jenisJangkauanSiarMediaElektronik,
-                // 'jangkauanSiarMediaElektronik' => $jangkauanSiarMediaElektronik,
-                // 'jumlahOplahMediaCetakPerMinggu' => $jumlahOplahMediaCetakPerMinggu,
-                'fileJumlahOplahMediaCetakPerMinggu' => $fileJumlahOplahMediaCetakPerMinggu,
-                // 'jumlahKontenBeritaAktif' => $jumlahKontenBeritaAktif,
-                // 'namaPerwakilan' => $namaPerwakilan,
-                // 'nomorKKPerwakilan' => $nomorKKPerwakilan,
-                // 'nomorKtpPerwakilan' => $nomorKtpPerwakilan,
-                // 'npwpPerwakilan' => $npwpPerwakilan,
-                // 'serfikatUkwPerwakilan' => $serfikatUkwPerwakilan,
-                // 'afiliasiPersPerwakilan' => $afiliasiPersPerwakilan,
-                // 'alamatPerwakilan' => $alamatPerwakilan,
-                // 'tlpnPerwakilan' => $tlpnPerwakilan,
-                // 'emailPerwakilan' => $emailPerwakilan,
-                // 'jenisSerfikatUkwPerwakilan' => $jenisSerfikatUkwPerwakilan,
-                // 'alamatProvPerwakilan' => $alamatProvPerwakilan,
-                // 'alamatKabPerwakilan' => $alamatKabPerwakilan,
-                // 'alamatKecPerwakilan' => $alamatKecPerwakilan,
-                // 'alamatKelPerwakilan' => $alamatKelPerwakilan,
-                'fileNpwpPerwakilan' => $fileNpwpPerwakilan,
-                'fileSerfikatUkwPerwakilan' => $fileSerfikatUkwPerwakilan,
-                'fileafiliasiPersPerwakilan' => $fileafiliasiPersPerwakilan,
-                // 'keterangan' => '',
-                // 'status' => 'edit'
-            ];
-
-            // $directory = __DIR__;
-            foreach ($data as $key => $value) {
-                $directory =  public_path('tmp/uploads/' . strtolower($key));
-                $images = glob($directory . "/*");
-
-                // foreach ($out as $o) {
-                //     # code...
-                //     if (!($o == 0)) {
-                //         # code...
-                //         $print = $o;
-                //     } else {
-                //         $print = null;
-                //     }
-                // }
-                // // dd($print);
-                // if ($print) {
-                //     # code...
-                //     // dd($print);
-                //     if ($value) {
-                //         $path =   public_path('tmp/uploads/' . strtolower($key));
-                //         # code...
-                //         rename($path . '/' . $print, $path . '/' . $value);
-                //     }
-                // }
-                if ($key == 'fileSuratPernyataanPimred') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileSuratPernyataanPimred');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileKumhamPerusahaan') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('filekumhamperusahaan');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileNpwpPerusahaan') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileNpwpPerusahaan');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileNibPerusahaan') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileNibPerusahaan');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileIzinIpp') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileIzinIpp');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileSerfikatUkwPimred') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileSerfikatUkwPimred');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileAfiliasiPerusahaan') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileAfiliasiPerusahaan');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileDomisiliRedaksiMedia') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileDomisiliRedaksiMedia');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileKanalKhusus') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileKanalKhusus');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileRekening') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileRekening');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileJumlahOplahMediaCetakPerMinggu') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileJumlahOplahMediaCetakPerMinggu');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileNpwpPerwakilan') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileNpwpPerwakilan');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileSerfikatUkwPerwakilan') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileSerfikatUkwPerwakilan');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                if ($key == 'fileafiliasiPersPerwakilan') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out = pathinfo($img)['basename'];
-                            $folder = strtolower('fileafiliasiPersPerwakilan');
-                            $path =   public_path('tmp/uploads/' . $folder);
-                            rename($path . '/' . $out, $path . '/' . $value);
-                        }
-                    }
-                }
-                // foreach ($images as $img) {
-                //     if ($value == strtolower(pathinfo($img)['basename'])) {
-                //         # code...
-                //         $out[] = pathinfo($img)['basename'];
-                //     }
-                // }
-            }
-
-            dd($out);
-            // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
-
-            $pesan = 'data berhasil diupdate';
-            $icon = 'success';
-            $title = 'Sukses';
-        }
     }
 }
