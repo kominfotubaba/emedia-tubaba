@@ -1055,7 +1055,6 @@ class MediaPengajuanController extends Controller
             foreach ($data as $key => $value) {
                 $directory =  public_path('tmp/uploads/' . strtolower($key));
                 $images = glob($directory . "/*", GLOB_BRACE);
-                dd($images);
                 foreach ($images as $img) {
                     if (strtolower(pathinfo($img)['basename']) == $value) {
                         # code...
@@ -1064,6 +1063,7 @@ class MediaPengajuanController extends Controller
                         $out[] = 0;
                     }
                 }
+                dd($out);
                 foreach ($out as $o) {
                     # code...
                     if (!($o == 0)) {
