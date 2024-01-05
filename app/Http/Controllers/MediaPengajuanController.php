@@ -113,10 +113,10 @@ class MediaPengajuanController extends Controller
         $namaBank = strtolower($request->namaBank);
         $pemilikRekening = strtolower($request->pemilikRekening);
         $noRekening = strtolower($request->noRekening);
-        $verifikasiDewanPers = strtolower($request->verifikasiDewanPers);
+        $verifikasiDewanPers = str_replace('  ', '', trim(strtolower($request->verifikasiDewanPers)));
         $jenisSerfikatUkwPimred = strtolower($request->jenisSerfikatUkwPimred);
         $afiliasiPerusahaan = strtolower($request->afiliasiPerusahaan);
-        $domisiliRedaksiMedia = strtolower($request->domisiliRedaksiMedia);
+        $domisiliRedaksiMedia = str_replace('  ', '', strtolower($request->domisiliRedaksiMedia));
         $kanalKhusus = strtolower($request->kanalKhusus);
         $jenisRekening = strtolower($request->jenisRekening);
         $fileSerfikatUkwPimred = strtolower($request->fileSerfikatUkwPimred);
@@ -419,10 +419,10 @@ class MediaPengajuanController extends Controller
         $namaBank = strtolower($request->namaBank);
         $pemilikRekening = strtolower($request->pemilikRekening);
         $noRekening = strtolower($request->noRekening);
-        $verifikasiDewanPers = strtolower($request->verifikasiDewanPers);
+        $verifikasiDewanPers = str_replace('  ', '', strtolower($request->verifikasiDewanPers));
         $jenisSerfikatUkwPimred = strtolower($request->jenisSerfikatUkwPimred);
         $afiliasiPerusahaan = strtolower($request->afiliasiPerusahaan);
-        $domisiliRedaksiMedia = strtolower($request->domisiliRedaksiMedia);
+        $domisiliRedaksiMedia = str_replace('  ', '', strtolower($request->domisiliRedaksiMedia));
         $kanalKhusus = strtolower($request->kanalKhusus);
         $jenisRekening = strtolower($request->jenisRekening);
         $fileSerfikatUkwPimred = strtolower($request->fileSerfikatUkwPimred);

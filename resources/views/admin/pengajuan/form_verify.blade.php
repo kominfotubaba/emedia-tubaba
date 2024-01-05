@@ -43,10 +43,10 @@
                                 <form class="tooltip-end-bottom validasi">
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title">Perusahaan/Badan Hukum</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiBadanHukum" checked>
@@ -104,10 +104,10 @@
 
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title">Pengesahan Kemenkumham Perusahaan</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiPengesahanKemkumham" checked>
@@ -139,10 +139,10 @@
 
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title mb-md-0 mb-2">Kontak Perusahaan</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiKontakPerusahaan" checked>
@@ -205,10 +205,10 @@
 
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title mb-md-0 mb-2">Status KSWP</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiStatusKswp" checked>
@@ -238,10 +238,10 @@
 
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title">NPWP Perusahaan/Badan Hukum</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiNpwpPerusahaan" checked>
@@ -275,10 +275,10 @@
 
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title">Nomor Induk Berusaha Perusahaan/Badan Hukum</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiNib" checked>
@@ -312,10 +312,10 @@
 
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title mb-md-0 mb-2">Nomor KLBI</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiNoKlbi" checked>
@@ -355,10 +355,10 @@
 
                                     <div class="row mb-3">
                                         <div class="row">
-                                            <div class="col-11">
+                                            <div class="col-12 col-md-10">
                                                 <h2 class="small-title mb-md-0 mb-2">Nomor KBKI</h2>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-12 col-md-2">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="verifikasiNoKbki" checked>
@@ -384,11 +384,11 @@
 
                                         <div class="row mb-4">
                                             <div class="row">
-                                                <div class="col-11">
+                                                <div class="col-12 col-md-10">
                                                     <h2 class="small-title mb-md-0 mb-2">Dokumen izin Penyelenggaraan
                                                         Penyiaran</h2>
                                                 </div>
-                                                <div class="col-1">
+                                                <div class="col-12 col-md-2">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" value=""
                                                             id="verifikasiIpp" checked>
@@ -421,7 +421,20 @@
                                         <hr class="mb-4">
 
                                         <div class="row mb-4">
-                                            <h2 class="small-title">Percetakan</h2>
+                                            <div class="row">
+                                                <div class="col-12 col-md-10">
+                                                    <h2 class="small-title">Percetakan</h2>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="verifikasiPercetakan" checked>
+                                                        <label class="form-check-label" for="verifikasiPercetakan">
+                                                            VERIFIKASI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
                                                 <div class="form-floating">
                                                     <input id="namaPercetakan" name="namaPercetakan" type="text"
@@ -448,7 +461,20 @@
                                 <p class="card-text text-alternate mb-4"></p>
                                 <form class="tooltip-end-bottom validasi">
                                     <div class="row mb-3">
-                                        <h2 class="small-title">Nama Media</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title">Nama Media</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiNamaMedia" checked>
+                                                    <label class="form-check-label" for="verifikasiNamaMedia">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
                                                 <input id="namaMedia" name="namaMedia" type="text"
@@ -462,7 +488,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Status Verifikasi Media</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title mb-md-0 mb-2">Status Verifikasi Media</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiStatusMedia" checked>
+                                                    <label class="form-check-label" for="verifikasiStatusMedia">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
                                                 <select class="select-floating" id="verifikasiDewanPers"
@@ -485,7 +524,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Sertifikat UKW Pimred</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title mb-md-0 mb-2">Sertifikat UKW Pimred</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiSertifikatUkwPimred" checked>
+                                                    <label class="form-check-label" for="verifikasiSertifikatUkwPimred">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
                                                 <div class="w-100">
@@ -526,7 +578,22 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perusahaan/Media Pers</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perusahaan/Media
+                                                    Pers</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiAfiliasiOrganisasiMedia" checked>
+                                                    <label class="form-check-label"
+                                                        for="verifikasiAfiliasiOrganisasiMedia">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
                                                 <select class="select-floating" id="afiliasiPerusahaan"
@@ -560,7 +627,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Domisili Redaksi Media</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title mb-md-0 mb-2">Domisili Redaksi Media</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiDomisiliRedaksiMedia" checked>
+                                                    <label class="form-check-label" for="verifikasiDomisiliRedaksiMedia">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
                                                 <select class="select-floating" id="domisiliRedaksiMedia"
@@ -594,7 +674,21 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Kanal/program Tentang Tulang Bawang Barat</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title mb-md-0 mb-2">Kanal/program Tentang Tulang Bawang
+                                                    Barat</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiKanalMedia" checked>
+                                                    <label class="form-check-label" for="verifikasiKanalMedia">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-5 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
                                                 <select class="select-floating" id="kanalKhusus" name="kanalKhusus">
@@ -625,7 +719,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-4">
-                                        <h2 class="small-title">Rekening Bank</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title">Rekening Bank</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiRekeningBank" checked>
+                                                    <label class="form-check-label" for="verifikasiRekeningBank">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
                                             <div class="top-label mb-2 w-100">
                                                 <select name="jenisRekening" id="jenisRekening">
@@ -677,7 +784,20 @@
                                 <p class="card-text text-alternate mb-4"></p>
                                 <form class="tooltip-end-bottom validasi">
                                     <div class="row mb-3">
-                                        <h2 class="small-title mb-md-0 mb-2">Tahun Berdiri Media</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title mb-md-0 mb-2">Tahun Berdiri Media</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiTahunBerdiriMedia" checked>
+                                                    <label class="form-check-label" for="verifikasiTahunBerdiriMedia">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
                                                 <select class="select-floating" id="tahunBerdiriMedia"
@@ -702,7 +822,22 @@
 
                                     @if ($md->jenis_media == 'elektronik')
                                         <div class="row mb-3">
-                                            <h2 class="small-title mb-md-0 mb-2">Jangkauan Siar Media Elektronik</h2>
+                                            <div class="row">
+                                                <div class="col-12 col-md-10">
+                                                    <h2 class="small-title mb-md-0 mb-2">Jangkauan Siar Media Elektronik
+                                                    </h2>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="verifikasiJangkauanSiarMediaEletronik" checked>
+                                                        <label class="form-check-label"
+                                                            for="verifikasiJangkauanSiarMediaEletronik">
+                                                            VERIFIKASI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100">
                                                     <select class="select-floating" id="jenisJangkauanSiarMediaElektronik"
@@ -738,9 +873,23 @@
                                         </div>
                                     @endif
 
-                                    @if ($md->jenis_media == 'harian')
+                                    @if ($md->jenis_media == 'cetak')
                                         <div class="row mb-3">
-                                            <h2 class="small-title mb-md-0 mb-2">Jumlah Oplah Media Cetak Per Minggu</h2>
+                                            <div class="row">
+                                                <div class="col-12 col-md-10">
+                                                    <h2 class="small-title mb-md-0 mb-2">Jumlah Oplah Media Cetak Per
+                                                        Minggu</h2>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="verifikasiJumlahOplahMedia" checked>
+                                                        <label class="form-check-label" for="verifikasiJumlahOplahMedia">
+                                                            VERIFIKASI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100">
                                                     <select class="select-floating" id="jumlahOplahMediaCetakPerMinggu"
@@ -774,9 +923,23 @@
 
                                     @if ($md->jenis_media == 'siber')
                                         <div class="row mb-3">
-                                            <h2 class="small-title mb-md-0 mb-2">Jumlah Konten Berita Aktif dan Positif Per
-                                                Tahun
-                                            </h2>
+                                            <div class="row">
+                                                <div class="col-12 col-md-10">
+                                                    <h2 class="small-title mb-md-0 mb-2">Jumlah Konten Berita Aktif dan
+                                                        Positif Per
+                                                        Tahun
+                                                    </h2>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="verifikasiJumlahKontenAktif" checked>
+                                                        <label class="form-check-label" for="verifikasiJumlahKontenAktif">
+                                                            VERIFIKASI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100">
                                                     <select class="select-floating" id="jumlahKontenBeritaAktif"
@@ -803,7 +966,20 @@
                                 <p class="card-text text-alternate mb-4"></p>
                                 <form class="tooltip-end-bottom validasi">
                                     <div class="row mb-3">
-                                        <h2 class="small-title">Data Perwakilan Media</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title">Data Perwakilan Media</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiDataPerwakilan" checked>
+                                                    <label class="form-check-label" for="verifikasiDataPerwakilan">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-6 col-12">
                                             <div class="form-floating mb-lg-2 mb-md-2 mb-2">
                                                 <input id="namaPerwakilan" name="namaPerwakilan" type="text"
@@ -853,10 +1029,24 @@
                                         <hr class="mb-4">
 
                                         <div class="row mb-4">
-                                            <h2 class="small-title mb-md-0 mb-2">Sertifikat Kompetensi Dewan Pers
-                                                Perwakilan
-                                                Media
-                                            </h2>
+                                            <div class="row">
+                                                <div class="col-12 col-md-10">
+                                                    <h2 class="small-title mb-md-0 mb-2">Sertifikat Kompetensi Dewan Pers
+                                                        Perwakilan
+                                                        Media
+                                                    </h2>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="verifikasiSertifikatUkwPerwakilan" checked>
+                                                        <label class="form-check-label"
+                                                            for="verifikasiSertifikatUkwPerwakilan">
+                                                            VERIFIKASI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100 mb-3">
                                                     <select class="select-floating" id="jenisSerfikatUkwPerwakilan"
@@ -904,7 +1094,22 @@
                                         <hr class="mb-4">
 
                                         <div class="row mb-4">
-                                            <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perwakilan Media</h2>
+                                            <div class="row">
+                                                <div class="col-12 col-md-10">
+                                                    <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perwakilan
+                                                        Media</h2>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="verifikasiAfiliasiOrganisasiPerwakilan" checked>
+                                                        <label class="form-check-label"
+                                                            for="verifikasiAfiliasiOrganisasiPerwakilan">
+                                                            VERIFIKASI
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                                 <div class="form-floating">
                                                     <input id="afiliasiPersPerwakilan" name="afiliasiPersPerwakilan"
@@ -931,7 +1136,20 @@
                                     <hr class="mb-4">
 
                                     <div class="row mb-4">
-                                        <h2 class="small-title">Alamat dan Kontak Perwakilan Media</h2>
+                                        <div class="row">
+                                            <div class="col-12 col-md-10">
+                                                <h2 class="small-title">Alamat dan Kontak Perwakilan Media</h2>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="verifikasiAlamatPerwakilan" checked>
+                                                    <label class="form-check-label" for="verifikasiAlamatPerwakilan">
+                                                        VERIFIKASI
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
                                             <div class="row mb-3">
                                                 <div class="col-lg-6 col-md-12 col-12 mb-2">
@@ -1728,103 +1946,197 @@
         });
 
         function getDataCalculate() {
-            var data = {
-                // param
-                jenis_media: $('#jenisPengajuan').val(),
-                /**
-                 * DATA BADAN HUKUM
-                 **/
-                //  input
-                namaPerusahaan: $('#namaPerusahaan').val(),
-                namaPenanggungJawab: $('#namaPenanggungJawab').val(),
-                namaPimred: $('#namaPimred').val(),
-                kumhamPerusahaan: $('#kumhamPerusahaan').val(),
-                alamatPerusahaan: $('#alamatPerusahaan').val(),
-                tlpnPerusahaan: $('#tlpnPerusahaan').val(),
-                emailPerusahaan: $('#emailPerusahaan').val(),
-                npwpPerusahaan: $('#npwpPerusahaan').val(),
-                nibPerusahaan: $('#nibPerusahaan').val(),
-                noKbki: $('#noKbki').val(),
-                izinIpp: $('#izinIpp').val(),
-                namaPercetakan: $('#namaPercetakan').val(),
-                // select
-                alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
-                alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
-                statusKswp: $('#statusKswp option:selected').text(),
-                noKlbi: $('#noKlbi option:selected').text(),
-                // file
-                fileSuratPernyataanPimred: $('#fileSuratPernyataanPimred .dz-details span').text(),
-                fileKumhamPerusahaan: $('#fileKumhamPerusahaan .dz-details span').text(),
-                fileNpwpPerusahaan: $('#fileNpwpPerusahaan .dz-details span').text(),
-                fileNibPerusahaan: $('#fileNibPerusahaan .dz-details span').text(),
-                fileIzinIpp: $('#fileIzinIpp .dz-details span').text(),
+            // var data = {
+            //     // param
+            //     jenis_media: $('#jenisPengajuan').val(),
+            //     /**
+            //      * DATA BADAN HUKUM
+            //      **/
+            //     //  input
+            //     namaPerusahaan: $('#namaPerusahaan').val(),
+            //     namaPenanggungJawab: $('#namaPenanggungJawab').val(),
+            //     namaPimred: $('#namaPimred').val(),
+            //     kumhamPerusahaan: $('#kumhamPerusahaan').val(),
+            //     alamatPerusahaan: $('#alamatPerusahaan').val(),
+            //     tlpnPerusahaan: $('#tlpnPerusahaan').val(),
+            //     emailPerusahaan: $('#emailPerusahaan').val(),
+            //     npwpPerusahaan: $('#npwpPerusahaan').val(),
+            //     nibPerusahaan: $('#nibPerusahaan').val(),
+            //     noKbki: $('#noKbki').val(),
+            //     izinIpp: $('#izinIpp').val(),
+            //     namaPercetakan: $('#namaPercetakan').val(),
+            //     // select
+            //     alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
+            //     alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
+            //     statusKswp: $('#statusKswp option:selected').text(),
+            //     noKlbi: $('#noKlbi option:selected').text(),
+            //     // file
+            //     fileSuratPernyataanPimred: $('#fileSuratPernyataanPimred .dz-details span').text(),
+            //     fileKumhamPerusahaan: $('#fileKumhamPerusahaan .dz-details span').text(),
+            //     fileNpwpPerusahaan: $('#fileNpwpPerusahaan .dz-details span').text(),
+            //     fileNibPerusahaan: $('#fileNibPerusahaan .dz-details span').text(),
+            //     fileIzinIpp: $('#fileIzinIpp .dz-details span').text(),
 
-                /**
-                 * DATA MEDIA
-                 **/
-                //  input
-                namaMedia: $('#namaMedia').val(),
-                serfikatUkwPimred: $('#serfikatUkwPimred').val(),
-                namaBank: $('#namaBank').val(),
-                pemilikRekening: $('#pemilikRekening').val(),
-                noRekening: $('#noRekening').val(),
-                // select
-                verifikasiDewanPers: $('#verifikasiDewanPers option:selected').text(),
-                jenisSerfikatUkwPimred: $('#jenisSerfikatUkwPimred option:selected').text(),
-                afiliasiPerusahaan: $('#afiliasiPerusahaan option:selected').text(),
-                domisiliRedaksiMedia: $('#domisiliRedaksiMedia option:selected').text(),
-                kanalKhusus: $('#kanalKhusus option:selected').text(),
-                jenisRekening: $('#jenisRekening option:selected').text(),
-                // file
-                fileSerfikatUkwPimred: $('#fileSerfikatUkwPimred .dz-details span').text(),
-                fileAfiliasiPerusahaan: $('#fileAfiliasiPerusahaan .dz-details span').text(),
-                fileDomisiliRedaksiMedia: $('#fileDomisiliRedaksiMedia .dz-details span').text(),
-                fileKanalKhusus: $('#fileKanalKhusus .dz-details span').text(),
-                fileRekening: $('#fileRekening .dz-details span').text(),
+            //     /**
+            //      * DATA MEDIA
+            //      **/
+            //     //  input
+            //     namaMedia: $('#namaMedia').val(),
+            //     serfikatUkwPimred: $('#serfikatUkwPimred').val(),
+            //     namaBank: $('#namaBank').val(),
+            //     pemilikRekening: $('#pemilikRekening').val(),
+            //     noRekening: $('#noRekening').val(),
+            //     // select
+            //     verifikasiDewanPers: $('#verifikasiDewanPers option:selected').text(),
+            //     jenisSerfikatUkwPimred: $('#jenisSerfikatUkwPimred option:selected').text(),
+            //     afiliasiPerusahaan: $('#afiliasiPerusahaan option:selected').text(),
+            //     domisiliRedaksiMedia: $('#domisiliRedaksiMedia option:selected').text(),
+            //     kanalKhusus: $('#kanalKhusus option:selected').text(),
+            //     jenisRekening: $('#jenisRekening option:selected').text(),
+            //     // file
+            //     fileSerfikatUkwPimred: $('#fileSerfikatUkwPimred .dz-details span').text(),
+            //     fileAfiliasiPerusahaan: $('#fileAfiliasiPerusahaan .dz-details span').text(),
+            //     fileDomisiliRedaksiMedia: $('#fileDomisiliRedaksiMedia .dz-details span').text(),
+            //     fileKanalKhusus: $('#fileKanalKhusus .dz-details span').text(),
+            //     fileRekening: $('#fileRekening .dz-details span').text(),
 
-                /**
-                 * KUALIFIKASI MEDIA
-                 **/
-                // select
-                tahunBerdiriMedia: $('#tahunBerdiriMedia option:selected').text(),
-                jenisJangkauanSiarMediaElektronik: $(
-                    '#jenisJangkauanSiarMediaElektronik option:selected').text(),
-                jangkauanSiarMediaElektronik: $('#jangkauanSiarMediaElektronik option:selected')
-                    .text(),
-                jumlahOplahMediaCetakPerMinggu: $('#jumlahOplahMediaCetakPerMinggu option:selected')
-                    .text(),
-                jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif option:selected').text(),
-                // file
-                fileJumlahOplahMediaCetakPerMinggu: $(
-                    '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
+            //     /**
+            //      * KUALIFIKASI MEDIA
+            //      **/
+            //     // select
+            //     tahunBerdiriMedia: $('#tahunBerdiriMedia option:selected').text(),
+            //     jenisJangkauanSiarMediaElektronik: $(
+            //         '#jenisJangkauanSiarMediaElektronik option:selected').text(),
+            //     jangkauanSiarMediaElektronik: $('#jangkauanSiarMediaElektronik option:selected')
+            //         .text(),
+            //     jumlahOplahMediaCetakPerMinggu: $('#jumlahOplahMediaCetakPerMinggu option:selected')
+            //         .text(),
+            //     jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif option:selected').text(),
+            //     // file
+            //     fileJumlahOplahMediaCetakPerMinggu: $(
+            //         '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
 
-                /**
-                 * PERWAKILAN MEDIA
-                 **/
-                //  input
-                namaPerwakilan: $('#namaPerwakilan').val(),
-                nomorKKPerwakilan: $('#nomorKKPerwakilan').val(),
-                nomorKtpPerwakilan: $('#nomorKtpPerwakilan').val(),
-                npwpPerwakilan: $('#npwpPerwakilan').val(),
-                serfikatUkwPerwakilan: $('#serfikatUkwPerwakilan').val(),
-                afiliasiPersPerwakilan: $('#afiliasiPersPerwakilan').val(),
-                alamatPerwakilan: $('#alamatPerwakilan').val(),
-                tlpnPerwakilan: $('#tlpnPerwakilan').val(),
-                emailPerwakilan: $('#emailPerwakilan').val(),
-                // select
-                jenisSerfikatUkwPerwakilan: $('#jenisSerfikatUkwPerwakilan option:selected').text(),
-                alamatProvPerwakilan: $('#alamatProvPerwakilan option:selected').text(),
-                alamatKabPerwakilan: $('#alamatKabPerwakilan option:selected').text(),
-                alamatKecPerwakilan: $('#alamatKecPerwakilan option:selected').text(),
-                alamatKelPerwakilan: $('#alamatKelPerwakilan option:selected').text(),
-                // file
-                fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
-                fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span').text(),
-                fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
-                    .text(),
+            //     /**
+            //      * PERWAKILAN MEDIA
+            //      **/
+            //     //  input
+            //     namaPerwakilan: $('#namaPerwakilan').val(),
+            //     nomorKKPerwakilan: $('#nomorKKPerwakilan').val(),
+            //     nomorKtpPerwakilan: $('#nomorKtpPerwakilan').val(),
+            //     npwpPerwakilan: $('#npwpPerwakilan').val(),
+            //     serfikatUkwPerwakilan: $('#serfikatUkwPerwakilan').val(),
+            //     afiliasiPersPerwakilan: $('#afiliasiPersPerwakilan').val(),
+            //     alamatPerwakilan: $('#alamatPerwakilan').val(),
+            //     tlpnPerwakilan: $('#tlpnPerwakilan').val(),
+            //     emailPerwakilan: $('#emailPerwakilan').val(),
+            //     // select
+            //     jenisSerfikatUkwPerwakilan: $('#jenisSerfikatUkwPerwakilan option:selected').text(),
+            //     alamatProvPerwakilan: $('#alamatProvPerwakilan option:selected').text(),
+            //     alamatKabPerwakilan: $('#alamatKabPerwakilan option:selected').text(),
+            //     alamatKecPerwakilan: $('#alamatKecPerwakilan option:selected').text(),
+            //     alamatKelPerwakilan: $('#alamatKelPerwakilan option:selected').text(),
+            //     // file
+            //     fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
+            //     fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span').text(),
+            //     fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
+            //         .text(),
+            // }
+            // return data;
+            var jenis = $('#pengajuanJenisMedia').attr('data-jenisMedia');
+            if (jenis == 'cetak') {
+                if ($('#verifikasiPercetakan').is(':checked')) {
+                    var verifikasiPercetakan = 10;
+                } else {
+                    var verifikasiPercetakan = 0;
+                }
+                var verifikasiNamaMedia = 0;
+                var verifikasiIpp = 0;
+            } else if (jenis == 'elektronik') {
+                if ($('#verifikasiIpp').is(':checked')) {
+                    var verifikasiIpp = 10;
+                } else {
+                    var verifikasiIpp = 0;
+                }
+                var verifikasiNamaMedia = 0;
+                var verifikasiPercetakan = 0;
+            } else if (jenis == 'siber') {
+                if ($('#verifikasiNamaMedia').is(':checked')) {
+                    var verifikasiNamaMedia = 10;
+                } else {
+                    var verifikasiNamaMedia = 0;
+                }
+                var verifikasiPercetakan = 0;
+                var verifikasiIpp = 0;
             }
 
-            return data;
+            // BADAN HUKUM
+            if ($('#verifikasiBadanHukum').is(':checked')) {
+                var verifikasiBadanHukum = 10;
+            } else {
+                var verifikasiBadanHukum = 0;
+            }
+            if ($('#verifikasiPengesahanKemkumham').is(':checked')) {
+                var verifikasiPengesahanKemkumham = 10;
+            } else {
+                var verifikasiPengesahanKemkumham = 0;
+            }
+            if ($('#verifikasiKontakPerusahaan').is(':checked')) {
+                var verifikasiKontakPerusahaan = 10;
+            } else {
+                var verifikasiKontakPerusahaan = 0;
+            }
+            if ($('#verifikasiStatusKswp').is(':checked')) {
+                var verifikasiStatusKswp = 10;
+            } else {
+                var verifikasiStatusKswp = 0;
+            }
+            if ($('#verifikasiNpwpPerusahaan').is(':checked')) {
+                var verifikasiNpwpPerusahaan = 10;
+            } else {
+                var verifikasiNpwpPerusahaan = 0;
+            }
+            if ($('#verifikasiNib').is(':checked')) {
+                var verifikasiNib = 10;
+            } else {
+                var verifikasiNib = 0;
+            }
+            if ($('#verifikasiNoKlbi').is(':checked')) {
+                var verifikasiNoKlbi = 10;
+            } else {
+                var verifikasiNoKlbi = 0;
+            }
+            if ($('#verifikasiNoKbki').is(':checked')) {
+                var verifikasiNoKbki = 10;
+            } else {
+                var verifikasiNoKbki = 0;
+            }
+            // DATA MEDIA
+            // console.log($('#verifikasiDewanPers option:selected').text().trim());
+            if ($('#verifikasiStatusMedia').is(':checked')) {
+                var verifikasiDewanPers = $('#verifikasiDewanPers option:selected').text().replace(/[\r\n]+/gm, ' ').trim()
+
+                console.log(verifikasiDewanPers.toLowerCase());
+                if (verifikasiDewanPers.toLowerCase() === 'terverifikasi faktual dan administratif') {
+                    var verifikasiStatusMedia = 6;
+                } else if (verifikasiDewanPers.toLowerCase() === 'terverifikasi administratif') {
+                    var verifikasiStatusMedia = 4;
+                } else {
+                    var verifikasiStatusMedia = 0;
+                }
+            }
+
+            let hasil = verifikasiBadanHukum +
+                verifikasiPengesahanKemkumham +
+                verifikasiKontakPerusahaan +
+                verifikasiStatusKswp +
+                verifikasiNpwpPerusahaan +
+                verifikasiNib +
+                verifikasiNoKlbi +
+                verifikasiNoKbki +
+                verifikasiPercetakan +
+                verifikasiIpp +
+                verifikasiNamaMedia;
+            return verifikasiStatusMedia;
         }
 
         /**
