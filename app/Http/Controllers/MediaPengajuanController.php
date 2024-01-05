@@ -1076,7 +1076,10 @@ class MediaPengajuanController extends Controller
                 //     }
                 // }
                 foreach ($images as $img) {
-                    $out = pathinfo($img)['basename'];
+                    if ($value == strtolower(pathinfo($img)['basename'])) {
+                        # code...
+                        $out[] = pathinfo($img)['basename'];
+                    }
                 }
             }
 
