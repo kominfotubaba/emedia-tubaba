@@ -1070,11 +1070,11 @@ class MediaPengajuanController extends Controller
                         $print = $o;
                     }
                 }
-                dd($print);
+                // dd($print);
                 if ($print) {
                     # code...
                     // dd($print);
-                    $path[] =  'tmp/uploads/' . strtolower($key);
+                    $path =  'tmp/uploads/' . strtolower($key);
                     rename($path . '/' . $print, $path . '/' . $value);
                 }
             }
