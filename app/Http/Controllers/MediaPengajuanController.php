@@ -1075,16 +1075,18 @@ class MediaPengajuanController extends Controller
                 //         rename($path . '/' . $print, $path . '/' . $value);
                 //     }
                 // }
-                if ($key == 'fileSuratPernyataanPimred') {
-                    # code...
-                    foreach ($images as $img) {
-                        # code...
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out[] = pathinfo($img)['basename'];
-                        }
-                    }
-                }
+                // if ($key == 'fileSuratPernyataanPimred') {
+                //     # code...
+                //     foreach ($images as $img) {
+                //         # code...
+                //         if ($value == strtolower(pathinfo($img)['basename'])) {
+                //             # code...
+                //             $out[] = pathinfo($img)['basename'];
+                //         } else {
+                //             $out[] = 0;
+                //         }
+                //     }
+                // }
                 if ($key == 'fileKumhamPerusahaan') {
                     # code...
                     foreach ($images as $img) {
@@ -1092,6 +1094,8 @@ class MediaPengajuanController extends Controller
                         if ($value == strtolower(pathinfo($img)['basename'])) {
                             # code...
                             $out[] = pathinfo($img)['basename'];
+                        } else {
+                            $out[] = 0;
                         }
                     }
                 }
@@ -1139,7 +1143,7 @@ class MediaPengajuanController extends Controller
                 // }
             }
 
-            dd('ok');
+            dd($out);
             // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
             $pesan = 'data berhasil diupdate';
