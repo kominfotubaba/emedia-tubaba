@@ -1885,7 +1885,7 @@
             $('.dz-preview').click(function(e) {
                 e.preventDefault();
                 var file = $(this).find('img').attr('alt');
-                var folder = $(this).parent().attr('id')
+                var folder = $(this).parent().attr('id').toLowerCase();
                 window.open('/tmp/uploads/' + folder + '/' + file, '_blank');
             })
         });
