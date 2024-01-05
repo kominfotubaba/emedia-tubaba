@@ -2162,7 +2162,7 @@
                         }
                     });
                     $.ajax({
-                        type: "PUT",
+                        type: "POST",
                         url: "/pengajuan/verifikasi",
                         data: data,
                         success: function(response) {
