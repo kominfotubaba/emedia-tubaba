@@ -585,7 +585,7 @@ class MediaPengajuanController extends Controller
     {
         $param = $request->data;
         $image = $request->images;
-        $path = public_path('tmp/uploads/' . trim($param, '#'));
+        $path = public_path('tmp/uploads/' . trim(strtolower($param), '#'));
 
         if (!$path) {
             Storage::makeDirectory($path);
@@ -603,7 +603,7 @@ class MediaPengajuanController extends Controller
             $file = $request->file('file');
             $name = Str::random(40) . '.' . $file->extension();
             $original_name = $file->getClientOriginalName();
-            $file->move($path, $name);
+            $file->move($path, strtolower($name));
         }
         return response()->json([
             'name'          => $name,
