@@ -1075,18 +1075,19 @@ class MediaPengajuanController extends Controller
                 //         rename($path . '/' . $print, $path . '/' . $value);
                 //     }
                 // }
-                // if ($key == 'fileSuratPernyataanPimred') {
-                //     # code...
-                //     foreach ($images as $img) {
-                //         # code...
-                //         if ($value == strtolower(pathinfo($img)['basename'])) {
-                //             # code...
-                //             $out[] = pathinfo($img)['basename'];
-                //         } else {
-                //             $out[] = 0;
-                //         }
-                //     }
-                // }
+                if ($key == 'fileSuratPernyataanPimred') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileSuratPernyataanPimred');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
                 if ($key == 'fileKumhamPerusahaan') {
                     # code...
                     foreach ($images as $img) {
@@ -1094,47 +1095,168 @@ class MediaPengajuanController extends Controller
                         if ($value == strtolower(pathinfo($img)['basename'])) {
                             # code...
                             $out = pathinfo($img)['basename'];
-                            $path =   public_path('tmp/uploads/filekumhamperusahaan');
+                            $folder = strtolower('filekumhamperusahaan');
+                            $path =   public_path('tmp/uploads/' . $folder);
                             rename($path . '/' . $out, $path . '/' . $value);
                         }
                     }
                 }
-                // if ($key == 'fileNpwpPerusahaan') {
-                //     # code...
-                // }
-                // if ($key == 'fileNibPerusahaan') {
-                //     # code...
-                // }
-                // if ($key == 'fileIzinIpp') {
-                //     # code...
-                // }
-                // if ($key == 'fileSerfikatUkwPimred') {
-                //     # code...
-                // }
-                // if ($key == 'fileAfiliasiPerusahaan') {
-                //     # code...
-                // }
-                // if ($key == 'fileDomisiliRedaksiMedia') {
-                //     # code...
-                // }
-                // if ($key == 'fileKanalKhusus') {
-                //     # code...
-                // }
-                // if ($key == 'fileRekening') {
-                //     # code...
-                // }
-                // if ($key == 'fileJumlahOplahMediaCetakPerMinggu') {
-                //     # code...
-                // }
-                // if ($key == 'fileNpwpPerwakilan') {
-                //     # code...
-                // }
-                // if ($key == 'fileSerfikatUkwPerwakilan') {
-                //     # code...
-                // }
-                // if ($key == 'fileafiliasiPersPerwakilan') {
-                //     # code...
-                // }
+                if ($key == 'fileNpwpPerusahaan') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileNpwpPerusahaan');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileNibPerusahaan') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileNibPerusahaan');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileIzinIpp') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileIzinIpp');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileSerfikatUkwPimred') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileSerfikatUkwPimred');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileAfiliasiPerusahaan') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileAfiliasiPerusahaan');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileDomisiliRedaksiMedia') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileDomisiliRedaksiMedia');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileKanalKhusus') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileKanalKhusus');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileRekening') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileRekening');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileJumlahOplahMediaCetakPerMinggu') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileJumlahOplahMediaCetakPerMinggu');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileNpwpPerwakilan') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileNpwpPerwakilan');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileSerfikatUkwPerwakilan') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileSerfikatUkwPerwakilan');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
+                if ($key == 'fileafiliasiPersPerwakilan') {
+                    # code...
+                    foreach ($images as $img) {
+                        # code...
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out = pathinfo($img)['basename'];
+                            $folder = strtolower('fileafiliasiPersPerwakilan');
+                            $path =   public_path('tmp/uploads/' . $folder);
+                            rename($path . '/' . $out, $path . '/' . $value);
+                        }
+                    }
+                }
                 // foreach ($images as $img) {
                 //     if ($value == strtolower(pathinfo($img)['basename'])) {
                 //         # code...
