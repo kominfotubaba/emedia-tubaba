@@ -1063,7 +1063,6 @@ class MediaPengajuanController extends Controller
                         $out[] = 0;
                     }
                 }
-                dd($out);
                 foreach ($out as $o) {
                     # code...
                     if (!($o == 0)) {
@@ -1071,7 +1070,7 @@ class MediaPengajuanController extends Controller
                         $print = $o;
                     }
                 }
-                // dd($key);
+                dd($print);
                 if ($print) {
                     # code...
                     // dd($print);
