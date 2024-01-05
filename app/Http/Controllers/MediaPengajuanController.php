@@ -1074,7 +1074,7 @@ class MediaPengajuanController extends Controller
                 if ($print) {
                     # code...
                     // dd($print);
-                    $path =  'tmp/uploads/' . strtolower($key);
+                    $path =   public_path('tmp/uploads/' . strtolower($key));
                     if ($value) {
                         # code...
                         rename($path . '/' . $print, $path . '/' . $value);
