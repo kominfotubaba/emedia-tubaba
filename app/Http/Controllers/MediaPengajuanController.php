@@ -1094,7 +1094,7 @@ class MediaPengajuanController extends Controller
                         if ($value == strtolower(pathinfo($img)['basename'])) {
                             # code...
                             $out = pathinfo($img)['basename'];
-                            $path =   public_path('tmp/uploads/fileKumhamPerusahaan');
+                            $path =   public_path('tmp/uploads/filekumhamperusahaan');
                             rename($path . '/' . $out, $path . '/' . $value);
                         }
                     }
