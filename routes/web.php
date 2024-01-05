@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
     // admin
     Route::group(['prefix' => 'pengajuan', 'middleware' => ['role:admin']], function () {
-        Route::get('/verifikasi/{no_pengajuan}', [MediaPengajuanController::class, 'show_data'])->name('pengajuan.show_data');
+        Route::get('/verifikasi/{no_pengajuan}', [MediaPengajuanController::class, 'show_data_verify'])->name('pengajuan.show_data');
         Route::put('/verifikasi', [MediaPengajuanController::class, 'verifikasi'])->name('verifikasi.put');
         Route::post('/verifikasi', [MediaPengajuanController::class, 'verifikasi'])->name('verifikasi.post');
     });

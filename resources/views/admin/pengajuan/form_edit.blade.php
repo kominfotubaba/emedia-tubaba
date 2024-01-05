@@ -297,7 +297,7 @@
                                         </div>
                                     @endif
 
-                                    @if ($md->jenis_media == 'harian')
+                                    @if ($md->jenis_media == 'cetak')
                                         <hr class="mb-4">
 
                                         <div class="row mb-4">
@@ -618,7 +618,7 @@
                                         </div>
                                     @endif
 
-                                    @if ($md->jenis_media == 'harian')
+                                    @if ($md->jenis_media == 'cetak')
                                         <div class="row mb-3">
                                             <h2 class="small-title mb-md-0 mb-2">Jumlah Oplah Media Cetak Per Minggu</h2>
                                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">

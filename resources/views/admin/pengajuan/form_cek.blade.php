@@ -1,919 +1,2083 @@
-@foreach ($media_data as $md)
-    <div class="container">
-        <!-- Title and Top Buttons Start -->
-        <div class="page-title-container">
-            <div class="row">
-                <!-- Title Start -->
-                <div class="col-12 col-md-7">
-                    <h1 class="mb-0 pb-0 display-4 text-capitalize" id="title">Edit Pengajuan media
-                        {{ $md->jenis_media }}</h1>
-                    <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
-                                                                                                                                                                                                                            <ul class="breadcrumb pt-0">
-                                                                                                                                                                                                                                <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
-                                                                                                                                                                                                                                <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
-                                                                                                                                                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
-                                                                                                                                                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
-                                                                                                                                                                                                                            </ul>
-                                                                                                                                                                                                                        </nav> -->
-                </div>
-                <!-- Title End -->
-            </div>
-        </div>
-        <!-- Title and Top Buttons End -->
-
-        <!-- Content Start -->
-
-        <form class="validasi" novalidate>
+@extends('panel.master')
+@section('content')
+    <main>
+        @foreach ($media_data as $md)
             <section class="scroll-section">
-                <div class="h3 text-primary text-capitalize">Data Perusahaan</div>
-                <div class="card mb-5">
+                <div class="h3 text-primary text-capitalize">Edit Data Perusahaan Media {{ $md->jenis_media }}</div>
+                <div class="card wizard mb-3" id="wizardBasic1">
+                    <div class="card-header border-0 pb-0">
+                        <ul class="nav nav-tabs justify-content-center" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link text-center" href="#validationFirst" role="tab">
+                                    <div class="mb-1 title d-none d-sm-block">DATA BADAN HUKUM</div>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link text-center" href="#validationSecond" role="tab">
+                                    <div class="mb-1 title d-none d-sm-block">DATA MEDIA</div>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link text-center" href="#validationThird" role="tab">
+                                    <div class="mb-1 title d-none d-sm-block">KUALIFIKASI MEDIA</div>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link text-center" href="#validationFour" role="tab">
+                                    <div class="mb-1 title d-none d-sm-block">PERWAKILAN MEDIA</div>
+                                </a>
+                            </li>
+                            <li class="nav-item d-none" role="presentation">
+                                <a class="nav-link text-center" href="#validationLast" role="tab"></a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="Nama Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Nama Perusahaan</h2>
-                                    </label>
-                                </div>
-                                <div class="form-floating">
-                                    <input id="namaPerusahaan" name="namaPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control"
-                                        value="{{ $md->nama_perusahaan }}">
-                                    <div id="pengajuanNo" data-nopengajuan="{{ $md->pengajuan_no }}"></div>
-                                    <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}"></div>
-                                    <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
-                                </div>
-                            </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade" id="validationFirst" role="tabpanel">
+                                <h5 class="card-title">DATA BADAN HUKUM</h5>
+                                <p class="card-text text-alternate mb-4"></p>
+                                <form class="tooltip-end-bottom validasi">
+                                    <div class="row mb-3">
+                                        <h2 class="small-title">Perusahaan/Badan Hukum</h2>
+                                        <div class="col-lg-12 col-md-6 col-12 mb-md-0">
+                                            <div class="form-floating mb-3">
+                                                <input id="namaPerusahaan" name="namaPerusahaan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->namaPerusahaan }}">
+                                                <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
+                                                <div id="pengajuanNo" data-noPengajuan="{{ $md->pengajuan_no }}" hidden>
+                                                    {{ $md->pengajuan_no }}</div>
+                                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}"
+                                                    hidden>
+                                                    {{ $md->jenis_media }}</div>
+                                            </div>
 
-                            <hr class="mb-4">
+                                            <div class="form-floating mb-3">
+                                                <input id="namaPenanggungJawab" name="namaPenanggungJawab" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->namaPenanggungJawab }}">
+                                                <label class="ps-4">Nama Penanggung Jawab</label>
+                                            </div>
 
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Nama Pimpinan Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Nama Pimpinan Perusahaan</h2>
-                                    </label>
-                                </div>
-                                <div class="form-floating">
-                                    <input id="namaPimred" name="namaPimred" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control"
-                                        value="{{ $md->nama_pimred }}">
-                                    <label class="ps-4">Nama Pimpinan Perusahaan</label>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="Kontak" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Kontak</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-4 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                    <div class="form-floating">
-                                        <input id="alamatPerusahaan" name="alamatPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->alamat_perusahaan }}">
-                                        <label class="ps-4">Alamat Perusahaan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->tlpn_perusahaan }}">
-                                        <label class="ps-4">No Telpon Perusahaan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="emailPerusahaan" name="emailPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->email_perusahaan }}">
-                                        <label class="ps-4">Email Perusahaan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- cok disini tambahin 2 kolom lagi  --}}
-                            {{-- 1.  nama media cetak harian  --}}
-                            <hr class="mb-4">
-
-                            {{-- 2. nama dan alamat percetakan --}}
-                            {{-- opsional harian --}}
-                            @if ($md->jenis_media == 'harian')
-                                <div class="row mb-4">
-                                    <div class="form-check">
-                                        @if (Request::segment(2) == 'verifikasi')
-                                            <input class="form-check-input" type="checkbox" value="Percetakan" />
-                                        @endif
-                                        <label class="form-check-label">
-                                            <h2 class="small-title">Percetakan</h2>
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                        <div class="form-floating">
-                                            <input id="namaPercetakan" name="namaPercetakan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control"
-                                                value="{{ $md->nama_percetakan }}">
-                                            <label class="ps-4">Nama Percetakan</label>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12 col-12 mb-lg-0 ">
+                                                    <div class="form-floating mb-3">
+                                                        <input id="namaPimred" name="namaPimred" type="text"
+                                                            class="form-control form-control-sm" placeholder="form-control"
+                                                            value="{{ $md->namaPimred }}">
+                                                        <label class="ps-4">Nama Pimpinan Redaksi Perusahaan</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12 mb-lg-0">
+                                                    <div class="form-floating mb-3">
+                                                        <div class="dropzone dropzone-floating-label"
+                                                            id="fileSuratPernyataanPimred">
+                                                            <input type="text"
+                                                                value="{{ $md->fileSuratPernyataanPimred }}" hidden>
+                                                        </div>
+                                                        <label class="ps-4">File PDF
+                                                            Surat Pernyataan Sebagai Pimred dari Badan Hukum</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-12 col-12 mb-md-0 mb-2">
-                                        <div class="form-floating">
-                                            <input id="alamatPercetakan" name="alamatPercetakan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control"
-                                                value="{{ $md->alamat_percetakan }}">
-                                            <label class="ps-4">Alamat Percetakan</label>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title">Pengesahan Kemenkumham Perusahaan</h2>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->kumhamPerusahaan }}">
+                                                <label class="ps-4">No Pengesahan Kemenkumham Perusahaan</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <div class="dropzone dropzone-floating-label" id="fileKumhamPerusahaan">
+                                                    <input type="text" value="{{ $md->fileKumhamPerusahaan }}" hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF Pengesahan Kemenkumham Perusahaan</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <hr class="mb-4">
-                            @endif
+                                    <hr class="mb-4">
 
-                            {{-- opsional Elektronik --}}
-                            @if ($md->jenis_media == 'elektronik')
-                                <div class="row mb-4">
-                                    <div class="form-check">
-                                        @if (Request::segment(2) == 'verifikasi')
-                                            <input class="form-check-input" type="checkbox"
-                                                value="Dokumen izin Penyelenggaraan Penyiaran" />
-                                        @endif
-                                        <label class="form-check-label">
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Kontak Perusahaan</h2>
+                                        <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                            <div class="row mb-3">
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <div class="form-floating w-100">
+                                                        <select class="select-floating" id="alamatProvPerusahaan"
+                                                            name="alamatProvPerusahaan">
+                                                            <option label="&nbsp;"></option>
+                                                            <input type="text" id="dataAlamatProvPerusahaan"
+                                                                value="{{ $md->alamatProvPerusahaan }}" hidden>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-12 col-12">
+                                                    <div class="form-floating w-100">
+                                                        <select class="select-floating" id="alamatKabPerusahaan"
+                                                            name="alamatKabPerusahaan">
+                                                            <option label="&nbsp;"></option>
+                                                            <input type="text" id="dataAlamatKabPerusahaan"
+                                                                value="{{ $md->alamatKabPerusahaan }}" hidden>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input id="alamatPerusahaan" name="alamatPerusahaan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->alamatPerusahaan }}">
+                                                <label class="ps-4">Alamat Perusahaan Detail</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->tlpnPerusahaan }}">
+                                                <label class="ps-4">No Telpon Perusahaan</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="emailPerusahaan" name="emailPerusahaan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->emailPerusahaan }}">
+                                                <label class="ps-4">Email Perusahaan</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Status KSWP</h2>
+                                        <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating w-100">
+                                                <select class="select-floating" id="statusKswp" name="statusKswp">
+                                                    @if ($md->statusKswp)
+                                                        <option value="{{ $md->statusKswp }}">{{ $md->statusKswp }}
+                                                        </option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    <option value="valid">KSPW Valid</option>
+                                                    <option value="tidak valid">KSPW Tidak Valid</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title">NPWP Perusahaan/Badan Hukum</h2>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="npwpPerusahaan" name="npwpPerusahaan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->npwpPerusahaan }}">
+                                                <label class="ps-4">No NPWP Perusahaan/Badan Hukum</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <div class="form-floating">
+                                                <div class="dropzone dropzone-floating-label" id="fileNpwpPerusahaan"
+                                                    name="fileNpwpPerusahaan">
+                                                    <input type="text" value="{{ $md->fileNpwpPerusahaan }}" hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF
+                                                    NPWP Perusahaan</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title">Nomor Induk Berusaha Perusahaan/Badan Hukum</h2>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="nibPerusahaan" name="nibPerusahaan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->nibPerusahaan }}">
+                                                <label class="ps-4">Nomor Induk Berusaha Perusahaan/Badan Hukum</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <div class="form-floating">
+                                                <div class="dropzone dropzone-floating-label" id="fileNibPerusahaan"
+                                                    name="fileNibPerusahaan">
+                                                    <input type="text" value="{{ $md->fileNibPerusahaan }}" hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF
+                                                    Nomor Induk Berusaha Perusahaan/Badan Hukum</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Nomor KLBI</h2>
+                                        <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating w-100">
+                                                <select class="select-floating" id="noKlbi" name="noKlbi">
+                                                    @if ($md->noKlbi)
+                                                        <option value="{{ trim($md->noKlbi, 'klbi ') }}">
+                                                            {{ $md->noKlbi }}</option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    <option value="63911">KLBI 63911</option>
+                                                    <option value="63912">KLBI 63912</option>
+                                                    <option value="60201">KLBI 60201</option>
+                                                    <option value="60202">KLBI 60202</option>
+                                                    <option value="60101">KLBI 60101</option>
+                                                    <option value="60102">KLBI 60102</option>
+                                                    <option value="58130">KLBI 58130</option>
+                                                    <option value="63122">KLBI 63122</option>
+                                                    <option value="63990">KLBI 63990</option>
+                                                    <option value="74130">KLBI 74130</option>
+                                                    <option value="18111">KLBI 18111</option>
+                                                    <option value="73100">KLBI 73100</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Nomor KBKI</h2>
+                                        <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="noKbki" name="noKbki" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->noKbki }}">
+                                                <label class="ps-4">Nomor KBKI Perusahaan</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    @if ($md->jenis_media == 'elektronik')
+                                        <hr class="mb-4">
+
+                                        <div class="row mb-4">
                                             <h2 class="small-title mb-md-0 mb-2">Dokumen izin Penyelenggaraan Penyiaran
                                             </h2>
-                                        </label>
+                                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating">
+                                                    <input id="izinIpp" name="izinIpp" type="text"
+                                                        class="form-control form-control-sm" placeholder="form-control"
+                                                        value="{{ $md->izinIpp }}">
+                                                    <label class="ps-4">Izin Penyelenggaraan Penyiaran</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating">
+                                                    <div class="dropzone dropzone-floating-label" id="fileIzinIpp">
+                                                        <input type="text" value="{{ $md->fileIzinIpp }}" hidden>
+                                                    </div>
+                                                    <label class="ps-4">File PDF Izin Penyelenggaraan Penyiaran</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    @if ($md->jenis_media == 'harian')
+                                        <hr class="mb-4">
+
+                                        <div class="row mb-4">
+                                            <h2 class="small-title">Percetakan</h2>
+                                            <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                                <div class="form-floating">
+                                                    <input id="namaPercetakan" name="namaPercetakan" type="text"
+                                                        class="form-control form-control-sm" placeholder="form-control"
+                                                        value="{{ $md->namaPercetakan }}">
+                                                    <label class="ps-4">Nama Percetakan</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12 col-12 mb-md-0 mb-2">
+                                                <div class="form-floating">
+                                                    <input id="alamatPercetakan" name="alamatPercetakan" type="text"
+                                                        class="form-control form-control-sm" placeholder="form-control"
+                                                        value="{{ $md->alamatPercetakan }}">
+                                                    <label class="ps-4">Alamat Percetakan</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="validationSecond" role="tabpanel">
+                                <h5 class="card-title">DATA MEDIA</h5>
+                                <p class="card-text text-alternate mb-4"></p>
+                                <form class="tooltip-end-bottom validasi">
+                                    <div class="row mb-3">
+                                        <h2 class="small-title">Nama Media</h2>
+                                        <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="namaMedia" name="namaMedia" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->namaMedia }}">
+                                                <label class="ps-4">Nama Media</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileIzinIpp/{{ $md->file_izin_ipp }}" target="_blank"
-                                            type="button" class="btn btn-quaternary mb-1">Cek
-                                            Izin IPP</a>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Status Verifikasi Media</h2>
+                                        <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating w-100">
+                                                <select class="select-floating" id="verifikasiDewanPers"
+                                                    name="verifikasiDewanPers">
+                                                    @if ($md->verifikasiDewanPers)
+                                                        <option value="{{ $md->verifikasiDewanPers }}">
+                                                            {{ $md->verifikasiDewanPers }}</option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    <option value="faktual dan administratif">Terverifikasi Faktual dan
+                                                        Administratif</option>
+                                                    <option value="administratif">Terverifikasi Administratif</option>
+                                                    <option value="belum">Belum Terverifikasi</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <hr class="mb-4">
-                            @endif
+                                    <hr class="mb-4">
 
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="NPWP Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">NPWP Perusahaan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="npwpPerusahaan" name="npwpPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->npwp_perusahaan }}">
-                                        <label class="ps-4">No NPWP Perusahaan</label>
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Sertifikat UKW Pimred</h2>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <div class="w-100">
+                                                    <select class="select-floating" id="jenisSerfikatUkwPimred"
+                                                        name="jenisSerfikatUkwPimred">
+                                                        @if ($md->jenisSerfikatUkwPimred)
+                                                            <option value="{{ $md->jenisSerfikatUkwPimred }}">
+                                                                {{ $md->jenisSerfikatUkwPimred }}</option>
+                                                        @else
+                                                            <option label="&nbsp;"></option>
+                                                        @endif
+                                                        <option value="utama">Utama</option>
+                                                        <option value="madya">Madya</option>
+                                                        <option value="muda">Muda</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating">
+                                                <input id="serfikatUkwPimred" name="serfikatUkwPimred" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->serfikatUkwPimred }}">
+                                                <label class="ps-4">Nomor Sertifikat Pimred Media</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2 mt-3">
+                                            <div class="form-floating">
+                                                <div class="dropzone dropzone-floating-label" id="fileSerfikatUkwPimred">
+                                                    <input type="text" value="{{ $md->fileSerfikatUkwPimred }}"
+                                                        hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF Sertifikat Pimpinan Redaksi</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <a href="/tmp/uploads/fileNpwpPerusahaan/{{ $md->file_npwp_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        Npwp</a>
-                                </div>
-                            </div>
 
-                            <hr class="mb-4">
+                                    <hr class="mb-4">
 
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Akta Pendirian dan Perubahan Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-md-0 mb-2">Akta Pendirian dan Perubahan Perusahaan
-                                        </h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="aktaPerusahaan" name="aktaPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->akta_perusahaan }}">
-                                        <label class="ps-4">No Akta Pendirian Perusahaan</label>
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perusahaan/Media Pers</h2>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating w-100">
+                                                <select class="select-floating" id="afiliasiPerusahaan"
+                                                    name="afiliasiPerusahaan">
+                                                    @if ($md->afiliasiPerusahaan)
+                                                        <option value="{{ $md->afiliasiPerusahaan }}">
+                                                            {{ $md->afiliasiPerusahaan }}</option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    <option value="tidak terafiliasi">Tidak Terafiliasi</option>
+                                                    <option value="diakui">Organisasi Pers yang diakui Dewan Pers
+                                                    </option>
+                                                    <option value="belum diakui">Organisasi Pers yang belum diakui Dewan
+                                                        Pers
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating fileAfiliasiPerusahaan" hidden>
+                                                <div class="dropzone dropzone-floating-label" id="fileAfiliasiPerusahaan">
+                                                    <input type="text" value="{{ $md->fileAfiliasiPerusahaan }}"
+                                                        hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF Bukti Afiliasi Organisasi Pers Media</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileAktaPerusahaan/{{ $md->file_akta_perusahaan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Domisili Redaksi Media</h2>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating w-100">
+                                                <select class="select-floating" id="domisiliRedaksiMedia"
+                                                    name="domisiliRedaksiMedia">
+                                                    @if ($md->domisiliRedaksiMedia)
+                                                        <option value="{{ $md->domisiliRedaksiMedia }}">
+                                                            {{ $md->domisiliRedaksiMedia }}</option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    <option value="tulang bawang barat">di Tulang Bawang Barat</option>
+                                                    <option value="luar tulang bawang barat">di luar Tulang Bawang Barat,
+                                                        di Prov.Lampung</option>
+                                                    <option value="luar lampung">di luar Provinsi Lampung</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating fileDomisiliRedaksiMedia" hidden>
+                                                <div class="dropzone dropzone-floating-label"
+                                                    id="fileDomisiliRedaksiMedia">
+                                                    <input type="text" value="{{ $md->fileDomisiliRedaksiMedia }}"
+                                                        hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF, Surat Keterangan Domisili dari Instansi
+                                                    Berwenang</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <hr class="mb-4">
+                                    <hr class="mb-4">
 
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Pengesahan Kemenkumham Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-md-0 mb-2">Pengesahan Kemenkumham Perusahaan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->kumham_perusahaan }}">
-                                        <label class="ps-4">No Pengesahan Kemenkumham Perusahaan</label>
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Kanal/program Tentang Tulang Bawang Barat</h2>
+                                        <div class="col-lg-5 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating w-100">
+                                                <select class="select-floating" id="kanalKhusus" name="kanalKhusus">
+                                                    @if ($md->kanalKhusus)
+                                                        <option value="{{ $md->kanalKhusus }}">{{ $md->kanalKhusus }}
+                                                        </option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    <option value="khusus">Khusus</option>
+                                                    <option value="ada">Ada</option>
+                                                    <option value="tidak ada">Tidak Ada</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating fileKanalKhusus" hidden>
+                                                <div class="dropzone dropzone-floating-label" id="fileKanalKhusus">
+                                                    <input type="text" value="{{ $md->fileKanalKhusus }}" hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF, Bukti Adanya Kanal/program khusus Tulang
+                                                    Bawang
+                                                    Barat</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
-                                    <a href="/tmp/uploads/fileKumhamPerusahaan/{{ $md->file_kumham_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
 
-                            <hr class="mb-4">
+                                    <hr class="mb-4">
 
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Jumlah Wartawan Kompeten Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">Wartawan Kompeten Perusahaan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="wartawanKompetenPerusahaan" name="wartawanKompetenPerusahaan"
-                                            type="text" class="form-control form-control-sm"
-                                            placeholder="form-control"
-                                            value="{{ $md->wartawan_kompeten_perusahaan }}">
-                                        <label class="ps-4">Jumlah Wartawan Kompeten Perusahaan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileWartawanKompetenPerusahaan/{{ $md->file_wartawan_kompeten_perusahaan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Laporan SPT Pajak Tahunan Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-md-0 mb-2">Laporan SPT Pajak Tahunan Perusahaan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileSptPerusahaan/{{ $md->file_spt_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Verifikasi Dewan Pers Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-md-0 mb-2">Verifikasi Dewan Pers Perusahaan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileDewanPersPerusahaan/{{ $md->file_dewan_pers_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Afiliasi Organisasi Pers (Organisasi Wartawan)" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">Afiliasi Organisasi Pers (Perusahaan)
-                                        </h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileAfiliasiPerusahaan/{{ $md->file_afiliasi_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Surat Pernyataan Nama Media dan Domisili" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-md-0 mb-2">Surat Pernyataan Nama Media dan Domisili
-                                        </h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileDomisiliPerusahaan/{{ $md->file_domisili_perusahaan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Surat Kuasa Perwakilan Media" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Surat Kuasa Perwakilan Media</h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileKuasaPerwakilan/{{ $md->file_kuasa_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Surat Permohonan Kerjasama dan CV Perusahaan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-md-0 mb-2">Surat Permohonan Kerjasama dan CV
-                                            Perusahaan
-                                    </label>
-                                </div>
-                                </h2>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileKerjasama/{{ $md->file_kerjasama }}" target="_blank"
-                                        type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                        </section>
-                    </div>
-                </div>
-
-                <div class="h3 text-primary">Data Perwakilan</div>
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="Nama Media" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-md-0 mb-2">Nama Media</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="namaMedia" name="namaMedia" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->nama_media }}">
-                                        <label class="ps-4">Nama Media</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Nama Biro Perwakilan Media" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Nama Biro Perwakilan Media</h2>
-                                    </label>
-                                </div>
-                                <div class="form-floating">
-                                    <input id="namaBiroPerwakilan" name="namaBiroPerwakilan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control"
-                                        value="{{ $md->nama_biro_perwakilan }}">
-                                    <label class="ps-4">Nama Biro Perwakilan Media</label>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="Kontak Perwakilan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Kontak Perwakilan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-4 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                    <div class="form-floating">
-                                        <input id="alamatPerwakilan" name="alamatPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->alamat_perwakilan }}">
-                                        <label class="ps-4">Alamat Perwakilan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->tlpn_perwakilan }}">
-                                        <label class="ps-4">No Telpon Perwakilan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="emailPerwakilan" name="emailPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->email_perwakilan }}">
-                                        <label class="ps-4">Email Perwakilan</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="KTP Perwakilan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">KTP Perwakilan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="ktpPerwakilan" name="ktpPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->ktp_perwakilan }}">
-                                        <label class="ps-4">No KTP Perwakilan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileKtpPerwakilan/{{ $md->file_ktp_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="KK Perwakilan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">KK Perwakilan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="kkPerwakilan" name="kkPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->kk_perwakilan }}">
-                                        <label class="ps-4">No KK Perwakilan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileKKPerwakilan/{{ $md->file_kk_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="NPWP Perwakilan" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">NPWP Perwakilan</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="npwpPerwakilan" name="npwpPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->npwp_perwakilan }}">
-                                        <label class="ps-4">No NPWP Perwakilan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileNpwpPerwakilan/{{ $md->file_npwp_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Dokumen Kompetensi Perwakilan Media" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">Dokumen Kompetensi Perwakilan Media</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="form-floating">
-                                        <input id="kompetensiPerwakilan" name="kompetensiPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->kompetensi_perwakilan }}">
-                                        <label class="ps-4">Jenis Kompetensi Perwakilan Media</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileKopetensiPerwakilan/{{ $md->file_kopetensi_perwakilan }}"
-                                            target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Afiliasi Organisasi Pers (Organisasi Wartawan)" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">Afiliasi Organisasi Pers (Organisasi Wartawan)
-                                        </h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileAfiliasiPerwakilan/{{ $md->file_afiliasi_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Keterangan Domisili Perwakilan Media" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">Keterangan Domisili Perwakilan Media</h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileDomisiliPerwakilan/{{ $md->file_domisili_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Surat Pernyataan Mematuhi Kode Etik Jurnalistik" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title mb-1">Surat Pernyataan Mematuhi Kode Etik Jurnalistik
-                                        </h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/fileKodeEtikPerwakilan/{{ $md->file_kode_etik_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                            <hr class="mb-4">
-
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox"
-                                            value="Surat Pernyataan 1 Perusahaan 1 Media" />
-                                    @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Surat Pernyataan 1 Perusahaan 1 Media</h2>
-                                    </label>
-                                </div>
-                                <div class="col-12  ">
-                                    <a href="/tmp/uploads/filePernyataanMediaPerwakilan/{{ $md->file_pernyataan_media_perwakilan }}"
-                                        target="_blank" type="button" class="btn btn-quaternary mb-1">Cek
-                                        File</a>
-                                </div>
-                            </div>
-
-                        </section>
-                    </div>
-                </div>
-
-                <div class="h3 text-primary">Data Rekening</div>
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-                            <div class="row mb-4">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input" type="checkbox" value="Rekening Bank" />
-                                    @endif
-                                    <label class="form-check-label">
+                                    <div class="row mb-4">
                                         <h2 class="small-title">Rekening Bank</h2>
-                                    </label>
-                                </div>
-                                <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-
-                                    <div class="top-label mb-2 w-100">
-                                        <select name="jenisRekening" id="jenisRekening">
-                                            <option value="{{ $md->jenis_rekening }}">{{ $md->jenis_rekening }}
-                                            </option>
-                                            <option value="perusahaan">perusahaan</option>
-                                            <option value="perwakilan">Perwakilan</option>
-                                        </select>
-                                        <span>Jenis Rekening</span>
+                                        <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                            <div class="top-label mb-2 w-100">
+                                                <select name="jenisRekening" id="jenisRekening">
+                                                    @if ($md->jenisRekening)
+                                                        <option value="{{ $md->jenisRekening }}">{{ $md->jenisRekening }}
+                                                        </option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    <option value="perusahaan">perusahaan</option>
+                                                    <option value="perwakilan">Perwakilan</option>
+                                                </select>
+                                                <span>Jenis Rekening</span>
+                                            </div>
+                                            <div class="form-floating mb-2">
+                                                <input id="namaBank" name="namaBank" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->namaBank }}">
+                                                <label class="ps-4">Nama Bank</label>
+                                            </div>
+                                            <div class="form-floating mb-2">
+                                                <input id="pemilikRekening" name="pemilikRekening" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->pemilikRekening }}">
+                                                <label class="ps-4">Nama Pemilik Rekening</label>
+                                            </div>
+                                            <div class="form-floating mb-2">
+                                                <input id="noRekening" name="noRekening" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->noRekening }}">
+                                                <label class="ps-4">No Rekening Perusahaan</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                            <div class="form-floating">
+                                                <div class="dropzone dropzone-floating-label" id="fileRekening">
+                                                    <input type="text" value="{{ $md->fileRekening }}" hidden>
+                                                </div>
+                                                <label class="ps-4">File PDF
+                                                    Rekening Perusahaan</label>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="form-floating mb-2">
-                                        <input id="namaBank" name="namaBank" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->nama_bank }}">
-                                        <label class="ps-4">Nama Bank</label>
-                                    </div>
-                                    <div class="form-floating mb-2">
-                                        <input id="pemilikRekening" name="pemilikRekening" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->pemilik_rekening }}">
-                                        <label class="ps-4">Nama Pemilik Rekening</label>
-                                    </div>
-                                    <div class="form-floating mb-2">
-                                        <input id="noRekening" name="noRekening" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control"
-                                            value="{{ $md->no_rekening }}">
-                                        <label class="ps-4">No Rekening Perusahaan</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
-                                    <div class="col-12  ">
-                                        <a href="/tmp/uploads/fileRekening/{{ $md->file_rekening }}" target="_blank"
-                                            type="button" class="btn btn-quaternary mb-1">Cek
-                                            File</a>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                        </section>
-                    </div>
-                </div>
 
-                <div class="h3 text-primary">Signature</div>
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <section class="scroll-section" id="breakpointSpecificResponsive">
-                            <div class="container">
-                                <div class="form-check">
-                                    @if (Request::segment(2) == 'verifikasi')
-                                        <input class="form-check-input " type="checkbox" value="Tanda Tangan" />
+                            <div class="tab-pane fade" id="validationThird" role="tabpanel">
+                                <h5 class="card-title">KUALIFIKASI MEDIA</h5>
+                                <p class="card-text text-alternate mb-4"></p>
+                                <form class="tooltip-end-bottom validasi">
+                                    <div class="row mb-3">
+                                        <h2 class="small-title mb-md-0 mb-2">Tahun Berdiri Media</h2>
+                                        <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
+                                            <div class="form-floating w-100">
+                                                <select class="select-floating" id="tahunBerdiriMedia"
+                                                    name="tahunBerdiriMedia">
+                                                    @if ($md->tahunBerdiriMedia)
+                                                        <option value="{{ $md->tahunBerdiriMedia }}">
+                                                            {{ $md->tahunBerdiriMedia }}</option>
+                                                    @else
+                                                        <option label="&nbsp;"></option>
+                                                    @endif
+                                                    @php
+                                                        for ($i = date('Y'); $i >= date('Y') - 100; $i -= 1) {
+                                                            echo '<option value="' . $i . '">' . $i . '</option>';
+                                                        }
+                                                    @endphp
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-4">
+
+                                    @if ($md->jenis_media == 'elektronik')
+                                        <div class="row mb-3">
+                                            <h2 class="small-title mb-md-0 mb-2">Jangkauan Siar Media Elektronik</h2>
+                                            <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating w-100">
+                                                    <select class="select-floating" id="jenisJangkauanSiarMediaElektronik"
+                                                        name="jenisJangkauanSiarMediaElektronik">
+                                                        @if ($md->jenisJangkauanSiarMediaElektronik)
+                                                            <option value="{{ $md->jenisJangkauanSiarMediaElektronik }}">
+                                                                {{ $md->jenisJangkauanSiarMediaElektronik }}</option>
+                                                        @else
+                                                            <option label="&nbsp;"></option>
+                                                        @endif
+                                                        <option value="tv">Televisi</option>
+                                                        <option value="radio">Radio</option>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating w-100">
+                                                    <select class="select-floating" id="jangkauanSiarMediaElektronik"
+                                                        name="jangkauanSiarMediaElektronik">
+                                                        @if ($md->jangkauanSiarMediaElektronik)
+                                                            <option value="{{ $md->jangkauanSiarMediaElektronik }}">
+                                                                {{ $md->jangkauanSiarMediaElektronik }}</option>
+                                                        @else
+                                                            <option label="&nbsp;"></option>
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endif
-                                    <label class="form-check-label">
-                                        <h2 class="small-title">Tanda Tangan Disini</h2>
-                                    </label>
-                                </div>
-                                {{-- <div class="d-flex justify-content-center mb-2">
-                                    <canvas id="signature-pad" style="width: 300px; height: 200px;"
-                                        class="border signature-pad "></canvas>
-                                </div> --}}
-                                <div class="d-flex justify-content-center mb-2">
-                                    <img class="img-fluid rounded" alt="Responsive image"
-                                        src="/tmp/uploads/uploadsignature/{{ $md->file_signature_data }}"
-                                        alt="">
-                                </div>
-                                <input id="signatureData" type="text" value="{{ $md->file_signature_data }}"
-                                    disabled hidden>
+
+                                    @if ($md->jenis_media == 'harian')
+                                        <div class="row mb-3">
+                                            <h2 class="small-title mb-md-0 mb-2">Jumlah Oplah Media Cetak Per Minggu</h2>
+                                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating w-100">
+                                                    <select class="select-floating" id="jumlahOplahMediaCetakPerMinggu"
+                                                        name="jumlahOplahMediaCetakPerMinggu">
+                                                        @if ($md->jumlahOplahMediaCetakPerMinggu)
+                                                            <option value="{{ $md->jumlahOplahMediaCetakPerMinggu }}">
+                                                                {{ $md->jumlahOplahMediaCetakPerMinggu }}</option>
+                                                        @else
+                                                            <option label="&nbsp;"></option>
+                                                        @endif
+                                                        <option value="lebih dari 8000">Lebih Dari 8.000</option>
+                                                        <option value="4000 sampai 8000">4.000 Sampai 8.000</option>
+                                                        <option value="kurang dari 4000">Kurang Dari 4.000</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating jumlahOplahMediaCetakPerMinggu">
+                                                    <div class="dropzone dropzone-floating-label"
+                                                        id="fileJumlahOplahMediaCetakPerMinggu">
+                                                        <input type="text"
+                                                            value="{{ $md->fileJumlahOplahMediaCetakPerMinggu }}" hidden>
+                                                    </div>
+                                                    <label class="ps-4">File PDF, Scan halaman depan 10 Terbitan Media
+                                                        dengan
+                                                        tanggal terbit berurutan</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    @if ($md->jenis_media == 'siber')
+                                        <div class="row mb-3">
+                                            <h2 class="small-title mb-md-0 mb-2">Jumlah Konten Berita Aktif dan Positif Per
+                                                Tahun
+                                            </h2>
+                                            <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating w-100">
+                                                    <select class="select-floating" id="jumlahKontenBeritaAktif"
+                                                        name="jumlahKontenBeritaAktif">
+                                                        @if ($md->jumlahKontenBeritaAktif)
+                                                            <option value="{{ $md->jumlahKontenBeritaAktif }}">
+                                                                {{ $md->jumlahKontenBeritaAktif }}</option>
+                                                        @else
+                                                            <option label="&nbsp;"></option>
+                                                        @endif
+                                                        <option value="lebih dari 900">Lebih Dari 900</option>
+                                                        <option value="lebih dari 600">Lebih Dari 600 </option>
+                                                        <option value="lebih dari 300">Lebih Dari 300</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </form>
                             </div>
 
-                        </section>
-                        <div class="d-flex justify-content-end">
-                            <div class="btn-group" role="group">
-                                @if (Request::segment(2) == 'verifikasi')
-                                    <button id="tolak" type="submit" class="btn btn-danger text-capitalize"
-                                        disabled>tolak</button>
-                                    <button id="terima" type="submit"
-                                        class="btn btn-primary text-capitalize">terima</button>
-                                @endif
-                                <button id="kembali" type="submit"
-                                    class="btn btn-dark text-capitalize">kembali</button>
+                            <div class="tab-pane fade" id="validationFour" role="tabpanel">
+                                <h5 class="card-title">PERWAKILAN MEDIA</h5>
+                                <p class="card-text text-alternate mb-4"></p>
+                                <form class="tooltip-end-bottom validasi">
+                                    <div class="row mb-3">
+                                        <h2 class="small-title">Data Perwakilan Media</h2>
+                                        <div class="col-lg-12 col-md-6 col-12">
+                                            <div class="form-floating mb-lg-2 mb-md-2 mb-2">
+                                                <input id="namaPerwakilan" name="namaPerwakilan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->namaPerwakilan }}">
+                                                <label class="ps-4">Nama Perwakilan Media</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-6 col-12">
+                                            <div class="form-floating mb-lg-2 mb-md-2 mb-2">
+                                                <input id="nomorKKPerwakilan" name="nomorKKPerwakilan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->nomorKKPerwakilan }}">
+                                                <label class="ps-4">Nomor Kartu Keluarga</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-6 col-12">
+                                            <div class="form-floating mb-lg-2 mb-md-2 mb-2">
+                                                <input id="nomorKtpPerwakilan" name="nomorKtpPerwakilan" type="text"
+                                                    class="form-control form-control-sm" placeholder="form-control"
+                                                    value="{{ $md->nomorKtpPerwakilan }}">
+                                                <label class="ps-4">Nomor Induk Kependudukan</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                                <div class="form-floating">
+                                                    <input id="npwpPerwakilan" name="npwpPerwakilan" type="text"
+                                                        class="form-control form-control-sm" placeholder="form-control"
+                                                        value="{{ $md->npwpPerwakilan }}">
+                                                    <label class="ps-4">No NPWP Pribadi Perwakilan Media</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-floating">
+                                                    <div class="dropzone dropzone-floating-label" id="fileNpwpPerwakilan"
+                                                        name="fileNpwpPerwakilan">
+                                                        <input type="text" value="{{ $md->fileNpwpPerwakilan }}"
+                                                            hidden>
+                                                    </div>
+                                                    <label class="ps-4">File PDF NPWP Pribadi Perwakilan Media</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr class="mb-4">
+
+                                        <div class="row mb-4">
+                                            <h2 class="small-title mb-md-0 mb-2">Sertifikat Kompetensi Dewan Pers
+                                                Perwakilan
+                                                Media
+                                            </h2>
+                                            <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                <div class="form-floating w-100 mb-3">
+                                                    <select class="select-floating" id="jenisSerfikatUkwPerwakilan"
+                                                        name="jenisSerfikatUkwPerwakilan">
+                                                        @if ($md->jenisSerfikatUkwPerwakilan)
+                                                            <option value="{{ $md->jenisSerfikatUkwPerwakilan }}">
+                                                                {{ $md->jenisSerfikatUkwPerwakilan }}</option>
+                                                        @else
+                                                            <option label="&nbsp;"></option>
+                                                        @endif
+                                                        <option value="belum">Belum Ada Sertifikat</option>
+                                                        <option value="utama">Utama</option>
+                                                        <option value="madya">Madya</option>
+                                                        <option value="muda">Muda</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="serfikatUkwPerwakilan" hidden>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                        <div class="form-floating">
+                                                            <input id="serfikatUkwPerwakilan" name="serfikatUkwPerwakilan"
+                                                                type="text" class="form-control form-control-sm"
+                                                                placeholder="form-control"
+                                                                value="{{ $md->serfikatUkwPerwakilan }}">
+                                                            <label class="ps-4">Nomor Sertifikat Kompetensi Perwakilan
+                                                                Media</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                        <div class="form-floating">
+                                                            <div class="dropzone dropzone-floating-label"
+                                                                id="fileSerfikatUkwPerwakilan">
+                                                                <input type="text"
+                                                                    value="{{ $md->fileSerfikatUkwPerwakilan }}" hidden>
+                                                            </div>
+                                                            <label class="ps-4">File PDF Sertifikat Kompetensi Dewan Pers
+                                                                Perwakilan Media</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr class="mb-4">
+
+                                        <div class="row mb-4">
+                                            <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perwakilan Media</h2>
+                                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                                <div class="form-floating">
+                                                    <input id="afiliasiPersPerwakilan" name="afiliasiPersPerwakilan"
+                                                        type="text" class="form-control form-control-sm"
+                                                        placeholder="form-control"
+                                                        value="{{ $md->afiliasiPersPerwakilan }}">
+                                                    <label class="ps-4">Nama Organisasi Pers yang Terafiliasi</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
+                                                <div class="form-floating">
+                                                    <div class="dropzone dropzone-floating-label"
+                                                        id="fileAfiliasiPersPerwakilan" name="fileafiliasiPersPerwakilan">
+                                                        <input type="text"
+                                                            value="{{ $md->fileafiliasiPersPerwakilan }}" hidden>
+                                                    </div>
+                                                    <label class="ps-4">File PDF Bukti Keanggotaan Organisasi Pers
+                                                        Perwakilan Media</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="mb-4">
+
+                                    <div class="row mb-4">
+                                        <h2 class="small-title">Alamat dan Kontak Perwakilan Media</h2>
+                                        <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
+                                            <div class="row mb-3">
+                                                <div class="col-lg-6 col-md-12 col-12 mb-2">
+                                                    <div class="w-100">
+                                                        <select id="alamatProvPerwakilan" name="alamatProvPerwakilan">
+                                                            <option label="&nbsp;"></option>
+                                                            <input type="text" id="dataAlamatProvPerwakilan"
+                                                                value="{{ $md->alamatProvPerwakilan }}" hidden>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12 col-12 mb-2">
+                                                    <div class="w-100">
+                                                        <select id="alamatKabPerwakilan" name="alamatKabPerwakilan">
+                                                            <option label="&nbsp;"></option>
+                                                            <input type="text" id="dataAlamatKabPerwakilan"
+                                                                value="{{ $md->alamatKabPerwakilan }}" hidden>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 col-md-12 col-12 mb-lg-2 mb-md-2 mb-2">
+                                                    <div class="form-floating">
+                                                        <input id="alamatPerwakilan" name="alamatPerwakilan"
+                                                            type="text" class="form-control form-control-sm"
+                                                            placeholder="form-control"
+                                                            value="{{ $md->alamatPerwakilan }}">
+                                                        <label class="ps-4">Alamat Perwakilan Media Detail</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                    <div class="form-floating">
+                                                        <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text"
+                                                            class="form-control form-control-sm"
+                                                            placeholder="form-control" value="{{ $md->tlpnPerwakilan }}">
+                                                        <label class="ps-4">No Telpon Perwakilan Media</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
+                                                    <div class="form-floating">
+                                                        <input id="emailPerwakilan" name="emailPerwakilan" type="text"
+                                                            class="form-control form-control-sm"
+                                                            placeholder="form-control"
+                                                            value="{{ $md->emailPerwakilan }}">
+                                                        <label class="ps-4">Email Perwakilan Media</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="validationLast" role="tabpanel">
+                                <div class="text-center mt-5">
+                                    <h5 class="card-title">Total Poin Grade</h5>
+                                    <div class="col-12 p-2">
+                                        <div class="form-check">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                    <div class="card-footer text-center border-0 pt-1">
+                        <button class="btn btn-icon btn-icon-start btn-outline-primary btn-prev" type="button">
+                            <i data-acorn-icon="chevron-left"></i>
+                            <span>Back</span>
+                        </button>
+                        <button class="btn btn-icon btn-icon-end btn-outline-primary btn-next" type="button">
+                            <span>Next</span>
+                            <i data-acorn-icon="chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
             </section>
-        </form>
-        <!-- Content End -->
-    </div>
-@endforeach
-<script>
-    /**
-     * button
-     **/
-    $(document).ready(function() {
+        @endforeach
+    </main>
+@endsection
+@push('script')
+    <script>
+        /**
+         * wizard
+         **/
+        $(document).ready(function() {
+            function checkValidation(form) {
+                if ($('#jenisPengajuan').val() == 'siber') {
+                    var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan').val();
+                } else {
+                    var dataNamaMedia = true;
+                }
+
+                jQuery.validator.addMethod("lettersonly", function(value, element) {
+                    return this.optional(element) || /^[a-z\s]+$/i.test(value);
+                }, "Tidak boleh menggunakan angka maupun karakter");
+                jQuery.validator.addMethod("nospace", function(value, element) {
+                    return value.indexOf(" ") < 0 && value != "";
+                }, "Spasi tidak diperbolehkan");
+
+                jQuery.validator.addMethod("synchronousRemote", function(value, element) {
+                    if ($('#jenisPengajuan').val() == 'siber') {
+                        // $.ajaxSetup({
+                        //     headers: {
+                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        //     }
+                        // });
+
+                        function cekLink() {
+                            var params = false;
+                            $.ajax({
+                                type: "GET",
+                                async: false,
+                                url: "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan')
+                                    .val(),
+                                data: {
+                                    namaMedia: value
+                                },
+                                success: function(response) {
+                                    params = response === "true" ? true : false
+                                }
+                            });
+                            return params
+                        }
+                        return cekLink();
+                    } else {
+                        return true;
+                    }
+                }, "Domain media tidak ada, tidak ada SSL, cek kembali nama domain anda");
+
+                // default massage
+                jQuery.extend(jQuery.validator.messages, {
+                    required: "Harus diisi.",
+                    remote: "Please fix this field.",
+                    email: "Please enter a valid email address.",
+                    url: "Please enter a valid URL.",
+                    date: "Please enter a valid date.",
+                    dateISO: "Please enter a valid date (ISO).",
+                    number: "Please enter a valid number.",
+                    digits: "Please enter only digits.",
+                    creditcard: "Please enter a valid credit card number.",
+                    equalTo: "Please enter the same value again.",
+                    accept: "Please enter a value with a valid extension.",
+                    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+                    minlength: jQuery.validator.format("Please enter at least {0} characters."),
+                    rangelength: jQuery.validator.format(
+                        "Please enter a value between {0} and {1} characters long."),
+                    range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+                    max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+                    min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+                });
+
+                // validasi
+                jQuery.validator.setDefaults({
+                    debug: false,
+                });
+
+                jQuery(form).validate({
+                    rules: {
+                        /**
+                         * DATA BADAN HUKUM
+                         **/
+                        namaPerusahaan: {
+                            required: true,
+                        },
+                        namaPenanggungJawab: {
+                            required: true,
+                        },
+                        namaPimred: {
+                            required: true,
+                            lettersonly: true,
+                            minlength: 3,
+                        },
+                        kumhamPerusahaan: {
+                            required: true,
+                        },
+                        alamatProvPerusahaan: {
+                            required: true,
+                        },
+                        alamatKabPerusahaan: {
+                            required: true,
+                        },
+                        alamatPerusahaan: {
+                            required: true,
+                            minlength: 8,
+                        },
+                        tlpnPerusahaan: {
+                            required: true,
+                            number: true,
+                            minlength: 11,
+                        },
+                        emailPerusahaan: {
+                            required: true,
+                            email: true,
+                        },
+                        statusKswp: {
+                            required: true,
+                        },
+                        npwpPerusahaan: {
+                            required: true,
+                            minlength: 15,
+                            nospace: true,
+                        },
+                        nibPerusahaan: {
+                            required: true,
+                            number: true,
+                            minlength: 13,
+                            nospace: true,
+                        },
+                        noKlbi: {
+                            required: true,
+                            number: true,
+                        },
+                        noKbki: {
+                            required: true,
+                            nospace: true,
+                        },
+                        izinIpp: {
+                            required: true,
+                        },
+                        namaPercetakan: {
+                            required: true,
+                        },
+                        alamatPercetakan: {
+                            required: true,
+                        },
+
+                        /**
+                         * DATA MEDIA
+                         **/
+                        namaMedia: {
+                            required: true,
+                            synchronousRemote: true,
+                        },
+                        verifikasiDewanPers: {
+                            required: true,
+                        },
+                        jenisSerfikatUkwPimred: {
+                            required: true,
+                        },
+                        serfikatUkwPimred: {
+                            required: true,
+                            nospace: true,
+                        },
+                        afiliasiPerusahaan: {
+                            // required: true,
+                        },
+                        domisiliRedaksiMedia: {
+                            // required: true,
+                        },
+                        kanalKhusus: {
+                            // required: true,
+                        },
+                        jenisRekening: {
+                            // required: true,
+                        },
+                        namaBank: {
+                            // required: true,
+                        },
+                        pemilikRekening: {
+                            // required: true,
+                        },
+                        noRekening: {
+                            // required: true,
+                            number: true,
+                        },
+
+                        /**
+                         * KUALIFIKASI MEDIA
+                         **/
+                        tahunBerdiriMedia: {
+                            // required: true,
+                        },
+                        jenisJangkauanSiarMediaElektronik: {
+                            // required: true,
+                        },
+                        jangkauanSiarMediaElektronik: {
+                            // required: true,
+                        },
+                        jumlahOplahMediaCetakPerMinggu: {
+                            // required: true,
+                        },
+                        jumlahKontenBeritaAktif: {
+                            // required: true,
+                        },
+
+                        /**
+                         * PERWAKILAN MEDIA
+                         **/
+                        namaPerwakilan: {
+                            // required: true,
+                        },
+                        nomorKKPerwakilan: {
+                            // required: true,
+                            nospace: true,
+                        },
+                        nomorKtpPerwakilan: {
+                            // required: true,
+                            nospace: true,
+                        },
+                        npwpPerwakilan: {
+                            // required: true,
+                            nospace: true,
+                        },
+                        // lunasPBB: {
+                        //     required: true,
+                        // },
+                        jenisSerfikatUkwPerwakilan: {
+                            // required: true,
+                        },
+                        // serfikatUkwPerwakilan: {
+                        //     required: true,
+                        // },
+                        afiliasiPersPerwakilan: {
+                            // required: true,
+                        },
+                        alamatProvPerwakilan: {
+                            // required: true,
+                        },
+                        alamatKabPerwakilan: {
+                            // required: true,
+                        },
+                        alamatKecPerwakilan: {
+                            // required: true,
+                        },
+                        alamatKelPerwakilan: {
+                            // required: true,
+                        },
+                        alamatPerwakilan: {
+                            // required: true,
+                        },
+                        tlpnPerwakilan: {
+                            // required: true,
+                            number: true,
+                        },
+                        emailPerwakilan: {
+                            // required: true,
+                            email: true,
+                        },
+
+                    },
+                    onkeyup: false,
+                })
+
+                if (jQuery().validate) {
+                    if (jQuery(form).valid()) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+
+            var wizard = new Wizard(document.getElementById('wizardBasic1'), {
+                topNav: true,
+                handleButtonClicks: false,
+                lastEnd: false,
+            });
+
+            $('.btn-next').click(function(e) {
+                e.preventDefault();
+                const content = wizard.getCurrentContent();
+                const form = content.querySelector(".validasi");
+
+                if (checkValidation(form)) {
+                    wizard.gotoNext();
+                }
+            });
+            $('.btn-prev').click(function(e) {
+                e.preventDefault();
+                wizard.gotoPrev();
+            });
+        });
 
         /**
-         * checkbox
+         * Selector
          **/
-        $('.form-check-input').click(function() {
-            var val = [];
-            $(':checkbox:checked').each(function(i) {
-                val[i] = $(this).val();
-                var $this = $(this);
-            });
-            if (val.length === 0) {
-                $('#tolak').prop('disabled', true);
-                $('#terima').prop('disabled', false);
-            } else {
-                $('#tolak').prop('disabled', false);
-                $('#terima').prop('disabled', true);
+        $(document).ready(function() {
+            var urlProvinsi = "https://ibnux.github.io/data-indonesia/provinsi.json";
+            var urlKabupaten = "https://ibnux.github.io/data-indonesia/kabupaten";
+            var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan";
+            var urlKelurahan = "https://ibnux.github.io/data-indonesia/kelurahan";
+
+            function select2Data(url, alamatId, placeHolder) {
+                $.getJSON(url, function(res) {
+                    res = $.map(res, function(obj) {
+                        obj.text = obj.nama
+                        return obj;
+                    });
+                    data = [{
+                        id: "",
+                        nama: "- Pilih Provinsi -",
+                        text: "- Pilih Provinsi -"
+                    }].concat(res);
+
+                    //implemen data ke select provinsi
+                    $(alamatId).select2({
+                        dropdownAutoWidth: true,
+                        width: '100%',
+                        data: data,
+                        minimumInputLength: 2,
+                        placeholder: placeHolder,
+                    })
+                });
             }
+
+            function eachAlamat(url, alamat, options) {
+                $.get(url, function(data) {
+                    $.each(data, function(i, item) {
+                        var prov = alamat;
+                        if (item.nama == prov.toUpperCase()) {
+                            // console.log(item.id);
+                            $(options).html(
+                                '<option value="' + item.id + '" selected="selected">' +
+                                item.nama +
+                                '</option>'
+                            )
+                        }
+                    });
+                });
+            }
+
+            /**
+             *  Data Badan Hukum
+             **/
+            eachAlamat(urlProvinsi, $('#dataAlamatProvPerusahaan').val(), '#alamatProvPerusahaan')
+            select2Data(urlProvinsi, '#alamatProvPerusahaan', 'Pilih Provinsi')
+            eachAlamat(urlProvinsi, $('#dataAlamatProvPerwakilan').val(), '#alamatProvPerwakilan')
+            select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
+            window.onload = (event) => {
+                setTimeout(
+                    function() {
+                        //do something special
+                        var urlProvPerusahaan = urlKabupaten + '/' + $(
+                                '#alamatProvPerusahaan option:selected').val() +
+                            '.json';
+                        var urlProvPerwakilan = urlKabupaten + '/' + $(
+                                '#alamatProvPerusahaan option:selected').val() +
+                            '.json';
+                        eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
+                            '#alamatKabPerusahaan');
+                        select2Data(urlProvPerusahaan,
+                            '#alamatKabPerusahaan', 'Pilih Kabupaten');
+
+                        eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
+                            '#alamatKabPerwakilan');
+                        select2Data(urlProvPerwakilan,
+                            '#alamatKabPerwakilan', 'Pilih Kabupaten');
+                    }, 800);
+
+                var kanalKhusus = $('#kanalKhusus').val();
+                var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
+                var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
+                var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
+
+                if (domisiliRedaksiMedia == 'tulang bawang barat') {
+                    $('.fileDomisiliRedaksiMedia').prop('hidden', false)
+                } else {
+                    $('.fileDomisiliRedaksiMedia').prop('hidden', true)
+                }
+                if (afiliasiPerusahaan == 'tidak terafiliasi') {
+                    $('.fileAfiliasiPerusahaan').prop('hidden', true)
+                } else {
+                    $('.fileAfiliasiPerusahaan').prop('hidden', false)
+                }
+                if (kanalKhusus == 'tidak ada') {
+                    $('.fileKanalKhusus').prop('hidden', true)
+                } else {
+                    $('.fileKanalKhusus').prop('hidden', false)
+                }
+                if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
+                    $('.serfikatUkwPerwakilan').prop('hidden', true)
+                    $('#serfikatUkwPerwakilan').prop('required', false)
+                } else {
+                    $('.serfikatUkwPerwakilan').prop('hidden', false)
+                    $('#serfikatUkwPerwakilan').prop('required', true)
+                }
+            };
+
+            // $('#cekdatas').click(function(e) {
+            //     e.preventDefault();
+            // });
+            // select2Data(urlKabupaten + '/' + 18 + '.json', '#alamatKabPerusahaan',
+            //     'Pilih Kabupaten')
+            // $("#alamatProvPerusahaan").change(function() {
+            //     $('#alamatKabPerusahaan').show()
+            //     var alamatProvPerusahaan = $(this).val()
+            //     // console.log($('#alamatProvPerusahaan option:selected').text());
+            //     $('#alamatKabPerusahaan').val(null).trigger('change');
+            //     select2Data(urlKabupaten + '/' + alamatProvPerusahaan + '.json',
+            //         '#alamatKabPerusahaan', 'Pilih Kabupaten')
+            // });
+            $('#statusKswp').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Status KSWP Perusahaan'
+            });
+            $('#noKlbi').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Nomor KLBI Perusahaan'
+            });
+
+            /**
+             *  Data Media
+             **/
+            $('#verifikasiDewanPers').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Status Verifikasi Media'
+            });
+            $('#jenisSerfikatUkwPimred').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Jenis Sertifikat UKW Pimred'
+            });
+            $("#jenisSerfikatUkwPimred").change(function() {
+                var value = $(this).val();
+                if (value == 'belum') {
+                    $('#serfikatUkwPerwakilan').prop("required", true);
+                } else {
+                    $('#serfikatUkwPerwakilan').prop("required", false);
+                }
+            });
+            $('#afiliasiPerusahaan').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Jenis Afiliasi Organisasi Pers Media'
+            });
+            $("#afiliasiPerusahaan").change(function() {
+                var value = $(this).val();
+                if (value == 'tidak terafiliasi') {
+                    $('.fileAfiliasiPerusahaan').attr("hidden", true);
+                } else {
+                    $('.fileAfiliasiPerusahaan').attr("hidden", false);
+                }
+            });
+            $('#domisiliRedaksiMedia').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Domisili Redaksi Media'
+            });
+            $("#domisiliRedaksiMedia").change(function() {
+                var value = $(this).val();
+                if (value == 'tulang bawang barat') {
+                    $('.fileDomisiliRedaksiMedia').attr("hidden", false);
+                } else {
+                    $('.fileDomisiliRedaksiMedia').attr("hidden", true);
+                }
+            });
+            $('#kanalKhusus').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Ketersediaan Kanal/Program Khusus'
+            });
+            $("#kanalKhusus").change(function() {
+                var value = $(this).val();
+                if (value == 'tidak ada') {
+                    $('.fileKanalKhusus').attr("hidden", true);
+                } else {
+                    $('.fileKanalKhusus').attr("hidden", false);
+                }
+            });
+            $('#jenisRekening').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Jenis rekening'
+            });
+
+            /**
+             *  Kualifikasi Media
+             **/
+            $('#tahunBerdiriMedia').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Tahun Berdiri Media'
+            });
+            $('#jenisJangkauanSiarMediaElektronik').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Jenis Media Elektronik'
+            });
+            $("#jenisJangkauanSiarMediaElektronik").change(function() {
+                var value = $(this).val();
+                console.log(value);
+                if (value == 'tv') {
+                    $('#jangkauanSiarMediaElektronik option').remove();
+                    $('#jangkauanSiarMediaElektronik').append(`
+                 <option label="&nbsp;"></option>
+                                            <option value="nasional">Nasional</option>
+                                            <option value="lampung">Seluruh Lampung</option>
+                                            <option value="minimal 5 kabupaten">Minimal 5 Kabupaten/Kota se-Lampung
+                                            </option>
+                `);
+                } else {
+                    $('#jangkauanSiarMediaElektronik option').remove();
+                    $('#jangkauanSiarMediaElektronik').append(`
+                 <option label="&nbsp;"></option>
+                                            <option value="nasional">Nasional</option>
+                                            <option value="lampung">Seluruh Lampung</option>
+                                            <option value="minimal 3 kabupaten">Minimal 3 Kabupaten/Kota se-Lampung
+                                            </option>
+                `);
+                }
+            });
+            $('#jangkauanSiarMediaElektronik').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Jangkauan Siar Media Elektronik'
+            });
+            $('#jumlahOplahMediaCetakPerMinggu').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Jumlah Oplah Media Cetak Per Minggu'
+            });
+            $('#jumlahKontenBeritaAktif').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Jumlah Konten Berita Aktif dan Positif Per Tahun'
+            });
+
+            /**
+             *  Perwakilan Media
+             **/
+            $('#lunasPBB').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Status Lunas PBB Tahun Berjalan'
+            });
+            // $("#lunasPBB").change(function() {
+            //     var value = $(this).val();
+            //     if (value == 'belum') {
+            //         $('.fileLunasPBB').prop("hidden", true);
+            //     } else {
+            //         $('.fileLunasPBB').prop("hidden", false);
+            //     }
+            // });
+            $('#jenisSerfikatUkwPerwakilan').select2({
+                minimumResultsForSearch: Infinity,
+                placeholder: 'Pilih Sertifikat Kompetensi Dewan Pers Perwakilan'
+            });
+            $("#jenisSerfikatUkwPerwakilan").change(function() {
+                var value = $(this).val();
+                if (value == 'belum' || value == 'belum ada sertifikat') {
+                    $('.serfikatUkwPerwakilan').prop("hidden", true);
+                    $('#serfikatUkwPerwakilan').prop("required", false);
+                } else {
+                    $('.serfikatUkwPerwakilan').prop("hidden", false);
+                    $('#serfikatUkwPerwakilan').prop("required", true);
+                }
+            });
+            select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
+            $("#alamatProvPerwakilan").change(function() {
+                $('#alamatKabPerwakilan').show()
+                var alamatProvPerwakilan = $(this).val()
+                // console.log($('#alamatProvPerusahaan option:selected').text());
+                $('#alamatKelPerwakilan').val(null).trigger('change');
+                $('#alamatKecPerwakilan').val(null).trigger('change');
+                $('#alamatKabPerwakilan').val(null).trigger('change');
+                select2Data(urlKabupaten + '/' + alamatProvPerwakilan + '.json',
+                    '#alamatKabPerwakilan', 'Pilih Kabupaten')
+            });
+            // $("#alamatKabPerwakilan").change(function() {
+            //     $('#alamatKecPerwakilan').show()
+            //     var alamatKabPerwakilan = $(this).val()
+            //     // console.log($('#alamatProvPerusahaan option:selected').text());
+            //     $('#alamatKelPerwakilan').val(null).trigger('change');
+            //     $('#alamatKecPerwakilan').val(null).trigger('change');
+            //     select2Data(urlKecamatan + '/' + alamatKabPerwakilan + '.json',
+            //         '#alamatKecPerwakilan', 'Pilih Kecamatan')
+            // });
+            // $("#alamatKecPerwakilan").change(function() {
+            //     $('#alamatKelPerwakilan').show()
+            //     var alamatKecPerwakilan = $(this).val()
+            //     // console.log($('#alamatProvPerusahaan option:selected').text());
+            //     $('#alamatKelPerwakilan').val(null).trigger('change');
+            //     select2Data(urlKelurahan + '/' + alamatKecPerwakilan + '.json',
+            //         '#alamatKelPerwakilan', 'Pilih Kelurahan')
+            // });
+        });
+
+        /**
+         * File UploadDropzone and send data
+         **/
+        $(document).ready(function() {
+            function upload_file(name, tagId) {
+                var name = new Dropzone(tagId, {
+                    url: '/pengajuan/uploads',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    init: function() {
+                        var param = tagId;
+
+                        var nameMock = $(param + ' input').val();
+                        var mockFiles = {
+                            name: nameMock,
+                            size: '100000000'
+                        };
+                        // console.log($(param + ' .namaDetail span').text());
+                        // console.log(param);
+                        if ($(param + ' input').val()) {
+                            this.emit("addedfile", mockFiles);
+                            this.emit("thumbnail", mockFiles,
+                                '/assets/img/logo/pdf_logo.png');
+                            this.files.push(nameMock);
+
+                            this.on('addedfile', function(file) {
+                                this.removeFile(mockFiles);
+                            });
+                        }
+
+
+
+                        this.on('success', function(file, response) {
+                            Swal.fire({
+                                toast: true,
+                                position: 'bottom-right',
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.original_name +
+                                    ' Berhasil diupload!',
+                                showConfirmButton: false,
+                                timer: 3500
+                            });
+                            $(param + ' .dz-details').html('<span>' + response.name +
+                                '</span>')
+                        });
+
+                        this.on('error', function() {
+                            var maxFile = $('.dz-error-message').text();
+                            if (maxFile != 'You can not upload any more files.') {
+                                Swal.fire({
+                                    toast: true,
+                                    position: 'bottom-right',
+                                    icon: 'error',
+                                    title: 'Upload Gagal',
+                                    text: 'Cek Koneksi Internet Atau File Yang di Upload!',
+                                    showConfirmButton: false,
+                                    timer: 3500
+                                });
+                            }
+                            this.removeAllFiles();
+                        });
+
+                        this.on('resetFiles', function() {
+                            this.removeAllFiles();
+                        });
+
+                        this.on('sending', function(file, response, formData) {
+                            formData.append('data', param);
+                        });
+
+                        this.on("maxfilesexceeded", function(file) {
+                            this.removeAllFiles();
+                            this.addFile(file);
+                        });
+                    },
+                    acceptedFiles: '.pdf',
+                    maxFiles: 1,
+                    uploadMultiple: false,
+                    thumbnailWidth: 160,
+                    dictDefaultMessage: 'Uploads Disini',
+                    previewTemplate: DropzoneTemplates.previewTemplate,
+                });
+            }
+
+            /**
+             *  Data Badan Hukum
+             **/
+            if ($('#jenisPengajuan').val() == 'elektronik') {
+                upload_file('dropzoneIzinIpp', '#fileIzinIpp')
+            }
+            upload_file('dropzoneKumhamPerusahaan', '#fileKumhamPerusahaan')
+            upload_file('dropzoneSuratPernyataanPimred', '#fileSuratPernyataanPimred')
+            upload_file('dropzoneNpwpPerusahaan', '#fileNpwpPerusahaan')
+            upload_file('dropzoneNibPerusahaan', '#fileNibPerusahaan')
+
+            /**
+             *  Data Media
+             **/
+            upload_file('dropzoneSerfikatUkwPimred', '#fileSerfikatUkwPimred')
+            upload_file('dropzoneAfiliasiPerusahaan', '#fileAfiliasiPerusahaan')
+            upload_file('dropzoneDomisiliRedaksiMedia', '#fileDomisiliRedaksiMedia')
+            upload_file('dropzoneKanalKhusus', '#fileKanalKhusus')
+            upload_file('dropzoneRekening', '#fileRekening')
+
+            /**
+             *  Kualifikasi Media
+             **/
+            if ($('#jenisPengajuan').val() == 'harian') {
+                upload_file('dropzoneJumlahOplahMediaCetakPerMinggu', '#fileJumlahOplahMediaCetakPerMinggu')
+            }
+
+            /**
+             *  Perwakilan Media
+             **/
+            upload_file('dropzoneNpwpPerwakilan', '#fileNpwpPerwakilan')
+            // upload_file('dropzoneLunasPBB', '#fileLunasPBB')
+            upload_file('dropzoneSerfikatUkwPerwakilan', '#fileSerfikatUkwPerwakilan')
+            upload_file('dropzoneAfiliasiPersPerwakilan', '#fileAfiliasiPersPerwakilan')
         });
 
         /**
          * button
          **/
-        $('#kembali').click(function(e) {
-            e.preventDefault();
-            window.location.href = "/daftar";
-        });
+        $(document).ready(function() {
+            /**
+             * setting ttd
+             **/
+            //  add ttd
+            // const canvas = document.querySelector("canvas");
+            // const signaturePad = new SignaturePad(canvas, {
+            //     penColor: "rgb(66, 133, 244)"
+            // });
 
-        $('#terima').click(function(e) {
-            e.preventDefault();
-            var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "post",
-                url: "{{ Route('verifikasi.post') }}",
-                data: {
-                    pengajuan_no: pengajuanNo,
-                    keterangan: 'verify',
-                    status: 'terima',
-                },
-                success: function(response) {
-                    Swal.fire({
-                        toast: false,
-                        position: 'center',
-                        icon: response.icon,
-                        title: response.title,
-                        text: response.massage,
-                        showConfirmButton: true,
-                    });
-                    if (response.icon == 'success') {
-                        setTimeout(function() {
-                            //your code to be executed after 1 second
-                            window.location.href = "/daftar";
-                        }, 3000);
-                    }
-                }
-            });
-        });
+            // function resizeCanvas() {
+            //     const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            //     canvas.width = canvas.offsetWidth * ratio;
+            //     canvas.height = canvas.offsetHeight * ratio;
+            //     canvas.getContext("2d").scale(ratio, ratio);
+            //     signaturePad.clear(); // otherwise isEmpty() might return incorrect value
+            // }
 
-        $('#tolak').click(function(e) {
-            e.preventDefault();
-            var dataValue = $(":checkbox:checked").map(function() {
-                return $(this).val();
-            }).get();
-            var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "put",
-                url: "{{ Route('verifikasi.put') }}",
-                data: {
-                    pengajuan_no: pengajuanNo,
-                    keterangan: dataValue,
-                    status: 'tolak',
-                },
-                success: function(response) {
-                    Swal.fire({
-                        toast: false,
-                        position: 'center',
-                        icon: response.icon,
-                        title: response.title,
-                        text: response.massage,
-                        showConfirmButton: true,
-                    });
-                    if (response.icon == 'success') {
-                        setTimeout(function() {
-                            //your code to be executed after 1 second
-                            window.location.href = "/daftar";
-                        }, 3000);
-                    }
-                }
-            });
+            // window.addEventListener("resize", resizeCanvas);
+            // resizeCanvas();
+
+            // $('#clearTtd').click(function(e) {
+            //     e.preventDefault();
+            //     signaturePad.clear();
+            //     signaturePad.on();
+            //     $('#saveTtdPng').prop('disabled', false);
+            // });
+
+            // $('#saveTtdPng').click(function(e) {
+            //     // validasi ttd
+            //     if (signaturePad.isEmpty()) {
+            //         Swal.fire({
+            //             toast: true,
+            //             position: 'bottom-right',
+            //             icon: 'error',
+            //             title: 'Tanda Tangan',
+            //             text: 'Tanda Tangan Harap diisi',
+            //             showConfirmButton: false,
+            //         });
+            //     } else {
+            //         var param = 'uploadsignature';
+            //         const images = signaturePad.toDataURL();
+            //         signaturePad.off();
+            //         $(this).prop('disabled', true);
+
+            //         $.ajaxSetup({
+            //             headers: {
+            //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //             }
+            //         });
+            //         $.ajax({
+            //             type: "POST",
+            //             url: '/pengajuan/uploads',
+            //             data: {
+            //                 data: param,
+            //                 images: images
+            //             },
+            //             success: function(response) {
+            //                 Swal.fire({
+            //                     toast: true,
+            //                     position: 'bottom-right',
+            //                     icon: 'success',
+            //                     title: 'Berhasil',
+            //                     text: response.original_name +
+            //                         ' Berhasil diupload!',
+            //                     showConfirmButton: false,
+            //                     timer: 3500
+            //                 });
+            //                 $('#signatureData').val(response.name)
+            //             }
+            //         });
+            //     }
+            // });
+
+            /**
+             * kirim data
+             **/
+            // $('#pernyataanCheckbox').change(function(e) {
+            //     e.preventDefault();
+            //     if ($('#pernyataanCheckbox').is(":checked") == true) {
+            //         $("#kirimData").prop('disabled', false);
+            //     } else {
+            //         $("#kirimData").prop('disabled', true);
+            //     }
+            // });
+
+            // submit data
+            // $('#kirimData').click(function(e) {
+            //     e.preventDefault();
+            //     // validasi
+            //     $(this).prop('disabled', true);
+            //     const validasi = $('.validasi').valid();
+            //     // var wartawanKompetenPerusahaan = $('#wartawanKompetenPerusahaan').val();
+            //     // var namaPercetakan = $('#namaPercetakan').val();
+            //     // var alamatPercetakan = $('#alamatPercetakan').val();
+            //     // // perwakilan
+            //     // var namaMedia = $('#namaMedia').val();
+            //     // var namaBiroPerwakilan = $('#namaBiroPerwakilan').val();
+            //     // var alamatPerwakilan = $('#alamatPerwakilan').val();
+            //     // var alamatProvPerwakilan = $('#alamatProvPerwakilan option:selected').text();
+            //     // var alamatKabPerwakilan = $('#alamatKabPerwakilan option:selected').text();
+            //     // var alamatKecPerwakilan = $('#alamatKecPerwakilan option:selected').text();
+            //     // var alamatKelPerwakilan = $('#alamatKelPerwakilan option:selected').text();
+            //     // var tlpnPerwakilan = $('#tlpnPerwakilan').val();
+            //     // var emailPerwakilan = $('#emailPerwakilan').val();
+            //     // var ktpPerwakilan = $('#ktpPerwakilan').val();
+            //     // var kkPerwakilan = $('#kkPerwakilan').val();
+            //     // var npwpPerwakilan = $('#npwpPerwakilan').val();
+            //     // var kompetensiPerwakilan = $('#kompetensiPerwakilan').val();
+            //     // var jenisRekening = $('#jenisRekening').val();
+            //     // var namaBank = $('#namaBank').val();
+            //     // var pemilikRekening = $('#pemilikRekening').val();
+            //     // var noRekening = $('#noRekening').val();
+            //     // var pernyataanCheckbox = $('#pernyataanCheckbox').val();
+            //     var data = {
+            //         // param
+            //         jenis_media: $('#pengajuanJenisMedia').attr('data-jenisMedia'),
+            //         pengajuan_no: $('#pengajuanNo').attr('data-noPengajuan'),
+            //         /**
+            //          * DATA BADAN HUKUM
+            //          **/
+            //         //  input
+            //         namaPerusahaan: $('#namaPerusahaan').val(),
+            //         namaPenanggungJawab: $('#namaPenanggungJawab').val(),
+            //         namaPimred: $('#namaPimred').val(),
+            //         kumhamPerusahaan: $('#kumhamPerusahaan').val(),
+            //         alamatPerusahaan: $('#alamatPerusahaan').val(),
+            //         tlpnPerusahaan: $('#tlpnPerusahaan').val(),
+            //         emailPerusahaan: $('#emailPerusahaan').val(),
+            //         npwpPerusahaan: $('#npwpPerusahaan').val(),
+            //         nibPerusahaan: $('#nibPerusahaan').val(),
+            //         noKbki: $('#noKbki').val(),
+            //         izinIpp: $('#izinIpp').val(),
+            //         namaPercetakan: $('#namaPercetakan').val(),
+            //         // select
+            //         alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
+            //         alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
+            //         statusKswp: $('#statusKswp option:selected').text(),
+            //         noKlbi: $('#noKlbi option:selected').text(),
+            //         // file
+            //         fileSuratPernyataanPimred: $('#fileSuratPernyataanPimred .dz-details span')
+            //             .text(),
+            //         fileKumhamPerusahaan: $('#fileKumhamPerusahaan .dz-details span').text(),
+            //         fileNpwpPerusahaan: $('#fileNpwpPerusahaan .dz-details span').text(),
+            //         fileNibPerusahaan: $('#fileNibPerusahaan .dz-details span').text(),
+            //         fileIzinIpp: $('#fileIzinIpp .dz-details span').text(),
+
+            //         /**
+            //          * DATA MEDIA
+            //          **/
+            //         //  input
+            //         namaMedia: $('#namaMedia').val(),
+            //         serfikatUkwPimred: $('#serfikatUkwPimred').val(),
+            //         namaBank: $('#namaBank').val(),
+            //         pemilikRekening: $('#pemilikRekening').val(),
+            //         noRekening: $('#noRekening').val(),
+            //         // select
+            //         verifikasiDewanPers: $('#verifikasiDewanPers option:selected').text(),
+            //         jenisSerfikatUkwPimred: $('#jenisSerfikatUkwPimred option:selected').text(),
+            //         afiliasiPerusahaan: $('#afiliasiPerusahaan option:selected').text(),
+            //         domisiliRedaksiMedia: $('#domisiliRedaksiMedia option:selected').text(),
+            //         kanalKhusus: $('#kanalKhusus option:selected').text(),
+            //         jenisRekening: $('#jenisRekening option:selected').text(),
+            //         // file
+            //         fileSerfikatUkwPimred: $('#fileSerfikatUkwPimred .dz-details span').text(),
+            //         fileAfiliasiPerusahaan: $('#fileAfiliasiPerusahaan .dz-details span').text(),
+            //         fileDomisiliRedaksiMedia: $('#fileDomisiliRedaksiMedia .dz-details span')
+            //             .text(),
+            //         fileKanalKhusus: $('#fileKanalKhusus .dz-details span').text(),
+            //         fileRekening: $('#fileRekening .dz-details span').text(),
+
+            //         /**
+            //          * KUALIFIKASI MEDIA
+            //          **/
+            //         // select
+            //         tahunBerdiriMedia: $('#tahunBerdiriMedia option:selected').text(),
+            //         jenisJangkauanSiarMediaElektronik: $(
+            //             '#jenisJangkauanSiarMediaElektronik option:selected').text(),
+            //         jangkauanSiarMediaElektronik: $('#jangkauanSiarMediaElektronik option:selected')
+            //             .text(),
+            //         jumlahOplahMediaCetakPerMinggu: $(
+            //                 '#jumlahOplahMediaCetakPerMinggu option:selected')
+            //             .text(),
+            //         jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif option:selected').text(),
+            //         // file
+            //         fileJumlahOplahMediaCetakPerMinggu: $(
+            //             '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
+
+            //         /**
+            //          * PERWAKILAN MEDIA
+            //          **/
+            //         //  input
+            //         namaPerwakilan: $('#namaPerwakilan').val(),
+            //         nomorKKPerwakilan: $('#nomorKKPerwakilan').val(),
+            //         nomorKtpPerwakilan: $('#nomorKtpPerwakilan').val(),
+            //         npwpPerwakilan: $('#npwpPerwakilan').val(),
+            //         serfikatUkwPerwakilan: $('#serfikatUkwPerwakilan').val(),
+            //         afiliasiPersPerwakilan: $('#afiliasiPersPerwakilan').val(),
+            //         alamatPerwakilan: $('#alamatPerwakilan').val(),
+            //         tlpnPerwakilan: $('#tlpnPerwakilan').val(),
+            //         emailPerwakilan: $('#emailPerwakilan').val(),
+            //         // select
+            //         jenisSerfikatUkwPerwakilan: $('#jenisSerfikatUkwPerwakilan option:selected')
+            //             .text(),
+            //         alamatProvPerwakilan: $('#alamatProvPerwakilan option:selected').text(),
+            //         alamatKabPerwakilan: $('#alamatKabPerwakilan option:selected').text(),
+            //         alamatKecPerwakilan: $('#alamatKecPerwakilan option:selected').text(),
+            //         alamatKelPerwakilan: $('#alamatKelPerwakilan option:selected').text(),
+            //         // file
+            //         fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
+            //         fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span')
+            //             .text(),
+            //         fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
+            //             .text(),
+            //     }
+            //     /**
+            //      *file
+            //      **/
+            //     if (!validasi) {
+            //         Swal.fire({
+            //             toast: false,
+            //             position: 'center',
+            //             icon: 'error',
+            //             title: 'Cek Data',
+            //             text: 'Perhatikan Dengan Seksama Sebelum Kirim Data',
+            //             showConfirmButton: true,
+            //         });
+            //     } else {
+            //         $.ajaxSetup({
+            //             headers: {
+            //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //             }
+            //         });
+            //         $.ajax({
+            //             type: "PUT",
+            //             url: "/pengajuan/update",
+            //             data: data,
+            //             success: function(response) {
+            //                 Swal.fire({
+            //                     toast: false,
+            //                     position: 'center',
+            //                     icon: response.icon,
+            //                     title: response.title,
+            //                     text: response.massage,
+            //                     showConfirmButton: true,
+            //                 });
+            //                 if (response.icon == 'success') {
+            //                     setTimeout(function() {
+            //                         //your code to be executed after 1 second
+            //                         window.location.href = "/daftar/" + response
+            //                             .tahun_buka + "/" + "detail";
+            //                     }, 1500);
+            //                 }
+            //                 $(this).prop('disabled', false);
+            //             }
+            //         });
+            //     }
+            // });
+
+            $('.dz-preview').click(function(e) {
+                e.preventDefault();
+                var file = $(this).find('img').attr('alt');
+                var folder = $(this).parent().attr('id')
+                window.open('/tmp/uploads/' + folder + '/' + file, '_blank');
+            })
         });
 
         /**
-         * setting ttd
+         * validator
          **/
-        //  add ttd
-        const canvas = document.querySelector("canvas");
-        const signaturePad = new SignaturePad(canvas, {
-            penColor: "rgb(66, 133, 244)"
+        $(document).ready(function() {
+            // method validasi
+            // if ($('#jenisPengajuan').val() == 'siber') {
+            //     var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan').val();
+            // } else {
+            //     var dataNamaMedia = true;
+            // }
+            // jQuery.validator.addMethod("lettersonly", function(value, element) {
+            //     return this.optional(element) || /^[a-z\s]+$/i.test(value);
+            // }, "Tidak boleh menggunakan angka maupun karakter");
+            // jQuery.validator.addMethod("nospace", function(value, element) {
+            //     return value.indexOf(" ") < 0 && value != "";
+            // }, "Spasi tidak diperbolehkan");
+
+            // default massage
+            // jQuery.extend(jQuery.validator.messages, {
+            //     required: "Harus diisi.",
+            //     remote: "Please fix this field.",
+            //     email: "Please enter a valid email address.",
+            //     url: "Please enter a valid URL.",
+            //     date: "Please enter a valid date.",
+            //     dateISO: "Please enter a valid date (ISO).",
+            //     number: "Please enter a valid number.",
+            //     digits: "Please enter only digits.",
+            //     creditcard: "Please enter a valid credit card number.",
+            //     equalTo: "Please enter the same value again.",
+            //     accept: "Please enter a value with a valid extension.",
+            //     maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+            //     minlength: jQuery.validator.format("Please enter at least {0} characters."),
+            //     rangelength: jQuery.validator.format(
+            //         "Please enter a value between {0} and {1} characters long."),
+            //     range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+            //     max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+            //     min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+            // });
+
+            // validasi
+            // jQuery.validator.setDefaults({
+            //     debug: true,
+            // });
+
+            // jQuery(".validasi").validate({
+            //     rules: {
+            //         namaPerusahaan: {
+            //             required: true,
+            //             lettersonly: true,
+            //         },
+            //         namaPimred: {
+            //             required: true,
+            //             lettersonly: true,
+            //             minlength: 3,
+            //         },
+            //         alamatPerusahaan: {
+            //             required: true,
+            //             minlength: 5,
+            //         },
+            //         alamatProvPerusahaan: {
+            //             required: true,
+            //         },
+            //         alamatKabPerusahaan: {
+            //             required: true,
+            //         },
+            //         alamatKecPerusahaan: {
+            //             required: true,
+            //         },
+            //         alamatKelPerusahaan: {
+            //             required: true,
+            //         },
+            //         tlpnPerusahaan: {
+            //             required: true,
+            //             number: true,
+            //             minlength: 11,
+            //         },
+            //         emailPerusahaan: {
+            //             required: true,
+            //             email: true,
+            //         },
+            //         npwpPerusahaan: {
+            //             required: true,
+            //             minlength: 15,
+            //         },
+            //         aktaPerusahaan: {
+            //             required: true,
+            //             number: true,
+            //         },
+            //         kumhamPerusahaan: {
+            //             required: true,
+            //         },
+            //         wartawanKompetenPerusahaan: {
+            //             required: true,
+            //             number: true
+            //         },
+            //         // opsional harian
+            //         namaPercetakan: {
+            //             required: true,
+            //             minlength: 5,
+            //         },
+            //         alamatPercetakan: {
+            //             required: true,
+            //             minlength: 5,
+            //         },
+            //         alamatProvPerwakilan: {
+            //             required: true,
+            //         },
+            //         alamatKabPerwakilan: {
+            //             required: true,
+            //         },
+            //         alamatKecPerwakilan: {
+            //             required: true,
+            //         },
+            //         alamatKelPerwakilan: {
+            //             required: true,
+            //         },
+            //         // perwakilan
+            //         namaMedia: {
+            //             required: true,
+            //             remote: dataNamaMedia,
+            //         },
+            //         namaBiroPerwakilan: {
+            //             required: true,
+            //             lettersonly: true,
+            //             minlength: 3,
+            //         },
+            //         alamatPerwakilan: {
+            //             required: true,
+            //             minlength: 3,
+            //         },
+            //         tlpnPerwakilan: {
+            //             required: true,
+            //             number: true,
+            //             minlength: 11,
+            //         },
+            //         emailPerwakilan: {
+            //             required: true,
+            //             email: true,
+            //         },
+            //         ktpPerwakilan: {
+            //             required: true,
+            //             number: true,
+            //             nospace: true,
+            //             // minlength: 16
+            //         },
+            //         kkPerwakilan: {
+            //             required: true,
+            //             number: true,
+            //             nospace: true,
+            //             // minlength: 16
+            //         },
+            //         npwpPerwakilan: {
+            //             required: true,
+            //             minlength: 15,
+            //         },
+            //         kompetensiPerwakilan: {
+            //             required: true,
+            //         },
+            //         jenisRekening: {
+            //             required: true,
+            //         },
+            //         namaBank: {
+            //             required: true,
+            //             minlength: 3,
+            //         },
+            //         pemilikRekening: {
+            //             required: true,
+            //             lettersonly: true,
+            //         },
+            //         noRekening: {
+            //             required: true,
+            //             number: true,
+            //         },
+            //         pernyataanCheckbox: {
+            //             required: true,
+            //         },
+            //     },
+            //     messages: {
+            //         namaMedia: {
+            //             remote: "Domain media tidak terregister, tidak ada SSL, cek kembali nama domain anda",
+            //         },
+            //     },
+            //     onkeyup: false,
+            // })
+
+            // jQuery("form").validate({
+            //     rules: {
+            //         namaPerusahaan: {
+            //             required: true,
+            //         },
+            //         namaMedia: {
+            //             required: true,
+            //             remote: dataNamaMedia,
+            //         },
+            //     },
+            //     messages: {
+            //         namaMedia: {
+            //             remote: "Domain media tidak ada, tidak ada SSL, cek kembali nama domain anda",
+            //         },
+            //     },
+            //     onkeyup: false,
+            // })
         });
-
-        function resizeCanvas() {
-            const ratio = Math.max(window.devicePixelRatio || 1, 1);
-            canvas.width = canvas.offsetWidth * ratio;
-            canvas.height = canvas.offsetHeight * ratio;
-            canvas.getContext("2d").scale(ratio, ratio);
-            signaturePad.clear(); // otherwise isEmpty() might return incorrect value
-        }
-
-        window.addEventListener("resize", resizeCanvas);
-        resizeCanvas();
-
-        signaturePad.fromDataURL("/tmp/uploads/uploadsignature/{{ $md->file_signature_data }}");
-        $('#saveTtdPng').prop('disabled', true);
-        signaturePad.off();
-    });
-
-    /**
-     * Selector
-     **/
-    $(document).ready(function() {
-        $('#jenisRekening').select2({
-            minimumResultsForSearch: Infinity,
-            placeholder: ''
-        });
-    });
-</script>
+    </script>
+@endpush

@@ -241,7 +241,8 @@
                 type: "GET",
                 url: "/pengajuan/verifikasi/" + noPengajuan,
                 success: function(response) {
-                    $("main").load("/pengajuan/verifikasi/" + noPengajuan);
+                    // $("main").load("/pengajuan/verifikasi/" + noPengajuan);
+                    window.open("/pengajuan/verifikasi/" + noPengajuan, "_parent")
                 }
             });
         });
@@ -258,7 +259,8 @@
                 type: "GET",
                 url: "/pengajuan/cek_data/" + noPengajuan,
                 success: function(response) {
-                    $("main").load("/pengajuan/cek_data/" + noPengajuan);
+                    // $("main").load("/pengajuan/cek_data/" + noPengajuan);
+                    window.open("/pengajuan/cek_data/" + noPengajuan, "_parent")
                 }
             });
         });

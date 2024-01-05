@@ -658,9 +658,34 @@ class MediaPengajuanController extends Controller
         }
 
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
-        $pengajuan_cek = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-        $media_data = media_pengajuan::where('pengajuan_no', $no_pengajuan)->get();
+        $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+        $media_data = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->get();
         return view('admin.pengajuan.form_cek', [
+            'pengajuan_buka' => $tahun_hitung,
+            'pengajuan_data' => $pengajuan_cek,
+            'media_data' => $media_data
+        ]);
+    }
+
+    /**
+     * show data pengajuan untuk cek data pengajuan ataupun untuk verifikasi data
+     */
+    public function show_data_verify($no_pengajuan)
+    {
+        //declare
+        $count = tahun::select('tahun')->where('pengajuan', 1)->count();
+        if ($count == 0) {
+            # code...
+            $tahun_buka = date('Y');
+        } else {
+            $tahun_data = tahun::select('tahun')->where('pengajuan', 1)->get();
+            $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
+        }
+
+        $tahun_hitung = tahun::where('pengajuan', 1)->count();
+        $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+        $media_data = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->get();
+        return view('admin.pengajuan.form_verify', [
             'pengajuan_buka' => $tahun_hitung,
             'pengajuan_data' => $pengajuan_cek,
             'media_data' => $media_data
@@ -672,6 +697,11 @@ class MediaPengajuanController extends Controller
      */
     public function verifikasi(Request $request)
     {
+        $pengajuan_no = $request->pengajuan_no;
+        $keterangan = $request->keterangan;
+        $status = $request->status;
+        $data = $request->data;
+
         function mapped_implode($glue, $array, $symbol = '. ')
         {
             return implode(
@@ -686,65 +716,92 @@ class MediaPengajuanController extends Controller
             );
         }
 
-        $pengajuan_no = $request->pengajuan_no;
-        $keterangan = $request->keterangan;
-        $status = $request->status;
-
-        $data_media = media_pengajuan::select(
-            'media_pengajuans.id_user',
+        $data_media = new_media_pengajuan::select(
+            'new_media_pengajuans.id_user',
             'users.id',
-            'media_pengajuans.pengajuan_no as idpengajuan',
-            'media_pengajuans.jenis_media as jenis',
-            'media_pengajuans.nama_media as namamedia',
+            'new_media_pengajuans.pengajuan_no as idpengajuan',
+            'new_media_pengajuans.jenis_media as jenis',
+            'new_media_pengajuans.namaMedia as namamedia',
             'users.email as useremail',
-            'media_pengajuans.status as status'
-        )->join('users', 'users.id', '=', 'media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
-
-        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit') {
-            if ($status == 'terima') {
-                // data diterima
-                $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil diterima';
-                $data_keterangan = $keterangan;
-            } else {
-                // data ditolak
-                array_unshift($keterangan, "");
-                unset($keterangan[0]);
-                $number = 1;
-                foreach ($keterangan as $k) {
-                    $number_data[] = $number++ . '. ';
-                }
-                $data_keterangan = 'data ditolak silahkan cek data: <br>' . mapped_implode(', <br>', $keterangan);
-                $dataSendMail = mapped_implode(', <br>', $keterangan);
-                $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' ditolak';
-
-                $mailDatas = [
-                    'jenis' => $data_media['jenis'],
-                    'no' => $data_media['idpengajuan'],
-                    'nama' => $data_media['namamedia'],
-                    'keterangan' => $dataSendMail
-                ];
-
-                Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
-            }
+            'new_media_pengajuans.status as status'
+        )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
 
 
-            media_pengajuan::where('pengajuan_no', $pengajuan_no)->update(
-                [
-                    'keterangan' => $data_keterangan,
-                    'status' => $status
-                ]
-            );
-            $icon = 'success';
-            $title = 'data berhasil terkirim';
-        } else {
-            $pesan = 'Data Dengan Nomor Pengajuan: ' . $pengajuan_no . ' Sudah Diverifikasi';
-            $icon = 'error';
-            $title = 'Data Sudah Diverifikasi';
-        }
-        return response()->json([
-            'massage' => $pesan,
-            'icon' => $icon,
-            'title' => $title
-        ]);
+
+        dd($data);
+        // function mapped_implode($glue, $array, $symbol = '. ')
+        // {
+        //     return implode(
+        //         $glue,
+        //         array_map(
+        //             function ($k, $v) use ($symbol) {
+        //                 return $k . $symbol . $v;
+        //             },
+        //             array_keys($array),
+        //             array_values($array)
+        //         )
+        //     );
+        // }
+
+        // $pengajuan_no = $request->pengajuan_no;
+        // $keterangan = $request->keterangan;
+        // $status = $request->status;
+
+        // $data_media = media_pengajuan::select(
+        //     'media_pengajuans.id_user',
+        //     'users.id',
+        //     'media_pengajuans.pengajuan_no as idpengajuan',
+        //     'media_pengajuans.jenis_media as jenis',
+        //     'media_pengajuans.nama_media as namamedia',
+        //     'users.email as useremail',
+        //     'media_pengajuans.status as status'
+        // )->join('users', 'users.id', '=', 'media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
+
+        // if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit') {
+        //     if ($status == 'terima') {
+        //         // data diterima
+        //         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil diterima';
+        //         $data_keterangan = $keterangan;
+        //     } else {
+        //         // data ditolak
+        //         array_unshift($keterangan, "");
+        //         unset($keterangan[0]);
+        //         $number = 1;
+        //         foreach ($keterangan as $k) {
+        //             $number_data[] = $number++ . '. ';
+        //         }
+        //         $data_keterangan = 'data ditolak silahkan cek data: <br>' . mapped_implode(', <br>', $keterangan);
+        //         $dataSendMail = mapped_implode(', <br>', $keterangan);
+        //         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' ditolak';
+
+        //         $mailDatas = [
+        //             'jenis' => $data_media['jenis'],
+        //             'no' => $data_media['idpengajuan'],
+        //             'nama' => $data_media['namamedia'],
+        //             'keterangan' => $dataSendMail
+        //         ];
+
+        //         Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
+        //     }
+
+
+        //     media_pengajuan::where('pengajuan_no', $pengajuan_no)->update(
+        //         [
+        //             'keterangan' => $data_keterangan,
+        //             'status' => $status
+        //         ]
+        //     );
+        //     $icon = 'success';
+        //     $title = 'data berhasil terkirim';
+        // } else {
+        //     $pesan = 'Data Dengan Nomor Pengajuan: ' . $pengajuan_no . ' Sudah Diverifikasi';
+        //     $icon = 'error';
+        //     $title = 'Data Sudah Diverifikasi';
+        // }
+        // return response()->json([
+        //     'massage' => $pesan,
+        //     'icon' => $icon,
+        //     'title' => $title
+        // ]);
     }
 }
