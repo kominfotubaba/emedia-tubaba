@@ -1083,7 +1083,7 @@ class MediaPengajuanController extends Controller
                     }
                 }
             }
-            dd($path);
+            dd('a');
             // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
             $pesan = 'data berhasil diupdate';
