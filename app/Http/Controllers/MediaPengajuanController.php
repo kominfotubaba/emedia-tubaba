@@ -1075,12 +1075,60 @@ class MediaPengajuanController extends Controller
                 //         rename($path . '/' . $print, $path . '/' . $value);
                 //     }
                 // }
-                foreach ($images as $img) {
-                    if ($value == strtolower(pathinfo($img)['basename'])) {
-                        # code...
-                        $out[] = pathinfo($img)['basename'];
+                if ($key == 'fileSuratPernyataanPimred') {
+                    # code...
+                    foreach ($images as $img) {
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out[] = pathinfo($img)['basename'];
+                        }
                     }
                 }
+                if ($key == 'fileKumhamPerusahaan') {
+                    # code...
+                }
+                if ($key == 'fileNpwpPerusahaan') {
+                    # code...
+                }
+                if ($key == 'fileNibPerusahaan') {
+                    # code...
+                }
+                if ($key == 'fileIzinIpp') {
+                    # code...
+                }
+                if ($key == 'fileSerfikatUkwPimred') {
+                    # code...
+                }
+                if ($key == 'fileAfiliasiPerusahaan') {
+                    # code...
+                }
+                if ($key == 'fileDomisiliRedaksiMedia') {
+                    # code...
+                }
+                if ($key == 'fileKanalKhusus') {
+                    # code...
+                }
+                if ($key == 'fileRekening') {
+                    # code...
+                }
+                if ($key == 'fileJumlahOplahMediaCetakPerMinggu') {
+                    # code...
+                }
+                if ($key == 'fileNpwpPerwakilan') {
+                    # code...
+                }
+                if ($key == 'fileSerfikatUkwPerwakilan') {
+                    # code...
+                }
+                if ($key == 'fileafiliasiPersPerwakilan') {
+                    # code...
+                }
+                // foreach ($images as $img) {
+                //     if ($value == strtolower(pathinfo($img)['basename'])) {
+                //         # code...
+                //         $out[] = pathinfo($img)['basename'];
+                //     }
+                // }
             }
 
             dd($out);
