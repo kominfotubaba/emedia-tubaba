@@ -2163,7 +2163,7 @@
                     });
                     $.ajax({
                         type: "PUT",
-                        url: "/pengajuan/update",
+                        url: "/pengajuan/verifikasi",
                         data: data,
                         success: function(response) {
                             Swal.fire({

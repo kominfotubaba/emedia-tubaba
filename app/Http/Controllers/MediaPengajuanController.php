@@ -834,6 +834,7 @@ class MediaPengajuanController extends Controller
 
 
 
+
         // // Perusahaan
         // $nama_perusahaan = str_replace('  ', ' ', strtolower($request->nama_perusahaan));
         // $nama_pimred = strtolower($request->nama_pimred);
@@ -883,6 +884,7 @@ class MediaPengajuanController extends Controller
         // $file_pernyataan_media_perwakilan = $request->file_pernyataan_media_perwakilan;
         // $file_rekening = $request->file_rekening;
         // $file_signature_data = $request->file_signature_data;
+
 
         $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
         $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
@@ -1050,7 +1052,6 @@ class MediaPengajuanController extends Controller
             ];
 
             // $directory = __DIR__;
-            dd($data);
             foreach ($data as $key => $value) {
                 $directory =  public_path('tmp/uploads/' . strtolower($key));
                 $images = glob($directory . "/*", GLOB_BRACE);
