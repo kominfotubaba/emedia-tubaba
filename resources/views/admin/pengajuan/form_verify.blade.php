@@ -2143,6 +2143,7 @@
                     fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
                         .text(),
                 }
+                console.log(data);
                 /**
                  *file
                  **/

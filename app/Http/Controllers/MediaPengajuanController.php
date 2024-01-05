@@ -962,7 +962,7 @@ class MediaPengajuanController extends Controller
         $kk_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('nomorKKPerwakilan', $nomorKKPerwakilan)->where('tahun_pengajuan', $tahun_edit)->count();
 
 
-        dd([$pengajuan_no, $nama_perusahaan_cek, $jenis_media]);
+        // dd([$pengajuan_no, $nama_perusahaan_cek, $jenis_media]);
 
         if ($nama_perusahaan_cek >= 1) {
             # code...
