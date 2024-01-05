@@ -1075,7 +1075,6 @@ class MediaPengajuanController extends Controller
                 //         rename($path . '/' . $print, $path . '/' . $value);
                 //     }
                 // }
-                dd($key);
                 if ($key == 'fileSuratPernyataanPimred') {
                     # code...
                     foreach ($images as $img) {
