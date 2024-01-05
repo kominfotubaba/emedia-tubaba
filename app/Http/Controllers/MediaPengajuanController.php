@@ -1052,10 +1052,10 @@ class MediaPengajuanController extends Controller
             ];
 
             // $directory = __DIR__;
-            foreach ($data as $key => $value) {
-                $directory =  public_path('tmp/uploads/' . strtolower($key));
-                $images = glob($directory . "/*");
-
+            foreach ($data as $value) {
+                // $directory =  public_path('tmp/uploads/' . strtolower($key));
+                // $images = glob($directory . "/*");
+                $out[] = $value;
 
                 // foreach ($out as $o) {
                 //     # code...
@@ -1078,14 +1078,14 @@ class MediaPengajuanController extends Controller
                 // }
             }
 
-            foreach ($images as $img) {
-                if (strtolower(pathinfo($img)['basename']) == $value) {
-                    # code...
-                    $out[] = pathinfo($img)['basename'];
-                } else {
-                    $out[] = 0;
-                }
-            }
+            // foreach ($images as $img) {
+            //     if (strtolower(pathinfo($img)['basename']) == $value) {
+            //         # code...
+            //         $out[] = pathinfo($img)['basename'];
+            //     } else {
+            //         $out[] = 0;
+            //     }
+            // }
             dd($out);
             // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
