@@ -1075,12 +1075,12 @@ class MediaPengajuanController extends Controller
                 //         rename($path . '/' . $print, $path . '/' . $value);
                 //     }
                 // }
+                foreach ($images as $img) {
+
+                    $out[] = pathinfo($img)['basename'];
+                }
             }
 
-            foreach ($images as $img) {
-
-                $out[] = pathinfo($img)['basename'];
-            }
             dd($out);
             // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
