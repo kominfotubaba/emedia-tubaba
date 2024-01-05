@@ -1079,7 +1079,10 @@ class MediaPengajuanController extends Controller
                     # code...
                     foreach ($images as $img) {
                         # code...
-                        $out[] = pathinfo($img)['basename'];
+                        if ($value == strtolower(pathinfo($img)['basename'])) {
+                            # code...
+                            $out[] = pathinfo($img)['basename'];
+                        }
                     }
                 }
                 // if ($key == 'fileKumhamPerusahaan') {
