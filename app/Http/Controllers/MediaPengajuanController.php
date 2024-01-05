@@ -1082,6 +1082,8 @@ class MediaPengajuanController extends Controller
                         if ($value == strtolower(pathinfo($img)['basename'])) {
                             # code...
                             $out[] = pathinfo($img)['basename'];
+                        } else {
+                            $out[] = 0;
                         }
                     }
                 }
