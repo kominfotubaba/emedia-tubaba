@@ -1079,10 +1079,8 @@ class MediaPengajuanController extends Controller
                 if ($key == 'fileSuratPernyataanPimred') {
                     # code...
                     foreach ($images as $img) {
-                        if ($value == strtolower(pathinfo($img)['basename'])) {
-                            # code...
-                            $out[] = pathinfo($img)['basename'];
-                        }
+                        # code...
+                        $out[] = pathinfo($img)['basename'];
                     }
                 }
                 // if ($key == 'fileKumhamPerusahaan') {
