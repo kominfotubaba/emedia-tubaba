@@ -1055,6 +1055,7 @@ class MediaPengajuanController extends Controller
             foreach ($data as $key => $value) {
                 $directory =  public_path('tmp/uploads/' . strtolower($key));
                 $images = glob($directory . "/*");
+
                 foreach ($images as $img) {
                     if (strtolower(pathinfo($img)['basename']) == $value) {
                         # code...
@@ -1063,27 +1064,27 @@ class MediaPengajuanController extends Controller
                         $out[] = 0;
                     }
                 }
-                foreach ($out as $o) {
-                    # code...
-                    if (!($o == 0)) {
-                        # code...
-                        $print = $o;
-                    } else {
-                        $print = null;
-                    }
-                }
-                // dd($print);
-                if ($print) {
-                    # code...
-                    // dd($print);
-                    if ($value) {
-                        $path =   public_path('tmp/uploads/' . strtolower($key));
-                        # code...
-                        rename($path . '/' . $print, $path . '/' . $value);
-                    }
-                }
+                // foreach ($out as $o) {
+                //     # code...
+                //     if (!($o == 0)) {
+                //         # code...
+                //         $print = $o;
+                //     } else {
+                //         $print = null;
+                //     }
+                // }
+                // // dd($print);
+                // if ($print) {
+                //     # code...
+                //     // dd($print);
+                //     if ($value) {
+                //         $path =   public_path('tmp/uploads/' . strtolower($key));
+                //         # code...
+                //         rename($path . '/' . $print, $path . '/' . $value);
+                //     }
+                // }
             }
-            dd('a');
+            dd($out);
             // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
             $pesan = 'data berhasil diupdate';
