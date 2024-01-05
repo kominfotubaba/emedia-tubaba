@@ -1713,7 +1713,7 @@
             $('#kirimData').click(function(e) {
                 e.preventDefault();
                 // validasi
-                $(this).prop('disabled', true);
+                // $(this).prop('disabled', true);
                 const validasi = $('.validasi').valid();
                 // var wartawanKompetenPerusahaan = $('#wartawanKompetenPerusahaan').val();
                 // var namaPercetakan = $('#namaPercetakan').val();
@@ -1876,7 +1876,7 @@
                                         .tahun_buka + "/" + "detail";
                                 }, 1500);
                             }
-                            $(this).prop('disabled', false);
+                            // $(this).prop('disabled', false);
                         }
                     });
                 }

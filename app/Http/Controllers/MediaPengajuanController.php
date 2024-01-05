@@ -486,72 +486,100 @@ class MediaPengajuanController extends Controller
         } else {
             // update
             $data = [
-                'jenis_media' => $jenis_media,
-                'namaPerusahaan' => $namaPerusahaan,
-                'namaPenanggungJawab' => $namaPenanggungJawab,
-                'namaPimred' => $namaPimred,
-                'kumhamPerusahaan' => $kumhamPerusahaan,
-                'alamatPerusahaan' => $alamatPerusahaan,
-                'tlpnPerusahaan' => $tlpnPerusahaan,
-                'emailPerusahaan' => $emailPerusahaan,
-                'npwpPerusahaan' => $npwpPerusahaan,
-                'nibPerusahaan' => $nibPerusahaan,
-                'noKbki' => $noKbki,
-                'izinIpp' => $izinIpp,
-                'namaPercetakan' => $namaPercetakan,
-                'alamatProvPerusahaan' => $alamatProvPerusahaan,
-                'alamatKabPerusahaan' => $alamatKabPerusahaan,
-                'statusKswp' => $statusKswp,
-                'noKlbi' => $noKlbi,
+                // 'jenis_media' => $jenis_media,
+                // 'namaPerusahaan' => $namaPerusahaan,
+                // 'namaPenanggungJawab' => $namaPenanggungJawab,
+                // 'namaPimred' => $namaPimred,
+                // 'kumhamPerusahaan' => $kumhamPerusahaan,
+                // 'alamatPerusahaan' => $alamatPerusahaan,
+                // 'tlpnPerusahaan' => $tlpnPerusahaan,
+                // 'emailPerusahaan' => $emailPerusahaan,
+                // 'npwpPerusahaan' => $npwpPerusahaan,
+                // 'nibPerusahaan' => $nibPerusahaan,
+                // 'noKbki' => $noKbki,
+                // 'izinIpp' => $izinIpp,
+                // 'namaPercetakan' => $namaPercetakan,
+                // 'alamatProvPerusahaan' => $alamatProvPerusahaan,
+                // 'alamatKabPerusahaan' => $alamatKabPerusahaan,
+                // 'statusKswp' => $statusKswp,
+                // 'noKlbi' => $noKlbi,
                 'fileSuratPernyataanPimred' => $fileSuratPernyataanPimred,
                 'fileKumhamPerusahaan' => $fileKumhamPerusahaan,
                 'fileNpwpPerusahaan' => $fileNpwpPerusahaan,
                 'fileNibPerusahaan' => $fileNibPerusahaan,
                 'fileIzinIpp' => $fileIzinIpp,
-                'namaMedia' => $namaMedia,
-                'serfikatUkwPimred' => $serfikatUkwPimred,
-                'namaBank' => $namaBank,
-                'pemilikRekening' => $pemilikRekening,
-                'noRekening' => $noRekening,
-                'verifikasiDewanPers' => $verifikasiDewanPers,
-                'jenisSerfikatUkwPimred' => $jenisSerfikatUkwPimred,
-                'afiliasiPerusahaan' => $afiliasiPerusahaan,
-                'domisiliRedaksiMedia' => $domisiliRedaksiMedia,
-                'kanalKhusus' => $kanalKhusus,
-                'jenisRekening' => $jenisRekening,
+                // 'namaMedia' => $namaMedia,
+                // 'serfikatUkwPimred' => $serfikatUkwPimred,
+                // 'namaBank' => $namaBank,
+                // 'pemilikRekening' => $pemilikRekening,
+                // 'noRekening' => $noRekening,
+                // 'verifikasiDewanPers' => $verifikasiDewanPers,
+                // 'jenisSerfikatUkwPimred' => $jenisSerfikatUkwPimred,
+                // 'afiliasiPerusahaan' => $afiliasiPerusahaan,
+                // 'domisiliRedaksiMedia' => $domisiliRedaksiMedia,
+                // 'kanalKhusus' => $kanalKhusus,
+                // 'jenisRekening' => $jenisRekening,
                 'fileSerfikatUkwPimred' => $fileSerfikatUkwPimred,
                 'fileAfiliasiPerusahaan' => $fileAfiliasiPerusahaan,
                 'fileDomisiliRedaksiMedia' => $fileDomisiliRedaksiMedia,
                 'fileKanalKhusus' => $fileKanalKhusus,
                 'fileRekening' => $fileRekening,
-                'tahunBerdiriMedia' => $tahunBerdiriMedia,
-                'jenisJangkauanSiarMediaElektronik' => $jenisJangkauanSiarMediaElektronik,
-                'jangkauanSiarMediaElektronik' => $jangkauanSiarMediaElektronik,
-                'jumlahOplahMediaCetakPerMinggu' => $jumlahOplahMediaCetakPerMinggu,
+                // 'tahunBerdiriMedia' => $tahunBerdiriMedia,
+                // 'jenisJangkauanSiarMediaElektronik' => $jenisJangkauanSiarMediaElektronik,
+                // 'jangkauanSiarMediaElektronik' => $jangkauanSiarMediaElektronik,
+                // 'jumlahOplahMediaCetakPerMinggu' => $jumlahOplahMediaCetakPerMinggu,
                 'fileJumlahOplahMediaCetakPerMinggu' => $fileJumlahOplahMediaCetakPerMinggu,
-                'jumlahKontenBeritaAktif' => $jumlahKontenBeritaAktif,
-                'namaPerwakilan' => $namaPerwakilan,
-                'nomorKKPerwakilan' => $nomorKKPerwakilan,
-                'nomorKtpPerwakilan' => $nomorKtpPerwakilan,
-                'npwpPerwakilan' => $npwpPerwakilan,
-                'serfikatUkwPerwakilan' => $serfikatUkwPerwakilan,
-                'afiliasiPersPerwakilan' => $afiliasiPersPerwakilan,
-                'alamatPerwakilan' => $alamatPerwakilan,
-                'tlpnPerwakilan' => $tlpnPerwakilan,
-                'emailPerwakilan' => $emailPerwakilan,
-                'jenisSerfikatUkwPerwakilan' => $jenisSerfikatUkwPerwakilan,
-                'alamatProvPerwakilan' => $alamatProvPerwakilan,
-                'alamatKabPerwakilan' => $alamatKabPerwakilan,
-                'alamatKecPerwakilan' => $alamatKecPerwakilan,
-                'alamatKelPerwakilan' => $alamatKelPerwakilan,
+                // 'jumlahKontenBeritaAktif' => $jumlahKontenBeritaAktif,
+                // 'namaPerwakilan' => $namaPerwakilan,
+                // 'nomorKKPerwakilan' => $nomorKKPerwakilan,
+                // 'nomorKtpPerwakilan' => $nomorKtpPerwakilan,
+                // 'npwpPerwakilan' => $npwpPerwakilan,
+                // 'serfikatUkwPerwakilan' => $serfikatUkwPerwakilan,
+                // 'afiliasiPersPerwakilan' => $afiliasiPersPerwakilan,
+                // 'alamatPerwakilan' => $alamatPerwakilan,
+                // 'tlpnPerwakilan' => $tlpnPerwakilan,
+                // 'emailPerwakilan' => $emailPerwakilan,
+                // 'jenisSerfikatUkwPerwakilan' => $jenisSerfikatUkwPerwakilan,
+                // 'alamatProvPerwakilan' => $alamatProvPerwakilan,
+                // 'alamatKabPerwakilan' => $alamatKabPerwakilan,
+                // 'alamatKecPerwakilan' => $alamatKecPerwakilan,
+                // 'alamatKelPerwakilan' => $alamatKelPerwakilan,
                 'fileNpwpPerwakilan' => $fileNpwpPerwakilan,
                 'fileSerfikatUkwPerwakilan' => $fileSerfikatUkwPerwakilan,
                 'fileafiliasiPersPerwakilan' => $fileafiliasiPersPerwakilan,
-                'keterangan' => '',
-                'status' => 'edit'
+                // 'keterangan' => '',
+                // 'status' => 'edit'
             ];
 
-            $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
+            // $directory = __DIR__;
+            foreach ($data as $key => $value) {
+                $directory =  public_path('tmp/uploads/' . $key);
+                $images = glob($directory . "/*", GLOB_BRACE);
+                foreach ($images as $img) {
+                    if (strtolower(pathinfo($img)['basename']) == $value) {
+                        # code...
+                        $out[] = pathinfo($img)['basename'];
+                    } else {
+                        $out[] = 0;
+                    }
+                }
+                foreach ($out as $o) {
+                    # code...
+                    if (!($o == 0)) {
+                        # code...
+                        $print = $o;
+                    }
+                }
+                // dd($key);
+                if ($print) {
+                    # code...
+                    // dd($print);
+                    $path[] =  'tmp/uploads/' . strtolower($key);
+                    // rename($path . '/' . $print, $path . '/' . $value);
+                }
+            }
+            dd($path);
+            // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
 
             $pesan = 'data berhasil diupdate';
             $icon = 'success';
@@ -697,38 +725,38 @@ class MediaPengajuanController extends Controller
      */
     public function verifikasi(Request $request)
     {
-        $pengajuan_no = $request->pengajuan_no;
-        $keterangan = $request->keterangan;
-        $status = $request->status;
-        $data = $request->data;
+        // $pengajuan_no = $request->pengajuan_no;
+        // $keterangan = $request->keterangan;
+        // $status = $request->status;
+        // $data = $request->data;
 
-        function mapped_implode($glue, $array, $symbol = '. ')
-        {
-            return implode(
-                $glue,
-                array_map(
-                    function ($k, $v) use ($symbol) {
-                        return $k . $symbol . $v;
-                    },
-                    array_keys($array),
-                    array_values($array)
-                )
-            );
-        }
+        // function mapped_implode($glue, $array, $symbol = '. ')
+        // {
+        //     return implode(
+        //         $glue,
+        //         array_map(
+        //             function ($k, $v) use ($symbol) {
+        //                 return $k . $symbol . $v;
+        //             },
+        //             array_keys($array),
+        //             array_values($array)
+        //         )
+        //     );
+        // }
 
-        $data_media = new_media_pengajuan::select(
-            'new_media_pengajuans.id_user',
-            'users.id',
-            'new_media_pengajuans.pengajuan_no as idpengajuan',
-            'new_media_pengajuans.jenis_media as jenis',
-            'new_media_pengajuans.namaMedia as namamedia',
-            'users.email as useremail',
-            'new_media_pengajuans.status as status'
-        )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
+        // $data_media = new_media_pengajuan::select(
+        //     'new_media_pengajuans.id_user',
+        //     'users.id',
+        //     'new_media_pengajuans.pengajuan_no as idpengajuan',
+        //     'new_media_pengajuans.jenis_media as jenis',
+        //     'new_media_pengajuans.namaMedia as namamedia',
+        //     'users.email as useremail',
+        //     'new_media_pengajuans.status as status'
+        // )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
 
 
 
-        dd($data);
+        // dd($data);
         // function mapped_implode($glue, $array, $symbol = '. ')
         // {
         //     return implode(
@@ -803,5 +831,257 @@ class MediaPengajuanController extends Controller
         //     'icon' => $icon,
         //     'title' => $title
         // ]);
+
+
+
+        // // Perusahaan
+        // $nama_perusahaan = str_replace('  ', ' ', strtolower($request->nama_perusahaan));
+        // $nama_pimred = strtolower($request->nama_pimred);
+        // $alamat_perusahaan = strtolower($request->alamat_perusahaan);
+        // $tlpn_perusahaan = strtolower($request->tlpn_perusahaan);
+        // $email_perusahaan = strtolower($request->email_perusahaan);
+        // $npwp_perusahaan = strtolower($request->npwp_perusahaan);
+        // $akta_perusahaan = strtolower($request->akta_perusahaan);
+        // $kumham_perusahaan = strtolower($request->kumham_perusahaan);
+        // $wartawan_kompeten_perusahaan = strtolower($request->wartawan_kompeten_perusahaan);
+        // $nama_percetakan = strtolower($request->nama_percetakan);
+        // $alamat_percetakan = strtolower($request->alamat_percetakan);
+        // // file
+        // $file_npwp_perusahaan = $request->file_npwp_perusahaan;
+        // $file_akta_perusahaan = $request->file_akta_perusahaan;
+        // $file_kumham_perusahaan = $request->file_kumham_perusahaan;
+        // $file_wartawan_kompeten_perusahaan = $request->file_wartawan_kompeten_perusahaan;
+        // $file_dewan_pers_perusahaan = $request->file_dewan_pers_perusahaan;
+        // $file_afiliasi_perusahaan = $request->file_afiliasi_perusahaan;
+        // $file_spt_perusahaan = $request->file_spt_perusahaan;
+        // $file_domisili_perusahaan = $request->file_domisili_perusahaan;
+        // $file_kuasa_perwakilan = $request->file_kuasa_perwakilan;
+        // $file_kerjasama = $request->file_kerjasama;
+        // $file_izin_ipp = $request->file_izin_ipp;
+        // // perwakilan
+        // $nama_media = strtolower($request->nama_media);
+        // $nama_biro_perwakilan = strtolower($request->nama_biro_perwakilan);
+        // $alamat_perwakilan = strtolower($request->alamat_perwakilan);
+        // $tlpn_perwakilan = strtolower($request->tlpn_perwakilan);
+        // $email_perwakilan = strtolower($request->email_perwakilan);
+        // $ktp_perwakilan = strtolower($request->ktp_perwakilan);
+        // $kk_perwakilan = strtolower($request->kk_perwakilan);
+        // $npwp_perwakilan = strtolower($request->npwp_perwakilan);
+        // $kompetensi_perwakilan = strtolower($request->kompetensi_perwakilan);
+        // $jenis_rekening = strtolower($request->jenis_rekening);
+        // $nama_bank = strtolower($request->nama_bank);
+        // $pemilik_rekening = strtolower($request->pemilik_rekening);
+        // $no_rekening = strtolower($request->no_rekening);
+        // // file
+        // $file_ktp_perwakilan = $request->file_ktp_perwakilan;
+        // $file_kk_perwakilan = $request->file_kk_perwakilan;
+        // $file_npwp_perwakilan = $request->file_npwp_perwakilan;
+        // $file_kopetensi_perwakilan = $request->file_kopetensi_perwakilan;
+        // $file_afiliasi_perwakilan = $request->file_afiliasi_perwakilan;
+        // $file_domisili_perwakilan = $request->file_domisili_perwakilan;
+        // $file_kode_etik_perwakilan = $request->file_kode_etik_perwakilan;
+        // $file_pernyataan_media_perwakilan = $request->file_pernyataan_media_perwakilan;
+        // $file_rekening = $request->file_rekening;
+        // $file_signature_data = $request->file_signature_data;
+
+        $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
+        $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
+        // $pengajuan_no =  $tahun_buka . '_' . Str::random(10);
+        // $jenis_media = strtolower($request->jenis_media);
+
+        $pengajuan_no =  $request->pengajuan_no;
+        $jenis_media = strtolower($request->jenis_media);
+        $namaPerusahaan = str_replace('  ', ' ', strtolower($request->namaPerusahaan));
+        $namaPenanggungJawab = strtolower($request->namaPenanggungJawab);
+        $namaPimred = strtolower($request->namaPimred);
+        $kumhamPerusahaan = strtolower($request->kumhamPerusahaan);
+        $alamatPerusahaan = strtolower($request->alamatPerusahaan);
+        $tlpnPerusahaan = strtolower($request->tlpnPerusahaan);
+        $emailPerusahaan = strtolower($request->emailPerusahaan);
+        $npwpPerusahaan = strtolower($request->npwpPerusahaan);
+        $nibPerusahaan = strtolower($request->nibPerusahaan);
+        $noKbki = strtolower($request->noKbki);
+        $izinIpp = strtolower($request->izinIpp);
+        $namaPercetakan = strtolower($request->namaPercetakan);
+        $alamatProvPerusahaan = strtolower($request->alamatProvPerusahaan);
+        $alamatKabPerusahaan = strtolower($request->alamatKabPerusahaan);
+        $statusKswp = strtolower($request->statusKswp);
+        $noKlbi = strtolower($request->noKlbi);
+        $fileSuratPernyataanPimred = strtolower($request->fileSuratPernyataanPimred);
+        $fileKumhamPerusahaan = strtolower($request->fileKumhamPerusahaan);
+        $fileNpwpPerusahaan = strtolower($request->fileNpwpPerusahaan);
+        $fileNibPerusahaan = strtolower($request->fileNibPerusahaan);
+        $fileIzinIpp = strtolower($request->fileIzinIpp);
+        $namaMedia = strtolower($request->namaMedia);
+        $serfikatUkwPimred = strtolower($request->serfikatUkwPimred);
+        $namaBank = strtolower($request->namaBank);
+        $pemilikRekening = strtolower($request->pemilikRekening);
+        $noRekening = strtolower($request->noRekening);
+        $verifikasiDewanPers = strtolower($request->verifikasiDewanPers);
+        $jenisSerfikatUkwPimred = strtolower($request->jenisSerfikatUkwPimred);
+        $afiliasiPerusahaan = strtolower($request->afiliasiPerusahaan);
+        $domisiliRedaksiMedia = strtolower($request->domisiliRedaksiMedia);
+        $kanalKhusus = strtolower($request->kanalKhusus);
+        $jenisRekening = strtolower($request->jenisRekening);
+        $fileSerfikatUkwPimred = strtolower($request->fileSerfikatUkwPimred);
+        $fileAfiliasiPerusahaan = strtolower($request->fileAfiliasiPerusahaan);
+        $fileDomisiliRedaksiMedia = strtolower($request->fileDomisiliRedaksiMedia);
+        $fileKanalKhusus = strtolower($request->fileKanalKhusus);
+        $fileRekening = strtolower($request->fileRekening);
+        $tahunBerdiriMedia = strtolower($request->tahunBerdiriMedia);
+        $jenisJangkauanSiarMediaElektronik = strtolower($request->jenisJangkauanSiarMediaElektronik);
+        $jangkauanSiarMediaElektronik = strtolower($request->jangkauanSiarMediaElektronik);
+        $jumlahOplahMediaCetakPerMinggu = strtolower($request->jumlahOplahMediaCetakPerMinggu);
+        $fileJumlahOplahMediaCetakPerMinggu = strtolower($request->fileJumlahOplahMediaCetakPerMinggu);
+        $jumlahKontenBeritaAktif = strtolower($request->jumlahKontenBeritaAktif);
+        $namaPerwakilan = strtolower($request->namaPerwakilan);
+        $nomorKKPerwakilan = strtolower($request->nomorKKPerwakilan);
+        $nomorKtpPerwakilan = strtolower($request->nomorKtpPerwakilan);
+        $npwpPerwakilan = strtolower($request->npwpPerwakilan);
+        $serfikatUkwPerwakilan = strtolower($request->serfikatUkwPerwakilan);
+        $afiliasiPersPerwakilan = strtolower($request->afiliasiPersPerwakilan);
+        $alamatPerwakilan = strtolower($request->alamatPerwakilan);
+        $tlpnPerwakilan = strtolower($request->tlpnPerwakilan);
+        $emailPerwakilan = strtolower($request->emailPerwakilan);
+        $jenisSerfikatUkwPerwakilan = strtolower($request->jenisSerfikatUkwPerwakilan);
+        $alamatProvPerwakilan = strtolower($request->alamatProvPerwakilan);
+        $alamatKabPerwakilan = strtolower($request->alamatKabPerwakilan);
+        $alamatKecPerwakilan = strtolower($request->alamatKecPerwakilan);
+        $alamatKelPerwakilan = strtolower($request->alamatKelPerwakilan);
+        $fileNpwpPerwakilan = strtolower($request->fileNpwpPerwakilan);
+        $fileSerfikatUkwPerwakilan = strtolower($request->fileSerfikatUkwPerwakilan);
+        $fileafiliasiPersPerwakilan = strtolower($request->fileafiliasiPersPerwakilan);
+
+        $tahun = tahun::select('tahun')->where('pengajuan_edit', 1)->get();
+        $tahun_edit = json_decode(json_encode($tahun[0]->tahun));
+        $nama_perusahaan_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('namaPerusahaan', $namaPerusahaan)->where('tahun_pengajuan', $tahun_edit)->count();
+        $nama_media_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('namaMedia', $namaMedia)->where('tahun_pengajuan', $tahun_edit)->count();
+        $ktp_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('nomorKtpPerwakilan', $nomorKtpPerwakilan)->where('tahun_pengajuan', $tahun_edit)->count();
+        $kk_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('nomorKKPerwakilan', $nomorKKPerwakilan)->where('tahun_pengajuan', $tahun_edit)->count();
+
+
+        // dd([$pengajuan_no, $nama_perusahaan_cek, $jenis_media]);
+
+        if ($nama_perusahaan_cek >= 1) {
+            # code...
+            $pesan = 'Pengajuan Nama Perusahaan Telah Digunakan';
+            $icon = 'error';
+            $title = 'Operasi Gagal';
+        } elseif ($nama_media_cek >= 1) {
+            # code...
+            $pesan = 'Nama Media Telah Digunakan';
+            $icon = 'error';
+            $title = 'Operasi Gagal';
+        } elseif ($ktp_cek >= 1) {
+            # code...
+            $pesan = 'Pengajuan KTP Telah Digunakan';
+            $icon = 'error';
+            $title = 'Operasi Gagal';
+        } elseif ($kk_cek >= 1) {
+            $pesan = 'Pengajuan KK Telah Digunakan';
+            $icon = 'error';
+            $title = 'Operasi Gagal';
+        } else {
+            // update
+            $data = [
+                // 'jenis_media' => $jenis_media,
+                // 'namaPerusahaan' => $namaPerusahaan,
+                // 'namaPenanggungJawab' => $namaPenanggungJawab,
+                // 'namaPimred' => $namaPimred,
+                // 'kumhamPerusahaan' => $kumhamPerusahaan,
+                // 'alamatPerusahaan' => $alamatPerusahaan,
+                // 'tlpnPerusahaan' => $tlpnPerusahaan,
+                // 'emailPerusahaan' => $emailPerusahaan,
+                // 'npwpPerusahaan' => $npwpPerusahaan,
+                // 'nibPerusahaan' => $nibPerusahaan,
+                // 'noKbki' => $noKbki,
+                // 'izinIpp' => $izinIpp,
+                // 'namaPercetakan' => $namaPercetakan,
+                // 'alamatProvPerusahaan' => $alamatProvPerusahaan,
+                // 'alamatKabPerusahaan' => $alamatKabPerusahaan,
+                // 'statusKswp' => $statusKswp,
+                // 'noKlbi' => $noKlbi,
+                'fileSuratPernyataanPimred' => $fileSuratPernyataanPimred,
+                'fileKumhamPerusahaan' => $fileKumhamPerusahaan,
+                'fileNpwpPerusahaan' => $fileNpwpPerusahaan,
+                'fileNibPerusahaan' => $fileNibPerusahaan,
+                'fileIzinIpp' => $fileIzinIpp,
+                // 'namaMedia' => $namaMedia,
+                // 'serfikatUkwPimred' => $serfikatUkwPimred,
+                // 'namaBank' => $namaBank,
+                // 'pemilikRekening' => $pemilikRekening,
+                // 'noRekening' => $noRekening,
+                // 'verifikasiDewanPers' => $verifikasiDewanPers,
+                // 'jenisSerfikatUkwPimred' => $jenisSerfikatUkwPimred,
+                // 'afiliasiPerusahaan' => $afiliasiPerusahaan,
+                // 'domisiliRedaksiMedia' => $domisiliRedaksiMedia,
+                // 'kanalKhusus' => $kanalKhusus,
+                // 'jenisRekening' => $jenisRekening,
+                'fileSerfikatUkwPimred' => $fileSerfikatUkwPimred,
+                'fileAfiliasiPerusahaan' => $fileAfiliasiPerusahaan,
+                'fileDomisiliRedaksiMedia' => $fileDomisiliRedaksiMedia,
+                'fileKanalKhusus' => $fileKanalKhusus,
+                'fileRekening' => $fileRekening,
+                // 'tahunBerdiriMedia' => $tahunBerdiriMedia,
+                // 'jenisJangkauanSiarMediaElektronik' => $jenisJangkauanSiarMediaElektronik,
+                // 'jangkauanSiarMediaElektronik' => $jangkauanSiarMediaElektronik,
+                // 'jumlahOplahMediaCetakPerMinggu' => $jumlahOplahMediaCetakPerMinggu,
+                'fileJumlahOplahMediaCetakPerMinggu' => $fileJumlahOplahMediaCetakPerMinggu,
+                // 'jumlahKontenBeritaAktif' => $jumlahKontenBeritaAktif,
+                // 'namaPerwakilan' => $namaPerwakilan,
+                // 'nomorKKPerwakilan' => $nomorKKPerwakilan,
+                // 'nomorKtpPerwakilan' => $nomorKtpPerwakilan,
+                // 'npwpPerwakilan' => $npwpPerwakilan,
+                // 'serfikatUkwPerwakilan' => $serfikatUkwPerwakilan,
+                // 'afiliasiPersPerwakilan' => $afiliasiPersPerwakilan,
+                // 'alamatPerwakilan' => $alamatPerwakilan,
+                // 'tlpnPerwakilan' => $tlpnPerwakilan,
+                // 'emailPerwakilan' => $emailPerwakilan,
+                // 'jenisSerfikatUkwPerwakilan' => $jenisSerfikatUkwPerwakilan,
+                // 'alamatProvPerwakilan' => $alamatProvPerwakilan,
+                // 'alamatKabPerwakilan' => $alamatKabPerwakilan,
+                // 'alamatKecPerwakilan' => $alamatKecPerwakilan,
+                // 'alamatKelPerwakilan' => $alamatKelPerwakilan,
+                'fileNpwpPerwakilan' => $fileNpwpPerwakilan,
+                'fileSerfikatUkwPerwakilan' => $fileSerfikatUkwPerwakilan,
+                'fileafiliasiPersPerwakilan' => $fileafiliasiPersPerwakilan,
+                // 'keterangan' => '',
+                // 'status' => 'edit'
+            ];
+
+            // $directory = __DIR__;
+            foreach ($data as $key => $value) {
+                $directory =  public_path('tmp/uploads/' . $key);
+                $images = glob($directory . "/*", GLOB_BRACE);
+                foreach ($images as $img) {
+                    if (strtolower(pathinfo($img)['basename']) == $value) {
+                        # code...
+                        $out[] = pathinfo($img)['basename'];
+                    } else {
+                        $out[] = 0;
+                    }
+                }
+                foreach ($out as $o) {
+                    # code...
+                    if (!($o == 0)) {
+                        # code...
+                        $print = $o;
+                    }
+                }
+                // dd($key);
+                if ($print) {
+                    # code...
+                    // dd($print);
+                    $path[] =  'tmp/uploads/' . strtolower($key);
+                    // rename($path . '/' . $print, $path . '/' . $value);
+                }
+            }
+            dd($path);
+            // $pengajuan_update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update($data);
+
+            $pesan = 'data berhasil diupdate';
+            $icon = 'success';
+            $title = 'Sukses';
+        }
     }
 }

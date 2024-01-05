@@ -1714,48 +1714,49 @@
          * button
          **/
         $(document).ready(function() {
-            $('#terima').click(function(e) {
-                e.preventDefault();
-                var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
-                // console.log(getDataCalculate());
-                if ($('#statusKswp option:selected').text()) {
-                    if ($('#statusKswp option:selected').text().toLowerCase() == 'kswp valid') {
-                        console.log('a');
-                    }
-                }
+            // $('#terima').click(function(e) {
+            //     e.preventDefault();
+            //     var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
+            //     // console.log(getDataCalculate());
+            //     if ($('#statusKswp option:selected').text()) {
+            //         if ($('#statusKswp option:selected').text().toLowerCase() == 'kswp valid') {
+            //             console.log('a');
+            //         }
+            //     }
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "post",
-                    url: "{{ Route('verifikasi.post') }}",
-                    data: {
-                        pengajuan_no: pengajuanNo,
-                        keterangan: 'verify',
-                        status: 'terima',
-                        data: getDataCalculate()
-                    },
-                    success: function(response) {
-                        Swal.fire({
-                            toast: false,
-                            position: 'center',
-                            icon: response.icon,
-                            title: response.title,
-                            text: response.massage,
-                            showConfirmButton: true,
-                        });
-                        if (response.icon == 'success') {
-                            setTimeout(function() {
-                                //your code to be executed after 1 second
-                                window.location.href = "/daftar";
-                            }, 3000);
-                        }
-                    }
-                });
-            });
+            //     $.ajaxSetup({
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //         }
+            //     });
+            //     $.ajax({
+            //         type: "post",
+            //         url: "{{ Route('verifikasi.post') }}",
+            //         data: {
+            //             pengajuan_no: pengajuanNo,
+            //             keterangan: 'verify',
+            //             status: 'terima',
+            //             data: getDataCalculate()
+            //         },
+            //         success: function(response) {
+            //             Swal.fire({
+            //                 toast: false,
+            //                 position: 'center',
+            //                 icon: response.icon,
+            //                 title: response.title,
+            //                 text: response.massage,
+            //                 showConfirmButton: true,
+            //             });
+            //             if (response.icon == 'success') {
+            //                 setTimeout(function() {
+            //                     //your code to be executed after 1 second
+            //                     window.location.href = "/daftar";
+            //                 }, 3000);
+            //             }
+            //         }
+            //     });
+            // });
+
             /**
              * setting ttd
              **/
@@ -2013,6 +2014,178 @@
             //         });
             //     }
             // });
+
+            $('#terima').click(function(e) {
+                e.preventDefault();
+                // validasi
+                // $(this).prop('disabled', true);
+                const validasi = $('.validasi').valid();
+                // var wartawanKompetenPerusahaan = $('#wartawanKompetenPerusahaan').val();
+                // var namaPercetakan = $('#namaPercetakan').val();
+                // var alamatPercetakan = $('#alamatPercetakan').val();
+                // // perwakilan
+                // var namaMedia = $('#namaMedia').val();
+                // var namaBiroPerwakilan = $('#namaBiroPerwakilan').val();
+                // var alamatPerwakilan = $('#alamatPerwakilan').val();
+                // var alamatProvPerwakilan = $('#alamatProvPerwakilan option:selected').text();
+                // var alamatKabPerwakilan = $('#alamatKabPerwakilan option:selected').text();
+                // var alamatKecPerwakilan = $('#alamatKecPerwakilan option:selected').text();
+                // var alamatKelPerwakilan = $('#alamatKelPerwakilan option:selected').text();
+                // var tlpnPerwakilan = $('#tlpnPerwakilan').val();
+                // var emailPerwakilan = $('#emailPerwakilan').val();
+                // var ktpPerwakilan = $('#ktpPerwakilan').val();
+                // var kkPerwakilan = $('#kkPerwakilan').val();
+                // var npwpPerwakilan = $('#npwpPerwakilan').val();
+                // var kompetensiPerwakilan = $('#kompetensiPerwakilan').val();
+                // var jenisRekening = $('#jenisRekening').val();
+                // var namaBank = $('#namaBank').val();
+                // var pemilikRekening = $('#pemilikRekening').val();
+                // var noRekening = $('#noRekening').val();
+                // var pernyataanCheckbox = $('#pernyataanCheckbox').val();
+                var data = {
+                    // param
+                    jenis_media: $('#pengajuanJenisMedia').attr('data-jenisMedia'),
+                    pengajuan_no: $('#pengajuanNo').attr('data-noPengajuan'),
+                    /**
+                     * DATA BADAN HUKUM
+                     **/
+                    //  input
+                    namaPerusahaan: $('#namaPerusahaan').val(),
+                    namaPenanggungJawab: $('#namaPenanggungJawab').val(),
+                    namaPimred: $('#namaPimred').val(),
+                    kumhamPerusahaan: $('#kumhamPerusahaan').val(),
+                    alamatPerusahaan: $('#alamatPerusahaan').val(),
+                    tlpnPerusahaan: $('#tlpnPerusahaan').val(),
+                    emailPerusahaan: $('#emailPerusahaan').val(),
+                    npwpPerusahaan: $('#npwpPerusahaan').val(),
+                    nibPerusahaan: $('#nibPerusahaan').val(),
+                    noKbki: $('#noKbki').val(),
+                    izinIpp: $('#izinIpp').val(),
+                    namaPercetakan: $('#namaPercetakan').val(),
+                    // select
+                    alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
+                    alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
+                    statusKswp: $('#statusKswp option:selected').text(),
+                    noKlbi: $('#noKlbi option:selected').text(),
+                    // file
+                    fileSuratPernyataanPimred: $('#fileSuratPernyataanPimred .dz-details span')
+                        .text(),
+                    fileKumhamPerusahaan: $('#fileKumhamPerusahaan .dz-details span').text(),
+                    fileNpwpPerusahaan: $('#fileNpwpPerusahaan .dz-details span').text(),
+                    fileNibPerusahaan: $('#fileNibPerusahaan .dz-details span').text(),
+                    fileIzinIpp: $('#fileIzinIpp .dz-details span').text(),
+
+                    /**
+                     * DATA MEDIA
+                     **/
+                    //  input
+                    namaMedia: $('#namaMedia').val(),
+                    serfikatUkwPimred: $('#serfikatUkwPimred').val(),
+                    namaBank: $('#namaBank').val(),
+                    pemilikRekening: $('#pemilikRekening').val(),
+                    noRekening: $('#noRekening').val(),
+                    // select
+                    verifikasiDewanPers: $('#verifikasiDewanPers option:selected').text(),
+                    jenisSerfikatUkwPimred: $('#jenisSerfikatUkwPimred option:selected').text(),
+                    afiliasiPerusahaan: $('#afiliasiPerusahaan option:selected').text(),
+                    domisiliRedaksiMedia: $('#domisiliRedaksiMedia option:selected').text(),
+                    kanalKhusus: $('#kanalKhusus option:selected').text(),
+                    jenisRekening: $('#jenisRekening option:selected').text(),
+                    // file
+                    fileSerfikatUkwPimred: $('#fileSerfikatUkwPimred .dz-details span').text(),
+                    fileAfiliasiPerusahaan: $('#fileAfiliasiPerusahaan .dz-details span').text(),
+                    fileDomisiliRedaksiMedia: $('#fileDomisiliRedaksiMedia .dz-details span')
+                        .text(),
+                    fileKanalKhusus: $('#fileKanalKhusus .dz-details span').text(),
+                    fileRekening: $('#fileRekening .dz-details span').text(),
+
+                    /**
+                     * KUALIFIKASI MEDIA
+                     **/
+                    // select
+                    tahunBerdiriMedia: $('#tahunBerdiriMedia option:selected').text(),
+                    jenisJangkauanSiarMediaElektronik: $(
+                        '#jenisJangkauanSiarMediaElektronik option:selected').text(),
+                    jangkauanSiarMediaElektronik: $('#jangkauanSiarMediaElektronik option:selected')
+                        .text(),
+                    jumlahOplahMediaCetakPerMinggu: $(
+                            '#jumlahOplahMediaCetakPerMinggu option:selected')
+                        .text(),
+                    jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif option:selected').text(),
+                    // file
+                    fileJumlahOplahMediaCetakPerMinggu: $(
+                        '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
+
+                    /**
+                     * PERWAKILAN MEDIA
+                     **/
+                    //  input
+                    namaPerwakilan: $('#namaPerwakilan').val(),
+                    nomorKKPerwakilan: $('#nomorKKPerwakilan').val(),
+                    nomorKtpPerwakilan: $('#nomorKtpPerwakilan').val(),
+                    npwpPerwakilan: $('#npwpPerwakilan').val(),
+                    serfikatUkwPerwakilan: $('#serfikatUkwPerwakilan').val(),
+                    afiliasiPersPerwakilan: $('#afiliasiPersPerwakilan').val(),
+                    alamatPerwakilan: $('#alamatPerwakilan').val(),
+                    tlpnPerwakilan: $('#tlpnPerwakilan').val(),
+                    emailPerwakilan: $('#emailPerwakilan').val(),
+                    // select
+                    jenisSerfikatUkwPerwakilan: $('#jenisSerfikatUkwPerwakilan option:selected')
+                        .text(),
+                    alamatProvPerwakilan: $('#alamatProvPerwakilan option:selected').text(),
+                    alamatKabPerwakilan: $('#alamatKabPerwakilan option:selected').text(),
+                    alamatKecPerwakilan: $('#alamatKecPerwakilan option:selected').text(),
+                    alamatKelPerwakilan: $('#alamatKelPerwakilan option:selected').text(),
+                    // file
+                    fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
+                    fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span')
+                        .text(),
+                    fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
+                        .text(),
+                }
+                /**
+                 *file
+                 **/
+                if (!validasi) {
+                    Swal.fire({
+                        toast: false,
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Cek Data',
+                        text: 'Perhatikan Dengan Seksama Sebelum Kirim Data',
+                        showConfirmButton: true,
+                    });
+                } else {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        type: "PUT",
+                        url: "/pengajuan/update",
+                        data: data,
+                        success: function(response) {
+                            Swal.fire({
+                                toast: false,
+                                position: 'center',
+                                icon: response.icon,
+                                title: response.title,
+                                text: response.massage,
+                                showConfirmButton: true,
+                            });
+                            if (response.icon == 'success') {
+                                setTimeout(function() {
+                                    //your code to be executed after 1 second
+                                    window.location.href = "/daftar/" + response
+                                        .tahun_buka + "/" + "detail";
+                                }, 1500);
+                            }
+                            // $(this).prop('disabled', false);
+                        }
+                    });
+                }
+            });
 
             $('.dz-preview').click(function(e) {
                 e.preventDefault();
