@@ -1071,7 +1071,7 @@ class MediaPengajuanController extends Controller
                     }
                 }
                 // dd($print);
-                if ($print == $value) {
+                if ($print) {
                     # code...
                     // dd($print);
                     if ($value) {
