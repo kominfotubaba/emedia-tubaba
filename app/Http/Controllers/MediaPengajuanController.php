@@ -174,6 +174,10 @@ class MediaPengajuanController extends Controller
             $pesan = 'Pengajuan KK Telah Digunakan';
             $icon = 'error';
             $title = 'Operasi Gagal';
+        } elseif ($nomorKKPerwakilan == $nomorKtpPerwakilan) {
+            $pesan = 'NO KK Dan KTP Tidak Boleh Sama';
+            $icon = 'error';
+            $title = 'Operasi Gagal';
         } else {
             if ($pengajuan_cek >= 1) {
                 # code...
