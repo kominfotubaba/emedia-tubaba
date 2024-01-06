@@ -716,7 +716,6 @@ class MediaPengajuanController extends Controller
                 $data_keterangan = $keterangan;
                 $stated = 'update';
             } else {
-
                 if ($keterangan) {
                     # code...
                     array_unshift($keterangan, "");
@@ -764,6 +763,8 @@ class MediaPengajuanController extends Controller
                     $icon = 'error';
                     $title = 'Uncheck Data';
                 }
+                $grade = null;
+                $nilai = null;
             }
             if ($stated == 'update') {
                 # code...
