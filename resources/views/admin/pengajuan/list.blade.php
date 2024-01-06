@@ -60,7 +60,7 @@
                                             10 Items
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">10 Items</a>
+                                            <a class="dropdown-item" href="#">1 Items</a>
                                             <a class="dropdown-item active" href="#">20 Items</a>
                                             <a class="dropdown-item" href="#">50 Items</a>
                                             <a class="dropdown-item" href="#">100 Items</a>
@@ -119,6 +119,16 @@
 @endsection
 @push('script')
     <script>
+        // if (performance.navigation.type == 2) {
+        //     // location.reload(true);
+        // }
+        $(window).bind("pageshow", function(event) {
+            if (event.originalEvent.persisted) {
+                $('#tbDaftarPengajuan').DataTable().ajax.reload(null, false);
+                // window.location.reload()
+            }
+        });
+
         $(document).ready(function() {
             var tahun = $('#tahuns').html()
             $('#tbDaftarPengajuan').DataTable({
@@ -218,7 +228,7 @@
                 },
                 success: function(response) {
                     console.log(response.text);
-                    $('#tbDaftarPengajuan').DataTable().ajax.reload();
+                    $('#tbDaftarPengajuan').DataTable().ajax.reload(null, false);
                     $('#addPengajuan').prop('hidden', true)
                     $('#savePengajuanBaru').prop('disabled', true)
                     $('#addModalMenu').modal('hide');

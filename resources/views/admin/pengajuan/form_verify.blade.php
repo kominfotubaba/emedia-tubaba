@@ -2141,6 +2141,7 @@
                         $('#terima').attr('disabled', true)
                     },
                     error: function(response) {
+                        $('.cardMain').removeClass('overlay-spinner');
                         $('#terima').attr('disabled', false)
                     },
                     success: function(response) {
@@ -2155,7 +2156,8 @@
                         if (response.icon == 'success') {
                             setTimeout(function() {
                                 //your code to be executed after 1 second
-                                window.location.href = "/daftar/" + response.tahun + '/detail';
+                                // window.location.href = "/daftar/" + response.tahun + '/detail';
+                                window.history.back();
                             }, 3000);
                         }
                         $('.cardMain').removeClass('overlay-spinner');
@@ -2194,6 +2196,7 @@
                         $('#tolak').attr('disabled', true)
                     },
                     error: function(response) {
+                        $('.cardMain').removeClass('overlay-spinner');
                         $('#tolak').attr('disabled', false)
                     },
                     success: function(response) {
@@ -2208,7 +2211,8 @@
                         if (response.icon == 'success') {
                             setTimeout(function() {
                                 //your code to be executed after 1 second
-                                window.location.href = "/daftar/" + response.tahun + '/detail';
+                                // window.location.href = "/daftar/" + response.tahun + '/detail';
+                                window.history.back();
                             }, 3000);
                         }
                         $('.cardMain').removeClass('overlay-spinner');
@@ -2246,6 +2250,7 @@
                         $('#undefinedValue').attr('disabled', true)
                     },
                     error: function(response) {
+                        $('.cardMain').removeClass('overlay-spinner');
                         $('#undefinedValue').attr('disabled', false)
                     },
                     success: function(response) {
@@ -2260,7 +2265,8 @@
                         if (response.icon == 'success') {
                             setTimeout(function() {
                                 //your code to be executed after 1 second
-                                window.location.href = "/daftar/" + response.tahun + '/detail';
+                                // window.location.href = "/daftar/" + response.tahun + '/detail';
+                                window.history.back();
                             }, 3000);
                         }
                         $('.cardMain').removeClass('overlay-spinner');
