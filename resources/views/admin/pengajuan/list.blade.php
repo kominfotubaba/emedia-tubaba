@@ -80,6 +80,7 @@
                                         <th class="text-muted text-small text-uppercase">Nama Media</th>
                                         <th class="text-muted text-small text-uppercase">Jenis Media</th>
                                         <th class="text-muted text-small text-uppercase">Keterangan</th>
+                                        <th class="text-muted text-small text-uppercase">Grade</th>
                                         <th class="text-muted text-small text-uppercase">Aksi</th>
                                     </tr>
                                 </thead>
@@ -166,6 +167,10 @@
                     {
                         data: 'keterangan',
                         name: 'keterangan'
+                    },
+                    {
+                        data: 'nilai',
+                        name: 'nilai'
                     },
                     {
                         data: 'action',
