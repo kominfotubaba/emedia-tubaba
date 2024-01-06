@@ -113,7 +113,7 @@ class MediaPengajuanDaftarController extends Controller
                 </svg></button>';
 
                 if (Auth::user()->role == 'user') {
-                    if ($data->pengajuan_edit == 1) {
+                    if (($data->pengajuan_edit == 1) || ($data->buka_edit == 'buka')) {
                         # code...
                         $button .= '<button class="editdaftar btn btn-quaternary" data-id="' . $data->pengajuan_no . '"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -129,7 +129,16 @@ class MediaPengajuanDaftarController extends Controller
                             $button .= '<button class="verifikasi btn btn-quaternary" data-id="' . $data->pengajuan_no . '"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-check" viewBox="0 0 16 16">
                             <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
                             <path d="M15.854 10.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.707 0l-1.5-1.5a.5.5 0 0 1 .707-.708l1.146 1.147 2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                          </svg> data </button>';
+                          </svg></button>';
+                            if ($data->buka_edit == 'buka') {
+                                $button .= '<button class="bukaEdit btn btn-light" data-id="' . $data->pengajuan_no . '"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-unlock-fill" viewBox="0 0 16 16">
+                                <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2"/>
+                              </svg></button>';
+                            } else {
+                                $button .= '<button class="tutupEdit btn btn-alternate" data-id="' . $data->pengajuan_no . '"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                              </svg></button>';
+                            }
                         }
                     }
                 }
@@ -201,8 +210,21 @@ class MediaPengajuanDaftarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
+        $pengajuan_no = $request->pengajuan_no;
+        $status = $request->status;
+        if ($status == 'buka') {
+            # code...
+            $update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update([
+                'buka_edit' => 'buka'
+            ]);
+        } else {
+            # code...
+            $update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update([
+                'buka_edit' => 'tidak'
+            ]);
+        }
     }
 
     /**

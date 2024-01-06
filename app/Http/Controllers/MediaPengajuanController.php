@@ -336,56 +336,6 @@ class MediaPengajuanController extends Controller
     public function update(Request $request)
     {
         //
-        // // Perusahaan
-        // $nama_perusahaan = str_replace('  ', ' ', strtolower($request->nama_perusahaan));
-        // $nama_pimred = strtolower($request->nama_pimred);
-        // $alamat_perusahaan = strtolower($request->alamat_perusahaan);
-        // $tlpn_perusahaan = strtolower($request->tlpn_perusahaan);
-        // $email_perusahaan = strtolower($request->email_perusahaan);
-        // $npwp_perusahaan = strtolower($request->npwp_perusahaan);
-        // $akta_perusahaan = strtolower($request->akta_perusahaan);
-        // $kumham_perusahaan = strtolower($request->kumham_perusahaan);
-        // $wartawan_kompeten_perusahaan = strtolower($request->wartawan_kompeten_perusahaan);
-        // $nama_percetakan = strtolower($request->nama_percetakan);
-        // $alamat_percetakan = strtolower($request->alamat_percetakan);
-        // // file
-        // $file_npwp_perusahaan = $request->file_npwp_perusahaan;
-        // $file_akta_perusahaan = $request->file_akta_perusahaan;
-        // $file_kumham_perusahaan = $request->file_kumham_perusahaan;
-        // $file_wartawan_kompeten_perusahaan = $request->file_wartawan_kompeten_perusahaan;
-        // $file_dewan_pers_perusahaan = $request->file_dewan_pers_perusahaan;
-        // $file_afiliasi_perusahaan = $request->file_afiliasi_perusahaan;
-        // $file_spt_perusahaan = $request->file_spt_perusahaan;
-        // $file_domisili_perusahaan = $request->file_domisili_perusahaan;
-        // $file_kuasa_perwakilan = $request->file_kuasa_perwakilan;
-        // $file_kerjasama = $request->file_kerjasama;
-        // $file_izin_ipp = $request->file_izin_ipp;
-        // // perwakilan
-        // $nama_media = strtolower($request->nama_media);
-        // $nama_biro_perwakilan = strtolower($request->nama_biro_perwakilan);
-        // $alamat_perwakilan = strtolower($request->alamat_perwakilan);
-        // $tlpn_perwakilan = strtolower($request->tlpn_perwakilan);
-        // $email_perwakilan = strtolower($request->email_perwakilan);
-        // $ktp_perwakilan = strtolower($request->ktp_perwakilan);
-        // $kk_perwakilan = strtolower($request->kk_perwakilan);
-        // $npwp_perwakilan = strtolower($request->npwp_perwakilan);
-        // $kompetensi_perwakilan = strtolower($request->kompetensi_perwakilan);
-        // $jenis_rekening = strtolower($request->jenis_rekening);
-        // $nama_bank = strtolower($request->nama_bank);
-        // $pemilik_rekening = strtolower($request->pemilik_rekening);
-        // $no_rekening = strtolower($request->no_rekening);
-        // // file
-        // $file_ktp_perwakilan = $request->file_ktp_perwakilan;
-        // $file_kk_perwakilan = $request->file_kk_perwakilan;
-        // $file_npwp_perwakilan = $request->file_npwp_perwakilan;
-        // $file_kopetensi_perwakilan = $request->file_kopetensi_perwakilan;
-        // $file_afiliasi_perwakilan = $request->file_afiliasi_perwakilan;
-        // $file_domisili_perwakilan = $request->file_domisili_perwakilan;
-        // $file_kode_etik_perwakilan = $request->file_kode_etik_perwakilan;
-        // $file_pernyataan_media_perwakilan = $request->file_pernyataan_media_perwakilan;
-        // $file_rekening = $request->file_rekening;
-        // $file_signature_data = $request->file_signature_data;
-
         $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
         $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
         // $pengajuan_no =  $tahun_buka . '_' . Str::random(10);
@@ -455,7 +405,26 @@ class MediaPengajuanController extends Controller
         $fileafiliasiPersPerwakilan = strtolower($request->fileafiliasiPersPerwakilan);
 
         $tahun = tahun::select('tahun')->where('pengajuan_edit', 1)->get();
-        $tahun_edit = json_decode(json_encode($tahun[0]->tahun));
+        if (isset($tahun[0])) {
+            # code...
+            $tahun_edit = json_decode(json_encode($tahun[0]->tahun));
+        } else {
+            $tahun_pengajuan = new_media_pengajuan::where('pengajuan_no',  $pengajuan_no)->first();
+            $tahun_buka_edit_single = $tahun_pengajuan->tahun_pengajuan;
+            $status_buka_edit = $tahun_pengajuan->buka_edit;
+            if ($status_buka_edit == 'buka') {
+                # code...
+                $tahun_edit = $tahun_buka_edit_single;
+            } else {
+                # code...
+                return response()->json([
+                    'massage' => 'Waktu Edit Sudah Berakhir',
+                    'icon' => 'error',
+                    'title' => 'Waktu Edit Sudah Berakhir',
+                    'tahun_buka' => $tahun_buka
+                ]);
+            }
+        }
         $nama_perusahaan_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('namaPerusahaan', $namaPerusahaan)->where('tahun_pengajuan', $tahun_edit)->count();
         $nama_media_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('namaMedia', $namaMedia)->where('tahun_pengajuan', $tahun_edit)->count();
         $ktp_cek = new_media_pengajuan::where('pengajuan_no', '!=', $pengajuan_no)->where('nomorKtpPerwakilan', $nomorKtpPerwakilan)->where('tahun_pengajuan', $tahun_edit)->count();
@@ -481,6 +450,10 @@ class MediaPengajuanController extends Controller
             $title = 'Operasi Gagal';
         } elseif ($kk_cek >= 1) {
             $pesan = 'Pengajuan KK Telah Digunakan';
+            $icon = 'error';
+            $title = 'Operasi Gagal';
+        } elseif ($nomorKKPerwakilan == $nomorKtpPerwakilan) {
+            $pesan = 'NO KK Dan KTP Tidak Boleh Sama';
             $icon = 'error';
             $title = 'Operasi Gagal';
         } else {
@@ -700,171 +673,115 @@ class MediaPengajuanController extends Controller
         $pengajuan_no = $request->pengajuan_no;
         $keterangan = $request->keterangan;
         $status = $request->status;
-        $data = $request->data;
+        $nilai = $request->nilai;
+        $grade = $request->grade;
+        $param = $request->param;
 
-        dd(trim(preg_replace('/\s\s+/', ' ', $data['domisiliRedaksiMedia'])));
-        // function mapped_implode($glue, $array, $symbol = '. ')
-        // {
-        //     return implode(
-        //         $glue,
-        //         array_map(
-        //             function ($k, $v) use ($symbol) {
-        //                 return $k . $symbol . $v;
-        //             },
-        //             array_keys($array),
-        //             array_values($array)
-        //         )
-        //     );
-        // }
+        function mapped_implode($glue, $array, $symbol = '. ')
+        {
+            return implode(
+                $glue,
+                array_map(
+                    function ($k, $v) use ($symbol) {
+                        return $k . $symbol . $v;
+                    },
+                    array_keys($array),
+                    array_values($array)
+                )
+            );
+        }
 
-        // $data_media = new_media_pengajuan::select(
-        //     'new_media_pengajuans.id_user',
-        //     'users.id',
-        //     'new_media_pengajuans.pengajuan_no as idpengajuan',
-        //     'new_media_pengajuans.jenis_media as jenis',
-        //     'new_media_pengajuans.namaMedia as namamedia',
-        //     'users.email as useremail',
-        //     'new_media_pengajuans.status as status'
-        // )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
+        $data_media = new_media_pengajuan::select(
+            'new_media_pengajuans.id_user',
+            'users.id',
+            'new_media_pengajuans.pengajuan_no as idpengajuan',
+            'new_media_pengajuans.jenis_media as jenis',
+            'new_media_pengajuans.namaMedia as namamedia',
+            'users.email as useremail',
+            'new_media_pengajuans.status as status',
+            'new_media_pengajuans.tahun_pengajuan as tahun'
+        )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
 
+        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit') {
+            if ($param == 'terima') {
+                # code...
+                // data diterima
+                $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil diterima';
+                $icon = 'success';
+                $title = 'data berhasil terkirim';
+                $data_keterangan = $keterangan;
+                $stated = 'update';
+            } else {
 
+                if ($keterangan) {
+                    # code...
+                    array_unshift($keterangan, "");
+                    unset($keterangan[0]);
+                    $number = 1;
+                    foreach ($keterangan as $k) {
+                        $number_data[] = $number++ . '. ';
+                    }
+                    $dataSendMail = mapped_implode(', <br>', $keterangan);
 
-
-
-        // dd($data);
-        // function mapped_implode($glue, $array, $symbol = '. ')
-        // {
-        //     return implode(
-        //         $glue,
-        //         array_map(
-        //             function ($k, $v) use ($symbol) {
-        //                 return $k . $symbol . $v;
-        //             },
-        //             array_keys($array),
-        //             array_values($array)
-        //         )
-        //     );
-        // }
-
-        // $pengajuan_no = $request->pengajuan_no;
-        // $keterangan = $request->keterangan;
-        // $status = $request->status;
-
-        // $data_media = media_pengajuan::select(
-        //     'media_pengajuans.id_user',
-        //     'users.id',
-        //     'media_pengajuans.pengajuan_no as idpengajuan',
-        //     'media_pengajuans.jenis_media as jenis',
-        //     'media_pengajuans.nama_media as namamedia',
-        //     'users.email as useremail',
-        //     'media_pengajuans.status as status'
-        // )->join('users', 'users.id', '=', 'media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
-
-        // if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit') {
-        //     if ($status == 'terima') {
-        //         // data diterima
-        //         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil diterima';
-        //         $data_keterangan = $keterangan;
-        //     } else {
-        //         // data ditolak
-        //         array_unshift($keterangan, "");
-        //         unset($keterangan[0]);
-        //         $number = 1;
-        //         foreach ($keterangan as $k) {
-        //             $number_data[] = $number++ . '. ';
-        //         }
-        //         $data_keterangan = 'data ditolak silahkan cek data: <br>' . mapped_implode(', <br>', $keterangan);
-        //         $dataSendMail = mapped_implode(', <br>', $keterangan);
-        //         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' ditolak';
-
-        //         $mailDatas = [
-        //             'jenis' => $data_media['jenis'],
-        //             'no' => $data_media['idpengajuan'],
-        //             'nama' => $data_media['namamedia'],
-        //             'keterangan' => $dataSendMail
-        //         ];
-
-        //         Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
-        //     }
-
-
-        //     media_pengajuan::where('pengajuan_no', $pengajuan_no)->update(
-        //         [
-        //             'keterangan' => $data_keterangan,
-        //             'status' => $status
-        //         ]
-        //     );
-        //     $icon = 'success';
-        //     $title = 'data berhasil terkirim';
-        // } else {
-        //     $pesan = 'Data Dengan Nomor Pengajuan: ' . $pengajuan_no . ' Sudah Diverifikasi';
-        //     $icon = 'error';
-        //     $title = 'Data Sudah Diverifikasi';
-        // }
-        // return response()->json([
-        //     'massage' => $pesan,
-        //     'icon' => $icon,
-        //     'title' => $title
-        // ]);
-
-
-
-
-        // // Perusahaan
-        // $nama_perusahaan = str_replace('  ', ' ', strtolower($request->nama_perusahaan));
-        // $nama_pimred = strtolower($request->nama_pimred);
-        // $alamat_perusahaan = strtolower($request->alamat_perusahaan);
-        // $tlpn_perusahaan = strtolower($request->tlpn_perusahaan);
-        // $email_perusahaan = strtolower($request->email_perusahaan);
-        // $npwp_perusahaan = strtolower($request->npwp_perusahaan);
-        // $akta_perusahaan = strtolower($request->akta_perusahaan);
-        // $kumham_perusahaan = strtolower($request->kumham_perusahaan);
-        // $wartawan_kompeten_perusahaan = strtolower($request->wartawan_kompeten_perusahaan);
-        // $nama_percetakan = strtolower($request->nama_percetakan);
-        // $alamat_percetakan = strtolower($request->alamat_percetakan);
-        // // file
-        // $file_npwp_perusahaan = $request->file_npwp_perusahaan;
-        // $file_akta_perusahaan = $request->file_akta_perusahaan;
-        // $file_kumham_perusahaan = $request->file_kumham_perusahaan;
-        // $file_wartawan_kompeten_perusahaan = $request->file_wartawan_kompeten_perusahaan;
-        // $file_dewan_pers_perusahaan = $request->file_dewan_pers_perusahaan;
-        // $file_afiliasi_perusahaan = $request->file_afiliasi_perusahaan;
-        // $file_spt_perusahaan = $request->file_spt_perusahaan;
-        // $file_domisili_perusahaan = $request->file_domisili_perusahaan;
-        // $file_kuasa_perwakilan = $request->file_kuasa_perwakilan;
-        // $file_kerjasama = $request->file_kerjasama;
-        // $file_izin_ipp = $request->file_izin_ipp;
-        // // perwakilan
-        // $nama_media = strtolower($request->nama_media);
-        // $nama_biro_perwakilan = strtolower($request->nama_biro_perwakilan);
-        // $alamat_perwakilan = strtolower($request->alamat_perwakilan);
-        // $tlpn_perwakilan = strtolower($request->tlpn_perwakilan);
-        // $email_perwakilan = strtolower($request->email_perwakilan);
-        // $ktp_perwakilan = strtolower($request->ktp_perwakilan);
-        // $kk_perwakilan = strtolower($request->kk_perwakilan);
-        // $npwp_perwakilan = strtolower($request->npwp_perwakilan);
-        // $kompetensi_perwakilan = strtolower($request->kompetensi_perwakilan);
-        // $jenis_rekening = strtolower($request->jenis_rekening);
-        // $nama_bank = strtolower($request->nama_bank);
-        // $pemilik_rekening = strtolower($request->pemilik_rekening);
-        // $no_rekening = strtolower($request->no_rekening);
-        // // file
-        // $file_ktp_perwakilan = $request->file_ktp_perwakilan;
-        // $file_kk_perwakilan = $request->file_kk_perwakilan;
-        // $file_npwp_perwakilan = $request->file_npwp_perwakilan;
-        // $file_kopetensi_perwakilan = $request->file_kopetensi_perwakilan;
-        // $file_afiliasi_perwakilan = $request->file_afiliasi_perwakilan;
-        // $file_domisili_perwakilan = $request->file_domisili_perwakilan;
-        // $file_kode_etik_perwakilan = $request->file_kode_etik_perwakilan;
-        // $file_pernyataan_media_perwakilan = $request->file_pernyataan_media_perwakilan;
-        // $file_rekening = $request->file_rekening;
-        // $file_signature_data = $request->file_signature_data;
-
-
-        // $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
-        // $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
-        // $pengajuan_no =  $tahun_buka . '_' . Str::random(10);
-        // $jenis_media = strtolower($request->jenis_media);
-
+                    if ($param == 'undefinedValue') {
+                        //  tidak dapat dinilai
+                        $mailDatas = [
+                            'jenis' => $data_media['jenis'],
+                            'no' => $data_media['idpengajuan'],
+                            'nama' => $data_media['namamedia'],
+                            'keterangan' => 'Data Input Tidak Dapat Terdefinisi',
+                            'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+                        ];
+                        Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
+                        $data_keterangan = 'Data Input Tidak Terdefinisi';
+                        $stated = 'update';
+                        $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' Tidak Dapat Dinilai dan dikirim ke email ' . $data_media['useremail'];
+                        $icon = 'success';
+                        $title = 'Data Tidak Terdefinisi';
+                    } else {
+                        // data ditolak
+                        $mailDatas = [
+                            'jenis' => $data_media['jenis'],
+                            'no' => $data_media['idpengajuan'],
+                            'nama' => $data_media['namamedia'],
+                            'keterangan' => $dataSendMail,
+                            'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+                        ];
+                        Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
+                        $data_keterangan = 'data ditolak silahkan cek data: <br>' . mapped_implode(', <br>', $keterangan);
+                        $stated = 'update';
+                        $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil ditolak dan dikirim ke email ' . $data_media['useremail'];
+                        $icon = 'success';
+                        $title = 'data berhasil ditolak';
+                    }
+                } else {
+                    $stated = null;
+                    $pesan = 'Pilih Data Yang Akan Di Tolak';
+                    $icon = 'error';
+                    $title = 'Uncheck Data';
+                }
+            }
+            if ($stated == 'update') {
+                # code...
+                new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update(
+                    [
+                        'keterangan' => $data_keterangan,
+                        'status' => $status,
+                        'nilai' => $grade,
+                        'nilaiDalamAngka' => $nilai
+                    ]
+                );
+            }
+        } else {
+            $pesan = 'Data Dengan Nomor Pengajuan: ' . $pengajuan_no . ' Sudah Diverifikasi';
+            $icon = 'error';
+            $title = 'Data Sudah Diverifikasi';
+        }
+        return response()->json([
+            'massage' => $pesan,
+            'icon' => $icon,
+            'title' => $title,
+            'tahun' => $data_media['tahun']
+        ]);
     }
 }

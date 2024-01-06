@@ -38,29 +38,25 @@
                             <h2 class="small-title">Perusahaan/Badan Hukum</h2>
                             <div class="col-lg-12 col-md-6 col-12 mb-md-0">
                                 <div class="form-floating mb-3">
-                                    <input id="namaPerusahaan" name="namaPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="namaPerusahaan" name="namaPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input id="namaPenanggungJawab" name="namaPenanggungJawab" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="namaPenanggungJawab" name="namaPenanggungJawab" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nama Penanggung Jawab</label>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 col-12 mb-lg-0 ">
                                         <div class="form-floating mb-3">
-                                            <input id="namaPimred" name="namaPimred" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control">
+                                            <input id="namaPimred" name="namaPimred" type="text" class="form-control form-control-sm" placeholder="form-control">
                                             <label class="ps-4">Nama Pimpinan Redaksi Perusahaan</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-12 mb-lg-0">
                                         <div class="form-floating mb-3">
-                                            <div class="dropzone dropzone-floating-label"
-                                                id="fileSuratPernyataanPimred"></div>
+                                            <div class="dropzone dropzone-floating-label" id="fileSuratPernyataanPimred"></div>
                                             <label class="ps-4">File PDF
                                                 Surat Pernyataan Sebagai Pimred dari Badan Hukum</label>
                                         </div>
@@ -75,8 +71,7 @@
                             <h2 class="small-title">Pengesahan Kemenkumham Perusahaan</h2>
                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">No Pengesahan Kemenkumham Perusahaan</label>
                                 </div>
                             </div>
@@ -96,38 +91,33 @@
                                 <div class="row mb-3">
                                     <div class="col-lg-6 col-md-12 col-12">
                                         <div class="form-floating w-100">
-                                            <select class="select-floating" id="alamatProvPerusahaan"
-                                                name="alamatProvPerusahaan">
+                                            <select class="select-floating" id="alamatProvPerusahaan" name="alamatProvPerusahaan">
                                                 <option label="&nbsp;"></option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-12">
                                         <div class="form-floating w-100">
-                                            <select class="select-floating" id="alamatKabPerusahaan"
-                                                name="alamatKabPerusahaan" hidden>
+                                            <select class="select-floating" id="alamatKabPerusahaan" name="alamatKabPerusahaan" hidden>
                                                 <option label="&nbsp;"></option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input id="alamatPerusahaan" name="alamatPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="alamatPerusahaan" name="alamatPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Alamat Perusahaan Detail</label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">No Telpon Perusahaan</label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="emailPerusahaan" name="emailPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="emailPerusahaan" name="emailPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Email Perusahaan</label>
                                 </div>
                             </div>
@@ -154,15 +144,13 @@
                             <h2 class="small-title">NPWP Perusahaan/Badan Hukum</h2>
                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="npwpPerusahaan" name="npwpPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="npwpPerusahaan" name="npwpPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">No NPWP Perusahaan/Badan Hukum</label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileNpwpPerusahaan"
-                                        name="fileNpwpPerusahaan"></div>
+                                    <div class="dropzone dropzone-floating-label" id="fileNpwpPerusahaan" name="fileNpwpPerusahaan"></div>
                                     <label class="ps-4">File PDF
                                         NPWP Perusahaan</label>
                                 </div>
@@ -175,15 +163,13 @@
                             <h2 class="small-title">Nomor Induk Berusaha Perusahaan/Badan Hukum</h2>
                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="nibPerusahaan" name="nibPerusahaan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="nibPerusahaan" name="nibPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nomor Induk Berusaha Perusahaan/Badan Hukum</label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
-                                    <div class="dropzone dropzone-floating-label" id="fileNibPerusahaan"
-                                        name="fileNibPerusahaan"></div>
+                                    <div class="dropzone dropzone-floating-label" id="fileNibPerusahaan" name="fileNibPerusahaan"></div>
                                     <label class="ps-4">File PDF
                                         Nomor Induk Berusaha Perusahaan/Badan Hukum</label>
                                 </div>
@@ -221,8 +207,7 @@
                             <h2 class="small-title mb-md-0 mb-2">Nomor KBKI</h2>
                             <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="noKbki" name="noKbki" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="noKbki" name="noKbki" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nomor KBKI Perusahaan</label>
                                 </div>
                             </div>
@@ -236,8 +221,7 @@
                                 <h2 class="small-title mb-md-0 mb-2">Dokumen izin Penyelenggaraan Penyiaran</h2>
                                 <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                     <div class="form-floating">
-                                        <input id="izinIpp" name="izinIpp" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control">
+                                        <input id="izinIpp" name="izinIpp" type="text" class="form-control form-control-sm" placeholder="form-control">
                                         <label class="ps-4">Izin Penyelenggaraan Penyiaran</label>
                                     </div>
                                 </div>
@@ -257,15 +241,13 @@
                                 <h2 class="small-title">Percetakan</h2>
                                 <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
                                     <div class="form-floating">
-                                        <input id="namaPercetakan" name="namaPercetakan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control">
+                                        <input id="namaPercetakan" name="namaPercetakan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                         <label class="ps-4">Nama Percetakan</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-12 mb-md-0 mb-2">
                                     <div class="form-floating">
-                                        <input id="alamatPercetakan" name="alamatPercetakan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control">
+                                        <input id="alamatPercetakan" name="alamatPercetakan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                         <label class="ps-4">Alamat Percetakan</label>
                                     </div>
                                 </div>
@@ -282,8 +264,7 @@
                             <h2 class="small-title">Nama Media</h2>
                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="namaMedia" name="namaMedia" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="namaMedia" name="namaMedia" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nama Media</label>
                                 </div>
                             </div>
@@ -295,11 +276,9 @@
                             <h2 class="small-title mb-md-0 mb-2">Status Verifikasi Media</h2>
                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating w-100">
-                                    <select class="select-floating" id="verifikasiDewanPers"
-                                        name="verifikasiDewanPers">
+                                    <select class="select-floating" id="verifikasiDewanPers" name="verifikasiDewanPers">
                                         <option label="&nbsp;"></option>
-                                        <option value="faktual dan administratif">Terverifikasi Faktual dan
-                                            Administratif</option>
+                                        <option value="faktual dan administratif">Terverifikasi Faktual dan Administratif</option>
                                         <option value="administratif">Terverifikasi Administratif</option>
                                         <option value="belum">Belum Terverifikasi</option>
                                     </select>
@@ -314,8 +293,7 @@
                             <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating">
                                     <div class="w-100">
-                                        <select class="select-floating" id="jenisSerfikatUkwPimred"
-                                            name="jenisSerfikatUkwPimred">
+                                        <select class="select-floating" id="jenisSerfikatUkwPimred" name="jenisSerfikatUkwPimred">
                                             <option label="&nbsp;"></option>
                                             <option value="utama">Utama</option>
                                             <option value="madya">Madya</option>
@@ -326,8 +304,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating">
-                                    <input id="serfikatUkwPimred" name="serfikatUkwPimred" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="serfikatUkwPimred" name="serfikatUkwPimred" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nomor Sertifikat Pimred Media</label>
                                 </div>
                             </div>
@@ -345,15 +322,11 @@
                             <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perusahaan/Media Pers</h2>
                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating w-100">
-                                    <select class="select-floating" id="afiliasiPerusahaan"
-                                        name="afiliasiPerusahaan">
+                                    <select class="select-floating" id="afiliasiPerusahaan" name="afiliasiPerusahaan">
                                         <option label="&nbsp;"></option>
-                                        <option value="tidak terafiliasi">Tidak Terafiliasi dengan Organisasi Pers
-                                        </option>
-                                        <option value="diakui">Organisasi Pers yang diakui Dewan Pers
-                                        </option>
-                                        <option value="belum diakui">Organisasi Pers yang belum diakui Dewan Pers
-                                        </option>
+                                        <option value="tidak terafiliasi">Tidak Terafiliasi dengan Organisasi Pers</option>
+                                        <option value="diakui">Organisasi Pers yang diakui Dewan Pers</option>
+                                        <option value="belum diakui">Organisasi Pers yang belum diakui Dewan Pers</option>
                                     </select>
                                 </div>
                             </div>
@@ -371,12 +344,10 @@
                             <h2 class="small-title mb-md-0 mb-2">Domisili Redaksi Media</h2>
                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                 <div class="form-floating w-100">
-                                    <select class="select-floating" id="domisiliRedaksiMedia"
-                                        name="domisiliRedaksiMedia">
+                                    <select class="select-floating" id="domisiliRedaksiMedia" name="domisiliRedaksiMedia">
                                         <option label="&nbsp;"></option>
                                         <option value="tulang bawang barat">di Tulang Bawang Barat</option>
-                                        <option value="luar tulang bawang barat">di luar Tulang Bawang Barat, di Prov.
-                                            Lampung</option>
+                                        <option value="luar tulang bawang barat">di luar Tulang Bawang Barat, di Prov. Lampung</option>
                                         <option value="luar lampung">di luar Provinsi Lampung</option>
                                     </select>
                                 </div>
@@ -427,18 +398,15 @@
                                     <span>Jenis Rekening</span>
                                 </div>
                                 <div class="form-floating mb-2">
-                                    <input id="namaBank" name="namaBank" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="namaBank" name="namaBank" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nama Bank</label>
                                 </div>
                                 <div class="form-floating mb-2">
-                                    <input id="pemilikRekening" name="pemilikRekening" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="pemilikRekening" name="pemilikRekening" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nama Pemilik Rekening</label>
                                 </div>
                                 <div class="form-floating mb-2">
-                                    <input id="noRekening" name="noRekening" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="noRekening" name="noRekening" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">No Rekening Perusahaan</label>
                                 </div>
                             </div>
@@ -483,8 +451,7 @@
                                 <h2 class="small-title mb-md-0 mb-2">Jangkauan Siar Media Elektronik</h2>
                                 <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                     <div class="form-floating w-100">
-                                        <select class="select-floating" id="jenisJangkauanSiarMediaElektronik"
-                                            name="jenisJangkauanSiarMediaElektronik">
+                                        <select class="select-floating" id="jenisJangkauanSiarMediaElektronik" name="jenisJangkauanSiarMediaElektronik">
                                             <option label="&nbsp;"></option>
                                             <option value="tv">Televisi</option>
                                             <option value="radio">Radio</option>
@@ -497,8 +464,7 @@
                             <div class="row mb-3">
                                 <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                     <div class="form-floating w-100">
-                                        <select class="select-floating" id="jangkauanSiarMediaElektronik"
-                                            name="jangkauanSiarMediaElektronik">
+                                        <select class="select-floating" id="jangkauanSiarMediaElektronik" name="jangkauanSiarMediaElektronik">
 
                                         </select>
                                     </div>
@@ -511,8 +477,7 @@
                                 <h2 class="small-title mb-md-0 mb-2">Jumlah Oplah Media Cetak Per Minggu</h2>
                                 <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                     <div class="form-floating w-100">
-                                        <select class="select-floating" id="jumlahOplahMediaCetakPerMinggu"
-                                            name="jumlahOplahMediaCetakPerMinggu">
+                                        <select class="select-floating" id="jumlahOplahMediaCetakPerMinggu" name="jumlahOplahMediaCetakPerMinggu">
                                             <option label="&nbsp;"></option>
                                             <option value="lebih dari 8000">Lebih Dari 8.000</option>
                                             <option value="4000 sampai 8000">4.000 Sampai 8.000</option>
@@ -522,8 +487,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                     <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label"
-                                            id="fileJumlahOplahMediaCetakPerMinggu">
+                                        <div class="dropzone dropzone-floating-label" id="fileJumlahOplahMediaCetakPerMinggu">
                                         </div>
                                         <label class="ps-4">File PDF, Scan halaman depan 10 Terbitan Media dengan
                                             tanggal terbit berurutan</label>
@@ -538,8 +502,7 @@
                                 </h2>
                                 <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                     <div class="form-floating w-100">
-                                        <select class="select-floating" id="jumlahKontenBeritaAktif"
-                                            name="jumlahKontenBeritaAktif">
+                                        <select class="select-floating" id="jumlahKontenBeritaAktif" name="jumlahKontenBeritaAktif">
                                             <option label="&nbsp;"></option>
                                             <option value="lebih dari 900">Lebih Dari 900</option>
                                             <option value="lebih dari 600">Lebih Dari 600 </option>
@@ -561,22 +524,19 @@
                             <h2 class="small-title">Data Perwakilan Media</h2>
                             <div class="col-lg-12 col-md-6 col-12">
                                 <div class="form-floating mb-lg-2 mb-md-2 mb-2">
-                                    <input id="namaPerwakilan" name="namaPerwakilan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="namaPerwakilan" name="namaPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nama Perwakilan Media</label>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-6 col-12">
                                 <div class="form-floating mb-lg-2 mb-md-2 mb-2">
-                                    <input id="nomorKKPerwakilan" name="nomorKKPerwakilan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="nomorKKPerwakilan" name="nomorKKPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nomor Kartu Keluarga</label>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-6 col-12">
                                 <div class="form-floating mb-lg-2 mb-md-2 mb-2">
-                                    <input id="nomorKtpPerwakilan" name="nomorKtpPerwakilan" type="text"
-                                        class="form-control form-control-sm" placeholder="form-control">
+                                    <input id="nomorKtpPerwakilan" name="nomorKtpPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                     <label class="ps-4">Nomor Induk Kependudukan</label>
                                 </div>
                             </div>
@@ -584,15 +544,13 @@
                             <div class="row mb-4">
                                 <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                     <div class="form-floating">
-                                        <input id="npwpPerwakilan" name="npwpPerwakilan" type="text"
-                                            class="form-control form-control-sm" placeholder="form-control">
+                                        <input id="npwpPerwakilan" name="npwpPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                         <label class="ps-4">No NPWP Pribadi Perwakilan Media</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileNpwpPerwakilan"
-                                            name="fileNpwpPerwakilan"></div>
+                                        <div class="dropzone dropzone-floating-label" id="fileNpwpPerwakilan" name="fileNpwpPerwakilan"></div>
                                         <label class="ps-4">File PDF NPWP Pribadi Perwakilan Media</label>
                                     </div>
                                 </div>
@@ -624,8 +582,7 @@
                                 </h2>
                                 <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                     <div class="form-floating w-100 mb-3">
-                                        <select class="select-floating" id="jenisSerfikatUkwPerwakilan"
-                                            name="jenisSerfikatUkwPerwakilan">
+                                        <select class="select-floating" id="jenisSerfikatUkwPerwakilan" name="jenisSerfikatUkwPerwakilan">
                                             <option label="&nbsp;"></option>
                                             <option value="belum">Belum Ada Sertifikat</option>
                                             <option value="utama">Utama</option>
@@ -638,17 +595,14 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="serfikatUkwPerwakilan" name="serfikatUkwPerwakilan"
-                                                    type="text" class="form-control form-control-sm"
-                                                    placeholder="form-control">
+                                                <input id="serfikatUkwPerwakilan" name="serfikatUkwPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                                 <label class="ps-4">Nomor Sertifikat Kompetensi Perwakilan
                                                     Media</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <div class="dropzone dropzone-floating-label"
-                                                    id="fileSerfikatUkwPerwakilan">
+                                                <div class="dropzone dropzone-floating-label" id="fileSerfikatUkwPerwakilan">
                                                 </div>
                                                 <label class="ps-4">File PDF Sertifikat Kompetensi Dewan Pers
                                                     Perwakilan Media</label>
@@ -664,16 +618,13 @@
                                 <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perwakilan Media</h2>
                                 <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                     <div class="form-floating">
-                                        <input id="afiliasiPersPerwakilan" name="afiliasiPersPerwakilan"
-                                            type="text" class="form-control form-control-sm"
-                                            placeholder="form-control">
+                                        <input id="afiliasiPersPerwakilan" name="afiliasiPersPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                         <label class="ps-4">Nama Organisasi Pers yang Terafiliasi</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                     <div class="form-floating">
-                                        <div class="dropzone dropzone-floating-label" id="fileAfiliasiPersPerwakilan"
-                                            name="fileafiliasiPersPerwakilan"></div>
+                                        <div class="dropzone dropzone-floating-label" id="fileAfiliasiPersPerwakilan" name="fileafiliasiPersPerwakilan"></div>
                                         <label class="ps-4">File PDF Bukti Keanggotaan Organisasi Pers
                                             Perwakilan Media</label>
                                     </div>
@@ -718,24 +669,21 @@
 
                                     <div class="col-lg-12 col-md-12 col-12 mb-lg-2 mb-md-2 mb-2">
                                         <div class="form-floating">
-                                            <input id="alamatPerwakilan" name="alamatPerwakilan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control">
+                                            <input id="alamatPerwakilan" name="alamatPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                             <label class="ps-4">Alamat Perwakilan Media Detail</label>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                         <div class="form-floating">
-                                            <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control">
+                                            <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                             <label class="ps-4">No Telpon Perwakilan Media</label>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                         <div class="form-floating">
-                                            <input id="emailPerwakilan" name="emailPerwakilan" type="text"
-                                                class="form-control form-control-sm" placeholder="form-control">
+                                            <input id="emailPerwakilan" name="emailPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control">
                                             <label class="ps-4">Email Perwakilan Media</label>
                                         </div>
                                     </div>
@@ -750,8 +698,7 @@
                         <h5 class="card-title">Harap Dibaca !!!</h5>
                         <div class="col-12 p-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value=""
-                                    id="pernyataanCheckbox" name="pernyataanCheckbox">
+                                <input class="form-check-input" type="checkbox" value="" id="pernyataanCheckbox" name="pernyataanCheckbox">
                                 <label class="form-check-label" for="invalidCheck">
                                     Dengan ini menyatakan bahwa data yang disampaikan sesuai dengan kondisi yang
                                     sebenarnya,
@@ -762,8 +709,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end p-2">
-                            <button id="kirimData" type="submit" class="btn btn-primary" disabled>Kirim
-                                Data</button>
+                            <button id="kirimData" type="submit" class="btn btn-primary" disabled>Kirim Data</button>
                         </div>
                     </div>
                 </div>
@@ -1016,29 +962,29 @@
                     //     required: true,
                     // },
                     afiliasiPersPerwakilan: {
-                        required: true,
+                        // required: true,
                     },
                     alamatProvPerwakilan: {
-                        required: true,
+                        // required: true,
                     },
                     alamatKabPerwakilan: {
-                        required: true,
+                        // required: true,
                     },
                     alamatKecPerwakilan: {
-                        required: true,
+                        // required: true,
                     },
                     alamatKelPerwakilan: {
-                        required: true,
+                        // required: true,
                     },
                     alamatPerwakilan: {
-                        required: true,
+                        // required: true,
                     },
                     tlpnPerwakilan: {
-                        required: true,
+                        // required: true,
                         number: true,
                     },
                     emailPerwakilan: {
-                        required: true,
+                        // required: true,
                         email: true,
                     },
 
@@ -1058,7 +1004,7 @@
         }
 
         var wizard = new Wizard(document.getElementById('wizardBasic'), {
-            topNav: true,
+            topNav: false,
             handleButtonClicks: false,
             lastEnd: false,
             onNextClick: function(params) {

@@ -42,39 +42,30 @@
                                         <h2 class="small-title">Perusahaan/Badan Hukum</h2>
                                         <div class="col-lg-12 col-md-6 col-12 mb-md-0">
                                             <div class="form-floating mb-3">
-                                                <input id="namaPerusahaan" name="namaPerusahaan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->namaPerusahaan }}">
+                                                <input id="namaPerusahaan" name="namaPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->namaPerusahaan }}">
                                                 <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
                                                 <div id="pengajuanNo" data-noPengajuan="{{ $md->pengajuan_no }}" hidden>
                                                     {{ $md->pengajuan_no }}</div>
-                                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}"
-                                                    hidden>
+                                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}" hidden>
                                                     {{ $md->jenis_media }}</div>
                                             </div>
 
                                             <div class="form-floating mb-3">
-                                                <input id="namaPenanggungJawab" name="namaPenanggungJawab" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->namaPenanggungJawab }}">
+                                                <input id="namaPenanggungJawab" name="namaPenanggungJawab" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->namaPenanggungJawab }}">
                                                 <label class="ps-4">Nama Penanggung Jawab</label>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-12 mb-lg-0 ">
                                                     <div class="form-floating mb-3">
-                                                        <input id="namaPimred" name="namaPimred" type="text"
-                                                            class="form-control form-control-sm" placeholder="form-control"
-                                                            value="{{ $md->namaPimred }}">
+                                                        <input id="namaPimred" name="namaPimred" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->namaPimred }}">
                                                         <label class="ps-4">Nama Pimpinan Redaksi Perusahaan</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-12 mb-lg-0">
                                                     <div class="form-floating mb-3">
-                                                        <div class="dropzone dropzone-floating-label"
-                                                            id="fileSuratPernyataanPimred">
-                                                            <input type="text"
-                                                                value="{{ $md->fileSuratPernyataanPimred }}" hidden>
+                                                        <div class="dropzone dropzone-floating-label" id="fileSuratPernyataanPimred">
+                                                            <input type="text" value="{{ $md->fileSuratPernyataanPimred }}" hidden>
                                                         </div>
                                                         <label class="ps-4">File PDF
                                                             Surat Pernyataan Sebagai Pimred dari Badan Hukum</label>
@@ -90,9 +81,7 @@
                                         <h2 class="small-title">Pengesahan Kemenkumham Perusahaan</h2>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->kumhamPerusahaan }}">
+                                                <input id="kumhamPerusahaan" name="kumhamPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->kumhamPerusahaan }}">
                                                 <label class="ps-4">No Pengesahan Kemenkumham Perusahaan</label>
                                             </div>
                                         </div>
@@ -114,46 +103,36 @@
                                             <div class="row mb-3">
                                                 <div class="col-lg-6 col-md-12 col-12">
                                                     <div class="form-floating w-100">
-                                                        <select class="select-floating" id="alamatProvPerusahaan"
-                                                            name="alamatProvPerusahaan">
+                                                        <select class="select-floating" id="alamatProvPerusahaan" name="alamatProvPerusahaan">
                                                             <option label="&nbsp;"></option>
-                                                            <input type="text" id="dataAlamatProvPerusahaan"
-                                                                value="{{ $md->alamatProvPerusahaan }}" hidden>
+                                                            <input type="text" id="dataAlamatProvPerusahaan" value="{{ $md->alamatProvPerusahaan }}" hidden>
                                                         </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-6 col-md-12 col-12">
                                                     <div class="form-floating w-100">
-                                                        <select class="select-floating" id="alamatKabPerusahaan"
-                                                            name="alamatKabPerusahaan">
+                                                        <select class="select-floating" id="alamatKabPerusahaan" name="alamatKabPerusahaan">
                                                             <option label="&nbsp;"></option>
-                                                            <input type="text" id="dataAlamatKabPerusahaan"
-                                                                value="{{ $md->alamatKabPerusahaan }}" hidden>
+                                                            <input type="text" id="dataAlamatKabPerusahaan" value="{{ $md->alamatKabPerusahaan }}" hidden>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input id="alamatPerusahaan" name="alamatPerusahaan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->alamatPerusahaan }}">
+                                                <input id="alamatPerusahaan" name="alamatPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->alamatPerusahaan }}">
                                                 <label class="ps-4">Alamat Perusahaan Detail</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->tlpnPerusahaan }}">
+                                                <input id="tlpnPerusahaan" name="tlpnPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->tlpnPerusahaan }}">
                                                 <label class="ps-4">No Telpon Perusahaan</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="emailPerusahaan" name="emailPerusahaan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->emailPerusahaan }}">
+                                                <input id="emailPerusahaan" name="emailPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->emailPerusahaan }}">
                                                 <label class="ps-4">Email Perusahaan</label>
                                             </div>
                                         </div>
@@ -185,16 +164,13 @@
                                         <h2 class="small-title">NPWP Perusahaan/Badan Hukum</h2>
                                         <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="npwpPerusahaan" name="npwpPerusahaan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->npwpPerusahaan }}">
+                                                <input id="npwpPerusahaan" name="npwpPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->npwpPerusahaan }}">
                                                 <label class="ps-4">No NPWP Perusahaan/Badan Hukum</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-floating">
-                                                <div class="dropzone dropzone-floating-label" id="fileNpwpPerusahaan"
-                                                    name="fileNpwpPerusahaan">
+                                                <div class="dropzone dropzone-floating-label" id="fileNpwpPerusahaan" name="fileNpwpPerusahaan">
                                                     <input type="text" value="{{ $md->fileNpwpPerusahaan }}" hidden>
                                                 </div>
                                                 <label class="ps-4">File PDF
@@ -209,16 +185,13 @@
                                         <h2 class="small-title">Nomor Induk Berusaha Perusahaan/Badan Hukum</h2>
                                         <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="nibPerusahaan" name="nibPerusahaan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->nibPerusahaan }}">
+                                                <input id="nibPerusahaan" name="nibPerusahaan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nibPerusahaan }}">
                                                 <label class="ps-4">Nomor Induk Berusaha Perusahaan/Badan Hukum</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-floating">
-                                                <div class="dropzone dropzone-floating-label" id="fileNibPerusahaan"
-                                                    name="fileNibPerusahaan">
+                                                <div class="dropzone dropzone-floating-label" id="fileNibPerusahaan" name="fileNibPerusahaan">
                                                     <input type="text" value="{{ $md->fileNibPerusahaan }}" hidden>
                                                 </div>
                                                 <label class="ps-4">File PDF
@@ -263,9 +236,7 @@
                                         <h2 class="small-title mb-md-0 mb-2">Nomor KBKI</h2>
                                         <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="noKbki" name="noKbki" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->noKbki }}">
+                                                <input id="noKbki" name="noKbki" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->noKbki }}">
                                                 <label class="ps-4">Nomor KBKI Perusahaan</label>
                                             </div>
                                         </div>
@@ -280,9 +251,7 @@
                                             </h2>
                                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating">
-                                                    <input id="izinIpp" name="izinIpp" type="text"
-                                                        class="form-control form-control-sm" placeholder="form-control"
-                                                        value="{{ $md->izinIpp }}">
+                                                    <input id="izinIpp" name="izinIpp" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->izinIpp }}">
                                                     <label class="ps-4">Izin Penyelenggaraan Penyiaran</label>
                                                 </div>
                                             </div>
@@ -304,17 +273,13 @@
                                             <h2 class="small-title">Percetakan</h2>
                                             <div class="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-2 mb-2">
                                                 <div class="form-floating">
-                                                    <input id="namaPercetakan" name="namaPercetakan" type="text"
-                                                        class="form-control form-control-sm" placeholder="form-control"
-                                                        value="{{ $md->namaPercetakan }}">
+                                                    <input id="namaPercetakan" name="namaPercetakan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->namaPercetakan }}">
                                                     <label class="ps-4">Nama Percetakan</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-12 col-12 mb-md-0 mb-2">
                                                 <div class="form-floating">
-                                                    <input id="alamatPercetakan" name="alamatPercetakan" type="text"
-                                                        class="form-control form-control-sm" placeholder="form-control"
-                                                        value="{{ $md->alamatPercetakan }}">
+                                                    <input id="alamatPercetakan" name="alamatPercetakan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->alamatPercetakan }}">
                                                     <label class="ps-4">Alamat Percetakan</label>
                                                 </div>
                                             </div>
@@ -331,9 +296,7 @@
                                         <h2 class="small-title">Nama Media</h2>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="namaMedia" name="namaMedia" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->namaMedia }}">
+                                                <input id="namaMedia" name="namaMedia" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->namaMedia }}">
                                                 <label class="ps-4">Nama Media</label>
                                             </div>
                                         </div>
@@ -345,16 +308,14 @@
                                         <h2 class="small-title mb-md-0 mb-2">Status Verifikasi Media</h2>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
-                                                <select class="select-floating" id="verifikasiDewanPers"
-                                                    name="verifikasiDewanPers">
+                                                <select class="select-floating" id="verifikasiDewanPers" name="verifikasiDewanPers">
                                                     @if ($md->verifikasiDewanPers)
                                                         <option value="{{ $md->verifikasiDewanPers }}">
                                                             {{ $md->verifikasiDewanPers }}</option>
                                                     @else
                                                         <option label="&nbsp;"></option>
                                                     @endif
-                                                    <option value="faktual dan administratif">Terverifikasi Faktual dan
-                                                        Administratif</option>
+                                                    <option value="faktual dan administratif">Terverifikasi Faktual dan Administratif</option>
                                                     <option value="administratif">Terverifikasi Administratif</option>
                                                     <option value="belum">Belum Terverifikasi</option>
                                                 </select>
@@ -369,8 +330,7 @@
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
                                                 <div class="w-100">
-                                                    <select class="select-floating" id="jenisSerfikatUkwPimred"
-                                                        name="jenisSerfikatUkwPimred">
+                                                    <select class="select-floating" id="jenisSerfikatUkwPimred" name="jenisSerfikatUkwPimred">
                                                         @if ($md->jenisSerfikatUkwPimred)
                                                             <option value="{{ $md->jenisSerfikatUkwPimred }}">
                                                                 {{ $md->jenisSerfikatUkwPimred }}</option>
@@ -386,17 +346,14 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating">
-                                                <input id="serfikatUkwPimred" name="serfikatUkwPimred" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->serfikatUkwPimred }}">
+                                                <input id="serfikatUkwPimred" name="serfikatUkwPimred" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->serfikatUkwPimred }}">
                                                 <label class="ps-4">Nomor Sertifikat Pimred Media</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2 mt-3">
                                             <div class="form-floating">
                                                 <div class="dropzone dropzone-floating-label" id="fileSerfikatUkwPimred">
-                                                    <input type="text" value="{{ $md->fileSerfikatUkwPimred }}"
-                                                        hidden>
+                                                    <input type="text" value="{{ $md->fileSerfikatUkwPimred }}" hidden>
                                                 </div>
                                                 <label class="ps-4">File PDF Sertifikat Pimpinan Redaksi</label>
                                             </div>
@@ -409,8 +366,7 @@
                                         <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perusahaan/Media Pers</h2>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
-                                                <select class="select-floating" id="afiliasiPerusahaan"
-                                                    name="afiliasiPerusahaan">
+                                                <select class="select-floating" id="afiliasiPerusahaan" name="afiliasiPerusahaan">
                                                     @if ($md->afiliasiPerusahaan)
                                                         <option value="{{ $md->afiliasiPerusahaan }}">
                                                             {{ $md->afiliasiPerusahaan }}</option>
@@ -418,19 +374,15 @@
                                                         <option label="&nbsp;"></option>
                                                     @endif
                                                     <option value="tidak terafiliasi">Tidak Terafiliasi</option>
-                                                    <option value="diakui">Organisasi Pers yang diakui Dewan Pers
-                                                    </option>
-                                                    <option value="belum diakui">Organisasi Pers yang belum diakui Dewan
-                                                        Pers
-                                                    </option>
+                                                    <option value="diakui">Organisasi Pers yang diakui Dewan Pers</option>
+                                                    <option value="belum diakui">Organisasi Pers yang belum diakui Dewan Pers</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating fileAfiliasiPerusahaan" hidden>
                                                 <div class="dropzone dropzone-floating-label" id="fileAfiliasiPerusahaan">
-                                                    <input type="text" value="{{ $md->fileAfiliasiPerusahaan }}"
-                                                        hidden>
+                                                    <input type="text" value="{{ $md->fileAfiliasiPerusahaan }}" hidden>
                                                 </div>
                                                 <label class="ps-4">File PDF Bukti Afiliasi Organisasi Pers Media</label>
                                             </div>
@@ -443,8 +395,7 @@
                                         <h2 class="small-title mb-md-0 mb-2">Domisili Redaksi Media</h2>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
-                                                <select class="select-floating" id="domisiliRedaksiMedia"
-                                                    name="domisiliRedaksiMedia">
+                                                <select class="select-floating" id="domisiliRedaksiMedia" name="domisiliRedaksiMedia">
                                                     @if ($md->domisiliRedaksiMedia)
                                                         <option value="{{ $md->domisiliRedaksiMedia }}">
                                                             {{ $md->domisiliRedaksiMedia }}</option>
@@ -452,18 +403,15 @@
                                                         <option label="&nbsp;"></option>
                                                     @endif
                                                     <option value="tulang bawang barat">di Tulang Bawang Barat</option>
-                                                    <option value="luar tulang bawang barat">di luar Tulang Bawang Barat,
-                                                        di Prov.Lampung</option>
+                                                    <option value="luar tulang bawang barat">di luar Tulang Bawang Barat, di Prov.Lampung</option>
                                                     <option value="luar lampung">di luar Provinsi Lampung</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating fileDomisiliRedaksiMedia" hidden>
-                                                <div class="dropzone dropzone-floating-label"
-                                                    id="fileDomisiliRedaksiMedia">
-                                                    <input type="text" value="{{ $md->fileDomisiliRedaksiMedia }}"
-                                                        hidden>
+                                                <div class="dropzone dropzone-floating-label" id="fileDomisiliRedaksiMedia">
+                                                    <input type="text" value="{{ $md->fileDomisiliRedaksiMedia }}" hidden>
                                                 </div>
                                                 <label class="ps-4">File PDF, Surat Keterangan Domisili dari Instansi
                                                     Berwenang</label>
@@ -521,21 +469,15 @@
                                                 <span>Jenis Rekening</span>
                                             </div>
                                             <div class="form-floating mb-2">
-                                                <input id="namaBank" name="namaBank" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->namaBank }}">
+                                                <input id="namaBank" name="namaBank" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->namaBank }}">
                                                 <label class="ps-4">Nama Bank</label>
                                             </div>
                                             <div class="form-floating mb-2">
-                                                <input id="pemilikRekening" name="pemilikRekening" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->pemilikRekening }}">
+                                                <input id="pemilikRekening" name="pemilikRekening" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->pemilikRekening }}">
                                                 <label class="ps-4">Nama Pemilik Rekening</label>
                                             </div>
                                             <div class="form-floating mb-2">
-                                                <input id="noRekening" name="noRekening" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->noRekening }}">
+                                                <input id="noRekening" name="noRekening" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->noRekening }}">
                                                 <label class="ps-4">No Rekening Perusahaan</label>
                                             </div>
                                         </div>
@@ -560,8 +502,7 @@
                                         <h2 class="small-title mb-md-0 mb-2">Tahun Berdiri Media</h2>
                                         <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                             <div class="form-floating w-100">
-                                                <select class="select-floating" id="tahunBerdiriMedia"
-                                                    name="tahunBerdiriMedia">
+                                                <select class="select-floating" id="tahunBerdiriMedia" name="tahunBerdiriMedia">
                                                     @if ($md->tahunBerdiriMedia)
                                                         <option value="{{ $md->tahunBerdiriMedia }}">
                                                             {{ $md->tahunBerdiriMedia }}</option>
@@ -585,8 +526,7 @@
                                             <h2 class="small-title mb-md-0 mb-2">Jangkauan Siar Media Elektronik</h2>
                                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100">
-                                                    <select class="select-floating" id="jenisJangkauanSiarMediaElektronik"
-                                                        name="jenisJangkauanSiarMediaElektronik">
+                                                    <select class="select-floating" id="jenisJangkauanSiarMediaElektronik" name="jenisJangkauanSiarMediaElektronik">
                                                         @if ($md->jenisJangkauanSiarMediaElektronik)
                                                             <option value="{{ $md->jenisJangkauanSiarMediaElektronik }}">
                                                                 {{ $md->jenisJangkauanSiarMediaElektronik }}</option>
@@ -604,8 +544,7 @@
                                         <div class="row mb-3">
                                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100">
-                                                    <select class="select-floating" id="jangkauanSiarMediaElektronik"
-                                                        name="jangkauanSiarMediaElektronik">
+                                                    <select class="select-floating" id="jangkauanSiarMediaElektronik" name="jangkauanSiarMediaElektronik">
                                                         @if ($md->jangkauanSiarMediaElektronik)
                                                             <option value="{{ $md->jangkauanSiarMediaElektronik }}">
                                                                 {{ $md->jangkauanSiarMediaElektronik }}</option>
@@ -623,8 +562,7 @@
                                             <h2 class="small-title mb-md-0 mb-2">Jumlah Oplah Media Cetak Per Minggu</h2>
                                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100">
-                                                    <select class="select-floating" id="jumlahOplahMediaCetakPerMinggu"
-                                                        name="jumlahOplahMediaCetakPerMinggu">
+                                                    <select class="select-floating" id="jumlahOplahMediaCetakPerMinggu" name="jumlahOplahMediaCetakPerMinggu">
                                                         @if ($md->jumlahOplahMediaCetakPerMinggu)
                                                             <option value="{{ $md->jumlahOplahMediaCetakPerMinggu }}">
                                                                 {{ $md->jumlahOplahMediaCetakPerMinggu }}</option>
@@ -639,10 +577,8 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating jumlahOplahMediaCetakPerMinggu">
-                                                    <div class="dropzone dropzone-floating-label"
-                                                        id="fileJumlahOplahMediaCetakPerMinggu">
-                                                        <input type="text"
-                                                            value="{{ $md->fileJumlahOplahMediaCetakPerMinggu }}" hidden>
+                                                    <div class="dropzone dropzone-floating-label" id="fileJumlahOplahMediaCetakPerMinggu">
+                                                        <input type="text" value="{{ $md->fileJumlahOplahMediaCetakPerMinggu }}" hidden>
                                                     </div>
                                                     <label class="ps-4">File PDF, Scan halaman depan 10 Terbitan Media
                                                         dengan
@@ -659,8 +595,7 @@
                                             </h2>
                                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100">
-                                                    <select class="select-floating" id="jumlahKontenBeritaAktif"
-                                                        name="jumlahKontenBeritaAktif">
+                                                    <select class="select-floating" id="jumlahKontenBeritaAktif" name="jumlahKontenBeritaAktif">
                                                         @if ($md->jumlahKontenBeritaAktif)
                                                             <option value="{{ $md->jumlahKontenBeritaAktif }}">
                                                                 {{ $md->jumlahKontenBeritaAktif }}</option>
@@ -686,25 +621,19 @@
                                         <h2 class="small-title">Data Perwakilan Media</h2>
                                         <div class="col-lg-12 col-md-6 col-12">
                                             <div class="form-floating mb-lg-2 mb-md-2 mb-2">
-                                                <input id="namaPerwakilan" name="namaPerwakilan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->namaPerwakilan }}">
+                                                <input id="namaPerwakilan" name="namaPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->namaPerwakilan }}">
                                                 <label class="ps-4">Nama Perwakilan Media</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-6 col-12">
                                             <div class="form-floating mb-lg-2 mb-md-2 mb-2">
-                                                <input id="nomorKKPerwakilan" name="nomorKKPerwakilan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->nomorKKPerwakilan }}">
+                                                <input id="nomorKKPerwakilan" name="nomorKKPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nomorKKPerwakilan }}">
                                                 <label class="ps-4">Nomor Kartu Keluarga</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-6 col-12">
                                             <div class="form-floating mb-lg-2 mb-md-2 mb-2">
-                                                <input id="nomorKtpPerwakilan" name="nomorKtpPerwakilan" type="text"
-                                                    class="form-control form-control-sm" placeholder="form-control"
-                                                    value="{{ $md->nomorKtpPerwakilan }}">
+                                                <input id="nomorKtpPerwakilan" name="nomorKtpPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->nomorKtpPerwakilan }}">
                                                 <label class="ps-4">Nomor Induk Kependudukan</label>
                                             </div>
                                         </div>
@@ -712,18 +641,14 @@
                                         <div class="row mb-4">
                                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                                 <div class="form-floating">
-                                                    <input id="npwpPerwakilan" name="npwpPerwakilan" type="text"
-                                                        class="form-control form-control-sm" placeholder="form-control"
-                                                        value="{{ $md->npwpPerwakilan }}">
+                                                    <input id="npwpPerwakilan" name="npwpPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->npwpPerwakilan }}">
                                                     <label class="ps-4">No NPWP Pribadi Perwakilan Media</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-floating">
-                                                    <div class="dropzone dropzone-floating-label" id="fileNpwpPerwakilan"
-                                                        name="fileNpwpPerwakilan">
-                                                        <input type="text" value="{{ $md->fileNpwpPerwakilan }}"
-                                                            hidden>
+                                                    <div class="dropzone dropzone-floating-label" id="fileNpwpPerwakilan" name="fileNpwpPerwakilan">
+                                                        <input type="text" value="{{ $md->fileNpwpPerwakilan }}" hidden>
                                                     </div>
                                                     <label class="ps-4">File PDF NPWP Pribadi Perwakilan Media</label>
                                                 </div>
@@ -739,8 +664,7 @@
                                             </h2>
                                             <div class="col-lg-12 col-md-12 col-12 mb-lg-0 mb-md-0 mb-2">
                                                 <div class="form-floating w-100 mb-3">
-                                                    <select class="select-floating" id="jenisSerfikatUkwPerwakilan"
-                                                        name="jenisSerfikatUkwPerwakilan">
+                                                    <select class="select-floating" id="jenisSerfikatUkwPerwakilan" name="jenisSerfikatUkwPerwakilan">
                                                         @if ($md->jenisSerfikatUkwPerwakilan)
                                                             <option value="{{ $md->jenisSerfikatUkwPerwakilan }}">
                                                                 {{ $md->jenisSerfikatUkwPerwakilan }}</option>
@@ -758,20 +682,15 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                         <div class="form-floating">
-                                                            <input id="serfikatUkwPerwakilan" name="serfikatUkwPerwakilan"
-                                                                type="text" class="form-control form-control-sm"
-                                                                placeholder="form-control"
-                                                                value="{{ $md->serfikatUkwPerwakilan }}">
+                                                            <input id="serfikatUkwPerwakilan" name="serfikatUkwPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->serfikatUkwPerwakilan }}">
                                                             <label class="ps-4">Nomor Sertifikat Kompetensi Perwakilan
                                                                 Media</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                         <div class="form-floating">
-                                                            <div class="dropzone dropzone-floating-label"
-                                                                id="fileSerfikatUkwPerwakilan">
-                                                                <input type="text"
-                                                                    value="{{ $md->fileSerfikatUkwPerwakilan }}" hidden>
+                                                            <div class="dropzone dropzone-floating-label" id="fileSerfikatUkwPerwakilan">
+                                                                <input type="text" value="{{ $md->fileSerfikatUkwPerwakilan }}" hidden>
                                                             </div>
                                                             <label class="ps-4">File PDF Sertifikat Kompetensi Dewan Pers
                                                                 Perwakilan Media</label>
@@ -787,19 +706,14 @@
                                             <h2 class="small-title mb-md-0 mb-2">Afiliasi Organisasi Perwakilan Media</h2>
                                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                                 <div class="form-floating">
-                                                    <input id="afiliasiPersPerwakilan" name="afiliasiPersPerwakilan"
-                                                        type="text" class="form-control form-control-sm"
-                                                        placeholder="form-control"
-                                                        value="{{ $md->afiliasiPersPerwakilan }}">
+                                                    <input id="afiliasiPersPerwakilan" name="afiliasiPersPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->afiliasiPersPerwakilan }}">
                                                     <label class="ps-4">Nama Organisasi Pers yang Terafiliasi</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                                 <div class="form-floating">
-                                                    <div class="dropzone dropzone-floating-label"
-                                                        id="fileAfiliasiPersPerwakilan" name="fileafiliasiPersPerwakilan">
-                                                        <input type="text"
-                                                            value="{{ $md->fileafiliasiPersPerwakilan }}" hidden>
+                                                    <div class="dropzone dropzone-floating-label" id="fileAfiliasiPersPerwakilan" name="fileafiliasiPersPerwakilan">
+                                                        <input type="text" value="{{ $md->fileafiliasiPersPerwakilan }}" hidden>
                                                     </div>
                                                     <label class="ps-4">File PDF Bukti Keanggotaan Organisasi Pers
                                                         Perwakilan Media</label>
@@ -818,8 +732,7 @@
                                                     <div class="w-100">
                                                         <select id="alamatProvPerwakilan" name="alamatProvPerwakilan">
                                                             <option label="&nbsp;"></option>
-                                                            <input type="text" id="dataAlamatProvPerwakilan"
-                                                                value="{{ $md->alamatProvPerwakilan }}" hidden>
+                                                            <input type="text" id="dataAlamatProvPerwakilan" value="{{ $md->alamatProvPerwakilan }}" hidden>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -827,37 +740,28 @@
                                                     <div class="w-100">
                                                         <select id="alamatKabPerwakilan" name="alamatKabPerwakilan">
                                                             <option label="&nbsp;"></option>
-                                                            <input type="text" id="dataAlamatKabPerwakilan"
-                                                                value="{{ $md->alamatKabPerwakilan }}" hidden>
+                                                            <input type="text" id="dataAlamatKabPerwakilan" value="{{ $md->alamatKabPerwakilan }}" hidden>
                                                         </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-12 col-md-12 col-12 mb-lg-2 mb-md-2 mb-2">
                                                     <div class="form-floating">
-                                                        <input id="alamatPerwakilan" name="alamatPerwakilan"
-                                                            type="text" class="form-control form-control-sm"
-                                                            placeholder="form-control"
-                                                            value="{{ $md->alamatPerwakilan }}">
+                                                        <input id="alamatPerwakilan" name="alamatPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->alamatPerwakilan }}">
                                                         <label class="ps-4">Alamat Perwakilan Media Detail</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                     <div class="form-floating">
-                                                        <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text"
-                                                            class="form-control form-control-sm"
-                                                            placeholder="form-control" value="{{ $md->tlpnPerwakilan }}">
+                                                        <input id="tlpnPerwakilan" name="tlpnPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->tlpnPerwakilan }}">
                                                         <label class="ps-4">No Telpon Perwakilan Media</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
                                                     <div class="form-floating">
-                                                        <input id="emailPerwakilan" name="emailPerwakilan" type="text"
-                                                            class="form-control form-control-sm"
-                                                            placeholder="form-control"
-                                                            value="{{ $md->emailPerwakilan }}">
+                                                        <input id="emailPerwakilan" name="emailPerwakilan" type="text" class="form-control form-control-sm" placeholder="form-control" value="{{ $md->emailPerwakilan }}">
                                                         <label class="ps-4">Email Perwakilan Media</label>
                                                     </div>
                                                 </div>
@@ -872,8 +776,7 @@
                                     <h5 class="card-title">Harap Dibaca !!!</h5>
                                     <div class="col-12 p-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pernyataanCheckbox" name="pernyataanCheckbox">
+                                            <input class="form-check-input" type="checkbox" value="" id="pernyataanCheckbox" name="pernyataanCheckbox">
                                             <label class="form-check-label" for="invalidCheck">
                                                 Dengan ini menyatakan bahwa data yang disampaikan sesuai dengan kondisi yang
                                                 sebenarnya,

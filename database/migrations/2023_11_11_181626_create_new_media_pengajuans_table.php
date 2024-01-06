@@ -137,6 +137,7 @@ return new class extends Migration
             // status dan parameter
             $table->enum('status', ['ajukan', 'edit', 'tolak', 'terima']);
             $table->enum('nilai', ['A', 'B', 'C', 'D'])->nullable();
+            $table->string('nilaiDalamAngka', 20)->nullable();
             $table->longText('keterangan')->nullable();
             $table->string('tahun_pengajuan');
             $table->enum('buka_edit', ['buka', 'tidak'])->default('tidak');

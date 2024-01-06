@@ -23,10 +23,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm-5 col-lg-3 col-xxl-2 mb-1">
-                                <div
-                                    class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 border border-separator bg-foreground search-sm">
-                                    <input class="form-control form-control-sm datatable-search" placeholder="Search"
-                                        data-datatable="#tbDaftarPengajuan">
+                                <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 border border-separator bg-foreground search-sm">
+                                    <input class="form-control form-control-sm datatable-search" placeholder="Search" data-datatable="#tbDaftarPengajuan">
                                     <span class="search-magnifier-icon">
                                         <i data-acorn-icon="search"></i>
                                     </span>
@@ -44,13 +42,11 @@
                                             </button>
                                         @endif
                                     @endif
-                                    <button class="btn btn-icon btn-icon-only btn-outline-muted btn-sm datatable-print"
-                                        type="button" data-datatable="#tbDaftarPengajuan">
+                                    <button class="btn btn-icon btn-icon-only btn-outline-muted btn-sm datatable-print" type="button" data-datatable="#tbDaftarPengajuan">
                                         <i data-acorn-icon="print"></i>
                                     </button>
                                     <div class="d-inline-block datatable-export" data-datatable="#tbDaftarPengajuan">
-                                        <button class="btn btn-icon btn-icon-only btn-outline-muted btn-sm dropdown"
-                                            data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
+                                        <button class="btn btn-icon btn-icon-only btn-outline-muted btn-sm dropdown" data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
                                             <i data-acorn-icon="download"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
@@ -59,11 +55,8 @@
                                             <button class="dropdown-item export-cvs" type="button">Cvs</button>
                                         </div>
                                     </div>
-                                    <div class="dropdown-as-select d-inline-block datatable-length"
-                                        data-datatable="#tbDaftarPengajuan">
-                                        <button class="btn btn-outline-muted btn-sm dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            data-bs-offset="0,3">
+                                    <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#tbDaftarPengajuan">
+                                        <button class="btn btn-outline-muted btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
                                             10 Items
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
@@ -279,6 +272,52 @@
                 success: function(response) {
                     // $("main").load("/pengajuan/edit/" + noPengajuan);
                     window.open("/pengajuan/edit/" + noPengajuan, "_parent")
+                }
+            });
+        });
+
+        $(document).on('click', '.bukaEdit', function(e) {
+            e.preventDefault();
+            var noPengajuan = $(this).attr('data-id');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "PUT",
+                url: "/pengajuan/edit/" + noPengajuan,
+                data: {
+                    pengajuan_no: noPengajuan,
+                    status: 'tidak'
+                },
+                success: function(response) {
+                    // $("main").load("/pengajuan/edit/" + noPengajuan);
+                    // window.open("/pengajuan/edit/" + noPengajuan, "_parent")
+                    $('#tbDaftarPengajuan').DataTable().ajax.reload(null, false);
+                }
+            });
+        });
+
+        $(document).on('click', '.tutupEdit', function(e) {
+            e.preventDefault();
+            var noPengajuan = $(this).attr('data-id');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "PUT",
+                url: "/pengajuan/edit/" + noPengajuan,
+                data: {
+                    pengajuan_no: noPengajuan,
+                    status: 'buka'
+                },
+                success: function(response) {
+                    // $("main").load("/pengajuan/edit/" + noPengajuan);
+                    // window.open("/pengajuan/edit/" + noPengajuan, "_parent")
+                    $('#tbDaftarPengajuan').DataTable().ajax.reload(null, false);
                 }
             });
         });

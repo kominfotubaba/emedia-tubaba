@@ -188,139 +188,83 @@
     </style>
 </head>
 
-<body
-    style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;"
-    bgcolor="#ffffff">
-    <table class="body" valign="top" role="presentation" border="0" cellpadding="0" cellspacing="0"
-        style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;"
-        bgcolor="#ffffff">
+<body style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;" bgcolor="#ffffff">
+    <table class="body" valign="top" role="presentation" border="0" cellpadding="0" cellspacing="0" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;" bgcolor="#ffffff">
         <tbody>
             <tr>
                 <td valign="top" style="line-height: 24px; font-size: 16px; margin: 0;" align="left">
-                    <table class="container bg-blue-400" role="presentation" border="0" cellpadding="0"
-                        cellspacing="0" style="width: 100%;" bgcolor="#3d8bfd">
+                    <table class="container bg-blue-400" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" bgcolor="#3d8bfd">
                         <tbody>
                             <tr>
-                                <td align="center"
-                                    style="line-height: 24px; font-size: 16px; margin: 0; padding: 0 16px;"
-                                    bgcolor="#3d8bfd">
+                                <td align="center" style="line-height: 24px; font-size: 16px; margin: 0; padding: 0 16px;" bgcolor="#3d8bfd">
                                     <!--[if (gte mso 9)|(IE)]>
                       <table align="center" role="presentation">
                         <tbody>
                           <tr>
                             <td width="600">
                     <![endif]-->
-                                    <table align="center" role="presentation" border="0" cellpadding="0"
-                                        cellspacing="0" style="width: 100%; max-width: 600px; margin: 0 auto;">
+                                    <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px; margin: 0 auto;">
                                         <tbody>
                                             <tr>
-                                                <td style="line-height: 24px; font-size: 16px; margin: 0;"
-                                                    align="left">
-                                                    <table class="s-10 w-full" role="presentation" border="0"
-                                                        cellpadding="0" cellspacing="0" style="width: 100%;"
-                                                        width="100%">
+                                                <td style="line-height: 24px; font-size: 16px; margin: 0;" align="left">
+                                                    <table class="s-10 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                         <tbody>
                                                             <tr>
-                                                                <td style="line-height: 40px; font-size: 40px; width: 100%; height: 40px; margin: 0;"
-                                                                    align="left" width="100%" height="40">
+                                                                <td style="line-height: 40px; font-size: 40px; width: 100%; height: 40px; margin: 0;" align="left" width="100%" height="40">
                                                                     &#160;
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <table class="ax-center" role="presentation" align="center"
-                                                        border="0" cellpadding="0" cellspacing="0"
-                                                        style="margin: 0 auto;">
+                                                    <table class="ax-center" role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
                                                         <tbody>
                                                             <tr>
-                                                                <td style="line-height: 24px; font-size: 16px; margin: 0;"
-                                                                    align="left">
-                                                                    <img class="w-32"
-                                                                        src="https://emedia.tubaba.go.id/assets/img/logo/kombinasi.png"
-                                                                        style="height: auto; line-height: 100%; outline: none; text-decoration: none; display: block; width: 128px; border-style: none; border-width: 0;"
-                                                                        width="128">
+                                                                <td style="line-height: 24px; font-size: 16px; margin: 0;" align="left">
+                                                                    <img class="w-32" src="https://emedia.tubaba.go.id/assets/img/logo/kombinasi.png" style="height: auto; line-height: 100%; outline: none; text-decoration: none; display: block; width: 128px; border-style: none; border-width: 0;" width="128">
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <table class="s-10 w-full" role="presentation" border="0"
-                                                        cellpadding="0" cellspacing="0" style="width: 100%;"
-                                                        width="100%">
+                                                    <table class="s-10 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                         <tbody>
                                                             <tr>
-                                                                <td style="line-height: 40px; font-size: 40px; width: 100%; height: 40px; margin: 0;"
-                                                                    align="left" width="100%" height="40">
+                                                                <td style="line-height: 40px; font-size: 40px; width: 100%; height: 40px; margin: 0;" align="left" width="100%" height="40">
                                                                     &#160;
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <table class="card  border-blue-400" role="presentation"
-                                                        border="0" cellpadding="0" cellspacing="0"
-                                                        style="border-radius: 6px; border-collapse: separate !important; width: 100%; overflow: hidden; border: 1px solid #3d8bfd;"
-                                                        bgcolor="#ffffff">
+                                                    <table class="card  border-blue-400" role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-radius: 6px; border-collapse: separate !important; width: 100%; overflow: hidden; border: 1px solid #3d8bfd;" bgcolor="#ffffff">
                                                         <tbody>
                                                             <tr>
-                                                                <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;"
-                                                                    align="left" bgcolor="#ffffff">
-                                                                    <table class="s-4 w-full" role="presentation"
-                                                                        border="0" cellpadding="0" cellspacing="0"
-                                                                        style="width: 100%;" width="100%">
+                                                                <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;" align="left" bgcolor="#ffffff">
+                                                                    <table class="s-4 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td style="line-height: 16px; font-size: 16px; width: 100%; height: 16px; margin: 0;"
-                                                                                    align="left" width="100%"
-                                                                                    height="16">
+                                                                                <td style="line-height: 16px; font-size: 16px; width: 100%; height: 16px; margin: 0;" align="left" width="100%" height="16">
                                                                                     &#160;
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
-                                                                    <table class="ax-right" role="presentation"
-                                                                        align="right" border="0" cellpadding="0"
-                                                                        cellspacing="0">
+                                                                    <table class="ax-right" role="presentation" align="right" border="0" cellpadding="0" cellspacing="0">
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td style="line-height: 24px; font-size: 16px; margin: 0;"
-                                                                                    align="left">
-                                                                                    <table class="p-0"
-                                                                                        role="presentation"
-                                                                                        border="0" cellpadding="0"
-                                                                                        cellspacing="0">
+                                                                                <td style="line-height: 24px; font-size: 16px; margin: 0;" align="left">
+                                                                                    <table class="p-0" role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                                         <tbody>
                                                                                             <tr>
-                                                                                                <td style="line-height: 24px; font-size: 16px; margin: 0; padding: 0;"
-                                                                                                    align="left">
-                                                                                                    <div
-                                                                                                        class="">
-                                                                                                        <table
-                                                                                                            class="rounded-left-md bg-blue-400 w-full"
-                                                                                                            role="presentation"
-                                                                                                            border="0"
-                                                                                                            cellpadding="0"
-                                                                                                            cellspacing="0"
-                                                                                                            style="border-top-left-radius: 6px; border-bottom-left-radius: 6px; width: 100%;"
-                                                                                                            bgcolor="#3d8bfd"
-                                                                                                            width="100%">
+                                                                                                <td style="line-height: 24px; font-size: 16px; margin: 0; padding: 0;" align="left">
+                                                                                                    <div class="">
+                                                                                                        <table class="rounded-left-md bg-blue-400 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-top-left-radius: 6px; border-bottom-left-radius: 6px; width: 100%;" bgcolor="#3d8bfd" width="100%">
                                                                                                             <tbody>
                                                                                                                 <tr>
-                                                                                                                    <td style="line-height: 24px; font-size: 16px; border-top-left-radius: 6px; border-bottom-left-radius: 6px; width: 100%; margin: 0;"
-                                                                                                                        align="left"
-                                                                                                                        bgcolor="#3d8bfd"
-                                                                                                                        width="100%">
-                                                                                                                        <table
-                                                                                                                            class="p-2"
-                                                                                                                            role="presentation"
-                                                                                                                            border="0"
-                                                                                                                            cellpadding="0"
-                                                                                                                            cellspacing="0">
+                                                                                                                    <td style="line-height: 24px; font-size: 16px; border-top-left-radius: 6px; border-bottom-left-radius: 6px; width: 100%; margin: 0;" align="left" bgcolor="#3d8bfd" width="100%">
+                                                                                                                        <table class="p-2" role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                                                                             <tbody>
                                                                                                                                 <tr>
-                                                                                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0; padding: 8px;"
-                                                                                                                                        align="left">
-                                                                                                                                        <p class="text-lg text-gray-100"
-                                                                                                                                            style="line-height: 21.6px; font-size: 18px; color: #f7fafc; width: 100%; margin: 0;"
-                                                                                                                                            align="left">
+                                                                                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0; padding: 8px;" align="left">
+                                                                                                                                        <p class="text-lg text-gray-100" style="line-height: 21.6px; font-size: 18px; color: #f7fafc; width: 100%; margin: 0;" align="left">
                                                                                                                                             DISKOMINFO
                                                                                                                                             TUBABA
                                                                                                                                         </p>
@@ -341,40 +285,24 @@
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
-                                                                    <table class="card-body" role="presentation"
-                                                                        border="0" cellpadding="0"
-                                                                        cellspacing="0" style="width: 100%;">
+                                                                    <table class="card-body" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 20px;"
-                                                                                    align="left">
-                                                                                    <p class="underline  fw-600"
-                                                                                        style="line-height: 24px; font-size: 16px; text-decoration: underline; font-weight: 600 !important; width: 100%; margin: 0;"
-                                                                                        align="left">
+                                                                                <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 20px;" align="left">
+                                                                                    <p class="underline  fw-600" style="line-height: 24px; font-size: 16px; text-decoration: underline; font-weight: 600 !important; width: 100%; margin: 0;" align="left">
                                                                                         Hai, {{ $mailData['nama'] }}!
                                                                                     </p>
-                                                                                    <table class="s-4 w-full"
-                                                                                        role="presentation"
-                                                                                        border="0" cellpadding="0"
-                                                                                        cellspacing="0"
-                                                                                        style="width: 100%;"
-                                                                                        width="100%">
+                                                                                    <table class="s-4 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                         <tbody>
                                                                                             <tr>
-                                                                                                <td style="line-height: 16px; font-size: 16px; width: 100%; height: 16px; margin: 0;"
-                                                                                                    align="left"
-                                                                                                    width="100%"
-                                                                                                    height="16">
+                                                                                                <td style="line-height: 16px; font-size: 16px; width: 100%; height: 16px; margin: 0;" align="left" width="100%" height="16">
                                                                                                     &#160;
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </tbody>
                                                                                     </table>
-                                                                                    <div class="text-sm"
-                                                                                        style="font-size: 14px; line-height: 16.8px;">
-                                                                                        <p class="text-justify"
-                                                                                            style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;"
-                                                                                            align="justify">
+                                                                                    <div class="text-sm" style="font-size: 14px; line-height: 16.8px;">
+                                                                                        <p class="text-justify" style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;" align="justify">
                                                                                             Sehubungan dengan screening
                                                                                             dan hasil konsultasi ke
                                                                                             Fakultas Ilmu Sosial dan
@@ -392,95 +320,48 @@
                                                                                             himbau hal-hal sebagai
                                                                                             berikut :
                                                                                         </p>
-                                                                                        <table class="py-4"
-                                                                                            role="presentation"
-                                                                                            border="0"
-                                                                                            cellpadding="0"
-                                                                                            cellspacing="0">
+                                                                                        <table class="py-4" role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                                             <tbody>
                                                                                                 <tr>
-                                                                                                    <td style="line-height: 24px; font-size: 16px; padding-top: 16px; padding-bottom: 16px; margin: 0;"
-                                                                                                        align="left">
-                                                                                                        <div
-                                                                                                            class="">
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                    <td style="line-height: 24px; font-size: 16px; padding-top: 16px; padding-bottom: 16px; margin: 0;" align="left">
+                                                                                                        <div class="">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="hr"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;">
+                                                                                                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
-                                                                                                                            align="left">
+                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
 
-                                                                                                            <div class="row gap-5"
-                                                                                                                style="margin-right: -20px; margin-bottom: -20px;">
-                                                                                                                <table
-                                                                                                                    class=""
-                                                                                                                    role="presentation"
-                                                                                                                    border="0"
-                                                                                                                    cellpadding="0"
-                                                                                                                    cellspacing="0"
-                                                                                                                    style="table-layout: fixed; width: 100%;"
-                                                                                                                    width="100%">
+                                                                                                            <div class="row gap-5" style="margin-right: -20px; margin-bottom: -20px;">
+                                                                                                                <table class="" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed; width: 100%;" width="100%">
                                                                                                                     <tbody>
                                                                                                                         <tr>
-                                                                                                                            <td class="col-4"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-4" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 No
                                                                                                                                 Pengajuan
                                                                                                                                 :
                                                                                                                             </td>
-                                                                                                                            <td class="col-8"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-8" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 {{ $mailData['no'] }}
                                                                                                                             </td>
                                                                                                                         </tr>
@@ -488,391 +369,196 @@
                                                                                                                 </table>
                                                                                                             </div>
 
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="hr"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;">
+                                                                                                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
-                                                                                                                            align="left">
+                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
 
-                                                                                                            <div class="row gap-5"
-                                                                                                                style="margin-right: -20px; margin-bottom: -20px;">
-                                                                                                                <table
-                                                                                                                    class=""
-                                                                                                                    role="presentation"
-                                                                                                                    border="0"
-                                                                                                                    cellpadding="0"
-                                                                                                                    cellspacing="0"
-                                                                                                                    style="table-layout: fixed; width: 100%;"
-                                                                                                                    width="100%">
+                                                                                                            <div class="row gap-5" style="margin-right: -20px; margin-bottom: -20px;">
+                                                                                                                <table class="" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed; width: 100%;" width="100%">
                                                                                                                     <tbody>
                                                                                                                         <tr>
-                                                                                                                            <td class="col-4"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-4" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 Jenis
                                                                                                                                 Media
                                                                                                                                 :
                                                                                                                             </td>
-                                                                                                                            <td class="col-8"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-8" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 {{ $mailData['jenis'] }}
                                                                                                                             </td>
                                                                                                                         </tr>
                                                                                                                     </tbody>
                                                                                                                 </table>
                                                                                                             </div>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="hr"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;">
+                                                                                                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
-                                                                                                                            align="left">
+                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <div class="row gap-5"
-                                                                                                                style="margin-right: -20px; margin-bottom: -20px;">
-                                                                                                                <table
-                                                                                                                    class=""
-                                                                                                                    role="presentation"
-                                                                                                                    border="0"
-                                                                                                                    cellpadding="0"
-                                                                                                                    cellspacing="0"
-                                                                                                                    style="table-layout: fixed; width: 100%;"
-                                                                                                                    width="100%">
+                                                                                                            <div class="row gap-5" style="margin-right: -20px; margin-bottom: -20px;">
+                                                                                                                <table class="" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed; width: 100%;" width="100%">
                                                                                                                     <tbody>
                                                                                                                         <tr>
-                                                                                                                            <td class="col-4"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-4" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 Nama
                                                                                                                                 Media
                                                                                                                                 :
                                                                                                                             </td>
-                                                                                                                            <td class="col-8"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-8" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 {{ $mailData['nama'] }}
                                                                                                                             </td>
                                                                                                                         </tr>
                                                                                                                     </tbody>
                                                                                                                 </table>
                                                                                                             </div>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="hr"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;">
+                                                                                                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
-                                                                                                                            align="left">
+                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <div class="row gap-5"
-                                                                                                                style="margin-right: -20px; margin-bottom: -20px;">
-                                                                                                                <table
-                                                                                                                    class=""
-                                                                                                                    role="presentation"
-                                                                                                                    border="0"
-                                                                                                                    cellpadding="0"
-                                                                                                                    cellspacing="0"
-                                                                                                                    style="table-layout: fixed; width: 100%;"
-                                                                                                                    width="100%">
+                                                                                                            <div class="row gap-5" style="margin-right: -20px; margin-bottom: -20px;">
+                                                                                                                <table class="" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed; width: 100%;" width="100%">
                                                                                                                     <tbody>
                                                                                                                         <tr>
-                                                                                                                            <td class="col-4"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-4" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 Masa
                                                                                                                                 Perbaikan
                                                                                                                                 :
                                                                                                                             </td>
-                                                                                                                            <td class="col-8"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
-                                                                                                                                20
-                                                                                                                                s.d
-                                                                                                                                31
-                                                                                                                                Desember
-                                                                                                                                2022.
+                                                                                                                            <td class="col-8" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
+                                                                                                                                {{ $mailData['waktu_perbaikan'] }}
                                                                                                                             </td>
                                                                                                                         </tr>
                                                                                                                     </tbody>
                                                                                                                 </table>
                                                                                                             </div>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="hr"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;">
+                                                                                                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
-                                                                                                                            align="left">
+                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <div class="row gap-5"
-                                                                                                                style="margin-right: -20px; margin-bottom: -20px;">
-                                                                                                                <table
-                                                                                                                    class=""
-                                                                                                                    role="presentation"
-                                                                                                                    border="0"
-                                                                                                                    cellpadding="0"
-                                                                                                                    cellspacing="0"
-                                                                                                                    style="table-layout: fixed; width: 100%;"
-                                                                                                                    width="100%">
+                                                                                                            <div class="row gap-5" style="margin-right: -20px; margin-bottom: -20px;">
+                                                                                                                <table class="" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed; width: 100%;" width="100%">
                                                                                                                     <tbody>
                                                                                                                         <tr>
-                                                                                                                            <td class="col-4"
-                                                                                                                                style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-4" style="line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 33.333333%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 Catatan
                                                                                                                                 Perbaikan
                                                                                                                                 :
                                                                                                                             </td>
-                                                                                                                            <td class="col-8"
-                                                                                                                                style="color: #cf2b62;line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;"
-                                                                                                                                align="left"
-                                                                                                                                valign="top">
+                                                                                                                            <td class="col-8" style="color: #cf2b62;line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 {!! $mailData['keterangan'] !!}
                                                                                                                             </td>
                                                                                                                         </tr>
                                                                                                                     </tbody>
                                                                                                                 </table>
                                                                                                             </div>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="hr"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;">
+                                                                                                            <table class="hr" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
-                                                                                                                            align="left">
+                                                                                                                        <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;" align="left">
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
-                                                                                                            <table
-                                                                                                                class="s-1 w-full"
-                                                                                                                role="presentation"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="width: 100%;"
-                                                                                                                width="100%">
+                                                                                                            <table class="s-1 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;"
-                                                                                                                            align="left"
-                                                                                                                            width="100%"
-                                                                                                                            height="4">
+                                                                                                                        <td style="line-height: 4px; font-size: 4px; width: 100%; height: 4px; margin: 0;" align="left" width="100%" height="4">
                                                                                                                             &#160;
                                                                                                                         </td>
                                                                                                                     </tr>
@@ -883,9 +569,7 @@
                                                                                                 </tr>
                                                                                             </tbody>
                                                                                         </table>
-                                                                                        <p class="text-justify"
-                                                                                            style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;"
-                                                                                            align="justify">
+                                                                                        <p class="text-justify" style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;" align="justify">
                                                                                             Demikian himbauan ini kami
                                                                                             sampaikan, untuk menjadi
                                                                                             perhatian kita
@@ -894,36 +578,22 @@
                                                                                             perhatian dan kerjasamanya
                                                                                             kami ucapkan terimakasih.
                                                                                         </p>
-                                                                                        <table class="pt-4"
-                                                                                            role="presentation"
-                                                                                            border="0"
-                                                                                            cellpadding="0"
-                                                                                            cellspacing="0">
+                                                                                        <table class="pt-4" role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                                             <tbody>
                                                                                                 <tr>
-                                                                                                    <td style="line-height: 24px; font-size: 16px; padding-top: 16px; margin: 0;"
-                                                                                                        align="left">
-                                                                                                        <p class=""
-                                                                                                            style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;"
-                                                                                                            align="left">
+                                                                                                    <td style="line-height: 24px; font-size: 16px; padding-top: 16px; margin: 0;" align="left">
+                                                                                                        <p class="" style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;" align="left">
                                                                                                             Tertanda,
                                                                                                         </p>
                                                                                                     </td>
                                                                                                 </tr>
                                                                                             </tbody>
                                                                                         </table>
-                                                                                        <table class="pt-2"
-                                                                                            role="presentation"
-                                                                                            border="0"
-                                                                                            cellpadding="0"
-                                                                                            cellspacing="0">
+                                                                                        <table class="pt-2" role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                                             <tbody>
                                                                                                 <tr>
-                                                                                                    <td style="line-height: 24px; font-size: 16px; padding-top: 8px; margin: 0;"
-                                                                                                        align="left">
-                                                                                                        <p class="fw-600"
-                                                                                                            style="line-height: 24px; font-size: 16px; font-weight: 600 !important; width: 100%; margin: 0;"
-                                                                                                            align="left">
+                                                                                                    <td style="line-height: 24px; font-size: 16px; padding-top: 8px; margin: 0;" align="left">
+                                                                                                        <p class="fw-600" style="line-height: 24px; font-size: 16px; font-weight: 600 !important; width: 100%; margin: 0;" align="left">
                                                                                                             Tim
                                                                                                             Verifikasi
                                                                                                             dan
@@ -942,35 +612,25 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <table class="s-5 w-full" role="presentation" border="0"
-                                                        cellpadding="0" cellspacing="0" style="width: 100%;"
-                                                        width="100%">
+                                                    <table class="s-5 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                         <tbody>
                                                             <tr>
-                                                                <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;"
-                                                                    align="left" width="100%" height="20">
+                                                                <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;" align="left" width="100%" height="20">
                                                                     &#160;
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                     <div class="">
-                                                        <table class="ax-center" role="presentation" align="center"
-                                                            border="0" cellpadding="0" cellspacing="0"
-                                                            style="margin: 0 auto;">
+                                                        <table class="ax-center" role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0;"
-                                                                        align="left">
-                                                                        <table class="p-0" role="presentation"
-                                                                            border="0" cellpadding="0"
-                                                                            cellspacing="0">
+                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0;" align="left">
+                                                                        <table class="p-0" role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0; padding: 0;"
-                                                                                        align="left">
-                                                                                        <div class="text-xs  m-0 text-gray-100"
-                                                                                            style="color: #f7fafc; font-size: 12px; line-height: 14.4px;">
+                                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0; padding: 0;" align="left">
+                                                                                        <div class="text-xs  m-0 text-gray-100" style="color: #f7fafc; font-size: 12px; line-height: 14.4px;">
                                                                                             Perlu Bantuan? Hubungi email
                                                                                             resmi kami:
                                                                                             kominfo@tubaba.go.id</div>
@@ -982,25 +642,18 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <table class="ax-center" role="presentation" align="center"
-                                                            border="0" cellpadding="0" cellspacing="0"
-                                                            style="margin: 0 auto;">
+                                                        <table class="ax-center" role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0;"
-                                                                        align="left">
-                                                                        <table class="pb-2" role="presentation"
-                                                                            border="0" cellpadding="0"
-                                                                            cellspacing="0">
+                                                                    <td style="line-height: 24px; font-size: 16px; margin: 0;" align="left">
+                                                                        <table class="pb-2" role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <td style="line-height: 24px; font-size: 16px; padding-bottom: 8px; margin: 0;"
-                                                                                        align="left">
-                                                                                        <div class="text-xs  m-0 text-gray-100"
-                                                                                            style="color: #f7fafc; font-size: 12px; line-height: 14.4px;">
+                                                                                    <td style="line-height: 24px; font-size: 16px; padding-bottom: 8px; margin: 0;" align="left">
+                                                                                        <div class="text-xs  m-0 text-gray-100" style="color: #f7fafc; font-size: 12px; line-height: 14.4px;">
                                                                                             Dinas Komunikasi dan
                                                                                             Informatika Kabupaten
-                                                                                            TulangBawang Barat | 2022
+                                                                                            Tulang Bawang Barat | {{ date('Y') }}
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>
