@@ -658,6 +658,7 @@ class MediaPengajuanController extends Controller
             $tahun_data = tahun::select('tahun')->where('pengajuan', 1)->get();
             $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
         }
+        dd($tahun_buka);
         $tahun_verifikasi = tahun::select('tahun')->where('verifikasi', 1)->first()->verifikasi;
 
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
