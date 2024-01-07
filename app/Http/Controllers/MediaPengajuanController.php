@@ -659,8 +659,8 @@ class MediaPengajuanController extends Controller
             $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
         }
         $tahun_verifikasi = tahun::select('tahun')->where('verifikasi', 1)->first();
-        dd(is_null($tahun_verifikasi));
-        if ($tahun_verifikasi) {
+
+        if (is_null($tahun_verifikasi)) {
             # code...
             $verifikasi = 0;
         } else {
@@ -675,7 +675,7 @@ class MediaPengajuanController extends Controller
             'pengajuan_buka' => $tahun_hitung,
             'pengajuan_data' => $pengajuan_cek,
             'media_data' => $media_data,
-            'tahun_verifikasi' => $tahun_verifikasi
+            'tahun_verifikasi' => $verifikasi
         ]);
     }
 
