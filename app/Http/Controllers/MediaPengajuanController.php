@@ -660,6 +660,7 @@ class MediaPengajuanController extends Controller
         }
         $tahun_verifikasi = tahun::select('tahun')->where('verifikasi', 1)->first();
 
+        dd($tahun_verifikasi);
         if (is_null($tahun_verifikasi)) {
             # code...
             $verifikasi = 0;
