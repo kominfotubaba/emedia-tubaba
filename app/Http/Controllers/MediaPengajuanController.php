@@ -660,7 +660,6 @@ class MediaPengajuanController extends Controller
         }
         $tahun_verifikasi = tahun::select('tahun')->where('verifikasi', 1)->first();
 
-        dd($tahun_verifikasi);
         if (is_null($tahun_verifikasi)) {
             # code...
             $verifikasi = 0;
@@ -668,6 +667,7 @@ class MediaPengajuanController extends Controller
             # code...
             $verifikasi = $tahun_verifikasi->verifikasi;
         }
+        dd($verifikasi);
 
         $tahun_hitung = tahun::where('pengajuan', 1)->count();
         $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
