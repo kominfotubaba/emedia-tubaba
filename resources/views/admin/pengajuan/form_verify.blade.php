@@ -33,11 +33,13 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-10">
-                                    <div class="d-grid gap-2 d-md-block">
-                                        <button id="terima" type="submit" class="btn btn-primary">Terima</button>
-                                        <button id="tolak" type="submit" class="btn btn-danger">Tolak</button>
-                                        <button id="cekNilai" type="submit" class="btn btn-info">Sync Nilai</button>
-                                    </div>
+                                    @if ($tahun_verifikasi == 1)
+                                        <div class="d-grid gap-2 d-md-block">
+                                            <button id="terima" type="submit" class="btn btn-primary">Terima</button>
+                                            <button id="tolak" type="submit" class="btn btn-danger">Tolak</button>
+                                            <button id="cekNilai" type="submit" class="btn btn-info">Sync Nilai</button>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="col-2">
                                     <button id="undefinedValue" type="submit" class="btn btn-dark">Tidak Dapat Dinilai</button>
