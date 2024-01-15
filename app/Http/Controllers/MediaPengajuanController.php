@@ -615,53 +615,27 @@ class MediaPengajuanController extends Controller
     {
         $domain = $request->input('namaMedia');
 
-        // // $ch = curl_init('https://' . $domain);
-        // $ch = curl_init($domain);
-
-        // // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        // curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
-        // curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 3050);
-        // $output = curl_exec($ch);
-        // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // curl_close($ch);
-
-        // dd($output);
-        // if ($httpcode == 200) {
-        //     echo "true";
-        // } elseif ($httpcode == 301 || $httpcode == 308) {
-        //     echo "true";
-        // } else {
-        //     echo "false";
-        // }
-        // exit;
+        // $ch = curl_init('https://' . $domain);
         $ch = curl_init($domain);
 
-        // Set request options
-        curl_setopt_array($ch, array(
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_NOBODY => true,
-            CURLOPT_TIMEOUT => 10,
-            CURLOPT_USERAGENT => "page-check/1.0"
-        ));
-
-        // Execute request
-        curl_exec($ch);
-
-        // Check if an error occurred
-        if (curl_errno($ch)) {
-            curl_close($ch);
-            return false;
-        }
-
-        // Get HTTP response code
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
+        curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 3050);
+        $output = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        dd($code);
 
-        // Page is alive if 200 OK is received
-        return $code === 200;
+        dd($output);
+        if ($httpcode == 200) {
+            echo "true";
+        } elseif ($httpcode == 301 || $httpcode == 308) {
+            echo "true";
+        } else {
+            echo "false";
+        }
+        exit;
     }
 
     /**
