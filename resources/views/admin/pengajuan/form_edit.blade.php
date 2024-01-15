@@ -1794,6 +1794,7 @@
                     fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
                         .text(),
                 }
+
                 /**
                  *file
                  **/
