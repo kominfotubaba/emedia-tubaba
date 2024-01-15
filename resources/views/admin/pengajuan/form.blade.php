@@ -1004,7 +1004,7 @@
         }
 
         var wizard = new Wizard(document.getElementById('wizardBasic'), {
-            topNav: false,
+            topNav: true,
             handleButtonClicks: false,
             lastEnd: false,
             onNextClick: function(params) {
