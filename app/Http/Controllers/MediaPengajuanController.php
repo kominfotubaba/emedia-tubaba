@@ -654,7 +654,6 @@ class MediaPengajuanController extends Controller
         curl_setopt_array($ch, $options);
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        dd($httpCode);
         if ($httpCode != 200) {
             echo "Return code is {$httpCode} \n"
                 . curl_error($ch);
@@ -663,6 +662,7 @@ class MediaPengajuanController extends Controller
         }
 
         curl_close($ch);
+        dd($httpCode);
     }
 
     /**
