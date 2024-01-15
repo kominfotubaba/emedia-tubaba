@@ -312,7 +312,7 @@ class MediaPengajuanController extends Controller
     public function edit($no_pengajuan)
     {
         //
-        $cek_akses = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->first()->id_user;
+        $cek_akses = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->first();
         $count = tahun::select('tahun')->where('pengajuan', 1)->count();
         if ($count == 0) {
             # code...
@@ -322,7 +322,7 @@ class MediaPengajuanController extends Controller
             $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
         }
 
-        if ($cek_akses ?? NULL == Auth::user()->id) {
+        if ($cek_akses->id_user ?? NULL == Auth::user()->id) {
             # code...
             //declare
             $count = tahun::select('tahun')->where('pengajuan', 1)->count();
