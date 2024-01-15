@@ -1827,7 +1827,7 @@
                     } else if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === '4.000 sampai 8.000') {
                         var verifikasiJumlahOplahMedia = 3;
                     } else if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === 'kurang dari 4.000') {
-                        var verifikasiJumlahOplahMedia = 3;
+                        var verifikasiJumlahOplahMedia = 2;
                     } else {
                         var verifikasiJumlahOplahMedia = 0;
                     }
@@ -2104,11 +2104,11 @@
             // verifikasiAfiliasiOrganisasiPerwakilan;
 
             $('#poinDalamNilai').text(hasil);
-            if (hasil <= '100') {
+            if (hasil <= '108') {
                 var grade = $('#poinDalamGrade').text('C');
-            } else if ((hasil >= '101') && (hasil <= '120')) {
+            } else if ((hasil >= '109') && (hasil <= '127')) {
                 var grade = $('#poinDalamGrade').text('B');
-            } else if (hasil >= '121') {
+            } else if (hasil >= '128') {
                 var grade = $('#poinDalamGrade').text('A');
             }
         }
