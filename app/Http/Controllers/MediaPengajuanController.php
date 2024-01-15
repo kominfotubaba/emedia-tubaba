@@ -313,7 +313,7 @@ class MediaPengajuanController extends Controller
     {
         //
         $cek_akses = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->first()->id_user;
-        dd($cek_akses);
+        dd(Auth::user()->id);
         if ($cek_akses) {
             # code...
         }
