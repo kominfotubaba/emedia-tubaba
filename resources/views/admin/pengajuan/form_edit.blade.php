@@ -1162,7 +1162,8 @@
             select2Data(urlProvinsi, '#alamatProvPerusahaan', 'Pilih Provinsi')
             eachAlamat(urlProvinsi, $('#dataAlamatProvPerwakilan').val(), '#alamatProvPerwakilan')
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            body.onload = (event) => {
+            //  window.onload = (event) => {
+            $(document).ready(function() {
                 setTimeout(
                     function() {
                         //do something special
@@ -1210,7 +1211,58 @@
                     $('.serfikatUkwPerwakilan').prop('hidden', false)
                     $('#serfikatUkwPerwakilan').prop('required', true)
                 }
-            };
+            });
+            // };
+
+            // window.onload = (event) => {
+            //     setTimeout(
+            //         function() {
+            //             //do something special
+            //             var urlProvPerusahaan = urlKabupaten + '/' + $(
+            //                     '#alamatProvPerusahaan option:selected').val() +
+            //                 '.json';
+            //             var urlProvPerwakilan = urlKabupaten + '/' + $(
+            //                     '#alamatProvPerusahaan option:selected').val() +
+            //                 '.json';
+            //             eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
+            //                 '#alamatKabPerusahaan');
+            //             select2Data(urlProvPerusahaan,
+            //                 '#alamatKabPerusahaan', 'Pilih Kabupaten');
+
+            //             eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
+            //                 '#alamatKabPerwakilan');
+            //             select2Data(urlProvPerwakilan,
+            //                 '#alamatKabPerwakilan', 'Pilih Kabupaten');
+            //         }, 800);
+
+            //     var kanalKhusus = $('#kanalKhusus').val();
+            //     var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
+            //     var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
+            //     var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
+
+            //     if (domisiliRedaksiMedia == 'tulang bawang barat') {
+            //         $('.fileDomisiliRedaksiMedia').prop('hidden', false)
+            //     } else {
+            //         $('.fileDomisiliRedaksiMedia').prop('hidden', true)
+            //     }
+            //     if (afiliasiPerusahaan == 'tidak terafiliasi') {
+            //         $('.fileAfiliasiPerusahaan').prop('hidden', true)
+            //     } else {
+            //         $('.fileAfiliasiPerusahaan').prop('hidden', false)
+            //     }
+            //     if (kanalKhusus == 'tidak ada') {
+            //         $('.fileKanalKhusus').prop('hidden', true)
+            //     } else {
+            //         $('.fileKanalKhusus').prop('hidden', false)
+            //     }
+            //     if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
+            //         $('.serfikatUkwPerwakilan').prop('hidden', true)
+            //         $('#serfikatUkwPerwakilan').prop('required', false)
+            //     } else {
+            //         $('.serfikatUkwPerwakilan').prop('hidden', false)
+            //         $('#serfikatUkwPerwakilan').prop('required', true)
+            //     }
+            // };
 
             // $('#cekdatas').click(function(e) {
             //     e.preventDefault();
