@@ -1162,7 +1162,7 @@
             select2Data(urlProvinsi, '#alamatProvPerusahaan', 'Pilih Provinsi')
             eachAlamat(urlProvinsi, $('#dataAlamatProvPerwakilan').val(), '#alamatProvPerwakilan')
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            //  window.onload = (event) => {
+
             $(document).ready(function() {
                 setTimeout(
                     function() {
@@ -1212,7 +1212,7 @@
                     $('#serfikatUkwPerwakilan').prop('required', true)
                 }
             });
-            // };
+
 
             // window.onload = (event) => {
             //     setTimeout(
