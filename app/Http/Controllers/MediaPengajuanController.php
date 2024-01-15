@@ -99,6 +99,7 @@ class MediaPengajuanController extends Controller
         $noKbki = strtolower($request->noKbki);
         $izinIpp = strtolower($request->izinIpp);
         $namaPercetakan = strtolower($request->namaPercetakan);
+        $alamatPercetakan = strtolower($request->alamatPercetakan);
         $alamatProvPerusahaan = strtolower($request->alamatProvPerusahaan);
         $alamatKabPerusahaan = strtolower($request->alamatKabPerusahaan);
         $statusKswp = strtolower($request->statusKswp);
@@ -207,6 +208,7 @@ class MediaPengajuanController extends Controller
                     $pengajuan->noKbki = $noKbki;
                     $pengajuan->izinIpp = $izinIpp;
                     $pengajuan->namaPercetakan = $namaPercetakan;
+                    $pengajuan->alamatPercetakan = $alamatPercetakan;
                     $pengajuan->alamatProvPerusahaan = $alamatProvPerusahaan;
                     $pengajuan->alamatKabPerusahaan = $alamatKabPerusahaan;
                     $pengajuan->statusKswp = $statusKswp;

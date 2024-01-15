@@ -263,7 +263,7 @@
                                         </div>
                                     @endif
 
-                                    @if ($md->jenis_media == 'harian')
+                                    @if ($md->jenis_media == 'cetak')
                                         <hr class="mb-4">
 
                                         <div class="row mb-4">

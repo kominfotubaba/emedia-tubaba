@@ -1516,6 +1516,7 @@
                 noKbki: $('#noKbki').val(),
                 izinIpp: $('#izinIpp').val(),
                 namaPercetakan: $('#namaPercetakan').val(),
+                alamatPercetakan: $('#alamatPercetakan').val(),
                 // select
                 alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
                 alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
