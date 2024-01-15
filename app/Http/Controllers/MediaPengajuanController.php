@@ -314,6 +314,7 @@ class MediaPengajuanController extends Controller
         //
         $cek_akses = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->first();
         $count = tahun::select('tahun')->where('pengajuan', 1)->count();
+        # code...
         if ($count == 0) {
             # code...
             $tahun_buka = date('Y');
@@ -322,26 +323,31 @@ class MediaPengajuanController extends Controller
             $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
         }
 
-        if ($cek_akses->id_user == Auth::user()->id) {
-            # code...
-            //declare
-            $count = tahun::select('tahun')->where('pengajuan', 1)->count();
-            if ($count == 0) {
+        if ($cek_akses->id_user == NULL) {
+            if ($cek_akses->id_user == Auth::user()->id) {
                 # code...
-                $tahun_buka = date('Y');
+                //declare
+                $count = tahun::select('tahun')->where('pengajuan', 1)->count();
+                if ($count == 0) {
+                    # code...
+                    $tahun_buka = date('Y');
+                } else {
+                    $tahun_data = tahun::select('tahun')->where('pengajuan', 1)->get();
+                    $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
+                }
+                $tahun_hitung = tahun::where('pengajuan', 1)->count();
+                $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
+                $media_data = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->get();
+                return view('admin.pengajuan.form_edit', [
+                    'pengajuan_buka' => $tahun_hitung,
+                    'pengajuan_data' => $pengajuan_cek,
+                    'media_data' => $media_data
+                ]);
             } else {
-                $tahun_data = tahun::select('tahun')->where('pengajuan', 1)->get();
-                $tahun_buka = json_decode(json_encode($tahun_data[0]->tahun));
+                return redirect('/daftar' . '/' . $tahun_buka . '/detail');
             }
-            $tahun_hitung = tahun::where('pengajuan', 1)->count();
-            $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
-            $media_data = new_media_pengajuan::where('pengajuan_no', $no_pengajuan)->get();
-            return view('admin.pengajuan.form_edit', [
-                'pengajuan_buka' => $tahun_hitung,
-                'pengajuan_data' => $pengajuan_cek,
-                'media_data' => $media_data
-            ]);
         } else {
+            # code...
             return redirect('/daftar' . '/' . $tahun_buka . '/detail');
         }
     }
