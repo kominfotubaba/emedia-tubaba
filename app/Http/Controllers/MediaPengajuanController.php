@@ -642,7 +642,7 @@ class MediaPengajuanController extends Controller
         curl_setopt_array($ch, array(
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_NOBODY => true,
-            CURLOPT_CONNECTTIMEOUT_MS => 3050,
+            CURLOPT_TIMEOUT => 10,
             CURLOPT_USERAGENT => "page-check/1.0"
         ));
 
