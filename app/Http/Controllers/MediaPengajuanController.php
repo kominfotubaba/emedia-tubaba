@@ -636,23 +636,32 @@ class MediaPengajuanController extends Controller
         //     echo "false";
         // }
         // exit;
+        $ch = curl_init($domain);
 
-        $timeout = 100;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $domain);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-        $http_respond = curl_exec($ch);
-        $http_respond = trim(strip_tags($http_respond));
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        dd($http_code);
-        if (($http_code == "200") || ($http_code == "302")) {
-            return true;
-        } else {
-            // you can return $http_code here if necessary or wanted
+        // Set request options
+        curl_setopt_array($ch, array(
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_NOBODY => true,
+            CURLOPT_CONNECTTIMEOUT_MS, 3050,
+            CURLOPT_USERAGENT => "page-check/1.0"
+        ));
+
+        // Execute request
+        curl_exec($ch);
+
+        // Check if an error occurred
+        if (curl_errno($ch)) {
+            curl_close($ch);
             return false;
         }
+
+        // Get HTTP response code
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        dd($code);
         curl_close($ch);
+
+        // Page is alive if 200 OK is received
+        return $code === 200;
     }
 
     /**
