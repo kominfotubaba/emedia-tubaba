@@ -647,8 +647,8 @@ class MediaPengajuanController extends Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_ENCODING       => "",
             CURLOPT_AUTOREFERER    => true,
-            CURLOPT_CONNECTTIMEOUT => 120,
-            CURLOPT_TIMEOUT        => 120,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_TIMEOUT        => 10,
             CURLOPT_MAXREDIRS      => 10,
         );
         curl_setopt_array($ch, $options);
