@@ -63,7 +63,7 @@ return new class extends Migration
             // $table->string('file_signature_data')->nullable();
 
             $table->id();
-            $table->string('id_user');
+            $table->string('id_user', 40);
             $table->string('pengajuan_no');
             // Data Badan Hukum
             $table->string('namaPerusahaan')->nullable();
@@ -72,12 +72,13 @@ return new class extends Migration
             $table->string('kumhamPerusahaan')->nullable();
             $table->string('alamatPerusahaan')->nullable();
             $table->string('tlpnPerusahaan')->nullable();
-            $table->string('emailPerusahaan')->nullable();
+            $table->string('emailPerusahaan', 100)->nullable();
             $table->string('npwpPerusahaan')->nullable();
             $table->string('nibPerusahaan')->nullable();
             $table->string('noKbki')->nullable();
             $table->string('izinIpp')->nullable();
             $table->string('namaPercetakan')->nullable();
+            $table->string('alamatPercetakan')->nullable();
             $table->string('alamatProvPerusahaan')->nullable();
             $table->string('alamatKabPerusahaan')->nullable();
             $table->string('statusKswp')->nullable();
