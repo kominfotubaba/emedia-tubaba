@@ -657,8 +657,8 @@ class MediaPengajuanController extends Controller
 
         // Get HTTP response code
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        dd($code);
         curl_close($ch);
+        dd($code);
 
         // Page is alive if 200 OK is received
         return $code === 200;
