@@ -1162,7 +1162,7 @@
             select2Data(urlProvinsi, '#alamatProvPerusahaan', 'Pilih Provinsi')
             eachAlamat(urlProvinsi, $('#dataAlamatProvPerwakilan').val(), '#alamatProvPerwakilan')
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            window.onload = (event) => {
+            document.onload = (event) => {
                 setTimeout(
                     function() {
                         //do something special
