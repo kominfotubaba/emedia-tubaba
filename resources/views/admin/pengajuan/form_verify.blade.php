@@ -2104,11 +2104,11 @@
             // verifikasiAfiliasiOrganisasiPerwakilan;
 
             $('#poinDalamNilai').text(hasil);
-            if (hasil <= '108') {
+            if (hasil <= '107') {
                 var grade = $('#poinDalamGrade').text('C');
-            } else if ((hasil >= '109') && (hasil <= '127')) {
+            } else if ((hasil >= '108') && (hasil <= '126')) {
                 var grade = $('#poinDalamGrade').text('B');
-            } else if (hasil >= '128') {
+            } else if (hasil >= '127') {
                 var grade = $('#poinDalamGrade').text('A');
             }
         }
