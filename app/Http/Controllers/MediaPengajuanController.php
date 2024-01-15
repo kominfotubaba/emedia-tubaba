@@ -613,56 +613,56 @@ class MediaPengajuanController extends Controller
 
     public function check_url(Request $request)
     {
-        // $domain = $request->input('namaMedia');
+        $domain = $request->input('namaMedia');
 
-        // // $ch = curl_init('https://' . $domain);
-        // $ch = curl_init($domain);
+        // $ch = curl_init('https://' . $domain);
+        $ch = curl_init($domain);
 
-        // // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        // curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
-        // curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 3050);
-        // $output = curl_exec($ch);
-        // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // curl_close($ch);
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
+        curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 3050);
+        $output = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
         // dd($output);
-        // if ($httpcode == 200) {
-        //     echo "true";
-        // } elseif ($httpcode == 301 || $httpcode == 308) {
-        //     echo "true";
-        // } else {
-        //     echo "false";
-        // }
-        // exit;
-
-        $html_brand = $request->input('namaMedia');
-        $ch = curl_init();
-
-        $options = array(
-            CURLOPT_URL            => $html_brand,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HEADER         => true,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_ENCODING       => "",
-            CURLOPT_AUTOREFERER    => true,
-            CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_TIMEOUT        => 10,
-            CURLOPT_MAXREDIRS      => 10,
-        );
-        curl_setopt_array($ch, $options);
-        $response = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        if ($httpCode != 200) {
-            echo "Return code is {$httpCode} \n"
-                . curl_error($ch);
+        if ($httpcode == 200) {
+            echo "true";
+        } elseif ($httpcode == 301 || $httpcode == 308) {
+            echo "true";
         } else {
-            echo "<pre>" . htmlspecialchars($response) . "</pre>";
+            echo "false";
         }
+        exit;
 
-        curl_close($ch);
-        dd($httpCode);
+        // $html_brand = $request->input('namaMedia');
+        // $ch = curl_init();
+
+        // $options = array(
+        //     CURLOPT_URL            => $html_brand,
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_HEADER         => true,
+        //     CURLOPT_FOLLOWLOCATION => true,
+        //     CURLOPT_ENCODING       => "",
+        //     CURLOPT_AUTOREFERER    => true,
+        //     CURLOPT_CONNECTTIMEOUT => 5,
+        //     CURLOPT_TIMEOUT        => 10,
+        //     CURLOPT_MAXREDIRS      => 10,
+        // );
+        // curl_setopt_array($ch, $options);
+        // $response = curl_exec($ch);
+        // $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // if ($httpCode != 200) {
+        //     echo "Return code is {$httpCode} \n"
+        //         . curl_error($ch);
+        // } else {
+        //     echo "<pre>" . htmlspecialchars($response) . "</pre>";
+        // }
+
+        // curl_close($ch);
+        // dd($httpCode);
     }
 
     /**
