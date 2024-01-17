@@ -9,13 +9,13 @@
                     <div class="col-12 col-md-7">
                         <h1 class="mb-0 pb-0 display-4" id="title">Dashboard</h1>
                         <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
-                                    <ul class="breadcrumb pt-0">
-                                    <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
-                                    <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
-                                    <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
-                                    </ul>
-                                </nav> -->
+                                        <ul class="breadcrumb pt-0">
+                                        <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
+                                        <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
+                                        <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
+                                        </ul>
+                                    </nav> -->
                     </div>
                     <!-- Title End -->
                 </div>
@@ -29,9 +29,9 @@
             </div> --}}
             <div class="card mb-5">
                 <div class="card-body h-100">
-                    Pendaftaran e-media dibuka. Registrasi mulai dari tanggal 17 s/d 29 November 2022.
+                    {{-- Pendaftaran e-media dibuka. Registrasi mulai dari tanggal 17 s/d 29 November 2022.
                     Evaluasi Tanggal 1 s/d 19 Desember 2022. Perbaikan Berkas Pada Tanggal 21 s/d 23 Desember 2022.
-                    Lengkapi berkas anda!
+                    Lengkapi berkas anda! --}}
                 </div>
             </div>
             <div class="row">
