@@ -1418,7 +1418,7 @@
             }
 
             var wizard = new Wizard(document.getElementById('wizardBasic1'), {
-                topNav: true,
+                topNav: false,
                 handleButtonClicks: false,
                 lastEnd: false,
             });
