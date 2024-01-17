@@ -99,8 +99,9 @@
                                                 <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
                                                 <div id="pengajuanNo" data-noPengajuan="{{ $md->pengajuan_no }}" hidden>
                                                     {{ $md->pengajuan_no }}</div>
-                                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}" hidden>
-                                                    {{ $md->jenis_media }}</div>
+                                                <input type="text" id="pengajuanJenisMedia" value="{{ $md->jenis_media }}" hidden disabled>
+                                                {{-- <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}" hidden>
+                                                    {{ $md->jenis_media }}</div> --}}
                                             </div>
 
                                             <div class="form-floating mb-3">
@@ -1148,8 +1149,8 @@
          **/
         $(document).ready(function() {
             function checkValidation(form) {
-                if ($('#jenisPengajuan').val() == 'siber') {
-                    var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan').val();
+                if ($('#pengajuanJenisMedia').val() == 'siber') {
+                    var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#pengajuanJenisMedia').val();
                 } else {
                     var dataNamaMedia = true;
                 }
@@ -1162,7 +1163,7 @@
                 }, "Spasi tidak diperbolehkan");
 
                 jQuery.validator.addMethod("synchronousRemote", function(value, element) {
-                    if ($('#jenisPengajuan').val() == 'siber') {
+                    if ($('#pengajuanJenisMedia').val() == 'siber') {
                         // $.ajaxSetup({
                         //     headers: {
                         //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1174,7 +1175,7 @@
                             $.ajax({
                                 type: "GET",
                                 async: false,
-                                url: "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan')
+                                url: "/pengajuan/checkurl?jenispengajuan=" + $('#pengajuanJenisMedia')
                                     .val(),
                                 data: {
                                     namaMedia: value
@@ -1784,7 +1785,7 @@
             /**
              *  Data Badan Hukum
              **/
-            if ($('#jenisPengajuan').val() == 'elektronik') {
+            if ($('#pengajuanJenisMedia').val() == 'elektronik') {
                 upload_file('dropzoneIzinIpp', '#fileIzinIpp')
             }
             upload_file('dropzoneKumhamPerusahaan', '#fileKumhamPerusahaan')
@@ -1804,7 +1805,7 @@
             /**
              *  Kualifikasi Media
              **/
-            if ($('#jenisPengajuan').val() == 'harian') {
+            if ($('#pengajuanJenisMedia').val() == 'harian') {
                 upload_file('dropzoneJumlahOplahMediaCetakPerMinggu', '#fileJumlahOplahMediaCetakPerMinggu')
             }
 
