@@ -196,6 +196,14 @@
                                         <option value="74130">KBLI 74130</option>
                                         <option value="18111">KBLI 18111</option>
                                         <option value="73100">KBLI 73100</option>
+                                        <option value="18111">KBLI 18111</option>
+                                        <option value="73100">KBLI 73100</option>
+                                        <option value="59132">KBLI 59132</option>
+                                        <option value="59131">KBLI 59131</option>
+                                        <option value="59121">KBLI 59121</option>
+                                        <option value="59122">KBLI 59122</option>
+                                        <option value="59111">KBLI 59111</option>
+                                        <option value="59112">KBLI 59112</option>
                                     </select>
                                 </div>
                             </div>
