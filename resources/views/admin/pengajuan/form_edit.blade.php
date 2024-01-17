@@ -1703,7 +1703,7 @@
                 // var pernyataanCheckbox = $('#pernyataanCheckbox').val();
                 var data = {
                     // param
-                    jenis_media: $('#pengajuanJenisMedia').attr('data-jenisMedia'),
+                    jenis_media: $('#pengajuanJenisMedia').val(),
                     pengajuan_no: $('#pengajuanNo').attr('data-noPengajuan'),
                     /**
                      * DATA BADAN HUKUM
