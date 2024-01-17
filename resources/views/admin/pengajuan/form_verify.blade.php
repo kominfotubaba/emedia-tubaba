@@ -1819,7 +1819,7 @@
         });
 
         function getDataCalculate() {
-            var jenis = $('#pengajuanJenisMedia').attr('data-jenisMedia');
+            var jenis = $('#pengajuanJenisMedia').val();
             if (jenis == 'cetak') {
                 // BADAN HUKUM
                 if ($('#verifikasiPercetakan').is(':checked')) {
