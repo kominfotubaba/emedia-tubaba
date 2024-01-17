@@ -1805,7 +1805,7 @@
             /**
              *  Kualifikasi Media
              **/
-            if ($('#pengajuanJenisMedia').val() == 'harian') {
+            if ($('#pengajuanJenisMedia').val() == 'cetak') {
                 upload_file('dropzoneJumlahOplahMediaCetakPerMinggu', '#fileJumlahOplahMediaCetakPerMinggu')
             }
 
