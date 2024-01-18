@@ -1082,6 +1082,13 @@
             placeholder: 'Pilih Nomor KBLI Perusahaan'
         });
 
+        var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
+        if (domisiliRedaksiMedia == 'tulang bawang barat') {
+            $('.fileDomisiliRedaksiMedia').prop('hidden', false)
+        } else {
+            $('.fileDomisiliRedaksiMedia').prop('hidden', true)
+        }
+
         /**
          *  Data Media
          **/
