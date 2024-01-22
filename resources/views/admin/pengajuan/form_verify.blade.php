@@ -2301,6 +2301,7 @@
                                 }
                                 $('.cardMain').removeClass('overlay-spinner');
                                 $('#tolak').attr('disabled', false)
+                                $('#tolakModal').modal('hidden')
                             }
                         });
                     }
