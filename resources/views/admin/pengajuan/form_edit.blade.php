@@ -721,7 +721,7 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                                 <div class="form-floating">
-                                                    <div class="dropzone dropzone-floating-label" id="fileAfiliasiPersPerwakilan" name="fileafiliasiPersPerwakilan">
+                                                    <div class="dropzone dropzone-floating-label" id="fileAfiliasiPersPerwakilan">
                                                         <input type="text" value="{{ $md->fileafiliasiPersPerwakilan }}" hidden>
                                                     </div>
                                                     <label class="ps-4">File PDF Bukti Keanggotaan Organisasi Pers
@@ -1800,7 +1800,7 @@
                     fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
                     fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span')
                         .text(),
-                    fileafiliasiPersPerwakilan: $('#fileafiliasiPersPerwakilan .dz-details span')
+                    fileafiliasiPersPerwakilan: $('#fileAfiliasiPersPerwakilan .dz-details span')
                         .text(),
                 }
 

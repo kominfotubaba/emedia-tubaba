@@ -357,8 +357,15 @@ class MediaPengajuanController extends Controller
     public function update(Request $request)
     {
         //
-        $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
-        $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
+
+        $tahun_pengajuan = tahun::select('tahun')->where('pengajuan', 1)->get();
+
+        if (isset($tahun_pengajuan[0])) {
+            # code...
+            $tahun_buka = json_decode(json_encode($tahun_pengajuan[0]->tahun));
+        } else {
+            $tahun_buka = date('Y');
+        }
         // $pengajuan_no =  $tahun_buka . '_' . Str::random(10);
         // $jenis_media = strtolower($request->jenis_media);
 
