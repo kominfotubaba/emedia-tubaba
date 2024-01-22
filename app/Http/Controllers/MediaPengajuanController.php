@@ -828,7 +828,7 @@ class MediaPengajuanController extends Controller
                 # code...
                 new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update(
                     [
-                        'keterangan' => $data_keterangan,
+                        'keterangan' => $data_keterangan . '<br><br>note <br>' . $note,
                         'status' => $status,
                         'nilai' => $grade,
                         'nilaiDalamAngka' => $nilai
