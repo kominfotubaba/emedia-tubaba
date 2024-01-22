@@ -772,6 +772,7 @@ class MediaPengajuanController extends Controller
                 $title = 'data berhasil terkirim';
                 $data_keterangan = $keterangan;
                 $stated = 'update';
+                $keterangan_final = 'verify';
             } else {
                 if ($keterangan) {
                     # code...
@@ -782,7 +783,6 @@ class MediaPengajuanController extends Controller
                         $number_data[] = $number++ . '. ';
                     }
                     $dataSendMail = mapped_implode(', <br>', $keterangan);
-                    $keterangan_final = 'verify';
 
                     if ($param == 'undefinedValue') {
                         //  tidak dapat dinilai
