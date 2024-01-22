@@ -36,8 +36,9 @@
                                     @if ($tahun_verifikasi == 1)
                                         <div class="d-grid gap-2 d-md-block">
                                             <button id="terima" type="submit" class="btn btn-primary">Terima</button>
-                                            <button id="tolak" type="submit" class="btn btn-danger">Tolak</button>
-                                            <button id="undefinedValue" type="submit" class="btn btn-dark">Tidak Dapat Dinilai</button>
+                                            <button id="tolakOpenModal" type="submit" class="btn btn-danger">Tolak</button>
+                                            {{-- <button id="tolak" type="submit" class="btn btn-danger">Tolak</button> --}}
+                                            {{-- <button id="undefinedValue" type="submit" class="btn btn-dark">Tidak Dapat Dinilai</button> --}}
                                         </div>
                                     @endif
                                 </div>
@@ -1141,6 +1142,27 @@
             </section>
         @endforeach
     </main>
+
+    <div id="tolakModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="data-verifikasi mb-2"></div>
+                    <div class="text-box">
+                        <textarea id="noteTolak" class="form-control" aria-label="With textarea" placeholder="Optional Notes"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="tolak" type="submit" class="btn btn-danger">Kirim</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('script')
     <script>
@@ -1418,7 +1440,7 @@
             }
 
             var wizard = new Wizard(document.getElementById('wizardBasic1'), {
-                topNav: false,
+                topNav: true,
                 handleButtonClicks: false,
                 lastEnd: false,
             });
@@ -2127,6 +2149,25 @@
          * button
          **/
         $(document).ready(function() {
+            $('#tolakModal').on('hidden.bs.modal', function() {
+                // do something…
+                $("#tolakModal .modal-body .data-verifikasi").html('');
+            })
+            $('#tolakOpenModal').click(function(e) {
+                e.preventDefault();
+                $('#tolakModal').modal('show')
+                getDataCalculate()
+
+                var dataValue = $(":checkbox:not(:checked)").map(function() {
+                    return $(this).val();
+                }).get();
+                let i = 1;
+                $.each(dataValue, function(indexInArray, valueOfElement) {
+                    $(".modal-body .data-verifikasi").append('<span>' + i + '. ' + valueOfElement + '</span><br>');
+                    i++
+                });
+            });
+
             $('#cekNilai').click(function(e) {
                 e.preventDefault();
                 getDataCalculate()
@@ -2138,48 +2179,59 @@
                 var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
                 getDataCalculate()
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "post",
-                    url: "{{ Route('verifikasi.post') }}",
-                    data: {
-                        pengajuan_no: pengajuanNo,
-                        keterangan: 'verify',
-                        status: 'terima',
-                        nilai: $('#poinDalamNilai').text(),
-                        grade: $('#poinDalamGrade').text(),
-                        param: 'terima'
-                    },
-                    beforeSend: function(response) {
-                        $('.cardMain').addClass('overlay-spinner');
-                        $('#terima').attr('disabled', true)
-                    },
-                    error: function(response) {
-                        $('.cardMain').removeClass('overlay-spinner');
-                        $('#terima').attr('disabled', false)
-                    },
-                    success: function(response) {
-                        Swal.fire({
-                            toast: false,
-                            position: 'center',
-                            icon: response.icon,
-                            title: response.title,
-                            text: response.massage,
-                            showConfirmButton: true,
+                Swal.fire({
+                    title: "Anda Akan Menerima Data ?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
                         });
-                        if (response.icon == 'success') {
-                            setTimeout(function() {
-                                //your code to be executed after 1 second
-                                // window.location.href = "/daftar/" + response.tahun + '/detail';
-                                window.history.back();
-                            }, 3000);
-                        }
-                        $('.cardMain').removeClass('overlay-spinner');
-                        $('#terima').attr('disabled', false)
+                        $.ajax({
+                            type: "post",
+                            url: "{{ Route('verifikasi.post') }}",
+                            data: {
+                                pengajuan_no: pengajuanNo,
+                                keterangan: 'verify',
+                                status: 'terima',
+                                nilai: $('#poinDalamNilai').text(),
+                                grade: $('#poinDalamGrade').text(),
+                                param: 'terima'
+                            },
+                            beforeSend: function(response) {
+                                $('.cardMain').addClass('overlay-spinner');
+                                $('#terima').attr('disabled', true)
+                            },
+                            error: function(response) {
+                                $('.cardMain').removeClass('overlay-spinner');
+                                $('#terima').attr('disabled', false)
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    toast: false,
+                                    position: 'center',
+                                    icon: response.icon,
+                                    title: response.title,
+                                    text: response.massage,
+                                    showConfirmButton: true,
+                                });
+                                if (response.icon == 'success') {
+                                    setTimeout(function() {
+                                        //your code to be executed after 1 second
+                                        // window.location.href = "/daftar/" + response.tahun + '/detail';
+                                        window.history.back();
+                                    }, 3000);
+                                }
+                                $('.cardMain').removeClass('overlay-spinner');
+                                $('#terima').attr('disabled', false)
+                            }
+                        });
                     }
                 });
             });
@@ -2191,50 +2243,65 @@
                     return $(this).val();
                 }).get();
                 var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
+                var noteTolak = $('#noteTolak').val();
+                console.log(noteTolak);
                 getDataCalculate()
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "post",
-                    url: "{{ Route('verifikasi.post') }}",
-                    data: {
-                        pengajuan_no: pengajuanNo,
-                        keterangan: dataValue,
-                        status: 'tolak',
-                        nilai: $('#poinDalamNilai').text(),
-                        grade: $('#poinDalamGrade').text(),
-                        param: 'tolak'
-                    },
-                    beforeSend: function(response) {
-                        $('.cardMain').addClass('overlay-spinner');
-                        $('#tolak').attr('disabled', true)
-                    },
-                    error: function(response) {
-                        $('.cardMain').removeClass('overlay-spinner');
-                        $('#tolak').attr('disabled', false)
-                    },
-                    success: function(response) {
-                        Swal.fire({
-                            toast: false,
-                            position: 'center',
-                            icon: response.icon,
-                            title: response.title,
-                            text: response.massage,
-                            showConfirmButton: true,
+                Swal.fire({
+                    title: "Anda Akan Menolak Data ?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
                         });
-                        if (response.icon == 'success') {
-                            setTimeout(function() {
-                                //your code to be executed after 1 second
-                                // window.location.href = "/daftar/" + response.tahun + '/detail';
-                                window.history.back();
-                            }, 3000);
-                        }
-                        $('.cardMain').removeClass('overlay-spinner');
-                        $('#tolak').attr('disabled', false)
+                        $.ajax({
+                            type: "post",
+                            url: "{{ Route('verifikasi.post') }}",
+                            data: {
+                                pengajuan_no: pengajuanNo,
+                                keterangan: dataValue,
+                                note: noteTolak,
+                                status: 'tolak',
+                                nilai: $('#poinDalamNilai').text(),
+                                grade: $('#poinDalamGrade').text(),
+                                param: 'tolak'
+                            },
+                            beforeSend: function(response) {
+                                $('.cardMain').addClass('overlay-spinner');
+                                $('#tolak').attr('disabled', true)
+                            },
+                            error: function(response) {
+                                $('.cardMain').removeClass('overlay-spinner');
+                                $('#tolak').attr('disabled', false)
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    toast: false,
+                                    position: 'center',
+                                    icon: response.icon,
+                                    title: response.title,
+                                    text: response.massage,
+                                    showConfirmButton: true,
+                                });
+                                if (response.icon == 'success') {
+                                    setTimeout(function() {
+                                        //your code to be executed after 1 second
+                                        // window.location.href = "/daftar/" + response.tahun + '/detail';
+                                        window.history.back();
+                                    }, 3000);
+                                }
+                                $('.cardMain').removeClass('overlay-spinner');
+                                $('#tolak').attr('disabled', false)
+                            }
+                        });
                     }
                 });
             });

@@ -533,6 +533,11 @@
                                                                                                                             </td>
                                                                                                                             <td class="col-8" style="color: #cf2b62;line-height: 24px; font-size: 16px; min-height: 1px; font-weight: normal; padding-right: 20px; width: 66.666667%; padding-bottom: 20px; margin: 0;" align="left" valign="top">
                                                                                                                                 {!! $mailData['keterangan'] !!}
+                                                                                                                                <br>
+                                                                                                                                <br>
+                                                                                                                                Detail Catatan :
+                                                                                                                                <br>
+                                                                                                                                {!! $mailData['detail_keterangan'] !!}
                                                                                                                             </td>
                                                                                                                         </tr>
                                                                                                                     </tbody>
