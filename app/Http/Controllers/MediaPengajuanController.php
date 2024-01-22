@@ -782,6 +782,7 @@ class MediaPengajuanController extends Controller
                         $number_data[] = $number++ . '. ';
                     }
                     $dataSendMail = mapped_implode(', <br>', $keterangan);
+                    $keterangan_final = 'verify';
 
                     if ($param == 'undefinedValue') {
                         //  tidak dapat dinilai
@@ -798,6 +799,7 @@ class MediaPengajuanController extends Controller
                         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' Tidak Dapat Dinilai dan dikirim ke email ' . $data_media['useremail'];
                         $icon = 'success';
                         $title = 'Data Tidak Terdefinisi';
+                        $keterangan_final = $data_keterangan . '<br><br>note <br>' . $note;
                     } else {
                         // data ditolak
                         $mailDatas = [
@@ -814,6 +816,7 @@ class MediaPengajuanController extends Controller
                         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil ditolak dan dikirim ke email ' . $data_media['useremail'];
                         $icon = 'success';
                         $title = 'data berhasil ditolak';
+                        $keterangan_final = $data_keterangan . '<br><br>note <br>' . $note;
                     }
                 } else {
                     $stated = null;
@@ -828,7 +831,7 @@ class MediaPengajuanController extends Controller
                 # code...
                 new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update(
                     [
-                        'keterangan' => $data_keterangan . '<br><br>note <br>' . $note,
+                        'keterangan' => $keterangan_final,
                         'status' => $status,
                         'nilai' => $grade,
                         'nilaiDalamAngka' => $nilai
