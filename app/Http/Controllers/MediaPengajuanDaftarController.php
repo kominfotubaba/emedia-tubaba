@@ -221,17 +221,17 @@ class MediaPengajuanDaftarController extends Controller
 
         if ($status == 'buka') {
             # code...
+            $mail = User::where('id', $dataUsers->id_user)->first();
             $mailDatas = [
                 'jenis' => $dataUsers->jenis_media,
                 'no' => $dataUsers->pengajuan_no,
                 'nama' => $dataUsers->namaMedia,
-                'email' => $dataUsers->email,
+                'email' => $mail->email,
                 'keterangan' => 'Data Input Tidak Dapat Terdefinisi',
                 'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
             ];
 
             dd($mailDatas);
-            $mail = User::where('id', $dataUsers->id_user)->first();
             Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
 
             $update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update([
