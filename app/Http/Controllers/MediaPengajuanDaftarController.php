@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\media_jenis;
 use App\Models\media_pengajuan;
+use App\Mail\notifVerifikasiTolak;
 use App\Models\new_media_pengajuan;
 use App\Models\tahun;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Mail;
 
 class MediaPengajuanDaftarController extends Controller
 {
@@ -214,8 +217,22 @@ class MediaPengajuanDaftarController extends Controller
     {
         $pengajuan_no = $request->pengajuan_no;
         $status = $request->status;
+        $dataUsers = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->first();
+
         if ($status == 'buka') {
             # code...
+            $mailDatas = [
+                'jenis' => $dataUsers->jenis_media,
+                'no' => $dataUsers->pengajuan_no,
+                'nama' => $dataUsers->namaMedia,
+                'keterangan' => 'Data Input Tidak Dapat Terdefinisi',
+                'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+            ];
+
+            dd($mailDatas);
+            $mail = User::where('id', $dataUsers->id_user)->first();
+            Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
+
             $update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update([
                 'buka_edit' => 'buka'
             ]);
