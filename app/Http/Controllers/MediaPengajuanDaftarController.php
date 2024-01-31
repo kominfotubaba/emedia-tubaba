@@ -232,7 +232,8 @@ class MediaPengajuanDaftarController extends Controller
                 'waktu_perbaikan' => '9 Februari 2024'
             ];
 
-            Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
+            // Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
+            Mail::to('andreperiozaherpa@gmail.com')->send(new notifVerifikasiTolak($mailDatas));
 
             $update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update([
                 'buka_edit' => 'buka'

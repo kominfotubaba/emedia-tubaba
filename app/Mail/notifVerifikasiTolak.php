@@ -30,6 +30,7 @@ class notifVerifikasiTolak extends Mailable
     public function build()
     {
         return $this->from('no-reply@tubaba.go.id')
+            ->subject('Notifikasi Pesan E-Media')
             ->view('emails.verifikasiTolak');
     }
 
@@ -66,4 +67,5 @@ class notifVerifikasiTolak extends Mailable
     // {
     //     return [];
     // }
+
 }
