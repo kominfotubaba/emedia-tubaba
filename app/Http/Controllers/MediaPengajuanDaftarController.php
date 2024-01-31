@@ -225,6 +225,7 @@ class MediaPengajuanDaftarController extends Controller
                 'jenis' => $dataUsers->jenis_media,
                 'no' => $dataUsers->pengajuan_no,
                 'nama' => $dataUsers->namaMedia,
+                'email' => $dataUsers->email,
                 'keterangan' => 'Data Input Tidak Dapat Terdefinisi',
                 'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
             ];
