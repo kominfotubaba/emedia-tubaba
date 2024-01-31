@@ -227,11 +227,10 @@ class MediaPengajuanDaftarController extends Controller
                 'no' => $dataUsers->pengajuan_no,
                 'nama' => $dataUsers->namaMedia,
                 'email' => $mail->email,
-                'keterangan' => 'Data Input Tidak Dapat Terdefinisi',
-                'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+                'keterangan' => 'Mohon Untuk Mengupload Ulang Bukti Dukung Pengajuan Media',
+                'waktu_perbaikan' => '9 Februari 2024'
             ];
 
-            dd($mailDatas);
             Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
 
             $update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update([
