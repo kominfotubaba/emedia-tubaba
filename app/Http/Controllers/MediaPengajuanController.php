@@ -634,11 +634,11 @@ class MediaPengajuanController extends Controller
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        dd($httpcode);
-
         if ($httpcode == 200) {
             echo "true";
         } elseif ($httpcode == 301 || $httpcode == 308) {
+            echo "true";
+        } elseif ($httpcode == 0) {
             echo "true";
         } else {
             echo "false";
