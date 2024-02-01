@@ -99,8 +99,8 @@ class OrderController extends Controller
         $search = $request->search;
         $param = $request->param;
         $grade = $request->grade;
-        dd($search['value']);
-        if ($search == '') {
+
+        if ($search['value'] == '') {
             $data = Paket::select('paket_details.id as idp', 'paket_nama', 'jenis_media', 'paket_klasifikasi', 'detail_nama', 'detail_paket', 'harga', 'grade')
                 ->leftJoin('paket_details', 'pakets.id', '=', 'paket_details.id_paket')
                 ->where('jenis_media', $param)
@@ -112,7 +112,7 @@ class OrderController extends Controller
                 ->leftJoin('paket_details', 'pakets.id', '=', 'paket_details.id_paket')
                 ->where('jenis_media', $param)
                 ->where('grade', $grade)
-                ->where('paket_nama', 'like', '%' . $search . '%')
+                ->where('paket_nama', 'like', '%' . $search['value'] . '%')
                 ->groupBy('paket_details.id')
                 ->get();
         }
