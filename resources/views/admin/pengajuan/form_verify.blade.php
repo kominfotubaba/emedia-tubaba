@@ -38,7 +38,7 @@
                                             <button id="terima" type="submit" class="btn btn-primary">Terima</button>
                                             <button id="tolakOpenModal" type="submit" class="btn btn-danger">Tolak</button>
                                             {{-- <button id="tolak" type="submit" class="btn btn-danger">Tolak</button> --}}
-                                            {{-- <button id="undefinedValue" type="submit" class="btn btn-dark">Tidak Dapat Dinilai</button> --}}
+                                            <button id="undefinedValue" type="submit" class="btn btn-dark">Tidak Dapat Dinilai</button>
                                         </div>
                                     @endif
                                 </div>
