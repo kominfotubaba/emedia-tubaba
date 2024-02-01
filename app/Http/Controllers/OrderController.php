@@ -6,6 +6,7 @@ use App\Mail\OrderMailPbj;
 use App\Models\budget;
 use App\Models\BuktiTayang;
 use App\Models\media_pengajuan;
+use App\Models\new_media_pengajuan;
 use App\Models\Order;
 use App\Models\Paket;
 use App\Models\Pejabat;
@@ -52,8 +53,8 @@ class OrderController extends Controller
         } else {
             $tahun = $get_tahun[0]->tahun;
         }
-        $data_media = media_pengajuan::select('pengajuan_no', 'nama_media')
-            ->join('users', 'users.id', '=', 'media_pengajuans.id_user')
+        $data_media = new_media_pengajuan::select('pengajuan_no', 'namaMedia')
+            ->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')
             ->where('tahun_pengajuan', $tahun)
             ->get();
         if (Auth::user()->role == 'admin') {
@@ -73,14 +74,14 @@ class OrderController extends Controller
         $param = $request->param;
         if ($param == 'nama') {
             # code...
-            $data_media = media_pengajuan::where('pengajuan_no', $no_media)->get();
+            $data_media = new_media_pengajuan::where('pengajuan_no', $no_media)->get();
             $get_media = json_decode(json_encode($data_media));
             $data_user = User::where('id', $get_media[0]->id_user)->get();
             // dd($data_user[0]['email']);
             $res_data = [
                 'id_user' => $get_media[0]->id_user,
-                'media' => $get_media[0]->nama_media,
-                'perusahaan' => $get_media[0]->nama_perusahaan,
+                'media' => $get_media[0]->namaMedia,
+                'perusahaan' => $get_media[0]->namaPerusahaan,
                 'jenis' => $get_media[0]->jenis_media,
                 'nilai' => $get_media[0]->nilai,
                 'email' => $data_user[0]['email'],
@@ -190,9 +191,9 @@ class OrderController extends Controller
             # code...
             return back()->withInput()->with('error', 'Budget Tahun ' . $validated['tahun'] . ' Sudah Tidak Mencukupi');
         } else {
-            $data_media = media_pengajuan::where('pengajuan_no', $validated['no_pengajuan'])->get();
-            $nama_biro = $data_media[0]->nama_biro_perwakilan;
-            $nama_pimred = $data_media[0]->nama_pimred;
+            $data_media = new_media_pengajuan::where('pengajuan_no', $validated['no_pengajuan'])->get();
+            $nama_biro = $data_media[0]->namaPerwakilan;
+            $nama_pimred = $data_media[0]->namaPimred;
 
             $pejabat = Pejabat::get();
             foreach ($pejabat as $p) {
@@ -611,7 +612,7 @@ class OrderController extends Controller
     public function print($no_order)
     {
         $data = Order::leftJoin('bukti_tayangs', 'orders.no_order', '=', 'bukti_tayangs.no_order')
-            ->join('media_pengajuans', 'orders.no_pengajuan', '=', 'media_pengajuans.pengajuan_no')
+            ->join('new_media_pengajuans', 'orders.no_pengajuan', '=', 'new_media_pengajuans.pengajuan_no')
             ->select(
                 'orders.no_order as nomor_order',
                 'orders.tahun as tahun_order',
@@ -640,10 +641,10 @@ class OrderController extends Controller
                 'bukti_tayangs.bendahara as bendahara',
                 'bukti_tayangs.bendahara_nip as bendahara_nip',
                 'bukti_tayangs.admin as admin',
-                'media_pengajuans.alamat_perusahaan',
-                'media_pengajuans.nama_bank as bank',
-                'media_pengajuans.pemilik_rekening as pemilik_rekening',
-                'media_pengajuans.no_rekening as no_rek',
+                'new_media_pengajuans.alamat_perusahaan',
+                'new_media_pengajuans.nama_bank as bank',
+                'new_media_pengajuans.pemilik_rekening as pemilik_rekening',
+                'new_media_pengajuans.no_rekening as no_rek',
                 'orders.updated_at as updated_at',
                 'orders.created_at as created_at',
             )

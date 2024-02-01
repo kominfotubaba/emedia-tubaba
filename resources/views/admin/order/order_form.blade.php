@@ -21,8 +21,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="tahun" class="form-label">Tahun Pesanan</label>
-                                <input type="text" class="form-control" name="tahun" id="tahun"
-                                    value="{{ $tahun }}" readonly>
+                                <input type="text" class="form-control" name="tahun" id="tahun" value="{{ $tahun }}" readonly>
                                 @error('tahun')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -33,12 +32,11 @@
                                 <select style="width: 100%" class="form-select" name="no_pengajuan" id="no_pengajuan">
                                     <option label="&nbsp;"></option>
                                     @foreach ($data_media as $dm)
-                                        <option value="{{ $dm->pengajuan_no }}">{{ $dm->nama_media }}</option>
+                                        <option value="{{ $dm->pengajuan_no }}">{{ $dm->namaMedia }}</option>
                                     @endforeach
                                 </select>
                                 <input type="text" class="form-control" name="id_user" id="id_user" readonly hidden>
-                                <input type="text" class="form-control" name="nama_media" id="nama_media" readonly
-                                    hidden>
+                                <input type="text" class="form-control" name="nama_media" id="nama_media" readonly hidden>
                                 <input type="text" class="form-control" name="email" id="email" readonly hidden>
                                 @error('no_pengajuan')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -47,8 +45,7 @@
 
                             <div class="mb-3">
                                 <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
-                                <input type="text" class="form-control" name="nama_perusahaan" id="nama_perusahaan"
-                                    readonly>
+                                <input type="text" class="form-control" name="nama_perusahaan" id="nama_perusahaan" readonly>
                                 @error('nama_perusahaan')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -75,12 +72,9 @@
                                 <select style="width: 100%" class="form-select" name="paket" id="paket">
                                     <option id="dataPaket" label="&nbsp;"></option>
                                 </select>
-                                <input type="text" class="form-control" name="paket_klasifikasi" id="paket_klasifikasi"
-                                    readonly hidden>
-                                <input type="text" class="form-control" name="nama_paket" id="nama_paket" readonly
-                                    hidden>
-                                <input type="text" class="form-control" name="detail_paket" id="detail_paket" readonly
-                                    hidden>
+                                <input type="text" class="form-control" name="paket_klasifikasi" id="paket_klasifikasi" readonly hidden>
+                                <input type="text" class="form-control" name="nama_paket" id="nama_paket" readonly hidden>
+                                <input type="text" class="form-control" name="detail_paket" id="detail_paket" readonly hidden>
                                 @error('paket')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -104,8 +98,7 @@
 
                             <div class="mb-3">
                                 <label for="total_harga_paket" class="form-label">Total Harga Paket</label>
-                                <input type="text" class="form-control" name="total_harga_paket"
-                                    id="total_harga_paket" readonly>
+                                <input type="text" class="form-control" name="total_harga_paket" id="total_harga_paket" readonly>
                                 @error('total_harga_paket')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
