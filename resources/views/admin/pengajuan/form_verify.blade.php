@@ -2317,47 +2317,60 @@
                 var pengajuanNo = $('#pengajuanNo').attr('data-nopengajuan');
                 getDataCalculate()
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "post",
-                    url: "{{ Route('verifikasi.post') }}",
-                    data: {
-                        pengajuan_no: pengajuanNo,
-                        keterangan: dataValue,
-                        status: 'tolak',
-                        nilai: '',
-                        param: 'undefinedValue'
-                    },
-                    beforeSend: function(response) {
-                        $('.cardMain').addClass('overlay-spinner');
-                        $('#undefinedValue').attr('disabled', true)
-                    },
-                    error: function(response) {
-                        $('.cardMain').removeClass('overlay-spinner');
-                        $('#undefinedValue').attr('disabled', false)
-                    },
-                    success: function(response) {
-                        Swal.fire({
-                            toast: false,
-                            position: 'center',
-                            icon: response.icon,
-                            title: response.title,
-                            text: response.massage,
-                            showConfirmButton: true,
+                Swal.fire({
+                    title: "Data Tidak Dapat Dinilai ?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
                         });
-                        if (response.icon == 'success') {
-                            setTimeout(function() {
-                                //your code to be executed after 1 second
-                                // window.location.href = "/daftar/" + response.tahun + '/detail';
-                                window.history.back();
-                            }, 3000);
-                        }
-                        $('.cardMain').removeClass('overlay-spinner');
-                        $('#undefinedValue').attr('disabled', false)
+                        $.ajax({
+                            type: "post",
+                            url: "{{ Route('verifikasi.post') }}",
+                            data: {
+                                pengajuan_no: pengajuanNo,
+                                keterangan: dataValue,
+                                status: 'tolak',
+                                nilai: '',
+                                param: 'undefinedValue'
+                            },
+                            beforeSend: function(response) {
+                                $('.cardMain').addClass('overlay-spinner');
+                                $('#undefinedValue').attr('disabled', true)
+                            },
+                            error: function(response) {
+                                $('.cardMain').removeClass('overlay-spinner');
+                                $('#undefinedValue').attr('disabled', false)
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    toast: false,
+                                    position: 'center',
+                                    icon: response.icon,
+                                    title: response.title,
+                                    text: response.massage,
+                                    showConfirmButton: true,
+                                });
+                                if (response.icon == 'success') {
+                                    setTimeout(function() {
+                                        //your code to be executed after 1 second
+                                        // window.location.href = "/daftar/" + response.tahun + '/detail';
+                                        window.history.back();
+                                    }, 3000);
+                                }
+                                $('.cardMain').removeClass('overlay-spinner');
+                                $('#undefinedValue').attr('disabled', false)
+                            }
+                        });
                     }
                 });
             });
