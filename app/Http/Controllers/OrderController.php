@@ -122,7 +122,6 @@ class OrderController extends Controller
                 ->get();
         }
         // dd($search, $param, $grade);
-        dd($data);
 
         $i = 0;
         foreach ($data as $key) {
