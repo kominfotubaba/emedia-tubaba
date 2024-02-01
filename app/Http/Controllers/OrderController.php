@@ -103,20 +103,20 @@ class OrderController extends Controller
         if ($search == '') {
             $data = Paket::select('paket_details.id as idp', 'paket_nama', 'jenis_media', 'paket_klasifikasi', 'detail_nama', 'detail_paket', 'harga', 'grade')
                 ->leftJoin('paket_details', 'pakets.id', '=', 'paket_details.id_paket')
-                // ->where('jenis_media', $param)
-                // ->where('grade', $grade)
+                ->where('jenis_media', $param)
+                ->where('grade', $grade)
                 ->groupBy('paket_details.id')
                 ->get();
         } else {
             $data = Paket::select('paket_details.id as idp', 'paket_nama', 'jenis_media', 'paket_klasifikasi', 'detail_nama', 'detail_paket', 'harga', 'grade')
                 ->leftJoin('paket_details', 'pakets.id', '=', 'paket_details.id_paket')
-                // ->where('jenis_media', $param)
-                // ->where('grade', $grade)
+                ->where('jenis_media', $param)
+                ->where('grade', $grade)
                 ->where('paket_nama', 'like', '%' . $search . '%')
                 ->groupBy('paket_details.id')
                 ->get();
         }
-        dd($data);
+        dd($param);
         $i = 0;
         foreach ($data as $key) {
             $response[] = [
