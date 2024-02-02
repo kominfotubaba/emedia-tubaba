@@ -9,13 +9,13 @@
                     <div class="col-12 col-md-7">
                         <h1 class="mb-0 pb-0 display-4" id="title">Dashboard</h1>
                         <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
-                                        <ul class="breadcrumb pt-0">
-                                        <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
-                                        <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
-                                        <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
-                                        </ul>
-                                    </nav> -->
+                                                                <ul class="breadcrumb pt-0">
+                                                                <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                                                                <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
+                                                                <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
+                                                                <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
+                                                                </ul>
+                                                            </nav> -->
                     </div>
                     <!-- Title End -->
                 </div>
@@ -84,4 +84,30 @@
             <!-- Content End -->
         </div>
     </main>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div id="pemberitahuan" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Pemberitahuan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#Pemberitahuan').mdoal('show')
+        });
+    </script>
+@endpush
