@@ -842,7 +842,8 @@ class MediaPengajuanController extends Controller
                         'keterangan' => $keterangan_final,
                         'status' => $status,
                         'nilai' => $grade,
-                        'nilaiDalamAngka' => $nilai
+                        'nilaiDalamAngka' => $nilai,
+                        'buka_edit' => 'tidak'
                     ]
                 );
             }
