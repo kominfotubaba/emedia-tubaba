@@ -9,13 +9,13 @@
                     <div class="col-12 col-md-7">
                         <h1 class="mb-0 pb-0 display-4" id="title">Dashboard</h1>
                         <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
-                                                                                            <ul class="breadcrumb pt-0">
-                                                                                            <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
-                                                                                            <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
-                                                                                            <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
-                                                                                            <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
-                                                                                            </ul>
-                                                                                        </nav> -->
+                                                                                                <ul class="breadcrumb pt-0">
+                                                                                                <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                                                                                                <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
+                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
+                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
+                                                                                                </ul>
+                                                                                            </nav> -->
                     </div>
                     <!-- Title End -->
                 </div>
@@ -87,7 +87,7 @@
     <!-- Button trigger modal -->
     <!-- Modal -->
     <div id="pemberitahuan" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Pemberitahuan</h1>
