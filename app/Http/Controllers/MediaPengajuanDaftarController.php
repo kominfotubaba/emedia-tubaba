@@ -153,13 +153,13 @@ class MediaPengajuanDaftarController extends Controller
                 if ($data->status == 'terima') {
                     # code...
                     $bg = 'bg-primary';
-                    $keterangan = $data->keterangan;
+                    $keterangan =  $data->keterangan;
                 } elseif ($data->status == 'ajukan') {
                     $bg = 'bg-info';
                     $keterangan = 'data baru di' . $data->status . ' oleh media ' . $data->nama_media;
                 } elseif ($data->status == 'tolak') {
                     $bg = 'bg-danger';
-                    $keterangan = $data->keterangan;
+                    $keterangan =  wordwrap($data->keterangan, 50, "<br>\n");;
                 } elseif ($data->status == 'edit') {
                     $bg = 'bg-warning';
                     $keterangan = 'di' . $data->status . ' oleh media ' . $data->nama_media;
