@@ -9,13 +9,13 @@
                     <div class="col-12 col-md-7">
                         <h1 class="mb-0 pb-0 display-4" id="title">Dashboard</h1>
                         <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
-                                                                                                <ul class="breadcrumb pt-0">
-                                                                                                <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
-                                                                                                <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
-                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
-                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
-                                                                                                </ul>
-                                                                                            </nav> -->
+                                                                                                    <ul class="breadcrumb pt-0">
+                                                                                                    <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                                                                                                    <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
+                                                                                                    <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
+                                                                                                    <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
+                                                                                                    </ul>
+                                                                                                </nav> -->
                     </div>
                     <!-- Title End -->
                 </div>
@@ -94,7 +94,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Direkomendasikan menggunakan browser chrome, edge, dan mozila firefox terupdate
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
