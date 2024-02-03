@@ -1114,12 +1114,10 @@
                 e.preventDefault();
                 wizard.gotoPrev();
             });
-        });
 
-        /**
-         * Selector
-         **/
-        $(document).ready(function() {
+            /**
+             * Selector
+             **/
             var urlProvinsi = "https://ibnux.github.io/data-indonesia/provinsi.json";
             var urlKabupaten = "https://ibnux.github.io/data-indonesia/kabupaten";
             var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan";
@@ -1459,12 +1457,10 @@
             //     select2Data(urlKelurahan + '/' + alamatKecPerwakilan + '.json',
             //         '#alamatKelPerwakilan', 'Pilih Kelurahan')
             // });
-        });
 
-        /**
-         * File UploadDropzone and send data
-         **/
-        $(document).ready(function() {
+            /**
+             * File UploadDropzone and send data
+             **/
             function upload_file(name, tagId) {
                 var name = new Dropzone(tagId, {
                     url: '/pengajuan/uploads',
@@ -1582,12 +1578,11 @@
             // upload_file('dropzoneLunasPBB', '#fileLunasPBB')
             upload_file('dropzoneSerfikatUkwPerwakilan', '#fileSerfikatUkwPerwakilan')
             upload_file('dropzoneAfiliasiPersPerwakilan', '#fileAfiliasiPersPerwakilan')
-        });
 
-        /**
-         * button
-         **/
-        $(document).ready(function() {
+
+            /**
+             * button
+             **/
             /**
              * setting ttd
              **/
