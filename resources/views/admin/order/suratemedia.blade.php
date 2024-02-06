@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Pesanan| E-Media Tulang Bawang Barat 2023</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
@@ -127,7 +126,7 @@
             }
             return $temp;
         }
-        
+
         function terbilang($nilai)
         {
             if ($nilai < 0) {
@@ -146,8 +145,7 @@
                     <!-- KOP SURAT -->
                     <div class="row text-center pb-3 border-bottom border-2 border-dark">
                         <div class="col-2 ">
-                            <img class="img-fluid" style="height: 100px;"
-                                src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
+                            <img class="img-fluid" style="height: 100px;" src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
                         </div>
                         <div class="col-8">
                             <strong class="text-uppercase fs-6" style="line-height: 1;">
@@ -161,8 +159,7 @@
                                 Tulang Bawang Barat </p>
                         </div>
                         <div class="col-2 mt-0">
-                            <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;"
-                                src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
+                            <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;" src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
                         </div>
                     </div>
                     <!-- END KOP SURAT -->
@@ -209,9 +206,9 @@
                             <br>
                         </div>
                         <strong class="text-uppercase fs-5" style="line-height: 1;">
-                            <div class="col-12">{{ $d->nama_media }}</div>
+                            <div class="col-12">{{ $d->namaMedia }}</div>
                             <!--NAMA MEDIA COK-->
-                            <div class="col-12">{{ $d->nama_perusahaan }}</div>
+                            <div class="col-12">{{ $d->namaPerusahaan }}</div>
                             <!--NAMA PERUSAHAAN COK-->
                         </strong>
                         <div class="row">
@@ -277,8 +274,7 @@
                     <!-- KOP SURAT -->
                     <div class="row text-center pb-3 border-bottom border-2 border-dark">
                         <div class="col-2 ">
-                            <img class="img-fluid" style="height: 100px;"
-                                src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
+                            <img class="img-fluid" style="height: 100px;" src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
                         </div>
                         <div class="col-8">
                             <strong class="text-uppercase fs-6" style="line-height: 1;">
@@ -292,8 +288,7 @@
                                 Tulang Bawang Barat </p>
                         </div>
                         <div class="col-2 mt-0">
-                            <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;"
-                                src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
+                            <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;" src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
                         </div>
                     </div>
                     <!-- END KOP SURAT -->
@@ -760,12 +755,8 @@
         </div>
         <!-- {{-- HALAMAN KETIGA SELESAI --}} -->
     @endforeach
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
-        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
-        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
     <script>
         window.print();
     </script>
