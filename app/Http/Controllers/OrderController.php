@@ -645,7 +645,7 @@ class OrderController extends Controller
                 'bukti_tayangs.admin as admin',
                 'new_media_pengajuans.alamatProvPerusahaan as alamat_perusahaan_prov',
                 'new_media_pengajuans.alamatKabPerusahaan as alamat_perusahaan_kab',
-                'new_media_pengajuans.nama_bank as bank',
+                'new_media_pengajuans.namaBank as bank',
                 'new_media_pengajuans.pemilikRekening as pemilik_rekening',
                 'new_media_pengajuans.noRekening as no_rek',
                 'orders.updated_at as updated_at',
