@@ -3,7 +3,7 @@
     <main>
         @foreach ($media_data as $md)
             <section class="scroll-section">
-                <div class="h3 text-primary text-capitalize">Edit Data Perusahaan Media {{ $md->jenis_media }}</div>
+                <div class="h3 text-primary text-capitalize">Cek Data Perusahaan Media {{ $md->jenis_media }}</div>
                 <div class="card wizard mb-3" id="wizardBasic1">
                     <div class="card-header border-0 pb-0">
                         <ul class="nav nav-tabs justify-content-center" role="tablist">
@@ -27,6 +27,9 @@
                                     <div class="mb-1 title d-none d-sm-block">PERWAKILAN MEDIA</div>
                                 </a>
                             </li>
+                            {{-- <li class="nav-item d-none" role="presentation">
+                                <a class="nav-link text-center" href="#validationLast" role="tab"></a>
+                            </li> --}}
                         </ul>
                     </div>
                     <div class="card-body">
@@ -43,8 +46,9 @@
                                                 <label class="ps-4">Nama Perusahaan Sesuai AHU</label>
                                                 <div id="pengajuanNo" data-noPengajuan="{{ $md->pengajuan_no }}" hidden>
                                                     {{ $md->pengajuan_no }}</div>
-                                                <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}" hidden>
-                                                    {{ $md->jenis_media }}</div>
+                                                <input type="text" id="pengajuanJenisMedia" value="{{ $md->jenis_media }}" hidden disabled>
+                                                {{-- <div id="pengajuanJenisMedia" data-jenisMedia="{{ $md->jenis_media }}" hidden>
+                                                    {{ $md->jenis_media }}</div> --}}
                                             </div>
 
                                             <div class="form-floating mb-3">
@@ -321,8 +325,7 @@
                                                     @else
                                                         <option label="&nbsp;"></option>
                                                     @endif
-                                                    <option value="faktual dan administratif">Terverifikasi Faktual dan
-                                                        Administratif</option>
+                                                    <option value="faktual dan administratif">Terverifikasi Faktual dan Administratif</option>
                                                     <option value="administratif">Terverifikasi Administratif</option>
                                                     <option value="belum">Belum Terverifikasi</option>
                                                 </select>
@@ -381,11 +384,8 @@
                                                         <option label="&nbsp;"></option>
                                                     @endif
                                                     <option value="tidak terafiliasi">Tidak Terafiliasi</option>
-                                                    <option value="diakui">Organisasi Pers yang diakui Dewan Pers
-                                                    </option>
-                                                    <option value="belum diakui">Organisasi Pers yang belum diakui Dewan
-                                                        Pers
-                                                    </option>
+                                                    <option value="diakui">Organisasi Pers yang diakui Dewan Pers</option>
+                                                    <option value="belum diakui">Organisasi Pers yang belum diakui Dewan Pers</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -413,8 +413,7 @@
                                                         <option label="&nbsp;"></option>
                                                     @endif
                                                     <option value="tulang bawang barat">di Tulang Bawang Barat</option>
-                                                    <option value="luar tulang bawang barat">di luar Tulang Bawang Barat,
-                                                        di Prov.Lampung</option>
+                                                    <option value="luar tulang bawang barat">di luar Tulang Bawang Barat, di Prov.Lampung</option>
                                                     <option value="luar lampung">di luar Provinsi Lampung</option>
                                                 </select>
                                             </div>
@@ -568,7 +567,7 @@
                                         </div>
                                     @endif
 
-                                    @if ($md->jenis_media == 'harian')
+                                    @if ($md->jenis_media == 'cetak')
                                         <div class="row mb-3">
                                             <h2 class="small-title mb-md-0 mb-2">Jumlah Oplah Media Cetak Per Minggu</h2>
                                             <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-2">
@@ -723,7 +722,7 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12 mb-md-0 mb-2">
                                                 <div class="form-floating">
-                                                    <div class="dropzone dropzone-floating-label" id="fileAfiliasiPersPerwakilan" name="fileafiliasiPersPerwakilan">
+                                                    <div class="dropzone dropzone-floating-label" id="fileAfiliasiPersPerwakilan">
                                                         <input type="text" value="{{ $md->fileafiliasiPersPerwakilan }}" hidden>
                                                     </div>
                                                     <label class="ps-4">File PDF Bukti Keanggotaan Organisasi Pers
@@ -781,6 +780,29 @@
                                     </div>
                                 </form>
                             </div>
+
+                            {{-- <div class="tab-pane fade" id="validationLast" role="tabpanel">
+                                <div class="text-center mt-5">
+                                    <h5 class="card-title">Harap Dibaca !!!</h5>
+                                    <div class="col-12 p-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="pernyataanCheckbox" name="pernyataanCheckbox">
+                                            <label class="form-check-label" for="invalidCheck">
+                                                Dengan ini menyatakan bahwa data yang disampaikan sesuai dengan kondisi yang
+                                                sebenarnya,
+                                                jika ditemukan pemalsuan/ketidaksesuaian data maka dapat diproses sesuai
+                                                dengan
+                                                ketentuan hukum yang berlaku.
+
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end p-2">
+                                        <button id="kirimData" type="submit" class="btn btn-primary" disabled>Kirim
+                                            Data</button>
+                                    </div>
+                                </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -806,8 +828,8 @@
          **/
         $(document).ready(function() {
             function checkValidation(form) {
-                if ($('#jenisPengajuan').val() == 'siber') {
-                    var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan').val();
+                if ($('#pengajuanJenisMedia').val() == 'siber') {
+                    var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#pengajuanJenisMedia').val();
                 } else {
                     var dataNamaMedia = true;
                 }
@@ -820,7 +842,7 @@
                 }, "Spasi tidak diperbolehkan");
 
                 jQuery.validator.addMethod("synchronousRemote", function(value, element) {
-                    if ($('#jenisPengajuan').val() == 'siber') {
+                    if ($('#pengajuanJenisMedia').val() == 'siber') {
                         // $.ajaxSetup({
                         //     headers: {
                         //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -832,7 +854,7 @@
                             $.ajax({
                                 type: "GET",
                                 async: false,
-                                url: "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan')
+                                url: "/pengajuan/checkurl?jenispengajuan=" + $('#pengajuanJenisMedia')
                                     .val(),
                                 data: {
                                     namaMedia: value
@@ -1093,12 +1115,10 @@
                 e.preventDefault();
                 wizard.gotoPrev();
             });
-        });
 
-        /**
-         * Selector
-         **/
-        $(document).ready(function() {
+            /**
+             * Selector
+             **/
             var urlProvinsi = "https://ibnux.github.io/data-indonesia/provinsi.json";
             var urlKabupaten = "https://ibnux.github.io/data-indonesia/kabupaten";
             var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan";
@@ -1150,56 +1170,119 @@
             select2Data(urlProvinsi, '#alamatProvPerusahaan', 'Pilih Provinsi')
             eachAlamat(urlProvinsi, $('#dataAlamatProvPerwakilan').val(), '#alamatProvPerwakilan')
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            window.onload = (event) => {
-                setTimeout(
-                    function() {
-                        //do something special
-                        var urlProvPerusahaan = urlKabupaten + '/' + $(
-                                '#alamatProvPerusahaan option:selected').val() +
-                            '.json';
-                        var urlProvPerwakilan = urlKabupaten + '/' + $(
-                                '#alamatProvPerusahaan option:selected').val() +
-                            '.json';
-                        eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
-                            '#alamatKabPerusahaan');
-                        select2Data(urlProvPerusahaan,
-                            '#alamatKabPerusahaan', 'Pilih Kabupaten');
 
-                        eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
-                            '#alamatKabPerwakilan');
-                        select2Data(urlProvPerwakilan,
-                            '#alamatKabPerwakilan', 'Pilih Kabupaten');
-                    }, 800);
+            setTimeout(
+                function() {
+                    //do something special
+                    var urlProvPerusahaan = urlKabupaten + '/' + $(
+                            '#alamatProvPerusahaan option:selected').val() +
+                        '.json';
+                    var urlProvPerwakilan = urlKabupaten + '/' + $(
+                            '#alamatProvPerusahaan option:selected').val() +
+                        '.json';
+                    eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
+                        '#alamatKabPerusahaan');
+                    select2Data(urlProvPerusahaan,
+                        '#alamatKabPerusahaan', 'Pilih Kabupaten');
 
-                var kanalKhusus = $('#kanalKhusus').val();
-                var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
-                var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
-                var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
+                    eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
+                        '#alamatKabPerwakilan');
+                    select2Data(urlProvPerwakilan,
+                        '#alamatKabPerwakilan', 'Pilih Kabupaten');
+                }, 800);
 
-                if (domisiliRedaksiMedia == 'tulang bawang barat') {
-                    $('.fileDomisiliRedaksiMedia').prop('hidden', false)
-                } else {
-                    $('.fileDomisiliRedaksiMedia').prop('hidden', true)
-                }
-                if (afiliasiPerusahaan == 'tidak terafiliasi') {
-                    $('.fileAfiliasiPerusahaan').prop('hidden', true)
-                } else {
-                    $('.fileAfiliasiPerusahaan').prop('hidden', false)
-                }
-                if (kanalKhusus == 'tidak ada') {
-                    $('.fileKanalKhusus').prop('hidden', true)
-                } else {
-                    $('.fileKanalKhusus').prop('hidden', false)
-                }
-                if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
-                    $('.serfikatUkwPerwakilan').prop('hidden', true)
-                    $('#serfikatUkwPerwakilan').prop('required', false)
-                } else {
-                    $('.serfikatUkwPerwakilan').prop('hidden', false)
-                    $('#serfikatUkwPerwakilan').prop('required', true)
-                }
-            };
+            var kanalKhusus = $('#kanalKhusus').val();
+            var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
+            var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
+            var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
 
+            if (domisiliRedaksiMedia == 'tulang bawang barat') {
+                $('.fileDomisiliRedaksiMedia').prop('hidden', false)
+            } else {
+                $('.fileDomisiliRedaksiMedia').prop('hidden', true)
+            }
+            if (afiliasiPerusahaan == 'tidak terafiliasi') {
+                $('.fileAfiliasiPerusahaan').prop('hidden', true)
+            } else {
+                $('.fileAfiliasiPerusahaan').prop('hidden', false)
+            }
+            if (kanalKhusus == 'tidak ada') {
+                $('.fileKanalKhusus').prop('hidden', true)
+            } else {
+                $('.fileKanalKhusus').prop('hidden', false)
+            }
+            if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
+                $('.serfikatUkwPerwakilan').prop('hidden', true)
+                $('#serfikatUkwPerwakilan').prop('required', false)
+            } else {
+                $('.serfikatUkwPerwakilan').prop('hidden', false)
+                $('#serfikatUkwPerwakilan').prop('required', true)
+            }
+
+
+            // window.onload = (event) => {
+            //     setTimeout(
+            //         function() {
+            //             //do something special
+            //             var urlProvPerusahaan = urlKabupaten + '/' + $(
+            //                     '#alamatProvPerusahaan option:selected').val() +
+            //                 '.json';
+            //             var urlProvPerwakilan = urlKabupaten + '/' + $(
+            //                     '#alamatProvPerusahaan option:selected').val() +
+            //                 '.json';
+            //             eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
+            //                 '#alamatKabPerusahaan');
+            //             select2Data(urlProvPerusahaan,
+            //                 '#alamatKabPerusahaan', 'Pilih Kabupaten');
+
+            //             eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
+            //                 '#alamatKabPerwakilan');
+            //             select2Data(urlProvPerwakilan,
+            //                 '#alamatKabPerwakilan', 'Pilih Kabupaten');
+            //         }, 800);
+
+            //     var kanalKhusus = $('#kanalKhusus').val();
+            //     var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
+            //     var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
+            //     var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
+
+            //     if (domisiliRedaksiMedia == 'tulang bawang barat') {
+            //         $('.fileDomisiliRedaksiMedia').prop('hidden', false)
+            //     } else {
+            //         $('.fileDomisiliRedaksiMedia').prop('hidden', true)
+            //     }
+            //     if (afiliasiPerusahaan == 'tidak terafiliasi') {
+            //         $('.fileAfiliasiPerusahaan').prop('hidden', true)
+            //     } else {
+            //         $('.fileAfiliasiPerusahaan').prop('hidden', false)
+            //     }
+            //     if (kanalKhusus == 'tidak ada') {
+            //         $('.fileKanalKhusus').prop('hidden', true)
+            //     } else {
+            //         $('.fileKanalKhusus').prop('hidden', false)
+            //     }
+            //     if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
+            //         $('.serfikatUkwPerwakilan').prop('hidden', true)
+            //         $('#serfikatUkwPerwakilan').prop('required', false)
+            //     } else {
+            //         $('.serfikatUkwPerwakilan').prop('hidden', false)
+            //         $('#serfikatUkwPerwakilan').prop('required', true)
+            //     }
+            // };
+
+            // $('#cekdatas').click(function(e) {
+            //     e.preventDefault();
+            // });
+            // select2Data(urlKabupaten + '/' + 18 + '.json', '#alamatKabPerusahaan',
+            //     'Pilih Kabupaten')
+            // $("#alamatProvPerusahaan").change(function() {
+            //     $('#alamatKabPerusahaan').show()
+            //     var alamatProvPerusahaan = $(this).val()
+            //     // console.log($('#alamatProvPerusahaan option:selected').text());
+            //     $('#alamatKabPerusahaan').val(null).trigger('change');
+            //     select2Data(urlKabupaten + '/' + alamatProvPerusahaan + '.json',
+            //         '#alamatKabPerusahaan', 'Pilih Kabupaten')
+            // });
             $('#statusKswp').select2({
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Status KSWP Perusahaan'
@@ -1240,11 +1323,13 @@
                     $('.fileAfiliasiPerusahaan').attr("hidden", false);
                 }
             });
+
             $('#domisiliRedaksiMedia').select2({
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Domisili Redaksi Media'
             });
-            $("#domisiliRedaksiMedia").change(function() {
+
+            $(document).on('change', '#domisiliRedaksiMedia', function() {
                 var value = $(this).val();
                 if (value == 'tulang bawang barat') {
                     $('.fileDomisiliRedaksiMedia').attr("hidden", false);
@@ -1252,6 +1337,9 @@
                     $('.fileDomisiliRedaksiMedia').attr("hidden", true);
                 }
             });
+            // $("#domisiliRedaksiMedia").change(function() {
+            // });
+
             $('#kanalKhusus').select2({
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Ketersediaan Kanal/Program Khusus'
@@ -1282,7 +1370,7 @@
             });
             $("#jenisJangkauanSiarMediaElektronik").change(function() {
                 var value = $(this).val();
-                console.log(value);
+
                 if (value == 'tv') {
                     $('#jangkauanSiarMediaElektronik option').remove();
                     $('#jangkauanSiarMediaElektronik').append(`
@@ -1323,7 +1411,14 @@
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Status Lunas PBB Tahun Berjalan'
             });
-
+            // $("#lunasPBB").change(function() {
+            //     var value = $(this).val();
+            //     if (value == 'belum') {
+            //         $('.fileLunasPBB').prop("hidden", true);
+            //     } else {
+            //         $('.fileLunasPBB').prop("hidden", false);
+            //     }
+            // });
             $('#jenisSerfikatUkwPerwakilan').select2({
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Sertifikat Kompetensi Dewan Pers Perwakilan'
@@ -1339,7 +1434,7 @@
                 }
             });
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            $("#alamatProvPerwakilan").change(function() {
+            $(document).on('change', '#alamatProvPerwakilan', function() {
                 $('#alamatKabPerwakilan').show()
                 var alamatProvPerwakilan = $(this).val()
                 // console.log($('#alamatProvPerusahaan option:selected').text());
@@ -1349,13 +1444,30 @@
                 select2Data(urlKabupaten + '/' + alamatProvPerwakilan + '.json',
                     '#alamatKabPerwakilan', 'Pilih Kabupaten')
             });
+            // $("#alamatProvPerwakilan").change(function() {
+            // });
 
-        });
+            // $("#alamatKabPerwakilan").change(function() {
+            //     $('#alamatKecPerwakilan').show()
+            //     var alamatKabPerwakilan = $(this).val()
+            //     // console.log($('#alamatProvPerusahaan option:selected').text());
+            //     $('#alamatKelPerwakilan').val(null).trigger('change');
+            //     $('#alamatKecPerwakilan').val(null).trigger('change');
+            //     select2Data(urlKecamatan + '/' + alamatKabPerwakilan + '.json',
+            //         '#alamatKecPerwakilan', 'Pilih Kecamatan')
+            // });
+            // $("#alamatKecPerwakilan").change(function() {
+            //     $('#alamatKelPerwakilan').show()
+            //     var alamatKecPerwakilan = $(this).val()
+            //     // console.log($('#alamatProvPerusahaan option:selected').text());
+            //     $('#alamatKelPerwakilan').val(null).trigger('change');
+            //     select2Data(urlKelurahan + '/' + alamatKecPerwakilan + '.json',
+            //         '#alamatKelPerwakilan', 'Pilih Kelurahan')
+            // });
 
-        /**
-         * File UploadDropzone and send data
-         **/
-        $(document).ready(function() {
+            /**
+             * File UploadDropzone and send data
+             **/
             function upload_file(name, tagId) {
                 var name = new Dropzone(tagId, {
                     url: '/pengajuan/uploads',
@@ -1442,7 +1554,7 @@
             /**
              *  Data Badan Hukum
              **/
-            if ($('#jenisPengajuan').val() == 'elektronik') {
+            if ($('#pengajuanJenisMedia').val() == 'elektronik') {
                 upload_file('dropzoneIzinIpp', '#fileIzinIpp')
             }
             upload_file('dropzoneKumhamPerusahaan', '#fileKumhamPerusahaan')
@@ -1462,7 +1574,7 @@
             /**
              *  Kualifikasi Media
              **/
-            if ($('#jenisPengajuan').val() == 'harian') {
+            if ($('#pengajuanJenisMedia').val() == 'cetak') {
                 upload_file('dropzoneJumlahOplahMediaCetakPerMinggu', '#fileJumlahOplahMediaCetakPerMinggu')
             }
 
@@ -1473,12 +1585,271 @@
             // upload_file('dropzoneLunasPBB', '#fileLunasPBB')
             upload_file('dropzoneSerfikatUkwPerwakilan', '#fileSerfikatUkwPerwakilan')
             upload_file('dropzoneAfiliasiPersPerwakilan', '#fileAfiliasiPersPerwakilan')
-        });
 
-        /**
-         * button
-         **/
-        $(document).ready(function() {
+
+            /**
+             * button
+             **/
+            /**
+             * setting ttd
+             **/
+            //  add ttd
+            // const canvas = document.querySelector("canvas");
+            // const signaturePad = new SignaturePad(canvas, {
+            //     penColor: "rgb(66, 133, 244)"
+            // });
+
+            // function resizeCanvas() {
+            //     const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            //     canvas.width = canvas.offsetWidth * ratio;
+            //     canvas.height = canvas.offsetHeight * ratio;
+            //     canvas.getContext("2d").scale(ratio, ratio);
+            //     signaturePad.clear(); // otherwise isEmpty() might return incorrect value
+            // }
+
+            // window.addEventListener("resize", resizeCanvas);
+            // resizeCanvas();
+
+            // $('#clearTtd').click(function(e) {
+            //     e.preventDefault();
+            //     signaturePad.clear();
+            //     signaturePad.on();
+            //     $('#saveTtdPng').prop('disabled', false);
+            // });
+
+            // $('#saveTtdPng').click(function(e) {
+            //     // validasi ttd
+            //     if (signaturePad.isEmpty()) {
+            //         Swal.fire({
+            //             toast: true,
+            //             position: 'bottom-right',
+            //             icon: 'error',
+            //             title: 'Tanda Tangan',
+            //             text: 'Tanda Tangan Harap diisi',
+            //             showConfirmButton: false,
+            //         });
+            //     } else {
+            //         var param = 'uploadsignature';
+            //         const images = signaturePad.toDataURL();
+            //         signaturePad.off();
+            //         $(this).prop('disabled', true);
+
+            //         $.ajaxSetup({
+            //             headers: {
+            //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //             }
+            //         });
+            //         $.ajax({
+            //             type: "POST",
+            //             url: '/pengajuan/uploads',
+            //             data: {
+            //                 data: param,
+            //                 images: images
+            //             },
+            //             success: function(response) {
+            //                 Swal.fire({
+            //                     toast: true,
+            //                     position: 'bottom-right',
+            //                     icon: 'success',
+            //                     title: 'Berhasil',
+            //                     text: response.original_name +
+            //                         ' Berhasil diupload!',
+            //                     showConfirmButton: false,
+            //                     timer: 3500
+            //                 });
+            //                 $('#signatureData').val(response.name)
+            //             }
+            //         });
+            //     }
+            // });
+
+            /**
+             * kirim data
+             **/
+            $('#pernyataanCheckbox').change(function(e) {
+                e.preventDefault();
+                if ($('#pernyataanCheckbox').is(":checked") == true) {
+                    $("#kirimData").prop('disabled', false);
+                } else {
+                    $("#kirimData").prop('disabled', true);
+                }
+            });
+
+            // submit data
+            // $('#kirimData').click(function(e) {
+            //     e.preventDefault();
+            //     // validasi
+            //     // $(this).prop('disabled', true);
+            //     const validasi = $('.validasi').valid();
+            //     // var wartawanKompetenPerusahaan = $('#wartawanKompetenPerusahaan').val();
+            //     // var namaPercetakan = $('#namaPercetakan').val();
+            //     // var alamatPercetakan = $('#alamatPercetakan').val();
+            //     // // perwakilan
+            //     // var namaMedia = $('#namaMedia').val();
+            //     // var namaBiroPerwakilan = $('#namaBiroPerwakilan').val();
+            //     // var alamatPerwakilan = $('#alamatPerwakilan').val();
+            //     // var alamatProvPerwakilan = $('#alamatProvPerwakilan option:selected').text();
+            //     // var alamatKabPerwakilan = $('#alamatKabPerwakilan option:selected').text();
+            //     // var alamatKecPerwakilan = $('#alamatKecPerwakilan option:selected').text();
+            //     // var alamatKelPerwakilan = $('#alamatKelPerwakilan option:selected').text();
+            //     // var tlpnPerwakilan = $('#tlpnPerwakilan').val();
+            //     // var emailPerwakilan = $('#emailPerwakilan').val();
+            //     // var ktpPerwakilan = $('#ktpPerwakilan').val();
+            //     // var kkPerwakilan = $('#kkPerwakilan').val();
+            //     // var npwpPerwakilan = $('#npwpPerwakilan').val();
+            //     // var kompetensiPerwakilan = $('#kompetensiPerwakilan').val();
+            //     // var jenisRekening = $('#jenisRekening').val();
+            //     // var namaBank = $('#namaBank').val();
+            //     // var pemilikRekening = $('#pemilikRekening').val();
+            //     // var noRekening = $('#noRekening').val();
+            //     // var pernyataanCheckbox = $('#pernyataanCheckbox').val();
+            //     var data = {
+            //         // param
+            //         jenis_media: $('#pengajuanJenisMedia').val(),
+            //         pengajuan_no: $('#pengajuanNo').attr('data-noPengajuan'),
+            //         /**
+            //          * DATA BADAN HUKUM
+            //          **/
+            //         //  input
+            //         namaPerusahaan: $('#namaPerusahaan').val(),
+            //         namaPenanggungJawab: $('#namaPenanggungJawab').val(),
+            //         namaPimred: $('#namaPimred').val(),
+            //         kumhamPerusahaan: $('#kumhamPerusahaan').val(),
+            //         alamatPerusahaan: $('#alamatPerusahaan').val(),
+            //         tlpnPerusahaan: $('#tlpnPerusahaan').val(),
+            //         emailPerusahaan: $('#emailPerusahaan').val(),
+            //         npwpPerusahaan: $('#npwpPerusahaan').val(),
+            //         nibPerusahaan: $('#nibPerusahaan').val(),
+            //         noKbki: $('#noKbki').val(),
+            //         izinIpp: $('#izinIpp').val(),
+            //         namaPercetakan: $('#namaPercetakan').val(),
+            //         alamatPercetakan: $('#alamatPercetakan').val(),
+            //         // select
+            //         alamatProvPerusahaan: $('#alamatProvPerusahaan option:selected').text(),
+            //         alamatKabPerusahaan: $('#alamatKabPerusahaan option:selected').text(),
+            //         statusKswp: $('#statusKswp option:selected').text(),
+            //         noKlbi: $('#noKlbi option:selected').text(),
+            //         // file
+            //         fileSuratPernyataanPimred: $('#fileSuratPernyataanPimred .dz-details span')
+            //             .text(),
+            //         fileKumhamPerusahaan: $('#fileKumhamPerusahaan .dz-details span').text(),
+            //         fileNpwpPerusahaan: $('#fileNpwpPerusahaan .dz-details span').text(),
+            //         fileNibPerusahaan: $('#fileNibPerusahaan .dz-details span').text(),
+            //         fileIzinIpp: $('#fileIzinIpp .dz-details span').text(),
+
+            //         /**
+            //          * DATA MEDIA
+            //          **/
+            //         //  input
+            //         namaMedia: $('#namaMedia').val(),
+            //         serfikatUkwPimred: $('#serfikatUkwPimred').val(),
+            //         namaBank: $('#namaBank').val(),
+            //         pemilikRekening: $('#pemilikRekening').val(),
+            //         noRekening: $('#noRekening').val(),
+            //         // select
+            //         verifikasiDewanPers: $('#verifikasiDewanPers option:selected').text(),
+            //         jenisSerfikatUkwPimred: $('#jenisSerfikatUkwPimred option:selected').text(),
+            //         afiliasiPerusahaan: $('#afiliasiPerusahaan option:selected').text(),
+            //         domisiliRedaksiMedia: $('#domisiliRedaksiMedia option:selected').text(),
+            //         kanalKhusus: $('#kanalKhusus option:selected').text(),
+            //         jenisRekening: $('#jenisRekening option:selected').text(),
+            //         // file
+            //         fileSerfikatUkwPimred: $('#fileSerfikatUkwPimred .dz-details span').text(),
+            //         fileAfiliasiPerusahaan: $('#fileAfiliasiPerusahaan .dz-details span').text(),
+            //         fileDomisiliRedaksiMedia: $('#fileDomisiliRedaksiMedia .dz-details span')
+            //             .text(),
+            //         fileKanalKhusus: $('#fileKanalKhusus .dz-details span').text(),
+            //         fileRekening: $('#fileRekening .dz-details span').text(),
+
+            //         /**
+            //          * KUALIFIKASI MEDIA
+            //          **/
+            //         // select
+            //         tahunBerdiriMedia: $('#tahunBerdiriMedia option:selected').text(),
+            //         jenisJangkauanSiarMediaElektronik: $(
+            //             '#jenisJangkauanSiarMediaElektronik option:selected').text(),
+            //         jangkauanSiarMediaElektronik: $('#jangkauanSiarMediaElektronik option:selected')
+            //             .text(),
+            //         jumlahOplahMediaCetakPerMinggu: $(
+            //                 '#jumlahOplahMediaCetakPerMinggu option:selected')
+            //             .text(),
+            //         jumlahKontenBeritaAktif: $('#jumlahKontenBeritaAktif option:selected').text(),
+            //         // file
+            //         fileJumlahOplahMediaCetakPerMinggu: $(
+            //             '#fileJumlahOplahMediaCetakPerMinggu .dz-details span').text(),
+
+            //         /**
+            //          * PERWAKILAN MEDIA
+            //          **/
+            //         //  input
+            //         namaPerwakilan: $('#namaPerwakilan').val(),
+            //         nomorKKPerwakilan: $('#nomorKKPerwakilan').val(),
+            //         nomorKtpPerwakilan: $('#nomorKtpPerwakilan').val(),
+            //         npwpPerwakilan: $('#npwpPerwakilan').val(),
+            //         serfikatUkwPerwakilan: $('#serfikatUkwPerwakilan').val(),
+            //         afiliasiPersPerwakilan: $('#afiliasiPersPerwakilan').val(),
+            //         alamatPerwakilan: $('#alamatPerwakilan').val(),
+            //         tlpnPerwakilan: $('#tlpnPerwakilan').val(),
+            //         emailPerwakilan: $('#emailPerwakilan').val(),
+            //         // select
+            //         jenisSerfikatUkwPerwakilan: $('#jenisSerfikatUkwPerwakilan option:selected')
+            //             .text(),
+            //         alamatProvPerwakilan: $('#alamatProvPerwakilan option:selected').text(),
+            //         alamatKabPerwakilan: $('#alamatKabPerwakilan option:selected').text(),
+            //         alamatKecPerwakilan: $('#alamatKecPerwakilan option:selected').text(),
+            //         alamatKelPerwakilan: $('#alamatKelPerwakilan option:selected').text(),
+            //         // file
+            //         fileNpwpPerwakilan: $('#fileNpwpPerwakilan .dz-details span').text(),
+            //         fileSerfikatUkwPerwakilan: $('#fileSerfikatUkwPerwakilan .dz-details span')
+            //             .text(),
+            //         fileafiliasiPersPerwakilan: $('#fileAfiliasiPersPerwakilan .dz-details span')
+            //             .text(),
+            //     }
+
+            //     /**
+            //      *file
+            //      **/
+            //     if (!validasi) {
+            //         Swal.fire({
+            //             toast: false,
+            //             position: 'center',
+            //             icon: 'error',
+            //             title: 'Cek Data',
+            //             text: 'Perhatikan Dengan Seksama Sebelum Kirim Data',
+            //             showConfirmButton: true,
+            //         });
+            //     } else {
+            //         $.ajaxSetup({
+            //             headers: {
+            //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //             }
+            //         });
+            //         $.ajax({
+            //             type: "PUT",
+            //             url: "/pengajuan/update",
+            //             data: data,
+            //             success: function(response) {
+            //                 Swal.fire({
+            //                     toast: false,
+            //                     position: 'center',
+            //                     icon: response.icon,
+            //                     title: response.title,
+            //                     text: response.massage,
+            //                     showConfirmButton: true,
+            //                 });
+            //                 if (response.icon == 'success') {
+            //                     setTimeout(function() {
+            //                         //your code to be executed after 1 second
+            //                         window.location.href = "/daftar/" + response
+            //                             .tahun_buka + "/" + "detail";
+            //                     }, 1500);
+            //                 }
+            //                 // $(this).prop('disabled', false);
+            //             }
+            //         });
+            //     }
+            // });
+
             $('.dz-preview').click(function(e) {
                 e.preventDefault();
                 var file = $(this).find('img').attr('alt');
@@ -1486,5 +1857,207 @@
                 window.open('/tmp/uploads/' + folder + '/' + file, '_blank');
             })
         });
+
+        /**
+         * validator
+         **/
+        // method validasi
+        // if ($('#jenisPengajuan').val() == 'siber') {
+        //     var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan').val();
+        // } else {
+        //     var dataNamaMedia = true;
+        // }
+        // jQuery.validator.addMethod("lettersonly", function(value, element) {
+        //     return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        // }, "Tidak boleh menggunakan angka maupun karakter");
+        // jQuery.validator.addMethod("nospace", function(value, element) {
+        //     return value.indexOf(" ") < 0 && value != "";
+        // }, "Spasi tidak diperbolehkan");
+
+        // default massage
+        // jQuery.extend(jQuery.validator.messages, {
+        //     required: "Harus diisi.",
+        //     remote: "Please fix this field.",
+        //     email: "Please enter a valid email address.",
+        //     url: "Please enter a valid URL.",
+        //     date: "Please enter a valid date.",
+        //     dateISO: "Please enter a valid date (ISO).",
+        //     number: "Please enter a valid number.",
+        //     digits: "Please enter only digits.",
+        //     creditcard: "Please enter a valid credit card number.",
+        //     equalTo: "Please enter the same value again.",
+        //     accept: "Please enter a value with a valid extension.",
+        //     maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+        //     minlength: jQuery.validator.format("Please enter at least {0} characters."),
+        //     rangelength: jQuery.validator.format(
+        //         "Please enter a value between {0} and {1} characters long."),
+        //     range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+        //     max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+        //     min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+        // });
+
+        // validasi
+        // jQuery.validator.setDefaults({
+        //     debug: true,
+        // });
+
+        // jQuery(".validasi").validate({
+        //     rules: {
+        //         namaPerusahaan: {
+        //             required: true,
+        //             lettersonly: true,
+        //         },
+        //         namaPimred: {
+        //             required: true,
+        //             lettersonly: true,
+        //             minlength: 3,
+        //         },
+        //         alamatPerusahaan: {
+        //             required: true,
+        //             minlength: 5,
+        //         },
+        //         alamatProvPerusahaan: {
+        //             required: true,
+        //         },
+        //         alamatKabPerusahaan: {
+        //             required: true,
+        //         },
+        //         alamatKecPerusahaan: {
+        //             required: true,
+        //         },
+        //         alamatKelPerusahaan: {
+        //             required: true,
+        //         },
+        //         tlpnPerusahaan: {
+        //             required: true,
+        //             number: true,
+        //             minlength: 11,
+        //         },
+        //         emailPerusahaan: {
+        //             required: true,
+        //             email: true,
+        //         },
+        //         npwpPerusahaan: {
+        //             required: true,
+        //             minlength: 15,
+        //         },
+        //         aktaPerusahaan: {
+        //             required: true,
+        //             number: true,
+        //         },
+        //         kumhamPerusahaan: {
+        //             required: true,
+        //         },
+        //         wartawanKompetenPerusahaan: {
+        //             required: true,
+        //             number: true
+        //         },
+        //         // opsional harian
+        //         namaPercetakan: {
+        //             required: true,
+        //             minlength: 5,
+        //         },
+        //         alamatPercetakan: {
+        //             required: true,
+        //             minlength: 5,
+        //         },
+        //         alamatProvPerwakilan: {
+        //             required: true,
+        //         },
+        //         alamatKabPerwakilan: {
+        //             required: true,
+        //         },
+        //         alamatKecPerwakilan: {
+        //             required: true,
+        //         },
+        //         alamatKelPerwakilan: {
+        //             required: true,
+        //         },
+        //         // perwakilan
+        //         namaMedia: {
+        //             required: true,
+        //             remote: dataNamaMedia,
+        //         },
+        //         namaBiroPerwakilan: {
+        //             required: true,
+        //             lettersonly: true,
+        //             minlength: 3,
+        //         },
+        //         alamatPerwakilan: {
+        //             required: true,
+        //             minlength: 3,
+        //         },
+        //         tlpnPerwakilan: {
+        //             required: true,
+        //             number: true,
+        //             minlength: 11,
+        //         },
+        //         emailPerwakilan: {
+        //             required: true,
+        //             email: true,
+        //         },
+        //         ktpPerwakilan: {
+        //             required: true,
+        //             number: true,
+        //             nospace: true,
+        //             // minlength: 16
+        //         },
+        //         kkPerwakilan: {
+        //             required: true,
+        //             number: true,
+        //             nospace: true,
+        //             // minlength: 16
+        //         },
+        //         npwpPerwakilan: {
+        //             required: true,
+        //             minlength: 15,
+        //         },
+        //         kompetensiPerwakilan: {
+        //             required: true,
+        //         },
+        //         jenisRekening: {
+        //             required: true,
+        //         },
+        //         namaBank: {
+        //             required: true,
+        //             minlength: 3,
+        //         },
+        //         pemilikRekening: {
+        //             required: true,
+        //             lettersonly: true,
+        //         },
+        //         noRekening: {
+        //             required: true,
+        //             number: true,
+        //         },
+        //         pernyataanCheckbox: {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         namaMedia: {
+        //             remote: "Domain media tidak terregister, tidak ada SSL, cek kembali nama domain anda",
+        //         },
+        //     },
+        //     onkeyup: false,
+        // })
+
+        // jQuery("form").validate({
+        //     rules: {
+        //         namaPerusahaan: {
+        //             required: true,
+        //         },
+        //         namaMedia: {
+        //             required: true,
+        //             remote: dataNamaMedia,
+        //         },
+        //     },
+        //     messages: {
+        //         namaMedia: {
+        //             remote: "Domain media tidak ada, tidak ada SSL, cek kembali nama domain anda",
+        //         },
+        //     },
+        //     onkeyup: false,
+        // })
     </script>
 @endpush
