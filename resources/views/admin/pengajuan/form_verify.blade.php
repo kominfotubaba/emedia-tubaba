@@ -1167,10 +1167,12 @@
 @endsection
 @push('script')
     <script>
-        /**
-         * wizard
-         **/
         $(document).ready(function() {
+
+            /**
+             * wizard
+             **/
+            // $(document).ready(function() {
             function checkValidation(form) {
                 if ($('#pengajuanJenisMedia').val() == 'siber') {
                     var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#pengajuanJenisMedia').val();
@@ -1459,12 +1461,12 @@
                 e.preventDefault();
                 wizard.gotoPrev();
             });
-        });
+            // });
 
-        /**
-         * Selector
-         **/
-        $(document).ready(function() {
+            /**
+             * Selector
+             **/
+            // $(document).ready(function() {
             var urlProvinsi = "https://ibnux.github.io/data-indonesia/provinsi.json";
             var urlKabupaten = "https://ibnux.github.io/data-indonesia/kabupaten";
             var urlKecamatan = "https://ibnux.github.io/data-indonesia/kecamatan";
@@ -1715,13 +1717,12 @@
                 select2Data(urlKabupaten + '/' + alamatProvPerwakilan + '.json',
                     '#alamatKabPerwakilan', 'Pilih Kabupaten')
             });
+            // });
 
-        });
-
-        /**
-         * File UploadDropzone and send data
-         **/
-        $(document).ready(function() {
+            /**
+             * File UploadDropzone and send data
+             **/
+            // $(document).ready(function() {
             function upload_file(name, tagId) {
                 var name = new Dropzone(tagId, {
                     url: '/pengajuan/uploads',
@@ -1839,318 +1840,318 @@
             // upload_file('dropzoneLunasPBB', '#fileLunasPBB')
             upload_file('dropzoneSerfikatUkwPerwakilan', '#fileSerfikatUkwPerwakilan')
             upload_file('dropzoneAfiliasiPersPerwakilan', '#fileAfiliasiPersPerwakilan')
-        });
+            // });
 
-        function getDataCalculate() {
-            var jenis = $('#pengajuanJenisMedia').val();
-            if (jenis == 'cetak') {
-                // BADAN HUKUM
-                if ($('#verifikasiPercetakan').is(':checked')) {
-                    var verifikasiPercetakan = 10;
-                } else {
-                    var verifikasiPercetakan = 0;
-                }
-                // KUALIFIKASI MEDIA
-                if ($('#verifikasiJumlahOplahMedia').is(':checked')) {
-                    var jumlahOplahMediaCetakPerMinggu = $('#jumlahOplahMediaCetakPerMinggu option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
+            function getDataCalculate() {
+                var jenis = $('#pengajuanJenisMedia').val();
+                if (jenis == 'cetak') {
+                    // BADAN HUKUM
+                    if ($('#verifikasiPercetakan').is(':checked')) {
+                        var verifikasiPercetakan = 10;
+                    } else {
+                        var verifikasiPercetakan = 0;
+                    }
+                    // KUALIFIKASI MEDIA
+                    if ($('#verifikasiJumlahOplahMedia').is(':checked')) {
+                        var jumlahOplahMediaCetakPerMinggu = $('#jumlahOplahMediaCetakPerMinggu option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
 
-                    if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === 'lebih dari 8.000') {
-                        var verifikasiJumlahOplahMedia = 5;
-                    } else if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === '4.000 sampai 8.000') {
-                        var verifikasiJumlahOplahMedia = 3;
-                    } else if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === 'kurang dari 4.000') {
-                        var verifikasiJumlahOplahMedia = 2;
+                        if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === 'lebih dari 8.000') {
+                            var verifikasiJumlahOplahMedia = 5;
+                        } else if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === '4.000 sampai 8.000') {
+                            var verifikasiJumlahOplahMedia = 3;
+                        } else if (jumlahOplahMediaCetakPerMinggu.toLowerCase() === 'kurang dari 4.000') {
+                            var verifikasiJumlahOplahMedia = 2;
+                        } else {
+                            var verifikasiJumlahOplahMedia = 0;
+                        }
                     } else {
                         var verifikasiJumlahOplahMedia = 0;
+                        var verifikasiJumlahKontenAktif = 0;
                     }
-                } else {
-                    var verifikasiJumlahOplahMedia = 0;
-                    var verifikasiJumlahKontenAktif = 0;
-                }
 
-                var verifikasiNamaMedia = 0;
-                var verifikasiIpp = 0;
-                var verifikasiJangkauanSiarMediaEletronik = 0;
-                var verifikasiJumlahKontenAktif = 0;
-            } else if (jenis == 'elektronik') {
-                // BADAN HUKUM
-                if ($('#verifikasiIpp').is(':checked')) {
-                    var verifikasiIpp = 10;
-                } else {
+                    var verifikasiNamaMedia = 0;
                     var verifikasiIpp = 0;
-                }
-                // KUALIFIKASI MEDIA
-                if ($('#verifikasiJangkauanSiarMediaEletronik').is(':checked')) {
-                    var jenisJangkauanSiarMediaElektronik = $('#jenisJangkauanSiarMediaElektronik option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
-                    var jangkauanSiarMediaElektronik = $('#jangkauanSiarMediaElektronik option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
-                    if (jenisJangkauanSiarMediaElektronik.toLowerCase() === 'televisi') {
-                        if (jangkauanSiarMediaElektronik.toLowerCase() === 'nasional') {
-                            var verifikasiJangkauanSiarMediaEletronik = 5;
-                        } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'seluruh lampung') {
-                            var verifikasiJangkauanSiarMediaEletronik = 3;
-                        } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'minimal 5 kabupaten/kota se-lampung') {
-                            var verifikasiJangkauanSiarMediaEletronik = 2;
+                    var verifikasiJangkauanSiarMediaEletronik = 0;
+                    var verifikasiJumlahKontenAktif = 0;
+                } else if (jenis == 'elektronik') {
+                    // BADAN HUKUM
+                    if ($('#verifikasiIpp').is(':checked')) {
+                        var verifikasiIpp = 10;
+                    } else {
+                        var verifikasiIpp = 0;
+                    }
+                    // KUALIFIKASI MEDIA
+                    if ($('#verifikasiJangkauanSiarMediaEletronik').is(':checked')) {
+                        var jenisJangkauanSiarMediaElektronik = $('#jenisJangkauanSiarMediaElektronik option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
+                        var jangkauanSiarMediaElektronik = $('#jangkauanSiarMediaElektronik option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
+                        if (jenisJangkauanSiarMediaElektronik.toLowerCase() === 'televisi') {
+                            if (jangkauanSiarMediaElektronik.toLowerCase() === 'nasional') {
+                                var verifikasiJangkauanSiarMediaEletronik = 5;
+                            } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'seluruh lampung') {
+                                var verifikasiJangkauanSiarMediaEletronik = 3;
+                            } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'minimal 5 kabupaten/kota se-lampung') {
+                                var verifikasiJangkauanSiarMediaEletronik = 2;
+                            } else {
+                                var verifikasiJangkauanSiarMediaEletronik = 0;
+                            }
                         } else {
-                            var verifikasiJangkauanSiarMediaEletronik = 0;
+                            if (jangkauanSiarMediaElektronik.toLowerCase() === 'nasional') {
+                                var verifikasiJangkauanSiarMediaEletronik = 5;
+                            } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'seluruh lampung') {
+                                var verifikasiJangkauanSiarMediaEletronik = 3;
+                            } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'minimal 3 kabupaten/kota se-lampung') {
+                                var verifikasiJangkauanSiarMediaEletronik = 2;
+                            } else {
+                                var verifikasiJangkauanSiarMediaEletronik = 0;
+                            }
                         }
                     } else {
-                        if (jangkauanSiarMediaElektronik.toLowerCase() === 'nasional') {
-                            var verifikasiJangkauanSiarMediaEletronik = 5;
-                        } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'seluruh lampung') {
-                            var verifikasiJangkauanSiarMediaEletronik = 3;
-                        } else if (jangkauanSiarMediaElektronik.toLowerCase() === 'minimal 3 kabupaten/kota se-lampung') {
-                            var verifikasiJangkauanSiarMediaEletronik = 2;
-                        } else {
-                            var verifikasiJangkauanSiarMediaEletronik = 0;
-                        }
+                        var verifikasiJangkauanSiarMediaEletronik = 0;
                     }
-                } else {
-                    var verifikasiJangkauanSiarMediaEletronik = 0;
-                }
-                var verifikasiNamaMedia = 0;
-                var verifikasiPercetakan = 0;
-                var verifikasiJumlahOplahMedia = 0;
-                var verifikasiJumlahKontenAktif = 0;
-            } else if (jenis == 'siber') {
-                // DATA MEDIA
-                if ($('#verifikasiNamaMedia').is(':checked')) {
-                    var verifikasiNamaMedia = 10;
-                } else {
                     var verifikasiNamaMedia = 0;
-                }
-                // KUALIFIKASI MEDIA
-                if ($('#verifikasiJumlahKontenAktif').is(':checked')) {
-                    var jumlahKontenBeritaAktif = $('#jumlahKontenBeritaAktif option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
+                    var verifikasiPercetakan = 0;
+                    var verifikasiJumlahOplahMedia = 0;
+                    var verifikasiJumlahKontenAktif = 0;
+                } else if (jenis == 'siber') {
+                    // DATA MEDIA
+                    if ($('#verifikasiNamaMedia').is(':checked')) {
+                        var verifikasiNamaMedia = 10;
+                    } else {
+                        var verifikasiNamaMedia = 0;
+                    }
+                    // KUALIFIKASI MEDIA
+                    if ($('#verifikasiJumlahKontenAktif').is(':checked')) {
+                        var jumlahKontenBeritaAktif = $('#jumlahKontenBeritaAktif option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
 
-                    if (jumlahKontenBeritaAktif.toLowerCase() === 'lebih dari 900') {
-                        var verifikasiJumlahKontenAktif = 5;
-                    } else if (jumlahKontenBeritaAktif.toLowerCase() === 'lebih dari 600') {
-                        var verifikasiJumlahKontenAktif = 3;
-                    } else if (jumlahKontenBeritaAktif.toLowerCase() === 'lebih dari 300') {
-                        var verifikasiJumlahKontenAktif = 2;
+                        if (jumlahKontenBeritaAktif.toLowerCase() === 'lebih dari 900') {
+                            var verifikasiJumlahKontenAktif = 5;
+                        } else if (jumlahKontenBeritaAktif.toLowerCase() === 'lebih dari 600') {
+                            var verifikasiJumlahKontenAktif = 3;
+                        } else if (jumlahKontenBeritaAktif.toLowerCase() === 'lebih dari 300') {
+                            var verifikasiJumlahKontenAktif = 2;
+                        } else {
+                            var verifikasiJumlahKontenAktif = 0;
+                        }
                     } else {
                         var verifikasiJumlahKontenAktif = 0;
                     }
-                } else {
-                    var verifikasiJumlahKontenAktif = 0;
+                    var verifikasiPercetakan = 0;
+                    var verifikasiIpp = 0;
+                    var verifikasiJangkauanSiarMediaEletronik = 0;
+                    var verifikasiJumlahOplahMedia = 0;
                 }
-                var verifikasiPercetakan = 0;
-                var verifikasiIpp = 0;
-                var verifikasiJangkauanSiarMediaEletronik = 0;
-                var verifikasiJumlahOplahMedia = 0;
-            }
 
-            // BADAN HUKUM
-            if ($('#verifikasiBadanHukum').is(':checked')) {
-                var verifikasiBadanHukum = 10;
-            } else {
-                var verifikasiBadanHukum = 0;
-            }
-            if ($('#verifikasiPengesahanKemkumham').is(':checked')) {
-                var verifikasiPengesahanKemkumham = 10;
-            } else {
-                var verifikasiPengesahanKemkumham = 0;
-            }
-            if ($('#verifikasiKontakPerusahaan').is(':checked')) {
-                var verifikasiKontakPerusahaan = 10;
-            } else {
-                var verifikasiKontakPerusahaan = 0;
-            }
-            if ($('#verifikasiStatusKswp').is(':checked')) {
-                var verifikasiStatusKswp = 10;
-            } else {
-                var verifikasiStatusKswp = 0;
-            }
-            if ($('#verifikasiNpwpPerusahaan').is(':checked')) {
-                var verifikasiNpwpPerusahaan = 10;
-            } else {
-                var verifikasiNpwpPerusahaan = 0;
-            }
-            if ($('#verifikasiNib').is(':checked')) {
-                var verifikasiNib = 10;
-            } else {
-                var verifikasiNib = 0;
-            }
-            if ($('#verifikasiNoKlbi').is(':checked')) {
-                var verifikasiNoKlbi = 10;
-            } else {
-                var verifikasiNoKlbi = 0;
-            }
-            if ($('#verifikasiNoKbki').is(':checked')) {
-                var verifikasiNoKbki = 10;
-            } else {
-                var verifikasiNoKbki = 0;
-            }
+                // BADAN HUKUM
+                if ($('#verifikasiBadanHukum').is(':checked')) {
+                    var verifikasiBadanHukum = 10;
+                } else {
+                    var verifikasiBadanHukum = 0;
+                }
+                if ($('#verifikasiPengesahanKemkumham').is(':checked')) {
+                    var verifikasiPengesahanKemkumham = 10;
+                } else {
+                    var verifikasiPengesahanKemkumham = 0;
+                }
+                if ($('#verifikasiKontakPerusahaan').is(':checked')) {
+                    var verifikasiKontakPerusahaan = 10;
+                } else {
+                    var verifikasiKontakPerusahaan = 0;
+                }
+                if ($('#verifikasiStatusKswp').is(':checked')) {
+                    var verifikasiStatusKswp = 10;
+                } else {
+                    var verifikasiStatusKswp = 0;
+                }
+                if ($('#verifikasiNpwpPerusahaan').is(':checked')) {
+                    var verifikasiNpwpPerusahaan = 10;
+                } else {
+                    var verifikasiNpwpPerusahaan = 0;
+                }
+                if ($('#verifikasiNib').is(':checked')) {
+                    var verifikasiNib = 10;
+                } else {
+                    var verifikasiNib = 0;
+                }
+                if ($('#verifikasiNoKlbi').is(':checked')) {
+                    var verifikasiNoKlbi = 10;
+                } else {
+                    var verifikasiNoKlbi = 0;
+                }
+                if ($('#verifikasiNoKbki').is(':checked')) {
+                    var verifikasiNoKbki = 10;
+                } else {
+                    var verifikasiNoKbki = 0;
+                }
 
-            // DATA MEDIA
-            // console.log($('#verifikasiDewanPers option:selected').text().trim());
-            if ($('#verifikasiStatusMedia').is(':checked')) {
-                var verifikasiDewanPers = $('#verifikasiDewanPers option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
+                // DATA MEDIA
+                // console.log($('#verifikasiDewanPers option:selected').text().trim());
+                if ($('#verifikasiStatusMedia').is(':checked')) {
+                    var verifikasiDewanPers = $('#verifikasiDewanPers option:selected').text().replace(/[\r\n]+/gm, ' ').trim();
 
-                if (verifikasiDewanPers.toLowerCase() === 'terverifikasi faktual dan administratif') {
-                    var verifikasiStatusMedia = 6;
-                } else if (verifikasiDewanPers.toLowerCase() === 'terverifikasi administratif') {
-                    var verifikasiStatusMedia = 4;
+                    if (verifikasiDewanPers.toLowerCase() === 'terverifikasi faktual dan administratif') {
+                        var verifikasiStatusMedia = 6;
+                    } else if (verifikasiDewanPers.toLowerCase() === 'terverifikasi administratif') {
+                        var verifikasiStatusMedia = 4;
+                    } else {
+                        var verifikasiStatusMedia = 0;
+                    }
                 } else {
                     var verifikasiStatusMedia = 0;
                 }
-            } else {
-                var verifikasiStatusMedia = 0;
-            }
-            if ($('#verifikasiSertifikatUkwPimred').is(':checked')) {
-                var jenisSerfikatUkwPimred = $('#jenisSerfikatUkwPimred option:selected').text().replace(/[\r\n]+/gm, ' ')
-                    .trim();
-                // if (jenisSerfikatUkwPimred.toLowerCase() === 'utama') {
-                //     var verifikasiSertifikatUkwPimred = 15;
-                // } else if (jenisSerfikatUkwPimred.toLowerCase() === 'madya') {
-                //     var verifikasiSertifikatUkwPimred = 13;
-                // } else {
-                //     var verifikasiSertifikatUkwPimred = 12;
-                // }
-                if (jenisSerfikatUkwPimred.toLowerCase() === 'utama') {
-                    var verifikasiSertifikatUkwPimred = 5;
-                } else if (jenisSerfikatUkwPimred.toLowerCase() === 'madya') {
-                    var verifikasiSertifikatUkwPimred = 3;
+                if ($('#verifikasiSertifikatUkwPimred').is(':checked')) {
+                    var jenisSerfikatUkwPimred = $('#jenisSerfikatUkwPimred option:selected').text().replace(/[\r\n]+/gm, ' ')
+                        .trim();
+                    // if (jenisSerfikatUkwPimred.toLowerCase() === 'utama') {
+                    //     var verifikasiSertifikatUkwPimred = 15;
+                    // } else if (jenisSerfikatUkwPimred.toLowerCase() === 'madya') {
+                    //     var verifikasiSertifikatUkwPimred = 13;
+                    // } else {
+                    //     var verifikasiSertifikatUkwPimred = 12;
+                    // }
+                    if (jenisSerfikatUkwPimred.toLowerCase() === 'utama') {
+                        var verifikasiSertifikatUkwPimred = 5;
+                    } else if (jenisSerfikatUkwPimred.toLowerCase() === 'madya') {
+                        var verifikasiSertifikatUkwPimred = 3;
+                    } else {
+                        var verifikasiSertifikatUkwPimred = 2;
+                    }
                 } else {
-                    var verifikasiSertifikatUkwPimred = 2;
+                    var verifikasiSertifikatUkwPimred = 0;
                 }
-            } else {
-                var verifikasiSertifikatUkwPimred = 0;
-            }
-            if ($('#verifikasiAfiliasiOrganisasiMedia').is(':checked')) {
-                var afiliasiPerusahaan = $('#afiliasiPerusahaan option:selected').text().replace(/[\r\n]+/gm, ' ')
-                    .trim();
-                if (afiliasiPerusahaan.toLowerCase() === 'organisasi pers yang diakui dewan pers') {
-                    var verifikasiAfiliasiOrganisasiMedia = 7;
-                } else if (afiliasiPerusahaan.toLowerCase() === 'organisasi pers yang belum diakui dewan pers') {
-                    var verifikasiAfiliasiOrganisasiMedia = 3;
+                if ($('#verifikasiAfiliasiOrganisasiMedia').is(':checked')) {
+                    var afiliasiPerusahaan = $('#afiliasiPerusahaan option:selected').text().replace(/[\r\n]+/gm, ' ')
+                        .trim();
+                    if (afiliasiPerusahaan.toLowerCase() === 'organisasi pers yang diakui dewan pers') {
+                        var verifikasiAfiliasiOrganisasiMedia = 7;
+                    } else if (afiliasiPerusahaan.toLowerCase() === 'organisasi pers yang belum diakui dewan pers') {
+                        var verifikasiAfiliasiOrganisasiMedia = 3;
+                    } else {
+                        var verifikasiAfiliasiOrganisasiMedia = 0;
+                    }
                 } else {
                     var verifikasiAfiliasiOrganisasiMedia = 0;
                 }
-            } else {
-                var verifikasiAfiliasiOrganisasiMedia = 0;
-            }
-            if ($('#verifikasiDomisiliRedaksiMedia').is(':checked')) {
-                var domisiliRedaksiMedia = $('#domisiliRedaksiMedia option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
+                if ($('#verifikasiDomisiliRedaksiMedia').is(':checked')) {
+                    var domisiliRedaksiMedia = $('#domisiliRedaksiMedia option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
 
-                if (domisiliRedaksiMedia.toLowerCase() === 'di tulang bawang barat') {
-                    var verifikasiDomisiliRedaksiMedia = 5;
-                } else if (domisiliRedaksiMedia.toLowerCase() === 'di luar tulang bawang barat, di prov.lampung') {
-                    var verifikasiDomisiliRedaksiMedia = 3;
+                    if (domisiliRedaksiMedia.toLowerCase() === 'di tulang bawang barat') {
+                        var verifikasiDomisiliRedaksiMedia = 5;
+                    } else if (domisiliRedaksiMedia.toLowerCase() === 'di luar tulang bawang barat, di prov.lampung') {
+                        var verifikasiDomisiliRedaksiMedia = 3;
+                    } else {
+                        var verifikasiDomisiliRedaksiMedia = 2;
+                    }
                 } else {
-                    var verifikasiDomisiliRedaksiMedia = 2;
+                    var verifikasiDomisiliRedaksiMedia = 0;
                 }
-            } else {
-                var verifikasiDomisiliRedaksiMedia = 0;
-            }
-            if ($('#verifikasiKanalMedia').is(':checked')) {
-                var kanalKhusus = $('#kanalKhusus option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
+                if ($('#verifikasiKanalMedia').is(':checked')) {
+                    var kanalKhusus = $('#kanalKhusus option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
 
-                if (kanalKhusus.toLowerCase() === 'khusus') {
-                    var verifikasiKanalMedia = 6;
-                } else if (kanalKhusus.toLowerCase() === 'ada') {
-                    var verifikasiKanalMedia = 4;
+                    if (kanalKhusus.toLowerCase() === 'khusus') {
+                        var verifikasiKanalMedia = 6;
+                    } else if (kanalKhusus.toLowerCase() === 'ada') {
+                        var verifikasiKanalMedia = 4;
+                    } else {
+                        var verifikasiKanalMedia = 0;
+                    }
                 } else {
                     var verifikasiKanalMedia = 0;
                 }
-            } else {
-                var verifikasiKanalMedia = 0;
-            }
-            if ($('#verifikasiRekeningBank').is(':checked')) {
-                var verifikasiRekeningBank = 0;
-            } else {
-                var verifikasiRekeningBank = 0;
-            }
-
-            // KUALIFIKASI MEDIA
-            if ($('#verifikasiTahunBerdiriMedia').is(':checked')) {
-                var tahunBerdiriMedia = $('#tahunBerdiriMedia option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
-
-                if (tahunBerdiriMedia.toLowerCase() <= '2010') {
-                    var verifikasiTahunBerdiriMedia = 5;
-                } else if (tahunBerdiriMedia.toLowerCase() >= '2011' && tahunBerdiriMedia.toLowerCase() <= '2020') {
-                    var verifikasiTahunBerdiriMedia = 3;
+                if ($('#verifikasiRekeningBank').is(':checked')) {
+                    var verifikasiRekeningBank = 0;
                 } else {
-                    var verifikasiTahunBerdiriMedia = 2;
+                    var verifikasiRekeningBank = 0;
                 }
-            } else {
-                var verifikasiTahunBerdiriMedia = 0;
+
+                // KUALIFIKASI MEDIA
+                if ($('#verifikasiTahunBerdiriMedia').is(':checked')) {
+                    var tahunBerdiriMedia = $('#tahunBerdiriMedia option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
+
+                    if (tahunBerdiriMedia.toLowerCase() <= '2010') {
+                        var verifikasiTahunBerdiriMedia = 5;
+                    } else if (tahunBerdiriMedia.toLowerCase() >= '2011' && tahunBerdiriMedia.toLowerCase() <= '2020') {
+                        var verifikasiTahunBerdiriMedia = 3;
+                    } else {
+                        var verifikasiTahunBerdiriMedia = 2;
+                    }
+                } else {
+                    var verifikasiTahunBerdiriMedia = 0;
+                }
+
+                // PERWAKILAN MEDIA
+                // if ($('#verifikasiDataPerwakilan').is(':checked')) {
+                //     var verifikasiDataPerwakilan = 15;
+                // } else {
+                //     var verifikasiDataPerwakilan = 0;
+                // }
+                // if ($('#verifikasiSertifikatUkwPerwakilan').is(':checked')) {
+                //     var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
+
+                //     if (jenisSerfikatUkwPerwakilan.toLowerCase() == 'utama') {
+                //         var verifikasiSertifikatUkwPerwakilan = 12;
+                //     } else if (jenisSerfikatUkwPerwakilan.toLowerCase() == 'madya') {
+                //         var verifikasiSertifikatUkwPerwakilan = 11;
+                //     } else if (jenisSerfikatUkwPerwakilan.toLowerCase() == 'muda') {
+                //         var verifikasiSertifikatUkwPerwakilan = 10;
+                //     } else {
+                //         var verifikasiSertifikatUkwPerwakilan = 0;
+                //     }
+                // } else {
+                //     var verifikasiSertifikatUkwPerwakilan = 0;
+                // }
+                // if ($('#verifikasiAfiliasiOrganisasiPerwakilan').is(':checked')) {
+                //     var verifikasiAfiliasiOrganisasiPerwakilan = 5;
+                // } else {
+                //     var verifikasiAfiliasiOrganisasiPerwakilan = 0;
+                // }
+                // if ($('#verifikasiAlamatPerwakilan').is(':checked')) {
+                //     var verifikasiAlamatPerwakilan = 0;
+                // } else {
+                //     var verifikasiAlamatPerwakilan = 0;
+                // }
+
+                let hasil = verifikasiBadanHukum +
+                    verifikasiPengesahanKemkumham +
+                    verifikasiKontakPerusahaan +
+                    verifikasiStatusKswp +
+                    verifikasiNpwpPerusahaan +
+                    verifikasiNib +
+                    verifikasiNoKlbi +
+                    verifikasiNoKbki +
+                    verifikasiPercetakan +
+                    verifikasiIpp +
+                    verifikasiNamaMedia +
+                    verifikasiStatusMedia +
+                    verifikasiSertifikatUkwPimred +
+                    verifikasiAfiliasiOrganisasiMedia +
+                    verifikasiDomisiliRedaksiMedia +
+                    verifikasiKanalMedia +
+                    verifikasiRekeningBank +
+                    verifikasiTahunBerdiriMedia +
+                    verifikasiJumlahKontenAktif +
+                    verifikasiJangkauanSiarMediaEletronik +
+                    verifikasiJumlahOplahMedia
+                // PERWAKILAN MEDIA
+                // +verifikasiDataPerwakilan +
+                // verifikasiSertifikatUkwPerwakilan +
+                // verifikasiAfiliasiOrganisasiPerwakilan;
+
+                $('#poinDalamNilai').text(hasil);
+                if (hasil <= '107') {
+                    var grade = $('#poinDalamGrade').text('C');
+                } else if ((hasil >= '108') && (hasil <= '126')) {
+                    var grade = $('#poinDalamGrade').text('B');
+                } else if (hasil >= '127') {
+                    var grade = $('#poinDalamGrade').text('A');
+                }
             }
 
-            // PERWAKILAN MEDIA
-            // if ($('#verifikasiDataPerwakilan').is(':checked')) {
-            //     var verifikasiDataPerwakilan = 15;
-            // } else {
-            //     var verifikasiDataPerwakilan = 0;
-            // }
-            // if ($('#verifikasiSertifikatUkwPerwakilan').is(':checked')) {
-            //     var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan option:selected').text().replaceAll(/[\r\n]+/gm, ' ').trim();
+            getDataCalculate()
 
-            //     if (jenisSerfikatUkwPerwakilan.toLowerCase() == 'utama') {
-            //         var verifikasiSertifikatUkwPerwakilan = 12;
-            //     } else if (jenisSerfikatUkwPerwakilan.toLowerCase() == 'madya') {
-            //         var verifikasiSertifikatUkwPerwakilan = 11;
-            //     } else if (jenisSerfikatUkwPerwakilan.toLowerCase() == 'muda') {
-            //         var verifikasiSertifikatUkwPerwakilan = 10;
-            //     } else {
-            //         var verifikasiSertifikatUkwPerwakilan = 0;
-            //     }
-            // } else {
-            //     var verifikasiSertifikatUkwPerwakilan = 0;
-            // }
-            // if ($('#verifikasiAfiliasiOrganisasiPerwakilan').is(':checked')) {
-            //     var verifikasiAfiliasiOrganisasiPerwakilan = 5;
-            // } else {
-            //     var verifikasiAfiliasiOrganisasiPerwakilan = 0;
-            // }
-            // if ($('#verifikasiAlamatPerwakilan').is(':checked')) {
-            //     var verifikasiAlamatPerwakilan = 0;
-            // } else {
-            //     var verifikasiAlamatPerwakilan = 0;
-            // }
-
-            let hasil = verifikasiBadanHukum +
-                verifikasiPengesahanKemkumham +
-                verifikasiKontakPerusahaan +
-                verifikasiStatusKswp +
-                verifikasiNpwpPerusahaan +
-                verifikasiNib +
-                verifikasiNoKlbi +
-                verifikasiNoKbki +
-                verifikasiPercetakan +
-                verifikasiIpp +
-                verifikasiNamaMedia +
-                verifikasiStatusMedia +
-                verifikasiSertifikatUkwPimred +
-                verifikasiAfiliasiOrganisasiMedia +
-                verifikasiDomisiliRedaksiMedia +
-                verifikasiKanalMedia +
-                verifikasiRekeningBank +
-                verifikasiTahunBerdiriMedia +
-                verifikasiJumlahKontenAktif +
-                verifikasiJangkauanSiarMediaEletronik +
-                verifikasiJumlahOplahMedia
-            // PERWAKILAN MEDIA
-            // +verifikasiDataPerwakilan +
-            // verifikasiSertifikatUkwPerwakilan +
-            // verifikasiAfiliasiOrganisasiPerwakilan;
-
-            $('#poinDalamNilai').text(hasil);
-            if (hasil <= '107') {
-                var grade = $('#poinDalamGrade').text('C');
-            } else if ((hasil >= '108') && (hasil <= '126')) {
-                var grade = $('#poinDalamGrade').text('B');
-            } else if (hasil >= '127') {
-                var grade = $('#poinDalamGrade').text('A');
-            }
-        }
-
-        getDataCalculate()
-
-        /**
-         * button
-         **/
-        $(document).ready(function() {
+            /**
+             * button
+             **/
+            // $(document).ready(function() {
             $('#tolakModal').on('hidden.bs.modal', function() {
                 // do something…
                 $("#tolakModal .modal-body .data-verifikasi").html('');
@@ -2383,6 +2384,7 @@
                 var folder = $(this).parent().attr('id').toLowerCase();
                 window.open('/tmp/uploads/' + folder + '/' + file, '_blank');
             })
+            // });
         });
     </script>
 @endpush
