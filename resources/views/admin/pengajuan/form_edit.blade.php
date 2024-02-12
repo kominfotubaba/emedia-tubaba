@@ -1171,55 +1171,53 @@
             eachAlamat(urlProvinsi, $('#dataAlamatProvPerwakilan').val(), '#alamatProvPerwakilan')
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
 
-            $(document).ready(function() {
-                setTimeout(
-                    function() {
-                        //do something special
-                        var urlProvPerusahaan = urlKabupaten + '/' + $(
-                                '#alamatProvPerusahaan option:selected').val() +
-                            '.json';
-                        var urlProvPerwakilan = urlKabupaten + '/' + $(
-                                '#alamatProvPerusahaan option:selected').val() +
-                            '.json';
-                        eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
-                            '#alamatKabPerusahaan');
-                        select2Data(urlProvPerusahaan,
-                            '#alamatKabPerusahaan', 'Pilih Kabupaten');
+            setTimeout(
+                function() {
+                    //do something special
+                    var urlProvPerusahaan = urlKabupaten + '/' + $(
+                            '#alamatProvPerusahaan option:selected').val() +
+                        '.json';
+                    var urlProvPerwakilan = urlKabupaten + '/' + $(
+                            '#alamatProvPerusahaan option:selected').val() +
+                        '.json';
+                    eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
+                        '#alamatKabPerusahaan');
+                    select2Data(urlProvPerusahaan,
+                        '#alamatKabPerusahaan', 'Pilih Kabupaten');
 
-                        eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
-                            '#alamatKabPerwakilan');
-                        select2Data(urlProvPerwakilan,
-                            '#alamatKabPerwakilan', 'Pilih Kabupaten');
-                    }, 800);
+                    eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
+                        '#alamatKabPerwakilan');
+                    select2Data(urlProvPerwakilan,
+                        '#alamatKabPerwakilan', 'Pilih Kabupaten');
+                }, 800);
 
-                var kanalKhusus = $('#kanalKhusus').val();
-                var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
-                var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
-                var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
+            var kanalKhusus = $('#kanalKhusus').val();
+            var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
+            var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
+            var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
 
-                if (domisiliRedaksiMedia == 'tulang bawang barat') {
-                    $('.fileDomisiliRedaksiMedia').prop('hidden', false)
-                } else {
-                    $('.fileDomisiliRedaksiMedia').prop('hidden', true)
-                }
-                if (afiliasiPerusahaan == 'tidak terafiliasi') {
-                    $('.fileAfiliasiPerusahaan').prop('hidden', true)
-                } else {
-                    $('.fileAfiliasiPerusahaan').prop('hidden', false)
-                }
-                if (kanalKhusus == 'tidak ada') {
-                    $('.fileKanalKhusus').prop('hidden', true)
-                } else {
-                    $('.fileKanalKhusus').prop('hidden', false)
-                }
-                if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
-                    $('.serfikatUkwPerwakilan').prop('hidden', true)
-                    $('#serfikatUkwPerwakilan').prop('required', false)
-                } else {
-                    $('.serfikatUkwPerwakilan').prop('hidden', false)
-                    $('#serfikatUkwPerwakilan').prop('required', true)
-                }
-            });
+            if (domisiliRedaksiMedia == 'tulang bawang barat') {
+                $('.fileDomisiliRedaksiMedia').prop('hidden', false)
+            } else {
+                $('.fileDomisiliRedaksiMedia').prop('hidden', true)
+            }
+            if (afiliasiPerusahaan == 'tidak terafiliasi') {
+                $('.fileAfiliasiPerusahaan').prop('hidden', true)
+            } else {
+                $('.fileAfiliasiPerusahaan').prop('hidden', false)
+            }
+            if (kanalKhusus == 'tidak ada') {
+                $('.fileKanalKhusus').prop('hidden', true)
+            } else {
+                $('.fileKanalKhusus').prop('hidden', false)
+            }
+            if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
+                $('.serfikatUkwPerwakilan').prop('hidden', true)
+                $('#serfikatUkwPerwakilan').prop('required', false)
+            } else {
+                $('.serfikatUkwPerwakilan').prop('hidden', false)
+                $('#serfikatUkwPerwakilan').prop('required', true)
+            }
 
 
             // window.onload = (event) => {
@@ -1325,11 +1323,13 @@
                     $('.fileAfiliasiPerusahaan').attr("hidden", false);
                 }
             });
+
             $('#domisiliRedaksiMedia').select2({
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Domisili Redaksi Media'
             });
-            $("#domisiliRedaksiMedia").change(function() {
+
+            $(document).on('change', '#domisiliRedaksiMedia', function() {
                 var value = $(this).val();
                 if (value == 'tulang bawang barat') {
                     $('.fileDomisiliRedaksiMedia').attr("hidden", false);
@@ -1337,6 +1337,9 @@
                     $('.fileDomisiliRedaksiMedia').attr("hidden", true);
                 }
             });
+            // $("#domisiliRedaksiMedia").change(function() {
+            // });
+
             $('#kanalKhusus').select2({
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Ketersediaan Kanal/Program Khusus'
@@ -1431,7 +1434,7 @@
                 }
             });
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            $("#alamatProvPerwakilan").change(function() {
+            $(document).on('change', '#alamatProvPerwakilan', function() {
                 $('#alamatKabPerwakilan').show()
                 var alamatProvPerwakilan = $(this).val()
                 // console.log($('#alamatProvPerusahaan option:selected').text());
@@ -1441,6 +1444,9 @@
                 select2Data(urlKabupaten + '/' + alamatProvPerwakilan + '.json',
                     '#alamatKabPerwakilan', 'Pilih Kabupaten')
             });
+            // $("#alamatProvPerwakilan").change(function() {
+            // });
+
             // $("#alamatKabPerwakilan").change(function() {
             //     $('#alamatKecPerwakilan').show()
             //     var alamatKabPerwakilan = $(this).val()
@@ -1855,205 +1861,203 @@
         /**
          * validator
          **/
-        $(document).ready(function() {
-            // method validasi
-            // if ($('#jenisPengajuan').val() == 'siber') {
-            //     var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan').val();
-            // } else {
-            //     var dataNamaMedia = true;
-            // }
-            // jQuery.validator.addMethod("lettersonly", function(value, element) {
-            //     return this.optional(element) || /^[a-z\s]+$/i.test(value);
-            // }, "Tidak boleh menggunakan angka maupun karakter");
-            // jQuery.validator.addMethod("nospace", function(value, element) {
-            //     return value.indexOf(" ") < 0 && value != "";
-            // }, "Spasi tidak diperbolehkan");
+        // method validasi
+        // if ($('#jenisPengajuan').val() == 'siber') {
+        //     var dataNamaMedia = "/pengajuan/checkurl?jenispengajuan=" + $('#jenisPengajuan').val();
+        // } else {
+        //     var dataNamaMedia = true;
+        // }
+        // jQuery.validator.addMethod("lettersonly", function(value, element) {
+        //     return this.optional(element) || /^[a-z\s]+$/i.test(value);
+        // }, "Tidak boleh menggunakan angka maupun karakter");
+        // jQuery.validator.addMethod("nospace", function(value, element) {
+        //     return value.indexOf(" ") < 0 && value != "";
+        // }, "Spasi tidak diperbolehkan");
 
-            // default massage
-            // jQuery.extend(jQuery.validator.messages, {
-            //     required: "Harus diisi.",
-            //     remote: "Please fix this field.",
-            //     email: "Please enter a valid email address.",
-            //     url: "Please enter a valid URL.",
-            //     date: "Please enter a valid date.",
-            //     dateISO: "Please enter a valid date (ISO).",
-            //     number: "Please enter a valid number.",
-            //     digits: "Please enter only digits.",
-            //     creditcard: "Please enter a valid credit card number.",
-            //     equalTo: "Please enter the same value again.",
-            //     accept: "Please enter a value with a valid extension.",
-            //     maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
-            //     minlength: jQuery.validator.format("Please enter at least {0} characters."),
-            //     rangelength: jQuery.validator.format(
-            //         "Please enter a value between {0} and {1} characters long."),
-            //     range: jQuery.validator.format("Please enter a value between {0} and {1}."),
-            //     max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
-            //     min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
-            // });
+        // default massage
+        // jQuery.extend(jQuery.validator.messages, {
+        //     required: "Harus diisi.",
+        //     remote: "Please fix this field.",
+        //     email: "Please enter a valid email address.",
+        //     url: "Please enter a valid URL.",
+        //     date: "Please enter a valid date.",
+        //     dateISO: "Please enter a valid date (ISO).",
+        //     number: "Please enter a valid number.",
+        //     digits: "Please enter only digits.",
+        //     creditcard: "Please enter a valid credit card number.",
+        //     equalTo: "Please enter the same value again.",
+        //     accept: "Please enter a value with a valid extension.",
+        //     maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+        //     minlength: jQuery.validator.format("Please enter at least {0} characters."),
+        //     rangelength: jQuery.validator.format(
+        //         "Please enter a value between {0} and {1} characters long."),
+        //     range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+        //     max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+        //     min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+        // });
 
-            // validasi
-            // jQuery.validator.setDefaults({
-            //     debug: true,
-            // });
+        // validasi
+        // jQuery.validator.setDefaults({
+        //     debug: true,
+        // });
 
-            // jQuery(".validasi").validate({
-            //     rules: {
-            //         namaPerusahaan: {
-            //             required: true,
-            //             lettersonly: true,
-            //         },
-            //         namaPimred: {
-            //             required: true,
-            //             lettersonly: true,
-            //             minlength: 3,
-            //         },
-            //         alamatPerusahaan: {
-            //             required: true,
-            //             minlength: 5,
-            //         },
-            //         alamatProvPerusahaan: {
-            //             required: true,
-            //         },
-            //         alamatKabPerusahaan: {
-            //             required: true,
-            //         },
-            //         alamatKecPerusahaan: {
-            //             required: true,
-            //         },
-            //         alamatKelPerusahaan: {
-            //             required: true,
-            //         },
-            //         tlpnPerusahaan: {
-            //             required: true,
-            //             number: true,
-            //             minlength: 11,
-            //         },
-            //         emailPerusahaan: {
-            //             required: true,
-            //             email: true,
-            //         },
-            //         npwpPerusahaan: {
-            //             required: true,
-            //             minlength: 15,
-            //         },
-            //         aktaPerusahaan: {
-            //             required: true,
-            //             number: true,
-            //         },
-            //         kumhamPerusahaan: {
-            //             required: true,
-            //         },
-            //         wartawanKompetenPerusahaan: {
-            //             required: true,
-            //             number: true
-            //         },
-            //         // opsional harian
-            //         namaPercetakan: {
-            //             required: true,
-            //             minlength: 5,
-            //         },
-            //         alamatPercetakan: {
-            //             required: true,
-            //             minlength: 5,
-            //         },
-            //         alamatProvPerwakilan: {
-            //             required: true,
-            //         },
-            //         alamatKabPerwakilan: {
-            //             required: true,
-            //         },
-            //         alamatKecPerwakilan: {
-            //             required: true,
-            //         },
-            //         alamatKelPerwakilan: {
-            //             required: true,
-            //         },
-            //         // perwakilan
-            //         namaMedia: {
-            //             required: true,
-            //             remote: dataNamaMedia,
-            //         },
-            //         namaBiroPerwakilan: {
-            //             required: true,
-            //             lettersonly: true,
-            //             minlength: 3,
-            //         },
-            //         alamatPerwakilan: {
-            //             required: true,
-            //             minlength: 3,
-            //         },
-            //         tlpnPerwakilan: {
-            //             required: true,
-            //             number: true,
-            //             minlength: 11,
-            //         },
-            //         emailPerwakilan: {
-            //             required: true,
-            //             email: true,
-            //         },
-            //         ktpPerwakilan: {
-            //             required: true,
-            //             number: true,
-            //             nospace: true,
-            //             // minlength: 16
-            //         },
-            //         kkPerwakilan: {
-            //             required: true,
-            //             number: true,
-            //             nospace: true,
-            //             // minlength: 16
-            //         },
-            //         npwpPerwakilan: {
-            //             required: true,
-            //             minlength: 15,
-            //         },
-            //         kompetensiPerwakilan: {
-            //             required: true,
-            //         },
-            //         jenisRekening: {
-            //             required: true,
-            //         },
-            //         namaBank: {
-            //             required: true,
-            //             minlength: 3,
-            //         },
-            //         pemilikRekening: {
-            //             required: true,
-            //             lettersonly: true,
-            //         },
-            //         noRekening: {
-            //             required: true,
-            //             number: true,
-            //         },
-            //         pernyataanCheckbox: {
-            //             required: true,
-            //         },
-            //     },
-            //     messages: {
-            //         namaMedia: {
-            //             remote: "Domain media tidak terregister, tidak ada SSL, cek kembali nama domain anda",
-            //         },
-            //     },
-            //     onkeyup: false,
-            // })
+        // jQuery(".validasi").validate({
+        //     rules: {
+        //         namaPerusahaan: {
+        //             required: true,
+        //             lettersonly: true,
+        //         },
+        //         namaPimred: {
+        //             required: true,
+        //             lettersonly: true,
+        //             minlength: 3,
+        //         },
+        //         alamatPerusahaan: {
+        //             required: true,
+        //             minlength: 5,
+        //         },
+        //         alamatProvPerusahaan: {
+        //             required: true,
+        //         },
+        //         alamatKabPerusahaan: {
+        //             required: true,
+        //         },
+        //         alamatKecPerusahaan: {
+        //             required: true,
+        //         },
+        //         alamatKelPerusahaan: {
+        //             required: true,
+        //         },
+        //         tlpnPerusahaan: {
+        //             required: true,
+        //             number: true,
+        //             minlength: 11,
+        //         },
+        //         emailPerusahaan: {
+        //             required: true,
+        //             email: true,
+        //         },
+        //         npwpPerusahaan: {
+        //             required: true,
+        //             minlength: 15,
+        //         },
+        //         aktaPerusahaan: {
+        //             required: true,
+        //             number: true,
+        //         },
+        //         kumhamPerusahaan: {
+        //             required: true,
+        //         },
+        //         wartawanKompetenPerusahaan: {
+        //             required: true,
+        //             number: true
+        //         },
+        //         // opsional harian
+        //         namaPercetakan: {
+        //             required: true,
+        //             minlength: 5,
+        //         },
+        //         alamatPercetakan: {
+        //             required: true,
+        //             minlength: 5,
+        //         },
+        //         alamatProvPerwakilan: {
+        //             required: true,
+        //         },
+        //         alamatKabPerwakilan: {
+        //             required: true,
+        //         },
+        //         alamatKecPerwakilan: {
+        //             required: true,
+        //         },
+        //         alamatKelPerwakilan: {
+        //             required: true,
+        //         },
+        //         // perwakilan
+        //         namaMedia: {
+        //             required: true,
+        //             remote: dataNamaMedia,
+        //         },
+        //         namaBiroPerwakilan: {
+        //             required: true,
+        //             lettersonly: true,
+        //             minlength: 3,
+        //         },
+        //         alamatPerwakilan: {
+        //             required: true,
+        //             minlength: 3,
+        //         },
+        //         tlpnPerwakilan: {
+        //             required: true,
+        //             number: true,
+        //             minlength: 11,
+        //         },
+        //         emailPerwakilan: {
+        //             required: true,
+        //             email: true,
+        //         },
+        //         ktpPerwakilan: {
+        //             required: true,
+        //             number: true,
+        //             nospace: true,
+        //             // minlength: 16
+        //         },
+        //         kkPerwakilan: {
+        //             required: true,
+        //             number: true,
+        //             nospace: true,
+        //             // minlength: 16
+        //         },
+        //         npwpPerwakilan: {
+        //             required: true,
+        //             minlength: 15,
+        //         },
+        //         kompetensiPerwakilan: {
+        //             required: true,
+        //         },
+        //         jenisRekening: {
+        //             required: true,
+        //         },
+        //         namaBank: {
+        //             required: true,
+        //             minlength: 3,
+        //         },
+        //         pemilikRekening: {
+        //             required: true,
+        //             lettersonly: true,
+        //         },
+        //         noRekening: {
+        //             required: true,
+        //             number: true,
+        //         },
+        //         pernyataanCheckbox: {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         namaMedia: {
+        //             remote: "Domain media tidak terregister, tidak ada SSL, cek kembali nama domain anda",
+        //         },
+        //     },
+        //     onkeyup: false,
+        // })
 
-            // jQuery("form").validate({
-            //     rules: {
-            //         namaPerusahaan: {
-            //             required: true,
-            //         },
-            //         namaMedia: {
-            //             required: true,
-            //             remote: dataNamaMedia,
-            //         },
-            //     },
-            //     messages: {
-            //         namaMedia: {
-            //             remote: "Domain media tidak ada, tidak ada SSL, cek kembali nama domain anda",
-            //         },
-            //     },
-            //     onkeyup: false,
-            // })
-        });
+        // jQuery("form").validate({
+        //     rules: {
+        //         namaPerusahaan: {
+        //             required: true,
+        //         },
+        //         namaMedia: {
+        //             required: true,
+        //             remote: dataNamaMedia,
+        //         },
+        //     },
+        //     messages: {
+        //         namaMedia: {
+        //             remote: "Domain media tidak ada, tidak ada SSL, cek kembali nama domain anda",
+        //         },
+        //     },
+        //     onkeyup: false,
+        // })
     </script>
 @endpush
