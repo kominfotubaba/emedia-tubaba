@@ -1588,7 +1588,8 @@
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Jenis Sertifikat UKW Pimred'
             });
-            $("#jenisSerfikatUkwPimred").change(function() {
+            $(document).on('change', '#jenisSerfikatUkwPimred', function() {
+                // $("#jenisSerfikatUkwPimred").change(function() {
                 var value = $(this).val();
                 if (value == 'belum') {
                     $('#serfikatUkwPerwakilan').prop("required", true);
@@ -1600,7 +1601,9 @@
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Jenis Afiliasi Organisasi Pers Media'
             });
-            $("#afiliasiPerusahaan").change(function() {
+
+            $(document).on('change', '#afiliasiPerusahaan', function() {
+                // $("#afiliasiPerusahaan").change(function() {
                 var value = $(this).val();
                 if (value == 'tidak terafiliasi') {
                     $('.fileAfiliasiPerusahaan').attr("hidden", true);
@@ -1612,7 +1615,8 @@
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Domisili Redaksi Media'
             });
-            $("#domisiliRedaksiMedia").change(function() {
+
+            $(document).on('change', '#domisiliRedaksiMedia', function() {
                 var value = $(this).val();
                 console.log(value);
                 if ((value == 'tulang bawang barat') || (value == 'di tulang bawang barat')) {
@@ -1625,7 +1629,9 @@
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Ketersediaan Kanal/Program Khusus'
             });
-            $("#kanalKhusus").change(function() {
+
+            $(document).on('change', '#kanalKhusus', function() {
+            // $("#kanalKhusus").change(function() {
                 var value = $(this).val();
                 if (value == 'tidak ada') {
                     $('.fileKanalKhusus').attr("hidden", true);
@@ -1649,7 +1655,9 @@
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Jenis Media Elektronik'
             });
-            $("#jenisJangkauanSiarMediaElektronik").change(function() {
+
+            $(document).on('change', '#jenisJangkauanSiarMediaElektronik', function() {
+                // $("#jenisJangkauanSiarMediaElektronik").change(function() {
                 var value = $(this).val();
                 console.log(value);
                 if (value == 'tv') {
@@ -1696,7 +1704,8 @@
                 minimumResultsForSearch: Infinity,
                 placeholder: 'Pilih Sertifikat Kompetensi Dewan Pers Perwakilan'
             });
-            $("#jenisSerfikatUkwPerwakilan").change(function() {
+            $(document).on('change', '#jenisSerfikatUkwPerwakilan', function() {
+            // $("#jenisSerfikatUkwPerwakilan").change(function() {
                 var value = $(this).val();
                 if (value == 'belum' || value == 'belum ada sertifikat') {
                     $('.serfikatUkwPerwakilan').prop("hidden", true);
@@ -1707,7 +1716,8 @@
                 }
             });
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            $("#alamatProvPerwakilan").change(function() {
+            $(document).on('change', '#alamatProvPerwakilan', function() {
+            // $("#alamatProvPerwakilan").change(function() {
                 $('#alamatKabPerwakilan').show()
                 var alamatProvPerwakilan = $(this).val()
                 // console.log($('#alamatProvPerusahaan option:selected').text());
