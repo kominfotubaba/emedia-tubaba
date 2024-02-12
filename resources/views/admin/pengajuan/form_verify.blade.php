@@ -1518,55 +1518,57 @@
             select2Data(urlProvinsi, '#alamatProvPerusahaan', 'Pilih Provinsi')
             eachAlamat(urlProvinsi, $('#dataAlamatProvPerwakilan').val(), '#alamatProvPerwakilan')
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
-            window.onload = (event) => {
-                setTimeout(
-                    function() {
-                        //do something special
-                        var urlProvPerusahaan = urlKabupaten + '/' + $(
-                                '#alamatProvPerusahaan option:selected').val() +
-                            '.json';
-                        var urlProvPerwakilan = urlKabupaten + '/' + $(
-                                '#alamatProvPerusahaan option:selected').val() +
-                            '.json';
-                        eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
-                            '#alamatKabPerusahaan');
-                        select2Data(urlProvPerusahaan,
-                            '#alamatKabPerusahaan', 'Pilih Kabupaten');
+            // window.onload = (event) => {
+            setTimeout(
+                function() {
+                    //do something special
+                    var urlProvPerusahaan = urlKabupaten + '/' + $(
+                            '#alamatProvPerusahaan option:selected').val() +
+                        '.json';
+                    var urlProvPerwakilan = urlKabupaten + '/' + $(
+                            '#alamatProvPerusahaan option:selected').val() +
+                        '.json';
+                    eachAlamat(urlProvPerusahaan, $('#dataAlamatKabPerusahaan').val(),
+                        '#alamatKabPerusahaan');
+                    select2Data(urlProvPerusahaan,
+                        '#alamatKabPerusahaan', 'Pilih Kabupaten');
 
-                        eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
-                            '#alamatKabPerwakilan');
-                        select2Data(urlProvPerwakilan,
-                            '#alamatKabPerwakilan', 'Pilih Kabupaten');
-                    }, 800);
+                    eachAlamat(urlProvPerwakilan, $('#dataAlamatKabPerwakilan').val(),
+                        '#alamatKabPerwakilan');
+                    select2Data(urlProvPerwakilan,
+                        '#alamatKabPerwakilan', 'Pilih Kabupaten');
+                }, 800
+            );
 
-                var kanalKhusus = $('#kanalKhusus').val();
-                var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
-                var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
-                var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
 
-                if ((domisiliRedaksiMedia == 'tulang bawang barat') || (domisiliRedaksiMedia == 'di tulang bawang barat')) {
-                    $('.fileDomisiliRedaksiMedia').prop('hidden', false)
-                } else {
-                    $('.fileDomisiliRedaksiMedia').prop('hidden', true)
-                }
-                if (afiliasiPerusahaan == 'tidak terafiliasi') {
-                    $('.fileAfiliasiPerusahaan').prop('hidden', true)
-                } else {
-                    $('.fileAfiliasiPerusahaan').prop('hidden', false)
-                }
-                if (kanalKhusus == 'tidak ada') {
-                    $('.fileKanalKhusus').prop('hidden', true)
-                } else {
-                    $('.fileKanalKhusus').prop('hidden', false)
-                }
-                if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
-                    $('.serfikatUkwPerwakilan').prop('hidden', true)
-                    $('#serfikatUkwPerwakilan').prop('required', false)
-                } else {
-                    $('.serfikatUkwPerwakilan').prop('hidden', false)
-                    $('#serfikatUkwPerwakilan').prop('required', true)
-                }
-            };
+            var kanalKhusus = $('#kanalKhusus').val();
+            var domisiliRedaksiMedia = $('#domisiliRedaksiMedia').val();
+            var afiliasiPerusahaan = $('#afiliasiPerusahaan').val();
+            var jenisSerfikatUkwPerwakilan = $('#jenisSerfikatUkwPerwakilan').val();
+
+            if ((domisiliRedaksiMedia == 'tulang bawang barat') || (domisiliRedaksiMedia == 'di tulang bawang barat')) {
+                $('.fileDomisiliRedaksiMedia').prop('hidden', false)
+            } else {
+                $('.fileDomisiliRedaksiMedia').prop('hidden', true)
+            }
+            if (afiliasiPerusahaan == 'tidak terafiliasi') {
+                $('.fileAfiliasiPerusahaan').prop('hidden', true)
+            } else {
+                $('.fileAfiliasiPerusahaan').prop('hidden', false)
+            }
+            if (kanalKhusus == 'tidak ada') {
+                $('.fileKanalKhusus').prop('hidden', true)
+            } else {
+                $('.fileKanalKhusus').prop('hidden', false)
+            }
+            if (jenisSerfikatUkwPerwakilan == 'belum ada sertifikat') {
+                $('.serfikatUkwPerwakilan').prop('hidden', true)
+                $('#serfikatUkwPerwakilan').prop('required', false)
+            } else {
+                $('.serfikatUkwPerwakilan').prop('hidden', false)
+                $('#serfikatUkwPerwakilan').prop('required', true)
+            }
+            // };
 
             $('#statusKswp').select2({
                 minimumResultsForSearch: Infinity,
@@ -1631,7 +1633,7 @@
             });
 
             $(document).on('change', '#kanalKhusus', function() {
-            // $("#kanalKhusus").change(function() {
+                // $("#kanalKhusus").change(function() {
                 var value = $(this).val();
                 if (value == 'tidak ada') {
                     $('.fileKanalKhusus').attr("hidden", true);
@@ -1705,7 +1707,7 @@
                 placeholder: 'Pilih Sertifikat Kompetensi Dewan Pers Perwakilan'
             });
             $(document).on('change', '#jenisSerfikatUkwPerwakilan', function() {
-            // $("#jenisSerfikatUkwPerwakilan").change(function() {
+                // $("#jenisSerfikatUkwPerwakilan").change(function() {
                 var value = $(this).val();
                 if (value == 'belum' || value == 'belum ada sertifikat') {
                     $('.serfikatUkwPerwakilan').prop("hidden", true);
@@ -1717,7 +1719,7 @@
             });
             select2Data(urlProvinsi, '#alamatProvPerwakilan', 'Pilih Provinsi')
             $(document).on('change', '#alamatProvPerwakilan', function() {
-            // $("#alamatProvPerwakilan").change(function() {
+                // $("#alamatProvPerwakilan").change(function() {
                 $('#alamatKabPerwakilan').show()
                 var alamatProvPerwakilan = $(this).val()
                 // console.log($('#alamatProvPerusahaan option:selected').text());
