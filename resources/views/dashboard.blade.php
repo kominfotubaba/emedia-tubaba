@@ -9,13 +9,13 @@
                     <div class="col-12 col-md-7">
                         <h1 class="mb-0 pb-0 display-4" id="title">Dashboard</h1>
                         <!-- <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
-                                                                                                        <ul class="breadcrumb pt-0">
-                                                                                                        <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
-                                                                                                        <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
-                                                                                                        <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
-                                                                                                        <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
-                                                                                                        </ul>
-                                                                                                    </nav> -->
+                                                                                                                <ul class="breadcrumb pt-0">
+                                                                                                                <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                                                                                                                <li class="breadcrumb-item"><a href="Interface.html">Interface</a></li>
+                                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.html">Content</a></li>
+                                                                                                                <li class="breadcrumb-item"><a href="Interface.Content.Menu.html">Menu</a></li>
+                                                                                                                </ul>
+                                                                                                            </nav> -->
                     </div>
                     <!-- Title End -->
                 </div>
@@ -94,11 +94,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Sehubungan Dengan proses verifikasi yang sedang berlangsung,
-                    ditemukan bahwa banyak Penyedia (Media) baik cetak,online,elektronik belum melengkapi data dukung (file Pdf)
-                    dengan benar. Untuk itu diharapkan penyedia (media) dapat memeriksa dan memastikan telah
-                    mengupload data dukung (file Pdf) atau meng-upload ulang file pdf dengan benar sampai dengan tgl 9 Februari 2024.
-                    Demikian Informasi ini kami sampaikan atas kerjasamanya diucapkan terima kasih
+                    Silahkan Memperbaiki file/berkas/informasi media untuk media cetak sesuai dengan notofikasi email yg dikirim.
+                    Masa perbaikan dibuka sampai dengan tanggal 4 MARET 2024.
                     <br>
                     Direkomendasikan menggunakan browser chrome, edge, dan mozila firefox terupdate
                 </div>
