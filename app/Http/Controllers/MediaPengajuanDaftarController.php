@@ -230,7 +230,7 @@ class MediaPengajuanDaftarController extends Controller
                 'email' => $mail->email,
                 'keterangan' => 'Mohon Untuk Mengupload Ulang Bukti Dukung Pengajuan Media',
                 'detail_keterangan' => ' ',
-                'waktu_perbaikan' => '9 Februari 2024'
+                'waktu_perbaikan' => '4 Maret 2024'
             ];
 
             Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
