@@ -177,7 +177,7 @@ class MediaPengajuanDaftarController extends Controller
                 } else {
                     $nilai = '';
                 }
-                return '<span class="badge m-2">' . $nilai . '</span>';
+                return $nilai;
             })
             ->rawColumns(['action', 'keterangan', 'grade'])
             ->make(true);
