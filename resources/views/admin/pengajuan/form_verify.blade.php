@@ -2142,19 +2142,26 @@
                     verifikasiTahunBerdiriMedia +
                     verifikasiJumlahKontenAktif +
                     verifikasiJangkauanSiarMediaEletronik +
-                    verifikasiJumlahOplahMedia+
-                    31
+                    verifikasiJumlahOplahMedia +
+                    32
                 // PERWAKILAN MEDIA
                 // +verifikasiDataPerwakilan +
                 // verifikasiSertifikatUkwPerwakilan +
                 // verifikasiAfiliasiOrganisasiPerwakilan;
 
                 $('#poinDalamNilai').text(hasil);
-                if (hasil <= '107') {
+                // if (hasil <= '107') {
+                //     var grade = $('#poinDalamGrade').text('C');
+                // } else if ((hasil >= '108') && (hasil <= '126')) {
+                //     var grade = $('#poinDalamGrade').text('B');
+                // } else if (hasil >= '127') {
+                //     var grade = $('#poinDalamGrade').text('A');
+                // }
+                if (hasil <= '140') {
                     var grade = $('#poinDalamGrade').text('C');
-                } else if ((hasil >= '108') && (hasil <= '126')) {
+                } else if ((hasil >= '141') && (hasil <= '160')) {
                     var grade = $('#poinDalamGrade').text('B');
-                } else if (hasil >= '127') {
+                } else if (hasil >= '161') {
                     var grade = $('#poinDalamGrade').text('A');
                 }
             }
