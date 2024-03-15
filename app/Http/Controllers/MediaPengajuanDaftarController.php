@@ -171,7 +171,13 @@ class MediaPengajuanDaftarController extends Controller
                 return '<span class="badge m-2 ' . $bg . '">' . $keterangan . '</span>';
             })
             ->addColumn('nilai', function ($data) {
-                return '<span class="badge m-2">' . $data->nilai . '</span>';
+                if (Auth::user()->role == 'admin') {
+                    # code...
+                    $nilai = $data->nilai;
+                } else {
+                    $nilai = '';
+                }
+                return '<span class="badge m-2">' . $nilai . '</span>';
             })
             ->rawColumns(['action', 'keterangan', 'nilai'])
             ->make(true);
