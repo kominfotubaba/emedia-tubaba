@@ -170,7 +170,7 @@ class MediaPengajuanDaftarController extends Controller
                 }
                 return '<span class="badge m-2 ' . $bg . '">' . $keterangan . '</span>';
             })
-            ->addColumn('nilai', function ($data) {
+            ->addColumn('grade', function ($data) {
                 if (Auth::user()->role == 'admin') {
                     # code...
                     $nilai = $data->nilai;
@@ -179,7 +179,7 @@ class MediaPengajuanDaftarController extends Controller
                 }
                 return '<span class="badge m-2">' . $nilai . '</span>';
             })
-            ->rawColumns(['action', 'keterangan', 'nilai'])
+            ->rawColumns(['action', 'keterangan', 'grade'])
             ->make(true);
     }
 

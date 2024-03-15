@@ -180,8 +180,8 @@
                         name: 'keterangan'
                     },
                     {
-                        data: 'nilai',
-                        name: 'nilai'
+                        data: 'grade',
+                        name: 'grade'
                     },
                     {
                         data: 'action',
