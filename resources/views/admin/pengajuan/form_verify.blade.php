@@ -2144,8 +2144,7 @@
                     verifikasiTahunBerdiriMedia +
                     verifikasiJumlahKontenAktif +
                     verifikasiJangkauanSiarMediaEletronik +
-                    verifikasiJumlahOplahMedia +
-                    37
+                    verifikasiJumlahOplahMedia + '37'
                 // PERWAKILAN MEDIA
                 // +verifikasiDataPerwakilan +
                 // verifikasiSertifikatUkwPerwakilan +
