@@ -2049,7 +2049,8 @@
                     if (domisiliRedaksiMedia.toLowerCase() === 'di tulang bawang barat') {
                         var verifikasiDomisiliRedaksiMedia = 5;
                     } else if (domisiliRedaksiMedia.toLowerCase() === 'di luar tulang bawang barat, di prov.lampung') {
-                        var verifikasiDomisiliRedaksiMedia = 3;
+                        // var verifikasiDomisiliRedaksiMedia = 3;
+                        var verifikasiDomisiliRedaksiMedia = 5;
                     } else {
                         var verifikasiDomisiliRedaksiMedia = 2;
                     }
@@ -2062,7 +2063,8 @@
                     if (kanalKhusus.toLowerCase() === 'khusus') {
                         var verifikasiKanalMedia = 6;
                     } else if (kanalKhusus.toLowerCase() === 'ada') {
-                        var verifikasiKanalMedia = 4;
+                        // var verifikasiKanalMedia = 4;
+                        var verifikasiKanalMedia = 6;
                     } else {
                         var verifikasiKanalMedia = 0;
                     }
@@ -2143,7 +2145,7 @@
                     verifikasiJumlahKontenAktif +
                     verifikasiJangkauanSiarMediaEletronik +
                     verifikasiJumlahOplahMedia +
-                    32
+                    35
                 // PERWAKILAN MEDIA
                 // +verifikasiDataPerwakilan +
                 // verifikasiSertifikatUkwPerwakilan +
