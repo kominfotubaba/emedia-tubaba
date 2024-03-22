@@ -771,7 +771,7 @@ class MediaPengajuanController extends Controller
             'new_media_pengajuans.tahun_pengajuan as tahun'
         )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
 
-        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit') {
+        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit' || $data_media['status'] == 'tolak') {
             if ($param == 'terima') {
                 # code...
                 // data diterima
