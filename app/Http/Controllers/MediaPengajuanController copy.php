@@ -570,7 +570,6 @@ class MediaPengajuanController extends Controller
         }
 
         $pengajuan_no = $request->pengajuan_no;
-        $param = $request->param;
         $keterangan = $request->keterangan;
         $status = $request->status;
 
@@ -584,7 +583,7 @@ class MediaPengajuanController extends Controller
             'media_pengajuans.status as status'
         )->join('users', 'users.id', '=', 'media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
 
-        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit' || $data_media['status'] == 'tolak') {
+        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit') {
             if ($status == 'terima') {
                 // data diterima
                 $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil diterima';
@@ -607,9 +606,8 @@ class MediaPengajuanController extends Controller
                     'nama' => $data_media['namamedia'],
                     'keterangan' => $dataSendMail
                 ];
-                if ($param == 'tolak') {
-                    Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
-                }
+
+                Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
             }
 
 
