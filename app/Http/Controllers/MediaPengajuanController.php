@@ -771,7 +771,7 @@ class MediaPengajuanController extends Controller
             'new_media_pengajuans.tahun_pengajuan as tahun'
         )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')->where('pengajuan_no', $pengajuan_no)->first();
 
-        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit' || $data_media['status'] == 'tolak') {
+        if ($data_media['status'] == 'ajukan' || $data_media['status'] == 'edit') {
             if ($param == 'terima') {
                 # code...
                 // data diterima
@@ -801,7 +801,7 @@ class MediaPengajuanController extends Controller
                             'keterangan' => 'Data Input Tidak Dapat Terdefinisi',
                             'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
                         ];
-                        Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
+                        // Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
                         $data_keterangan = 'Data Input Tidak Terdefinisi';
                         $stated = 'update';
                         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' Tidak Dapat Dinilai dan dikirim ke email ' . $data_media['useremail'];
@@ -818,21 +818,12 @@ class MediaPengajuanController extends Controller
                             'detail_keterangan' => $note,
                             'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
                         ];
-                        if ($param == 'tolak') {
-                            # code...
-                            Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
-                            $data_keterangan = 'data ditolak silahkan cek data: <br>' . mapped_implode(', <br>', $keterangan);
-                            $stated = 'update';
-                            $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil ditolak dan dikirim ke email ' . $data_media['useremail'];
-                            $icon = 'success';
-                            $title = 'data berhasil ditolak';
-                            $keterangan_final = $data_keterangan . '<br><br>note <br>' . $note;
-                        }
+                        Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
                         $data_keterangan = 'data ditolak silahkan cek data: <br>' . mapped_implode(', <br>', $keterangan);
                         $stated = 'update';
-                        $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' Tidak Dapat Dinilai ';
+                        $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil ditolak dan dikirim ke email ' . $data_media['useremail'];
                         $icon = 'success';
-                        $title = 'data Tidak Dapat Dinilai';
+                        $title = 'data berhasil ditolak';
                         $keterangan_final = $data_keterangan . '<br><br>note <br>' . $note;
                     }
                 } else {
