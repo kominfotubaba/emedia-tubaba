@@ -804,7 +804,7 @@ class MediaPengajuanController extends Controller
                         // Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
                         $data_keterangan = 'Data Input Tidak Terdefinisi';
                         $stated = 'update';
-                        $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' Tidak Dapat Dinilai dan dikirim ke email ' . $data_media['useremail'];
+                        $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' Tidak Dapat Dinilai';
                         $icon = 'success';
                         $title = 'Data Tidak Terdefinisi';
                         $keterangan_final = $data_keterangan . '<br><br>note <br>' . $note;
