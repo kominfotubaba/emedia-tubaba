@@ -55,6 +55,7 @@ class OrderController extends Controller
         }
         $data_media = new_media_pengajuan::select('pengajuan_no', 'namaMedia')
             ->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')
+            ->where('status', 'terima')
             ->where('tahun_pengajuan', $tahun)
             ->get();
         if (Auth::user()->role == 'admin') {
