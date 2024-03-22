@@ -798,7 +798,8 @@ class MediaPengajuanController extends Controller
                             'jenis' => $data_media['jenis'],
                             'no' => $data_media['idpengajuan'],
                             'nama' => $data_media['namamedia'],
-                            'keterangan' => 'Data Input Tidak Dapat Terdefinisi',
+                            'keterangan' => 'Data Input Tidak Dapat Terdefinisi ' . $dataSendMail,
+                            'detail_keterangan' => $note,
                             'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
                         ];
                         // Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
