@@ -22,9 +22,7 @@ return new class extends Migration
             $table->integer('pengajuan_edit');
             $table->integer('verifikasi');
             $table->integer('data');
-            // $table->integer('murni')->default('0');
-            // $table->integer('perubahan')->default('0');
-            // $table->integer('total')->default('0');
+            $table->enum('publish', ['0', '1'])->default('0');
             $table->timestamps();
             $table->softDeletes();
         });

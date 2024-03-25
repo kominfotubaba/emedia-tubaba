@@ -171,7 +171,8 @@ class MediaPengajuanDaftarController extends Controller
                 return '<span class="badge m-2 ' . $bg . '">' . $keterangan . '</span>';
             })
             ->addColumn('grade', function ($data) {
-                if (Auth::user()->role == 'admin') {
+                $publish = tahun::where('tahun', $data->tahun_pengajuan)->first();
+                if (Auth::user()->role == 'admin' || $publish->publish == 1) {
                     # code...
                     $nilai = $data->nilai;
                 } else {
