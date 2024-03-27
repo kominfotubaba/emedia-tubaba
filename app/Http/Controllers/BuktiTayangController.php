@@ -368,7 +368,7 @@ class BuktiTayangController extends Controller
     public function print($no_order)
     {
         $data = Order::leftJoin('bukti_tayangs', 'orders.no_order', '=', 'bukti_tayangs.no_order')
-            ->join('media_pengajuans', 'orders.no_pengajuan', '=', 'new_media_pengajuans.pengajuan_no')
+            ->join('new_media_pengajuans', 'orders.no_pengajuan', '=', 'new_media_pengajuans.pengajuan_no')
             ->select(
                 'orders.no_order as nomor_order',
                 'orders.tahun as tahun_order',
