@@ -407,7 +407,7 @@ class BuktiTayangController extends Controller
             ->get();
 
         // $data = $no_order;
-        dd($data);
+        // dd($data);
         return view('admin.bukti.beritaacara', [
             'data' => $data,
         ]);
