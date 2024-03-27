@@ -22,50 +22,43 @@
                             @foreach ($data as $d)
                                 <div class="mb-3">
                                     <label for="tahun" class="form-label">Nomor Order</label>
-                                    <input type="text" class="form-control" id="nomorOrder" name="nomor_order"
-                                        value="{{ $d->nomor_order }}" readonly>
+                                    <input type="text" class="form-control" id="nomorOrder" name="nomor_order" value="{{ $d->nomor_order }}" readonly>
                                     @error('nomor_order')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="tahun" class="form-label">Nama Media</label>
-                                    <input type="text" class="form-control" id="namaMedia" name="nama_media"
-                                        value="{{ $d->nama_media }}" readonly>
+                                    <input type="text" class="form-control" id="namaMedia" name="nama_media" value="{{ $d->nama_media }}" readonly>
                                     @error('nama_media')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="tahun" class="form-label">Nama Paket</label>
-                                    <input type="text" class="form-control" id="namaPaket" name="nama_paket"
-                                        value="{{ $d->paket }}" readonly>
+                                    <input type="text" class="form-control" id="namaPaket" name="nama_paket" value="{{ $d->paket }}" readonly>
                                     @error('nama_paket')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="tahun" class="form-label">Detail Paket</label>
-                                    <input type="text" class="form-control" id="detailPaket" name="detail_paket"
-                                        value="{{ $d->detail_paket }}" readonly>
+                                    <input type="text" class="form-control" id="detailPaket" name="detail_paket" value="{{ $d->detail_paket }}" readonly>
                                     @error('detail_paket')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="tahun" class="form-label">Jumlah Paket</label>
-                                    <input type="number" class="form-control" id="jumlahPaket" name="jumlah_paket"
-                                        value="{{ $d->volume }}" readonly>
+                                    <input type="number" class="form-control" id="jumlahPaket" name="jumlah_paket" value="{{ $d->volume }}" readonly>
                                     @error('jumlah_paket')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="tahun" class="form-label">Keterangan</label>
-                                    <input type="text" class="form-control" id="keterangan" name="keterangan"
-                                        value="{{ old('keterangan') ?? $d->keterangan }}" readonly>
-                                    <input type="text" class="form-control" id="filePdf" name="file_pdf"
-                                        value="{{ old('file_pdf') ?? $d->data_files }}" hidden>
+                                    <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{ old('keterangan') ?? $d->keterangan }}" readonly>
+                                    <input type="text" class="form-control" id="filePdf" name="file_pdf" value="{{ old('file_pdf') ?? $d->data_files }}" hidden>
                                     @error('keterangan')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -75,11 +68,8 @@
                                         <label for="tahun" class="form-label">File PDF</label>
                                         <br>
                                         <a href='/tmp/bukti_tayang/{{ $d->data_files }}'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                                fill="currentColor" class="bi bi-file-earmark-text-fill"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                                                <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
                                             </svg>
                                         </a>
                                     </div>
@@ -107,7 +97,6 @@
 @push('script')
     <script>
         //
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

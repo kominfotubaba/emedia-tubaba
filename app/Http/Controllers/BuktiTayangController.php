@@ -30,7 +30,9 @@ class BuktiTayangController extends Controller
     {
         //
         $tahun = $request->segment(2);
-        return view('admin.bukti.bukti_tayang_detail', ['tahun' => $tahun]);
+        return view('admin.bukti.bukti_tayang_detail', [
+            'tahun' => $tahun
+        ]);
     }
 
     /**
@@ -86,6 +88,7 @@ class BuktiTayangController extends Controller
             ->where('bukti_tayangs.no_order', $no_order)
             ->orderByDesc('bukti_tayangs.created_at')
             ->get();
+
         return view('admin.bukti.bukti_tayang_form', [
             'tahun' => $data[0]->tahun ?? null,
             'data' => $data
@@ -365,7 +368,7 @@ class BuktiTayangController extends Controller
     public function print($no_order)
     {
         $data = Order::leftJoin('bukti_tayangs', 'orders.no_order', '=', 'bukti_tayangs.no_order')
-            ->join('media_pengajuans', 'orders.no_pengajuan', '=', 'media_pengajuans.pengajuan_no')
+            ->join('media_pengajuans', 'orders.no_pengajuan', '=', 'new_media_pengajuans.pengajuan_no')
             ->select(
                 'orders.no_order as nomor_order',
                 'orders.tahun as tahun_order',
@@ -403,6 +406,8 @@ class BuktiTayangController extends Controller
             ->where('orders.no_order', $no_order)
             ->get();
 
+        // $data = $no_order;
+        dd($data);
         return view('admin.bukti.beritaacara', [
             'data' => $data,
         ]);
