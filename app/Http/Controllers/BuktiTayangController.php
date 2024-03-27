@@ -397,7 +397,7 @@ class BuktiTayangController extends Controller
                 'bukti_tayangs.bendahara as bendahara',
                 'bukti_tayangs.bendahara_nip as bendahara_nip',
                 'bukti_tayangs.admin as admin',
-                'new_media_pengajuans.alamatPerusahaan',
+                'new_media_pengajuans.alamatPerusahaan as alamat_perusahaan',
                 'new_media_pengajuans.namaBank as bank',
                 'new_media_pengajuans.pemilikRekening as pemilik_rekening',
                 'new_media_pengajuans.noRekening as no_rek',
@@ -406,6 +406,8 @@ class BuktiTayangController extends Controller
             ->where('orders.no_order', $no_order)
             ->get();
 
+        // $data = $no_order;
+        dd($data);
         return view('admin.bukti.beritaacara', [
             'data' => $data,
         ]);
