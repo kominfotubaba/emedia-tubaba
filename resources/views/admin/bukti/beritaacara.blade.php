@@ -567,7 +567,7 @@
                                 <td class="col-print-1"></td>
                                 <td class="col-print-2">Jabatan</td>
                                 <td class="col-print-1">:</td>
-                                <td class="col-print-8">Kuasa Pengguna Anggaran
+                                <td class="col-print-8">Pengguna Anggaran
                                 </td>
                             </tr>
                             <tr class="lh-1">
@@ -631,7 +631,7 @@
                 </div>
 
                 <div class="px-4">
-                    <p style="text-align: justify;"><strong>Pihak Pertama</strong> atas nama Kuasa Pengguna Anggaran
+                    <p style="text-align: justify;"><strong>Pihak Pertama</strong> atas nama Pengguna Anggaran
                         Dinas
                         Komunikasi dan Informatika Tulang Bawang Barat telah melakukan pembayaran Kepada
                         <strong>Pihak Kedua</strong> berupa Uang Pengganti dalam bentuk transfer atas pekerjaan
@@ -691,7 +691,7 @@
                                             PIHAK KESATU
                                         </strong>
                                         <br>
-                                        Kuasa Pengguna Anggaran,
+                                        Pengguna Anggaran,
                                     </p>
                                     <div class="">
                                         <br>
@@ -911,7 +911,7 @@
                         <p class="text-center">
                             PANARAGAN,
                             <br>
-                            Kuasa Pengguna Anggaran
+                            Pengguna Anggaran
                         </p>
                         <br>
                         <br>
