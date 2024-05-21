@@ -800,7 +800,8 @@ class MediaPengajuanController extends Controller
                             'nama' => $data_media['namamedia'],
                             'keterangan' => 'Data Input Tidak Dapat Terdefinisi ' . $dataSendMail,
                             'detail_keterangan' => $note,
-                            'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+                            // 'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+                            'waktu_perbaikan' => '-'
                         ];
                         // Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
                         $data_keterangan = 'Data Input Tidak Terdefinisi';
@@ -817,9 +818,10 @@ class MediaPengajuanController extends Controller
                             'nama' => $data_media['namamedia'],
                             'keterangan' => $dataSendMail,
                             'detail_keterangan' => $note,
-                            'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+                            // 'waktu_perbaikan' => '5 Februari 2024 s/d 9 Februari 2024'
+                            'waktu_perbaikan' => '-'
                         ];
-                        Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
+                        // Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
                         $data_keterangan = 'data ditolak silahkan cek data: <br>' . mapped_implode(', <br>', $keterangan);
                         $stated = 'update';
                         $pesan = 'data dengan nomor pengajuan: ' . $pengajuan_no . ' berhasil ditolak dan dikirim ke email ' . $data_media['useremail'];
@@ -858,6 +860,58 @@ class MediaPengajuanController extends Controller
             'icon' => $icon,
             'title' => $title,
             'tahun' => $data_media['tahun']
+        ]);
+    }
+
+    public function send_mail(Request $request)
+    {
+        $pengajuan_no = $request->no;
+        $data_media = new_media_pengajuan::select(
+            'new_media_pengajuans.id_user',
+            'users.id',
+            'new_media_pengajuans.pengajuan_no as idpengajuan',
+            'new_media_pengajuans.jenis_media as jenis',
+            'new_media_pengajuans.namaMedia as namamedia',
+            'users.email as useremail',
+            'new_media_pengajuans.status as status',
+            'new_media_pengajuans.tahun_pengajuan as tahun',
+            'new_media_pengajuans.keterangan as keterangan'
+        )->join('users', 'users.id', '=', 'new_media_pengajuans.id_user')
+            ->where('pengajuan_no', $pengajuan_no)
+            ->first();
+
+        function implodes($glue, $array, $symbol = '. ')
+        {
+            return implode(
+                $glue,
+                array_map(
+                    function ($k, $v) use ($symbol) {
+                        return $k . $symbol . $v;
+                    },
+                    array_keys($array),
+                    array_values($array)
+                )
+            );
+        }
+
+        $mailDatas = [
+            'jenis' => $data_media['jenis'],
+            'no' => $data_media['idpengajuan'],
+            'nama' => $data_media['namamedia'],
+            'keterangan' => $data_media->keterangan,
+            'detail_keterangan' => '',
+            'waktu_perbaikan' => '-'
+        ];
+        Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
+
+        $pesan = 'Data Dengan Nomor Pengajuan: ' . $pengajuan_no . ' Dikirim Ke Email ' . $data_media['namamedia'];
+        $icon = 'success';
+        $title = 'Data Terkirim';
+
+        return response()->json([
+            'massage' => $pesan,
+            'icon' => $icon,
+            'title' => $title,
         ]);
     }
 }

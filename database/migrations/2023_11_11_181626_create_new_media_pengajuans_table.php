@@ -142,6 +142,7 @@ return new class extends Migration
             $table->longText('keterangan')->nullable();
             $table->string('tahun_pengajuan');
             $table->enum('buka_edit', ['buka', 'tidak'])->default('tidak');
+            $table->enum('send_mail', ['0', '1'])->default('0');
             $table->timestamps();
             $table->softDeletes();
         });

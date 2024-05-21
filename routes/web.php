@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/verifikasi/{no_pengajuan}', [MediaPengajuanController::class, 'show_data_verify'])->name('pengajuan.show_data');
         Route::put('/verifikasi', [MediaPengajuanController::class, 'verifikasi'])->name('verifikasi.put');
         Route::post('/verifikasi', [MediaPengajuanController::class, 'verifikasi'])->name('verifikasi.post');
+        Route::post('/send_mail', [MediaPengajuanController::class, 'send_mail']);
         Route::put('/edit/{no_pengajuan}', [MediaPengajuanDaftarController::class, 'edit']);
     });
 

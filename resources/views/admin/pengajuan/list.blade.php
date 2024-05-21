@@ -337,5 +337,27 @@
                 }
             });
         });
+
+        $(document).on('click', '.sendMail', function() {
+            var noPengajuan = $(this).data('id');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "post",
+                url: "/pengajuan/send_mail?no=" + noPengajuan,
+                data: {
+                    pengajuan_no: noPengajuan,
+                },
+                success: function(response) {
+                    // $("main").load("/pengajuan/edit/" + noPengajuan);
+                    // window.open("/pengajuan/edit/" + noPengajuan, "_parent")
+                    $('#tbDaftarPengajuan').DataTable().ajax.reload(null, false);
+                }
+            });
+        });
     </script>
 @endpush
