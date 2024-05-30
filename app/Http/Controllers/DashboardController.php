@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\media_pengajuan;
 use App\Models\tahun;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,5 +27,38 @@ class DashboardController extends Controller
         $pengajuan_cek = media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
 
         return view('dashboard', ['pengajuan_buka' => $tahun_hitung, 'pengajuan_data' => $pengajuan_cek]);
+    }
+
+    public function show()
+    {
+        $n = Auth::user();
+        // dd($n);
+        $data = User::where('id', $n->id)->first();
+
+        return view('dashtest', ['data' => $n]);
+    }
+
+    public function edit()
+    {
+        $n = Auth::user();
+        $data = User::where('id', $n->id)->first();
+        return view('dashtest', ['data' => $n]);
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->id;
+        $username = $request->username;
+        $role = $request->role;
+        $data = [
+            'name' => $username,
+            'role' => $role,
+        ];
+        if ($id) {
+            # code...
+            $user = User::where('id', Auth::user()->id)->update($data);
+        } else {
+            $user = User::where('id', $id)->update($data);
+        }
     }
 }
