@@ -514,7 +514,7 @@ class OrderController extends Controller
                     $icon = 'success';
                     $title  = 'Email Terkirim';
                     $text = 'Email Berhasil Di kirimkan Ke Media';
-                    Mail::to($data_order[0]->email)->send(new OrderMailPbj($mailDatas));
+                    // Mail::to($data_order[0]->email)->send(new OrderMailPbj($mailDatas));
                 }
             }
         } elseif ($status == 'nego') {
