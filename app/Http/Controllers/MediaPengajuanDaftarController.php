@@ -243,12 +243,14 @@ class MediaPengajuanDaftarController extends Controller
                 'no' => $dataUsers->pengajuan_no,
                 'nama' => $dataUsers->namaMedia,
                 'email' => $mail->email,
-                'keterangan' => 'Mohon Untuk Mengupload Ulang Bukti Dukung Pengajuan Media',
+                // 'keterangan' => 'Mohon Untuk Mengupload Ulang Bukti Dukung Pengajuan Media',
+                'keterangan' => '',
                 'detail_keterangan' => ' ',
-                'waktu_perbaikan' => '4 Maret 2024'
+                'waktu_perbaikan' => ' ',
+                // 'waktu_perbaikan' => '4 Maret 2024'
             ];
 
-            Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
+            // Mail::to($mail->email)->send(new notifVerifikasiTolak($mailDatas));
             // Mail::to('andreperiozaherpa@gmail.com')->send(new notifVerifikasiTolak($mailDatas));
 
             $update = new_media_pengajuan::where('pengajuan_no', $pengajuan_no)->update([
