@@ -28,37 +28,4 @@ class DashboardController extends Controller
 
         return view('dashboard', ['pengajuan_buka' => $tahun_hitung, 'pengajuan_data' => $pengajuan_cek]);
     }
-
-    public function show()
-    {
-        $n = Auth::user();
-        // dd($n);
-        $data = User::where('id', $n->id)->first();
-
-        return view('dashtest', ['data' => $n]);
-    }
-
-    public function edit()
-    {
-        $n = Auth::user();
-        $data = User::where('id', $n->id)->first();
-        return view('dashtest', ['data' => $n]);
-    }
-
-    public function update(Request $request)
-    {
-        $id = $request->id;
-        $username = $request->username;
-        $role = $request->role;
-        $data = [
-            'name' => $username,
-            'role' => $role,
-        ];
-        if ($id) {
-            # code...
-            $user = User::where('id', Auth::user()->id)->update($data);
-        } else {
-            $user = User::where('id', $id)->update($data);
-        }
-    }
 }

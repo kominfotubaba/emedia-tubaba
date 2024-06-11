@@ -902,7 +902,7 @@ class MediaPengajuanController extends Controller
             'detail_keterangan' => '',
             'waktu_perbaikan' => '-'
         ];
-        Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
+        // Mail::to($data_media['useremail'])->send(new notifVerifikasiTolak($mailDatas));
 
         $pesan = 'Data Dengan Nomor Pengajuan: ' . $pengajuan_no . ' Dikirim Ke Email ' . $data_media['namamedia'];
         $icon = 'success';

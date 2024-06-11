@@ -35,9 +35,7 @@ Route::get('/data-verifikasi', [HomeController::class, 'data_verifikasi']);
 Route::get('/data-all', [HomeController::class, 'data_all']);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    // Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/dashboard', [DashboardController::class, 'edit']);
-    Route::post('/dashboard/update', [DashboardController::class, 'update']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
     /**
      * pengajuan
