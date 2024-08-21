@@ -567,9 +567,7 @@
                             </p>
 
                             <p class="mb-2" style="text-align: justify;">
-                                (2) PIHAK KEDUA menyampaikan laporan pelaksanaan pekerjaan kepada PIHAK PERTAMA dalam
-                                bentuk
-                                <i>softcopy</i> melalui Aplikasi E-Media. Dalam batas waktu paling lambat 14 hari kerja, Apabila pihak kedua tidak menyampaikan bukti tayang tersebut maka secara otomatis pekerjaan tersebut akan batal.
+                                (2) PIHAK KEDUA menyampaikan laporan pelaksanaan pekerjaan kepada PIHAK PERTAMA dalam bentuk softcopy melalui Aplikasi E-Media dan hardcopy kepada Dinas Komunikasi dan Informatika dalam batas waktu paling lambat 30 hari kalender sejak tanggal Surat Pesanan ini di tandatangani, Apabila pihak kedua tidak menyampaikan bukti tayang tersebut dalam kurun waktu yang telah disepakati, maka pekerjaan tersebut akan batal dan Surat Pesanan ini dinyatakan tidak berlaku serta tidak dapat dilakukan proses pembayaran.
                             </p>
                             <p style="text-align: justify;">
                                 (3) PIHAK PERTAMA hanya dapat melakukan pembayaran kepada PIHAK KEDUA berdasarkan
