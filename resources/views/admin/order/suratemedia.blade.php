@@ -569,7 +569,7 @@
                             <p class="mb-2" style="text-align: justify;">
                                 (2) PIHAK KEDUA menyampaikan laporan pelaksanaan pekerjaan kepada PIHAK PERTAMA dalam
                                 bentuk
-                                <i>softcopy</i> melalui Aplikasi E-Media.
+                                <i>softcopy</i> melalui Aplikasi E-Media. Dalam batas waktu paling lambat 14 hari kerja, Apabila pihak kedua tidak menyampaikan bukti tayang tersebut maka secara otomatis pekerjaan tersebut akan batal.
                             </p>
                             <p style="text-align: justify;">
                                 (3) PIHAK PERTAMA hanya dapat melakukan pembayaran kepada PIHAK KEDUA berdasarkan
