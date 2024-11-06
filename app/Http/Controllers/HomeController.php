@@ -70,28 +70,28 @@ class HomeController extends Controller
             # code...
             return DataTables()->of($data)
                 ->addColumn('penanggung_jawab', function ($data) {
-                    return null;
+                    return $data->namaPenanggungJawab;
                 })
                 ->addColumn('surat_pernyataan_pimred', function ($data) {
-                    return 'lihat';
+                    return '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/filesuratpernyataanpimred/' . $data->fileSuratPernyataanPimred . '" class="btn btn-info">Lihat</a>';
                 })
                 ->addColumn('alamat_kabupaten', function ($data) {
-                    return null;
+                    return $data->alamatKabPerusahaan;
                 })
                 ->addColumn('alamat_provinsi', function ($data) {
-                    return null;
+                    return $data->alamatProvPerusahaan;
                 })
                 ->addColumn('status_kswp', function ($data) {
-                    return null;
+                    return $data->statusKswp;
                 })
                 ->addColumn('nib_perusahaan', function ($data) {
-                    return null;
+                    return $data->nibPerusahaan;
                 })
                 ->addColumn('klbi_perusahaan', function ($data) {
-                    return null;
+                    return $data->noKlbi;
                 })
                 ->addColumn('kbki_perusahaan', function ($data) {
-                    return null;
+                    return $data->noKbki;
                 })
                 ->addColumn('izin_ipp_perusahaan', function ($data) {
                     return $data->file_izin_ipp ?? null;
