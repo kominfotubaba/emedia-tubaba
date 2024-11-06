@@ -130,7 +130,7 @@ class HomeController extends Controller
                 })
                 ->addColumn('kompetensi_perwakilan', function ($data) {
                     if ($data->fileSerfikatUkwPerwakilan) {
-                        $sertifikat = '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/fileSerfikatUkwPerwakilan/' . $data->fileSerfikatUkwPerwakilan . '" class="btn btn-info">Lihat</a>';
+                        $sertifikat = '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwperwakilan/' . $data->fileSerfikatUkwPerwakilan . '" class="btn btn-info">Lihat</a>';
                     } else {
                         $sertifikat = '';
                     }
