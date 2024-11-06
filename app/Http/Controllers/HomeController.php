@@ -36,25 +36,25 @@ class HomeController extends Controller
             # code...
             return DataTables()->of($data)
                 ->addColumn('tahun_berdiri', function ($data) {
-                    return null;
+                    return $data->tahunBerdiriMedia;
                 })
                 ->addColumn('status_verifikasi', function ($data) {
-                    return null;
+                    return $data->verifikasiDewanPers;
                 })
                 ->addColumn('sertifikat_pimred', function ($data) {
-                    return null;
+                    return $data->jenisSerfikatUkwPimred;
                 })
                 ->addColumn('no_sertifikat_pimred', function ($data) {
-                    return null;
+                    return  $data->serfikatUkwPimred;
                 })
                 ->addColumn('afiliasi_media', function ($data) {
-                    return null;
+                    return $data->afiliasiPerusahaan;
                 })
                 ->addColumn('domisili_redaksi', function ($data) {
-                    return null;
+                    return $data->domisiliRedaksiMedia;
                 })
                 ->addColumn('kanal_program', function ($data) {
-                    return null;
+                    return $data->kanalKhusus;
                 })
                 ->rawColumns([
                     'tahun_berdiri',
