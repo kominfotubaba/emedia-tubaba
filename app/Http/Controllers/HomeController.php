@@ -128,11 +128,15 @@ class HomeController extends Controller
                 ->addColumn('afiliasi_perwakilan', function ($data) {
                     return $data->afiliasiPersPerwakilan;
                 })
+                ->addColumn('kompetensi_perwakilan', function ($data) {
+                    return  '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/fileSerfikatUkwPerwakilan/' . $data->fileSerfikatUkwPerwakilan . '" class="btn btn-info">' . $data->fileSerfikatUkwPerwakilan . '</a>';
+                })
 
                 ->rawColumns([
                     'kabupaten_perwakilan',
                     'provinsi_perwakilan',
                     'afiliasi_perwakilan',
+                    'kompetensi_perwakilan'
                 ])
                 ->make(true);
         }
