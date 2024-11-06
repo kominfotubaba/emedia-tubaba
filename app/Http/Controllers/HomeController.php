@@ -129,7 +129,7 @@ class HomeController extends Controller
                     return $data->afiliasiPersPerwakilan;
                 })
                 ->addColumn('kompetensi_perwakilan', function ($data) {
-                    return  '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/fileSerfikatUkwPerwakilan/' . $data->fileSerfikatUkwPerwakilan . '" class="btn btn-info">' . $data->fileSerfikatUkwPerwakilan . '</a>';
+                    return  '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/fileSerfikatUkwPerwakilan/' . $data->fileSerfikatUkwPerwakilan . '" class="btn btn-info">Lihat</a>';
                 })
 
                 ->rawColumns([
