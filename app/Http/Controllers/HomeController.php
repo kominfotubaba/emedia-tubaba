@@ -120,13 +120,13 @@ class HomeController extends Controller
             # code...
             return DataTables()->of($data)
                 ->addColumn('kabupaten_perwakilan', function ($data) {
-                    return null;
+                    return $data->alamatKabPerwakilan;
                 })
                 ->addColumn('provinsi_perwakilan', function ($data) {
-                    return null;
+                    return $data->alamatProvPerwakilan;
                 })
                 ->addColumn('afiliasi_perwakilan', function ($data) {
-                    return null;
+                    return $data->afiliasiPersPerwakilan;
                 })
 
                 ->rawColumns([

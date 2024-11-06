@@ -80,10 +80,10 @@
 
                     },
                     {
-                        data: 'nama_biro_perwakilan',
+                        data: 'namaPerwakilan',
                     },
                     {
-                        data: 'alamat_perwakilan',
+                        data: 'alamatPerwakilan',
                     },
                     {
                         data: 'kabupaten_perwakilan',
