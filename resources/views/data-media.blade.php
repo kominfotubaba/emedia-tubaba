@@ -82,7 +82,7 @@
 
                     },
                     {
-                        data: 'nama_media',
+                        data: 'namaMedia',
                     },
                     {
                         data: 'jenis_media',
