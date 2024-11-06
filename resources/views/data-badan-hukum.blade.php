@@ -22,8 +22,7 @@
             </select> --}}
             <div class="data mt-3 m-0 p-0">
                 <div class="table-responsive">
-                    <table id="myTables"
-                        class="table data-table data-table-pagination data-table-standard responsive nowrap">
+                    <table id="myTables" class="table data-table data-table-pagination data-table-standard responsive nowrap">
                         <thead>
                             <tr>
                                 <th class="nom" scope="col">No</th>
@@ -117,22 +116,22 @@
 
                     },
                     {
-                        data: 'nama_perusahaan',
+                        data: 'namaPerusahaan',
                     },
                     {
                         data: 'penanggung_jawab',
                     },
                     {
-                        data: 'nama_pimred',
+                        data: 'namaPimred',
                     },
                     // {
                     //     data: 'surat_pernyataan_pimred',
                     // },
                     {
-                        data: 'kumham_perusahaan',
+                        data: 'kumhamPerusahaan',
                     },
                     {
-                        data: 'alamat_perusahaan',
+                        data: 'alamatPerusahaan',
                     },
                     {
                         data: 'alamat_kabupaten',
@@ -141,10 +140,10 @@
                         data: 'alamat_provinsi',
                     },
                     {
-                        data: 'tlpn_perusahaan',
+                        data: 'tlpnPerusahaan',
                     },
                     {
-                        data: 'email_perusahaan',
+                        data: 'emailPerusahaan',
                     },
                     // {
                     //     data: 'status_kswp',
@@ -162,13 +161,14 @@
                         data: 'kbki_perusahaan',
                     },
                     {
-                        data: 'izin_ipp_perusahaan',
+                        // data: 'izin_ipp_perusahaan',
+                        data: 'izinIpp',
                     },
                     {
-                        data: 'nama_percetakan',
+                        data: 'namaPercetakan',
                     },
                     {
-                        data: 'alamat_percetakan',
+                        data: 'alamatPercetakan',
                     },
 
                 ],
