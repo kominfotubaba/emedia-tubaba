@@ -42,7 +42,7 @@ class HomeController extends Controller
                     return $data->verifikasiDewanPers;
                 })
                 ->addColumn('sertifikat_pimred', function ($data) {
-                    return $data->jenisSerfikatUkwPimred;
+                    return '<a href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwpimred/' . $data->fileSerfikatUkwPimred . '" class="btn btn-info">' . $data->jenisSerfikatUkwPimred . '</a>';
                 })
                 ->addColumn('no_sertifikat_pimred', function ($data) {
                     return  $data->serfikatUkwPimred;
