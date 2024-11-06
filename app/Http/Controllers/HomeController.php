@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\media_pengajuan;
+use App\Models\new_media_pengajuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,8 @@ class HomeController extends Controller
     public function data_all(Request $request)
     {
         $param = $request->param;
-        $data = media_pengajuan::get();
+        // $data = media_pengajuan::get();
+        $data = new_media_pengajuan::get();
         if ($param == 'media') {
             # code...
             return DataTables()->of($data)
