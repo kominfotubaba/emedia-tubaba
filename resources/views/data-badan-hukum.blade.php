@@ -26,24 +26,13 @@
                         <thead>
                             <tr>
                                 <th class="nom" scope="col">No</th>
-                                <th class="xx" scope="col">Nama Perusahaan</th>
-                                <th class="xx" scope="col">Penanggung Jawab</th>
-                                <th class="xx" scope="col">Nama Pimred</th>
-                                {{-- <th scope="col">Surat Pernyataan Pimred</th> --}}
-                                <th class="xx" scope="col">No AHU</th>
-                                <th class="xx" scope="col">Alamat</th>
+                                <th class="xx" scope="col">Nama Media</th>
+                                <th class="xx" scope="col">Nama Badan Hukum</th>
+                                <th class="xx" scope="col">Status Verifikasi</th>
                                 <th class="xx" scope="col">Kabupaten/Kota</th>
-                                <th class="xx" scope="col">Provinsi</th>
-                                <th class="xx" scope="col">Telp</th>
-                                <th class="xx" scope="col">Email</th>
-                                {{-- <th scope="col">Status KSWP</th> --}}
-                                {{-- <th scope="col">NPWP</th> --}}
-                                <th class="xx" scope="col">NIB</th>
-                                <th class="xx" scope="col">KBLI</th>
-                                <th class="xx" scope="col">KBKI</th>
-                                <th class="xx" scope="col">No IPP</th>
-                                <th class="xx" scope="col">Perusahaan Percetakan</th>
-                                <th class="xx" scope="col">Alamat Percetakan</th>
+                                <th class="xx" scope="col">Pimpinan Perusahaan</th>
+                                <th class="xx" scope="col">Pimpinan Redaksi</th>
+                                <th class="xx" scope="col">Administrasi Perusahaan</th>
                             </tr>
                         </thead>
 
@@ -116,61 +105,82 @@
 
                     },
                     {
+                        data: 'namaMedia',
+                    },
+                    {
                         data: 'namaPerusahaan',
                     },
                     {
-                        data: 'penanggung_jawab',
+                        data: 'verifikasiDewanPers',
+                    },
+                    {
+                        data: 'alamatKabPerusahaan',
+                    },
+                    {
+                        data: 'namaPenanggungJawab',
                     },
                     {
                         data: 'namaPimred',
-                    },
-                    // {
-                    //     data: 'surat_pernyataan_pimred',
-                    // },
-                    {
-                        data: 'kumhamPerusahaan',
-                    },
-                    {
-                        data: 'alamatPerusahaan',
-                    },
-                    {
-                        data: 'alamat_kabupaten',
-                    },
-                    {
-                        data: 'alamat_provinsi',
-                    },
-                    {
-                        data: 'tlpnPerusahaan',
-                    },
-                    {
-                        data: 'emailPerusahaan',
-                    },
-                    // {
-                    //     data: 'status_kswp',
-                    // },
-                    // {
-                    //     data: 'npwp_perusahaan',
-                    // },
-                    {
-                        data: 'nib_perusahaan',
+                       render: function (data, type, row) {
+                        console.log(row.fileSuratPernyataanPimred)
+                            return `
+                                <div style="display: flex; flex-direction: column; gap: 5px;">
+                                    <span style="font-weight: bold; color: #333; margin-bottom: 5px;">${data}</span>
+                                    <div class="btn-group" style="display: flex; gap: 5px;">
+                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwpimred/${row.fileSerfikatUkwPimred}" 
+                                        class="btn-custom-action" 
+                                        style="background-color: #5d2e2e; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; text-align: center; border: none;">
+                                        Bukti Sertifikasi Dewan Pers
+                                        </a>
+                                        
+                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/filesuratpernyataanpimred/${row.fileSuratPernyataanPimred}" 
+                                        class="btn-custom-action" 
+                                        style="background-color: #d4af37; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; text-align: center; border: none;">
+                                        Surat Pernyataan Pimred
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                        }
                     },
                     {
-                        data: 'klbi_perusahaan',
+                        render: function (data, type, row) {
+                        console.log(row.fileSuratPernyataanPimred)
+                            return `
+                                <div style="display: flex; flex-direction: column; gap: 5px;">
+                                    <div class="">
+                                        <table>
+                                            <tr>
+                                                <td class="bold">No. AHU</td>
+                                                <td>:</td>
+                                                <td>${row.kumhamPerusahaan}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold">NIB</td>
+                                                <td>:</td>
+                                                <td>${row.nibPerusahaan}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold">NPWP</td>
+                                                <td>:</td>
+                                                <td>${row.npwpPerusahaan}</td>
+                                            </tr>
+                                             <tr>
+                                                <td class="bold">Alamat</td>
+                                                <td>:</td>
+                                                <td>${row.alamatPerusahaan}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bold">Provinsi</td>
+                                                <td>:</td>
+                                                <td>${row.alamatProvPerusahaan}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            `;
+                        }
                     },
-                    {
-                        data: 'kbki_perusahaan',
-                    },
-                    {
-                        // data: 'izin_ipp_perusahaan',
-                        data: 'izinIpp',
-                    },
-                    {
-                        data: 'namaPercetakan',
-                    },
-                    {
-                        data: 'alamatPercetakan',
-                    },
-
                 ],
                 sDom: '<"row"<"col-sm-12"<"table-container"t>r>><"row"<"col-12"p>>',
                 language: {

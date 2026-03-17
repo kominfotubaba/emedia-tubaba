@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\BuktiTayangController;
 use App\Http\Controllers\CobarizkiController;
 use App\Http\Controllers\DashboardController;
@@ -170,7 +171,25 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('/{tahun}/create/{nomor}', [BuktiTayangController::class, 'create_input'])->whereNumber('tahun');
         });
     });
-    //  end of budget
+    //  end of tayang
+
+      /**
+     * setting
+     */
+     Route::prefix('/setting')->group(function () {
+        // admin
+        Route::middleware(['role:admin'])->group(function () {
+            Route::get('/', [SettingController::class, 'index']);
+            Route::get('/show', [SettingController::class, 'show']);
+            Route::get('/edit/{budget}', [SettingController::class, 'edit']);
+            Route::post('/update', [SettingController::class, 'update']);
+        });
+
+        Route::middleware(['role:user'])->group(function () {
+            // Route::get('/', [PaketController::class, 'index']);
+        });
+    });
+     //  end of setting
 });
 
 // Route::get('/dashboard', function () {

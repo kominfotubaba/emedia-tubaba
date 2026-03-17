@@ -21,10 +21,11 @@
                         <thead>
                             <tr>
                                 <th class="nom" scope="col">No</th>
+                                <th class="xx" scope="col">Nama Media</th>
                                 <th class="xx" scope="col">Nama Lengkap</th>
                                 <th class="xx" scope="col">Alamat</th>
-                                <th class="xx" scope="col">Kabupaten</th>
-                                <th class="xx" scope="col">Provinsi</th>
+                                {{-- <th class="xx" scope="col">Kabupaten</th>
+                                <th class="xx" scope="col">Provinsi</th> --}}
                                 {{-- <th scope="col">Telp</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">NPWP</th> --}}
@@ -80,17 +81,20 @@
 
                     },
                     {
+                        data: 'namaMedia',
+                    },
+                    {
                         data: 'namaPerwakilan',
                     },
                     {
                         data: 'alamatPerwakilan',
                     },
-                    {
-                        data: 'kabupaten_perwakilan',
-                    },
-                    {
-                        data: 'provinsi_perwakilan',
-                    },
+                    // {
+                    //    data: 'kabupaten_perwakilan',
+                    // },
+                    // {
+                    //    data: 'provinsi_perwakilan',
+                    // },
                     // {
                     //     data: 'tlpn_perwakilan',
                     // },
@@ -105,6 +109,28 @@
                     },
                     {
                         data: 'afiliasi_perwakilan',
+                        render: function (data, type, row) {
+                            if(data){
+                                return `
+                                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                                        <span style="font-weight: bold; color: #333; margin-bottom: 5px;">${data}</span>
+                                        <div class="btn-group" style="display: flex; gap: 5px;">
+                                            <a href="https://emedia.tubaba.go.id/tmp/uploads/fileafiliasipersperwakilan/${row.fileafiliasiPersPerwakilan}" 
+                                            class="btn-custom-action" 
+                                            style="background-color: #5d2e2e; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; text-align: center; border: none;">
+                                            Detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                `;
+                            }else{
+                                 return `
+                                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                                        <span style="font-weight: bold; color: #333; margin-bottom: 5px;">data tidak di temukan</span>
+                                    </div>
+                                `;
+                            }
+                        }
                     },
                 ],
                 sDom: '<"row"<"col-sm-12"<"table-container"t>r>><"row"<"col-12"p>>',

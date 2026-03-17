@@ -425,8 +425,8 @@
                                                                 <p style="font-size: 14px; line-height: 170%;"><span
                                                                         style="font-family: Lato, sans-serif; font-size: 14px; line-height: 23.8px;"><strong><span
                                                                                 style="font-size: 14px; line-height: 27.2px;">
-                                                                                Eri Budi Santoso, S.Sos.,
-                                                                                M.H.</span></strong></span>
+                                                                               {{-- nama kadis --}}
+                                                                               </span></strong></span>
                                                                 </p>
                                                             </div>
 
