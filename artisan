@@ -5,6 +5,21 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
+| Silence PHP Error Output
+|--------------------------------------------------------------------------
+|
+| Cegah notice/deprecated dari vendor (PHP 8.4) tercetak ke output command.
+| Error tetap dicatat ke storage/logs/laravel.log.
+|
+*/
+
+ini_set('display_errors', '0');
+ini_set('display_startup_errors', '0');
+ini_set('log_errors', '0');
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE & ~E_WARNING);
+
+/*
+|--------------------------------------------------------------------------
 | Register The Auto Loader
 |--------------------------------------------------------------------------
 |

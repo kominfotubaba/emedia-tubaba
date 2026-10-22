@@ -14,57 +14,44 @@
                     menghubungi Diskominfo Tubaba melalui email dengan alamat kominfo@tubaba.go.id
                 </div>
             </div>
-            {{-- <select name="" id="">
-                <option value="">all</option>
-                <option value="">siber</option>
-                <option value="">cetak</option>
-                <option value="">eletronik</option>
-            </select> --}}
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Jenis Media</label>
+                    <select id="filter_jenis_media" class="form-control">
+                        <option value="">All</option>
+                        <option value="siber">Siber</option>
+                        <option value="cetak">Cetak</option>
+                        <option value="elektronik">Elektronik</option>
+                    </select>
+                </div>
+            </div>
+            <div id="filter_result_count" class="text-muted small mb-3" aria-live="polite">Memuat data...</div>
+
+            <style>
+                #myTables td,
+                #myTables th {
+                    white-space: normal !important;
+                    word-break: break-word;
+                    vertical-align: top;
+                }
+            </style>
+
             <div class="data mt-3 m-0 p-0">
                 <div class="table-responsive">
-                    <table id="myTables" class="table data-table data-table-pagination data-table-standard responsive nowrap">
+                    <table id="myTables" class="table data-table data-table-pagination data-table-standard responsive" style="width: 100%">
                         <thead>
                             <tr>
                                 <th class="nom" scope="col">No</th>
                                 <th class="xx" scope="col">Nama Media</th>
-                                <th class="xx" scope="col">Nama Badan Hukum</th>
-                                <th class="xx" scope="col">Status Verifikasi</th>
-                                <th class="xx" scope="col">Kabupaten/Kota</th>
-                                <th class="xx" scope="col">Pimpinan Perusahaan</th>
+                                <th class="xx" scope="col">Badan Hukum</th>
                                 <th class="xx" scope="col">Pimpinan Redaksi</th>
-                                <th class="xx" scope="col">Administrasi Perusahaan</th>
+                                <th class="xx" scope="col">Alamat &amp; No. HP</th>
+                                <th class="xx" scope="col">Email</th>
+                                <th class="xx" scope="col">Kepala Biro</th>
+                                <th class="xx" scope="col">Status</th>
                             </tr>
                         </thead>
-
-                        {{-- <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>PT. Test</td>
-                                <td>Slamet</td>
-                                <td>Mujur</td>
-                                <td><a href="#">Lihat</a></td>
-                                <!-- ini ngelink ke file surat pernyataan pimred -->
-                                <td><a href="#">02</a></td>
-                                <!-- ini ngelink ke file pengesahan kemenkumham -->
-                                <td>Panaragan</td>
-                                <td>Tulang Bawang Barat</td>
-                                <td>Lampung</td>
-                                <td>08123456789</td>
-                                <td>test@gmail.com</td>
-                                <td>Valid</td>
-                                <td><a href="#">142.223.222.222</a></td>
-                                <!-- ini ngelink ke file npwp perusahaan -->
-                                <td><a href="#">123456</a></td>
-                                <!-- ini ngelink ke file surat NIB -->
-                                <td>6213 ; 6321 ; 4567 ; 8910 ;</td>
-                                <td>1234</td>
-                                <td><a href="#">13456</a></td>
-                                <!-- ini ngelink ke file izin IPP -->
-                                <td>PT. Sejahtera Pecetakan</td>
-                                <td>Panaragan Jaya</td>
-                            </tr>
-                        </tbody> --}}
-
                     </table>
                 </div>
             </div>
@@ -73,16 +60,21 @@
 @endsection
 @push('script')
     <script>
-        // PAGE DATA PERUSAHAAN PERS
+        // PAGE DATA BADAN HUKUM
         $(document).ready(function() {
-            $("#myTables").DataTable({
-                // dom: "Bfrltip",
-                //             columnDefs: [{ width: 200, targets: 0 }],
-                // fixedColumns: true,
+            const filterLabels = {
+                '': 'Semua media',
+                siber: 'Siber',
+                cetak: 'Cetak',
+                elektronik: 'Elektronik'
+            };
+
+            const table = $("#myTables").DataTable({
                 ordering: false,
                 processing: true,
                 serverSide: true,
                 destroy: true,
+                autoWidth: false,
                 paging: true,
                 length: 10,
                 pageLength: 20,
@@ -91,50 +83,53 @@
                     [0, "asc"]
                 ],
                 responsive: false,
-                ajax: '/data-all?param=badan',
-                render: function(data, type, row) {
-                    return '<span style="white-space:nowrap">' + data + "</span>";
+                ajax: {
+                    url: '/data-all',
+                    data: function(request) {
+                        request.param = 'badan';
+                        request.jenis_media = $('#filter_jenis_media').val();
+                    },
+                    dataSrc: function(response) {
+                        const total = response.recordsFiltered || 0;
+                        const activeFilter = $('#filter_jenis_media').val();
+                        const label = activeFilter ? filterLabels[activeFilter] : '';
+                        $('#filter_result_count').text(`${total} data` + (label ? ' · ' + label : ''));
+                        return response.data;
+                    }
                 },
                 columns: [{
                         'data': null,
                         'sortable': false,
+                        'width': '4%',
                         render: function(data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1
-                            // return '<span>a</span>';
                         },
 
                     },
                     {
                         data: 'namaMedia',
+                        'width': '12%',
                     },
                     {
                         data: 'namaPerusahaan',
-                    },
-                    {
-                        data: 'verifikasiDewanPers',
-                    },
-                    {
-                        data: 'alamatKabPerusahaan',
-                    },
-                    {
-                        data: 'namaPenanggungJawab',
+                        'width': '14%',
                     },
                     {
                         data: 'namaPimred',
-                       render: function (data, type, row) {
-                        console.log(row.fileSuratPernyataanPimred)
+                        'width': '15%',
+                        render: function(data, type, row) {
                             return `
                                 <div style="display: flex; flex-direction: column; gap: 5px;">
-                                    <span style="font-weight: bold; color: #333; margin-bottom: 5px;">${data}</span>
-                                    <div class="btn-group" style="display: flex; gap: 5px;">
-                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwpimred/${row.fileSerfikatUkwPimred}" 
-                                        class="btn-custom-action" 
+                                    <span style="font-weight: bold; color: #333; margin-bottom: 5px;">${data ?? '-'}</span>
+                                    <div class="btn-group" style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwpimred/${row.fileSerfikatUkwPimred}"
+                                        class="btn-custom-action"
                                         style="background-color: #5d2e2e; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; text-align: center; border: none;">
-                                        Bukti Sertifikasi Dewan Pers
+                                        Sertifikat
                                         </a>
-                                        
-                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/filesuratpernyataanpimred/${row.fileSuratPernyataanPimred}" 
-                                        class="btn-custom-action" 
+
+                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/filesuratpernyataanpimred/${row.fileSuratPernyataanPimred}"
+                                        class="btn-custom-action"
                                         style="background-color: #d4af37; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; text-align: center; border: none;">
                                         Surat Pernyataan Pimred
                                         </a>
@@ -144,39 +139,45 @@
                         }
                     },
                     {
-                        render: function (data, type, row) {
-                        console.log(row.fileSuratPernyataanPimred)
+                        data: 'alamatPerusahaan',
+                        'width': '27%',
+                        render: function(data, type, row) {
+                            const kota = [row.alamatKabPerusahaan, row.alamatProvPerusahaan]
+                                .filter(function(v) {
+                                    return v && v !== '-';
+                                })
+                                .join(', ');
+                            const telp = row.tlpnPerusahaan ? `<span style="margin-top: 4px; display: inline-block;"><strong>Telp:</strong> ${row.tlpnPerusahaan}</span>` : '';
                             return `
-                                <div style="display: flex; flex-direction: column; gap: 5px;">
-                                    <div class="">
-                                        <table>
-                                            <tr>
-                                                <td class="bold">No. AHU</td>
-                                                <td>:</td>
-                                                <td>${row.kumhamPerusahaan}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bold">NIB</td>
-                                                <td>:</td>
-                                                <td>${row.nibPerusahaan}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bold">NPWP</td>
-                                                <td>:</td>
-                                                <td>${row.npwpPerusahaan}</td>
-                                            </tr>
-                                             <tr>
-                                                <td class="bold">Alamat</td>
-                                                <td>:</td>
-                                                <td>${row.alamatPerusahaan}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bold">Provinsi</td>
-                                                <td>:</td>
-                                                <td>${row.alamatProvPerusahaan}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                                <div style="display: flex; flex-direction: column; gap: 3px;">
+                                    <span>${data ?? '-'}</span>
+                                    ${kota ? `<span class="text-muted" style="font-size: 12px;">${kota}</span>` : ''}
+                                    ${telp}
+                                </div>
+                            `;
+                        }
+                    },
+                    {
+                        data: 'emailPerusahaan',
+                        'width': '12%',
+                    },
+                    {
+                        data: 'namaPenanggungJawab',
+                        'width': '7%',
+                    },
+                    {
+                        data: 'status_persyaratan',
+                        'width': '9%',
+                        render: function(data, type, row) {
+                            const memenuhi = data === 'Memenuhi syarat';
+                            const warna = memenuhi ? '#2e7d32' : '#b3261e';
+                            const latar = memenuhi ? '#e8f5e9' : '#fdecea';
+                            return `
+                                <div style="display: flex; flex-direction: column; gap: 4px;">
+                                    <span style="display: inline-block; padding: 4px 10px; border-radius: 999px; background-color: ${latar}; color: ${warna}; font-weight: 700; font-size: 12px; text-align: center;">
+                                        ${data ?? '-'}
+                                    </span>
+                                    <span class="text-muted" style="font-size: 12px;">${row.verifikasiDewanPers ?? '-'}</span>
                                 </div>
                             `;
                         }
@@ -184,6 +185,9 @@
                 ],
                 sDom: '<"row"<"col-sm-12"<"table-container"t>r>><"row"<"col-12"p>>',
                 language: {
+                    processing: 'Memuat data...',
+                    emptyTable: 'Belum ada data badan hukum untuk jenis media ini.',
+                    zeroRecords: 'Data yang dicari tidak ditemukan.',
                     paginate: {
                         // previous: '<i class="cs-chevron-left"></i>',
                         // next: '<i class="cs-chevron-right"></i>',
@@ -195,7 +199,6 @@
                         .every(function() {
                             let column = this;
                             let title = column.header().textContent;
-                            // console.log(column.search());
                             // Create input element
                             let input = document.createElement('input');
                             input.placeholder = title;
@@ -204,7 +207,7 @@
                             // Event listener for user input
                             input.addEventListener('keypress', (e) => {
                                 if (e.keyCode == '13') {
-                                    if (column.search() !== this.value) {
+                                    if (column.search() !== input.value) {
                                         column.search(input.value).draw();
                                     }
                                 }
@@ -215,13 +218,17 @@
                     var data = $(this.api().columns(0).nodes()).each(function() {
                         // $(this).css("background-color", "yellow");
                         $(this).attr('class', 'hasu');
-                        // $(this).css("background-color", "yellow");
                     });
 
                     $(this.api().columns().nodes()).each(function() {
                         $(this).css("text-wrap", "wrap");
                     });
                 }
+            });
+
+            $('#filter_jenis_media').on('change', function() {
+                $('#filter_result_count').text('Memuat data...');
+                table.ajax.reload();
             });
         });
     </script>

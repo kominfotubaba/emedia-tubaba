@@ -45,8 +45,8 @@
             <div class="modal-footer">
             <div class="w-100 d-flex justify-content-start">
                 <div>
-                    <div>link pendaftaran <a href="https://emedia.tubaba.go.id/register"> akun</a></div>
-                    <div>link pengajuan <a href="https://emedia.tubaba.go.id/pengajuan/index"> data media</a></div>
+                    <div>link pendaftaran <a href="{{ url('/register') }}"> akun</a></div>
+                    <div>link pengajuan <a href="{{ url('/pengajuan/index') }}"> data media</a></div>
                 </div>
             </div>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

@@ -308,6 +308,85 @@ nav .modif-drop a:hover {
   font-size: xx-large;
   font-weight: bolder;
 }
+.data-perpers .media-filter-panel {
+  padding: 20px;
+  border: 1px solid rgba(104, 39, 46, 0.14);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fff 0%, #fffaf0 100%);
+  box-shadow: 0 8px 24px rgba(65, 0, 0, 0.07);
+}
+.data-perpers .media-filter-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.data-perpers .media-filter-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--maroon);
+  font-size: 18px;
+  font-weight: 700;
+}
+.data-perpers .media-filter-description {
+  margin-top: 3px;
+  color: #6c757d;
+  font-size: 14px;
+}
+.data-perpers .media-result-count {
+  flex: 0 0 auto;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background-color: var(--calm);
+  color: var(--maroon);
+  font-size: 13px;
+  font-weight: 700;
+}
+.data-perpers .media-filter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.data-perpers .media-filter-chip,
+.data-perpers .media-filter-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 8px 15px;
+  border: 1px solid rgba(104, 39, 46, 0.22);
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--maroon);
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.data-perpers .media-filter-chip:hover,
+.data-perpers .media-filter-chip:focus-visible {
+  border-color: var(--maroon);
+  background-color: var(--calm);
+  transform: translateY(-1px);
+}
+.data-perpers .media-filter-chip.active {
+  border-color: var(--maroon);
+  background-color: var(--maroon);
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(104, 39, 46, 0.2);
+}
+.data-perpers .media-filter-reset {
+  margin-left: auto;
+  border-color: transparent;
+  background-color: transparent;
+  color: #6c757d;
+}
+.data-perpers .media-filter-reset:hover,
+.data-perpers .media-filter-reset:focus-visible {
+  background-color: #f2f2f2;
+  color: var(--maroon);
+}
 .data-perpers .content .src .input-group,
 .data-perpers .content .src .form-control {
   border-color: var(--maroon) !important;
@@ -390,6 +469,29 @@ nav .modif-drop a:hover {
   }
   .data-perpers .content .jud {
     font-size: 20px;
+  }
+  .data-perpers .media-filter-panel {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  .data-perpers .media-filter-heading {
+    display: block;
+  }
+  .data-perpers .media-result-count {
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .data-perpers .media-filter-actions {
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+    overflow-x: auto;
+  }
+  .data-perpers .media-filter-chip,
+  .data-perpers .media-filter-reset {
+    flex: 0 0 auto;
+  }
+  .data-perpers .media-filter-reset {
+    margin-left: 0;
   }
 }
 

@@ -15,6 +15,20 @@
                 </div>
             </div>
 
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">Jenis Media</label>
+                    <select id="filter_jenis_media" class="form-control">
+                        <option value="">All</option>
+                        <option value="cetak">Cetak</option>
+                        <option value="siber">Siber</option>
+                        <option value="tv">TV</option>
+                        <option value="radio">Radio</option>
+                        <option value="fotografi">Fotografi</option>
+                    </select>
+                </div>
+            </div>
+            <div id="filter_result_count" class="text-muted small mb-3" aria-live="polite">Memuat data...</div>
             <div class="data mt-3 m-0 p-0">
                 <div class="table-responsive">
                     <table id="myTable" class="table table-hover">
@@ -57,7 +71,16 @@
     <script>
         // PAGE DATA PERUSAHAAN PERS
         $(document).ready(function() {
-            $("#myTable").DataTable({
+            const filterLabels = {
+                '': 'Semua media',
+                cetak: 'Cetak',
+                siber: 'Siber',
+                tv: 'TV',
+                radio: 'Radio',
+                fotografi: 'Fotografi'
+            };
+
+            const table = $("#myTable").DataTable({
                 // dom: "Bfrltip",
                 ordering: false,
                 processing: true,
@@ -71,7 +94,23 @@
                     [0, "asc"]
                 ],
                 responsive: false,
-                ajax: '/data-all?param=perwakilan',
+                ajax: {
+                    url: '/data-all',
+                    data: function(request) {
+                        request.param = 'perwakilan';
+                        request.jenis_media = $('#filter_jenis_media').val();
+                    },
+                    dataSrc: function(response) {
+                        const total = response.recordsFiltered || 0;
+                        const activeFilter = $('#filter_jenis_media').val();
+                        const parts = [];
+                        if (activeFilter) {
+                            parts.push(filterLabels[activeFilter]);
+                        }
+                        $('#filter_result_count').text(`${total} data` + (parts.length ? ' · ' + parts.join(' · ') : ''));
+                        return response.data;
+                    }
+                },
                 columns: [{
                         'data': null,
                         'sortable': false,
@@ -129,13 +168,16 @@
                                         <span style="font-weight: bold; color: #333; margin-bottom: 5px;">data tidak di temukan</span>
                                     </div>
                                 `;
-                            }
-                        }
+                    }
+                    }
                     },
                 ],
                 sDom: '<"row"<"col-sm-12"<"table-container"t>r>><"row"<"col-12"p>>',
                 responsive: false,
                 language: {
+                    processing: 'Memuat data...',
+                    emptyTable: 'Belum ada data perwakilan untuk jenis media ini.',
+                    zeroRecords: 'Data perwakilan yang dicari tidak ditemukan.',
                     paginate: {
                         // previous: '<i class="cs-chevron-left"></i>',
                         // next: '<i class="cs-chevron-right"></i>',
@@ -158,8 +200,8 @@
                                 if (e.keyCode == '13') {
                                     if (column.search() !== this.value) {
                                         column.search(input.value).draw();
-                                    }
-                                }
+                    }
+                    }
                             });
                         });
 
@@ -170,7 +212,12 @@
                     $(this.api().columns().nodes()).each(function() {
                         $(this).css("text-wrap", "wrap");
                     });
-                }
+                    }
+            });
+
+            $('#filter_jenis_media').on('change', function() {
+                $('#filter_result_count').text('Memuat data...');
+                table.ajax.reload();
             });
         });
     </script>

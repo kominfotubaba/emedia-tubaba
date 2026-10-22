@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -206,7 +207,64 @@ class OrderController extends Controller
                     'nip' => $p->nip
                 ];
             }
+            // $noOrder = $validated['paket_klasifikasi'] . $validated['grade'] . '.' . $data->getNextId();
+            // $existNoOrder = Order::where('no_order',$noOrder)->count();
+            // if ($existNoOrder > 0) {
+            //                 $noOrder = $validated['paket_klasifikasi'] . $validated['grade'] . '.' . $data->getNextId()+1;
 
+            // }
+  
+
+        // DB::beginTransaction();
+        //     $data = new Order();
+
+        // try {
+        //     $now = Carbon::now();
+        //     $month = $now->month;
+
+        //     $noOrder = null;
+        //     do {
+        //         $nextId = $data->getNextId(); // sesuaikan sumber id-nya
+        //         $candidate = $validated['paket_klasifikasi'] . $validated['grade'] . '.' . $nextId;
+
+        //         $exists = Order::where('no_order', $candidate)
+        //             ->lockForUpdate()
+        //             ->exists();
+
+        //         if (!$exists) {
+        //             $noOrder = $candidate;
+        //         }
+        //     } while (is_null($noOrder));
+
+        //     $data->id_user = $validated['id_user'];
+        //     $data->no_pengajuan = $validated['no_pengajuan'];
+        //     $data->id_paket = $validated['paket'];
+        //     $data->tahun = $validated['tahun'];
+        //     $data->no_order = $noOrder;
+        //     $data->email = $validated['email'];
+        //     $data->jenis_media = $validated['jenis_media'];
+        //     $data->nama_media = $validated['nama_media'];
+        //     $data->nama_biro = $nama_biro;
+        //     $data->nama_pimred = $nama_pimred;
+        //     $data->nama_perusahaan = $validated['nama_perusahaan'];
+        //     $data->kepala_dinas = $data_pejabat['kepala']['nama'];
+        //     $data->kepala_dinas_nip = $data_pejabat['kepala']['nip'];
+        //     $data->nama_paket = $validated['nama_paket'];
+        //     $data->detail_paket = $validated['detail_paket'];
+        //     $data->jumlah_paket = $validated['jumlah_paket'];
+        //     $data->nilai_order = str_replace('.', '', $validated['harga']);
+        //     $data->total_nilai_order = str_replace('.', '', $validated['total_harga_paket']);
+        //     $data->status = 'tunggu';
+        //     $data->pesan = 'belum';
+        //     $data->keterangan = $validated['keterangan'];
+        //     $data->save();
+
+        //     DB::commit();
+        // } catch (\Throwable $e) {
+        //     DB::rollBack();
+        //     throw $e;
+        // }
+            // DB::beginTransaction();
             $now = Carbon::now();
             $month = $now->month;
             $urut = Order::where('deleted_at', null)->where('tahun', $validated['tahun'])->count();
@@ -215,7 +273,9 @@ class OrderController extends Controller
             $data->no_pengajuan = $validated['no_pengajuan'];
             $data->id_paket = $validated['paket'];
             $data->tahun = $validated['tahun'];
-            $data->no_order = $validated['paket_klasifikasi'] . $validated['grade'] . '.' . $data->getNextId() . '.' . 'N' .  $urut . '.' . $month . '-' . $validated['tahun'];
+            // $data->no_order = $validated['paket_klasifikasi'] . $validated['grade'] . '.' . $data->getNextId() . '.' . 'N' .  $urut . '.' . $month . '-' . $validated['tahun'];
+            $data->no_order = $validated['paket_klasifikasi'] . $validated['grade'] . '.' . $data->getNextId() . '.' . random_int(1,999);
+            // $data->no_order = $noOrder;
             $data->email = $validated['email'];
             $data->jenis_media = $validated['jenis_media'];
             $data->nama_media = $validated['nama_media'];
@@ -262,6 +322,7 @@ class OrderController extends Controller
             return redirect('/order/daftar');
         }
     }
+    
 
     /**
      * Display the specified resource.
