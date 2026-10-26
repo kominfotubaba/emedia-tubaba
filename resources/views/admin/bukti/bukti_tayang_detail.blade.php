@@ -64,9 +64,13 @@
                                 <thead>
                                     <tr>
                                         <th class="text-muted text-small text-uppercase">No</th>
-                                        <th class="text-muted text-small text-uppercase">Tahun</th>
-                                        <th class="text-muted text-small text-uppercase">Nomor Order</th>
-                                        <th class="text-muted text-small text-uppercase">Nama Media</th>
+                                        @if (Auth::user()->role == 'admin')
+                                            <th class="text-muted text-small text-uppercase">Nama Perusahaan</th>
+                                            <th class="text-muted text-small text-uppercase">Nama Media</th>
+                                        @else
+                                            <th class="text-muted text-small text-uppercase">Nomor Order</th>
+                                            <th class="text-muted text-small text-uppercase">Nama Media</th>
+                                        @endif
                                         <th class="text-muted text-small text-uppercase">Jumlah Paket</th>
                                         <th class="text-muted text-small text-uppercase">Total Nilai</th>
                                         <th class="text-muted text-small text-uppercase">Status</th>
@@ -126,6 +130,38 @@
     <script>
         $(document).ready(function() {
             var tahun = $('#tahuns').html()
+            var user = $('#users').html()
+            var kolomData = [{
+                    'data': null,
+                    'sortable': false,
+                    render: function(data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1
+                    },
+
+                },
+            ];
+            if (user == 'admin') {
+                kolomData.push({
+                    data: 'nama_perusahaan',
+                }, {
+                    data: 'nama_media',
+                });
+            } else {
+                kolomData.push({
+                    data: 'nomor_order',
+                }, {
+                    data: 'nama_media',
+                });
+            }
+            kolomData.push({
+                data: 'volume',
+            }, {
+                data: 'total_nilai',
+            }, {
+                data: 'status',
+            }, {
+                data: 'aksi',
+            });
             $('#tbBuktiTayang').DataTable({
                 processing: true,
                 serverSide: true,
@@ -139,36 +175,7 @@
                 ],
                 responsive: true,
                 ajax: '/bukti_tayang/' + tahun + '/show',
-                columns: [{
-                        'data': null,
-                        'sortable': false,
-                        render: function(data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1
-                        },
-
-                    },
-                    {
-                        data: 'tahun',
-                    },
-                    {
-                        data: 'nomor_order',
-                    },
-                    {
-                        data: 'nama_media',
-                    },
-                    {
-                        data: 'volume',
-                    },
-                    {
-                        data: 'total_nilai',
-                    },
-                    {
-                        data: 'status',
-                    },
-                    {
-                        data: 'aksi',
-                    },
-                ],
+                columns: kolomData,
                 sDom: '<"row"<"col-sm-12"<"table-container"t>r>><"row"<"col-12"p>>',
                 language: {
                     paginate: {
