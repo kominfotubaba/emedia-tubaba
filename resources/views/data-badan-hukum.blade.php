@@ -46,8 +46,7 @@
                                 <th class="xx" scope="col">Nama Media</th>
                                 <th class="xx" scope="col">Badan Hukum</th>
                                 <th class="xx" scope="col">Pimpinan Redaksi</th>
-                                <th class="xx" scope="col">Alamat &amp; No. HP</th>
-                                <th class="xx" scope="col">Email</th>
+                                <th class="xx" scope="col">Alamat, Email &amp; No. HP</th>
                                 <th class="xx" scope="col">Kepala Biro</th>
                                 <th class="xx" scope="col">Status</th>
                             </tr>
@@ -140,7 +139,7 @@
                     },
                     {
                         data: 'alamatPerusahaan',
-                        'width': '27%',
+                        'width': '35%',
                         render: function(data, type, row) {
                             const kota = [row.alamatKabPerusahaan, row.alamatProvPerusahaan]
                                 .filter(function(v) {
@@ -148,18 +147,16 @@
                                 })
                                 .join(', ');
                             const telp = row.tlpnPerusahaan ? `<span style="margin-top: 4px; display: inline-block;"><strong>Telp:</strong> ${row.tlpnPerusahaan}</span>` : '';
+                            const email = row.emailPerusahaan ? `<span style="margin-top: 4px; display: inline-block;"><strong>Email:</strong> ${row.emailPerusahaan}</span>` : '';
                             return `
                                 <div style="display: flex; flex-direction: column; gap: 3px;">
                                     <span>${data ?? '-'}</span>
                                     ${kota ? `<span class="text-muted" style="font-size: 12px;">${kota}</span>` : ''}
+                                    ${email}
                                     ${telp}
                                 </div>
                             `;
                         }
-                    },
-                    {
-                        data: 'emailPerusahaan',
-                        'width': '12%',
                     },
                     {
                         data: 'namaPenanggungJawab',
