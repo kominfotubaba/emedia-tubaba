@@ -171,7 +171,7 @@
                 },
                 acceptedFiles: '.pdf',
                 maxFiles: 1,
-                maxFilesize: 10, //MB
+                maxFilesize: 100, //MB
                 uploadMultiple: false,
                 thumbnailWidth: 160,
                 dictDefaultMessage: 'Uploads File PDF Disini',
