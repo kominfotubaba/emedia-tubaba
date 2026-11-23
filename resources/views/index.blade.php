@@ -61,33 +61,23 @@
         </div>
         <div>
             <div class="row content-data">
-                <div class="col-lg-4 col-md-6 col-6 mt-lg-0 mt-md-4 mt-3">
+                <div class="col-lg-6 col-md-6 col-6 mt-lg-0 mt-md-4 mt-3">
                     <a href="/data-perusahaan">
                         <div class="card text-center">
                             <div class="icon">
                                 <img src="/assets/img/perusahaan.svg" alt="" />
                             </div>
-                            <div class="mb-lg-2 mb-md-2 mb-1">Data Perusahaan</div>
+                            <div class="mb-lg-2 mb-md-2 mb-1">Data Perusahaan Pers</div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-md-6 col-6 mt-lg-0 mt-md-4 mt-3">
-                    <a href="/data-media">
-                        <div class="card text-center">
-                            <div class="icon">
-                                <img src="/assets/img/media.svg" alt="" />
-                            </div>
-                            <div class="mb-lg-2 mb-md-2 mb-1">Data Media</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 col-6 mt-lg-0 mt-md-4 mt-3">
+                <div class="col-lg-6 col-md-6 col-6 mt-lg-0 mt-md-4 mt-3">
                     <a href="/data-perwakilan-media">
                         <div class="card text-center">
                             <div class="icon">
                                 <img src="/assets/img/perwakilan.svg" alt="" />
                             </div>
-                            <div class="mb-lg-2 mb-md-2 mb-1">Data Perwakilan</div>
+                            <div class="mb-lg-2 mb-md-2 mb-1">Data Perwakilan Media</div>
                         </div>
                     </a>
                 </div>

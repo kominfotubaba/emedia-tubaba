@@ -1,232 +1,61 @@
 @extends('panel_theme.master')
 @section('content')
-    <section class="data-perpers">
-        <div class="content">
-            <div class="logo d-flex justify-content-end pe-lg-4 pe-md-4 pe-3">
-                <img class="img-fluid" src="/assets/img/pemda.svg" alt="" />
-            </div>
-            <div class="row mb-4 mt-2 mt-md-0 mt-lg-0">
-                <div class="col-12 jud">Data Badan Hukum</div>
-                <div class="col-12 mt-2">
+<section class="data-perpers"><div class="content">
+    <div class="logo d-flex justify-content-end pe-lg-4 pe-md-4 pe-3"><img class="img-fluid" src="/assets/img/pemda.svg" alt="Pemkab Tulang Bawang Barat"></div>
+    <div class="row mb-4"><div class="col-12 jud">Data Perusahaan Pers</div><div class="col-12 mt-2">Daftar perusahaan pers terdaftar beserta data redaksi dan status persyaratannya.</div></div>
+    <div class="row mb-3"><div class="col-md-4"><label class="form-label fw-bold" for="filter_jenis_media">Jenis Media</label><select id="filter_jenis_media" class="form-control"><option value="">Semua</option><option value="siber">Siber</option><option value="cetak">Cetak</option><option value="elektronik">Elektronik</option></select></div></div>
+    <div id="filter_result_count" class="text-muted small mb-3" aria-live="polite">Memuat data...</div>
+    <div class="data mt-3 m-0 p-0"><div class="table-responsive"><table id="companyTable" class="table table-hover" style="width:100%"><thead><tr><th>No.</th><th>Nama Media</th><th>Perusahaan Pers</th><th>Alamat Redaksi</th><th>Kontak</th><th>Pimpinan Redaksi</th><th>Pimpinan Perusahaan</th><th>status perusahaan pers</th><th>keterangan</th></tr></thead></table></div></div>
+</div></section>
 
-                    Informasi, Data dan Dokumen yang diinput/diunggah sesuai dengan aslinya dan dapat dipertanggungjawabkan
-                    legalitasnya. Bilamana terdapat kesulitan dalam menginput/mengunggah informasi, data dan dokumen dapat
-                    menghubungi Diskominfo Tubaba melalui email dengan alamat kominfo@tubaba.go.id
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label class="form-label fw-bold">Jenis Media</label>
-                    <select id="filter_jenis_media" class="form-control">
-                        <option value="">All</option>
-                        <option value="siber">Siber</option>
-                        <option value="cetak">Cetak</option>
-                        <option value="elektronik">Elektronik</option>
-                    </select>
-                </div>
-            </div>
-            <div id="filter_result_count" class="text-muted small mb-3" aria-live="polite">Memuat data...</div>
-
-            <style>
-                #myTables td,
-                #myTables th {
-                    white-space: normal !important;
-                    word-break: break-word;
-                    vertical-align: top;
-                }
-            </style>
-
-            <div class="data mt-3 m-0 p-0">
-                <div class="table-responsive">
-                    <table id="myTables" class="table data-table data-table-pagination data-table-standard responsive" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th class="nom" scope="col">No</th>
-                                <th class="xx" scope="col">Nama Media</th>
-                                <th class="xx" scope="col">Badan Hukum</th>
-                                <th class="xx" scope="col">Pimpinan Redaksi</th>
-                                <th class="xx" scope="col">Alamat, Email &amp; No. HP</th>
-                                <th class="xx" scope="col">Kepala Biro</th>
-                                <th class="xx" scope="col">Status</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="modal fade" id="catatanPersyaratanModal" tabindex="-1" aria-labelledby="catatanPersyaratanTitle" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-scrollable"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="catatanPersyaratanTitle">Catatan Kelengkapan Data</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button></div>
+  <div class="modal-body"><p id="catatanPersyaratanIsi" class="mb-3 text-break" style="white-space:pre-line"></p><p id="batasPelengkapanIsi" class="mb-0 small text-muted"></p></div>
+ </div></div>
+</div>
 @endsection
 @push('script')
-    <script>
-        // PAGE DATA BADAN HUKUM
-        $(document).ready(function() {
-            const filterLabels = {
-                '': 'Semua media',
-                siber: 'Siber',
-                cetak: 'Cetak',
-                elektronik: 'Elektronik'
-            };
-
-            const table = $("#myTables").DataTable({
-                ordering: false,
-                processing: true,
-                serverSide: true,
-                destroy: true,
-                autoWidth: false,
-                paging: true,
-                length: 10,
-                pageLength: 20,
-                buttons: ['copy', 'excel', 'csv', 'print'],
-                order: [
-                    [0, "asc"]
-                ],
-                responsive: false,
-                ajax: {
-                    url: '/data-all',
-                    data: function(request) {
-                        request.param = 'badan';
-                        request.jenis_media = $('#filter_jenis_media').val();
-                    },
-                    dataSrc: function(response) {
-                        const total = response.recordsFiltered || 0;
-                        const activeFilter = $('#filter_jenis_media').val();
-                        const label = activeFilter ? filterLabels[activeFilter] : '';
-                        $('#filter_result_count').text(`${total} data` + (label ? ' · ' + label : ''));
-                        return response.data;
-                    }
-                },
-                columns: [{
-                        'data': null,
-                        'sortable': false,
-                        'width': '4%',
-                        render: function(data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1
-                        },
-
-                    },
-                    {
-                        data: 'namaMedia',
-                        'width': '12%',
-                    },
-                    {
-                        data: 'namaPerusahaan',
-                        'width': '14%',
-                    },
-                    {
-                        data: 'namaPimred',
-                        'width': '15%',
-                        render: function(data, type, row) {
-                            return `
-                                <div style="display: flex; flex-direction: column; gap: 5px;">
-                                    <span style="font-weight: bold; color: #333; margin-bottom: 5px;">${data ?? '-'}</span>
-                                    <div class="btn-group" style="display: flex; gap: 5px; flex-wrap: wrap;">
-                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwpimred/${row.fileSerfikatUkwPimred}"
-                                        class="btn-custom-action"
-                                        style="background-color: #5d2e2e; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; text-align: center; border: none;">
-                                        Sertifikat
-                                        </a>
-
-                                        <a href="https://emedia.tubaba.go.id/tmp/uploads/filesuratpernyataanpimred/${row.fileSuratPernyataanPimred}"
-                                        class="btn-custom-action"
-                                        style="background-color: #d4af37; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; text-align: center; border: none;">
-                                        Surat Pernyataan Pimred
-                                        </a>
-                                    </div>
-                                </div>
-                            `;
-                        }
-                    },
-                    {
-                        data: 'alamatPerusahaan',
-                        'width': '35%',
-                        render: function(data, type, row) {
-                            const kota = [row.alamatKabPerusahaan, row.alamatProvPerusahaan]
-                                .filter(function(v) {
-                                    return v && v !== '-';
-                                })
-                                .join(', ');
-                            const telp = row.tlpnPerusahaan ? `<span style="margin-top: 4px; display: inline-block;"><strong>Telp:</strong> ${row.tlpnPerusahaan}</span>` : '';
-                            const email = row.emailPerusahaan ? `<span style="margin-top: 4px; display: inline-block;"><strong>Email:</strong> ${row.emailPerusahaan}</span>` : '';
-                            return `
-                                <div style="display: flex; flex-direction: column; gap: 3px;">
-                                    <span>${data ?? '-'}</span>
-                                    ${kota ? `<span class="text-muted" style="font-size: 12px;">${kota}</span>` : ''}
-                                    ${email}
-                                    ${telp}
-                                </div>
-                            `;
-                        }
-                    },
-                    {
-                        data: 'namaPenanggungJawab',
-                        'width': '7%',
-                    },
-                    {
-                        data: 'status_persyaratan',
-                        'width': '9%',
-                        render: function(data, type, row) {
-                            const memenuhi = data === 'Memenuhi syarat';
-                            const warna = memenuhi ? '#2e7d32' : '#b3261e';
-                            const latar = memenuhi ? '#e8f5e9' : '#fdecea';
-                            return `
-                                <div style="display: flex; flex-direction: column; gap: 4px;">
-                                    <span style="display: inline-block; padding: 4px 10px; border-radius: 999px; background-color: ${latar}; color: ${warna}; font-weight: 700; font-size: 12px; text-align: center;">
-                                        ${data ?? '-'}
-                                    </span>
-                                    <span class="text-muted" style="font-size: 12px;">${row.verifikasiDewanPers ?? '-'}</span>
-                                </div>
-                            `;
-                        }
-                    },
-                ],
-                sDom: '<"row"<"col-sm-12"<"table-container"t>r>><"row"<"col-12"p>>',
-                language: {
-                    processing: 'Memuat data...',
-                    emptyTable: 'Belum ada data badan hukum untuk jenis media ini.',
-                    zeroRecords: 'Data yang dicari tidak ditemukan.',
-                    paginate: {
-                        // previous: '<i class="cs-chevron-left"></i>',
-                        // next: '<i class="cs-chevron-right"></i>',
-                    },
-                },
-                initComplete: function() {
-                    this.api()
-                        .columns()
-                        .every(function() {
-                            let column = this;
-                            let title = column.header().textContent;
-                            // Create input element
-                            let input = document.createElement('input');
-                            input.placeholder = title;
-                            column.header().replaceChildren(input);
-
-                            // Event listener for user input
-                            input.addEventListener('keypress', (e) => {
-                                if (e.keyCode == '13') {
-                                    if (column.search() !== input.value) {
-                                        column.search(input.value).draw();
-                                    }
-                                }
-                            });
-                        });
-
-
-                    var data = $(this.api().columns(0).nodes()).each(function() {
-                        // $(this).css("background-color", "yellow");
-                        $(this).attr('class', 'hasu');
-                    });
-
-                    $(this.api().columns().nodes()).each(function() {
-                        $(this).css("text-wrap", "wrap");
-                    });
-                }
-            });
-
-            $('#filter_jenis_media').on('change', function() {
-                $('#filter_result_count').text('Memuat data...');
-                table.ajax.reload();
-            });
-        });
-    </script>
+<script>
+$(function(){
+ const link=(folder,file,label)=>file?`<a target="_blank" class="btn btn-sm btn-outline-primary mt-1" href="/dokumen/${folder}/${encodeURIComponent(file)}">${label}</a>`:'-';
+ const text=value=>$('<div>').text(value || '').html();
+ const attribute=value=>text(value).replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+ const socialLink=(label,value)=>{
+  if(!value)return '';
+  const source=String(value).trim(), href=/^https?:\/\//i.test(source)?source:`https://${source}`;
+  try{const url=new URL(href);if(!['http:','https:'].includes(url.protocol))return '';}catch(error){return '';}
+  return `<strong>${label}:</strong> <a target="_blank" rel="noopener noreferrer" href="${attribute(href)}">${text(source)}</a>`;
+ };
+ const address=record=>[record.alamatPerusahaan,record.alamatKecPerusahaan,record.alamatKabPerusahaan,record.alamatProvPerusahaan].filter(Boolean).map(text).join(', ') || '-';
+ const contact=(record)=>{
+  const details=[
+   record.emailPerusahaan&&`<strong>Email:</strong> <a href="mailto:${attribute(record.emailPerusahaan)}">${text(record.emailPerusahaan)}</a>`,
+   record.tlpnPerusahaan&&`<strong>No. HP:</strong> <a href="tel:${attribute(record.tlpnPerusahaan)}">${text(record.tlpnPerusahaan)}</a>`,
+   socialLink('Website',record.alamatWebsite||record.alamat_website),socialLink('YouTube',record.linkYoutube),socialLink('Facebook',record.linkFacebook),
+   socialLink('Instagram',record.linkInstagram),socialLink('TikTok',record.linkTiktok),socialLink('Threads',record.linkThreads),socialLink('X',record.linkX)
+  ].filter(Boolean).join('<br>');
+  return details ? `<small>${details}</small>` : '-';
+ };
+ const keterangan=(value,record)=>{
+  if(value==='Memenuhi Syarat') return '<span class="badge bg-success">Memenuhi Syarat</span>';
+  const expired=value==='Belum Lengkap', catatan=record.catatan_persyaratan||'Catatan kelengkapan belum tersedia.';
+  const title=expired ? 'Batas waktu pelengkapan telah berakhir. Klik untuk melihat catatan.' : 'Arahkan mouse atau klik untuk melihat catatan kelengkapan.';
+  return `<button type="button" class="btn btn-sm ${expired?'btn-danger':'btn-warning'} requirement-note" title="${attribute(title)}" data-catatan="${attribute(catatan)}" data-batas="${attribute(record.batas_pelengkapan||'')}">${text(value)}</button>`;
+ };
+ const table=$('#companyTable').DataTable({processing:true,serverSide:true,ordering:false,ajax:{url:'/data-all',data:d=>{d.param='badan';d.jenis_media=$('#filter_jenis_media').val()},dataSrc:r=>{ $('#filter_result_count').text(`${r.recordsFiltered||0} data`);return r.data;}},columns:[
+  {data:null,render:(d,t,r,m)=>m.row+m.settings._iDisplayStart+1},{data:'namaMedia'},{data:'namaPerusahaan'},
+  {data:null,render:(d,t,r)=>address(r)},
+  {data:null,render:(d,t,r)=>contact(r)},
+  {data:null,render:(d,t,r)=>(r.namaPimred||'-')+'<br><small>Kompetensi: '+text(r.jenisSerfikatUkwPimred||'-')+'</small><br>'+link('fileserfikatukwpimred',r.fileSerfikatUkwPimred,'Sertifikat')+' '+link('filesuratpernyataanpimred',r.fileSuratPernyataanPimred,'Surat Pernyataan')},
+  {data:'pimprus'}, {data:'status_perusahaan_pers'}, {data:'keterangan_perusahaan_pers',render:(d,t,r)=>keterangan(d,r)}]});
+ $('#filter_jenis_media').on('change',()=>table.ajax.reload());
+ $('#companyTable').on('click','.requirement-note',function(){
+  const catatan=$(this).data('catatan'), batas=$(this).data('batas');
+  $('#catatanPersyaratanIsi').text(catatan);
+  $('#batasPelengkapanIsi').text(batas ? `Batas waktu pelengkapan: ${batas}.` : 'Batas waktu pelengkapan belum tersedia.');
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('catatanPersyaratanModal')).show();
+ });
+});
+</script>
 @endpush

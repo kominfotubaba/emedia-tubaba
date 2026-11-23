@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class MediaPengajuanController extends Controller
 {
@@ -60,7 +61,6 @@ class MediaPengajuanController extends Controller
         $data_id = $request->id;
         $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
         $tahun_buka = json_decode(json_encode($tahun[0]->tahun));
-
         $find = new_media_pengajuan::find($data_id);
         $duplikat_data = $find->replicate();
         $duplikat_data->created_at = Carbon::now();
@@ -80,6 +80,7 @@ class MediaPengajuanController extends Controller
      */
     public function store(Request $request)
     {
+        return $this->saveSimplifiedPengajuan($request);
         //
 
         $tahun = tahun::select('tahun')->where('pengajuan', 1)->get();
@@ -90,18 +91,20 @@ class MediaPengajuanController extends Controller
         $namaPerusahaan = str_replace('  ', ' ', strtolower($request->namaPerusahaan));
         $namaPenanggungJawab = strtolower($request->namaPenanggungJawab);
         $namaPimred = strtolower($request->namaPimred);
+        $namaPimprus = strtolower($request->namaPimprus);
         $kumhamPerusahaan = strtolower($request->kumhamPerusahaan);
         $alamatPerusahaan = strtolower($request->alamatPerusahaan);
+        $alamatWebsite = strtolower($request->alamatWebsite);
         $tlpnPerusahaan = strtolower($request->tlpnPerusahaan);
         $emailPerusahaan = strtolower($request->emailPerusahaan);
         $npwpPerusahaan = strtolower($request->npwpPerusahaan);
         $nibPerusahaan = strtolower($request->nibPerusahaan);
-        $noKbki = strtolower($request->noKbki);
         $izinIpp = strtolower($request->izinIpp);
         $namaPercetakan = strtolower($request->namaPercetakan);
         $alamatPercetakan = strtolower($request->alamatPercetakan);
         $alamatProvPerusahaan = strtolower($request->alamatProvPerusahaan);
         $alamatKabPerusahaan = strtolower($request->alamatKabPerusahaan);
+        $alamatKecPerusahaan = strtolower($request->alamatKecPerusahaan);
         $statusKswp = strtolower($request->statusKswp);
         $noKlbi = strtolower($request->noKlbi);
         $fileSuratPernyataanPimred = strtolower($request->fileSuratPernyataanPimred);
@@ -137,6 +140,8 @@ class MediaPengajuanController extends Controller
         $npwpPerwakilan = strtolower($request->npwpPerwakilan);
         $serfikatUkwPerwakilan = strtolower($request->serfikatUkwPerwakilan);
         $afiliasiPersPerwakilan = strtolower($request->afiliasiPersPerwakilan);
+        $organisasiWartawan = strtolower($request->organisasiWartawan);
+        $organisasiPerusahaanPers = strtolower($request->organisasiPerusahaanPers);
         $alamatPerwakilan = strtolower($request->alamatPerwakilan);
         $tlpnPerwakilan = strtolower($request->tlpnPerwakilan);
         $emailPerwakilan = strtolower($request->emailPerwakilan);
@@ -148,6 +153,7 @@ class MediaPengajuanController extends Controller
         $fileNpwpPerwakilan = strtolower($request->fileNpwpPerwakilan);
         $fileSerfikatUkwPerwakilan = strtolower($request->fileSerfikatUkwPerwakilan);
         $fileafiliasiPersPerwakilan = strtolower($request->fileafiliasiPersPerwakilan);
+        $fileSuratKeteranganWartawan = strtolower($request->fileSuratKeteranganWartawan);
 
         // checking
         $pengajuan_cek = new_media_pengajuan::where('id_user', Auth::user()->id)->where('tahun_pengajuan', $tahun_buka)->count();
@@ -199,18 +205,20 @@ class MediaPengajuanController extends Controller
                     $pengajuan->namaPerusahaan = $namaPerusahaan;
                     $pengajuan->namaPenanggungJawab = $namaPenanggungJawab;
                     $pengajuan->namaPimred = $namaPimred;
+                    $pengajuan->namaPimprus = $namaPimprus;
                     $pengajuan->kumhamPerusahaan = $kumhamPerusahaan;
                     $pengajuan->alamatPerusahaan = $alamatPerusahaan;
+                    $pengajuan->alamatWebsite = $alamatWebsite;
                     $pengajuan->tlpnPerusahaan = $tlpnPerusahaan;
                     $pengajuan->emailPerusahaan = $emailPerusahaan;
                     $pengajuan->npwpPerusahaan = $npwpPerusahaan;
                     $pengajuan->nibPerusahaan = $nibPerusahaan;
-                    $pengajuan->noKbki = $noKbki;
                     $pengajuan->izinIpp = $izinIpp;
                     $pengajuan->namaPercetakan = $namaPercetakan;
                     $pengajuan->alamatPercetakan = $alamatPercetakan;
                     $pengajuan->alamatProvPerusahaan = $alamatProvPerusahaan;
                     $pengajuan->alamatKabPerusahaan = $alamatKabPerusahaan;
+                    $pengajuan->alamatKecPerusahaan = $alamatKecPerusahaan;
                     $pengajuan->statusKswp = $statusKswp;
                     $pengajuan->noKlbi = $noKlbi;
                     $pengajuan->fileSuratPernyataanPimred = $fileSuratPernyataanPimred;
@@ -249,6 +257,8 @@ class MediaPengajuanController extends Controller
                     $pengajuan->npwpPerwakilan = $npwpPerwakilan;
                     $pengajuan->serfikatUkwPerwakilan = $serfikatUkwPerwakilan;
                     $pengajuan->afiliasiPersPerwakilan = $afiliasiPersPerwakilan;
+                    $pengajuan->organisasiWartawan = $organisasiWartawan;
+                    $pengajuan->organisasiPerusahaanPers = $organisasiPerusahaanPers;
                     $pengajuan->alamatPerwakilan = $alamatPerwakilan;
                     $pengajuan->tlpnPerwakilan = $tlpnPerwakilan;
                     $pengajuan->emailPerwakilan = $emailPerwakilan;
@@ -260,6 +270,7 @@ class MediaPengajuanController extends Controller
                     $pengajuan->fileNpwpPerwakilan = $fileNpwpPerwakilan;
                     $pengajuan->fileSerfikatUkwPerwakilan = $fileSerfikatUkwPerwakilan;
                     $pengajuan->fileafiliasiPersPerwakilan = $fileafiliasiPersPerwakilan;
+                    $pengajuan->fileSuratKeteranganWartawan = $fileSuratKeteranganWartawan;
                     // status
                     $pengajuan->status = 'ajukan';
                     $pengajuan->tahun_pengajuan = $tahun_buka;
@@ -356,6 +367,7 @@ class MediaPengajuanController extends Controller
      */
     public function update(Request $request)
     {
+        return $this->saveSimplifiedPengajuan($request, $request->pengajuan_no);
         //
 
         $tahun_pengajuan = tahun::select('tahun')->where('pengajuan', 1)->get();
@@ -374,18 +386,20 @@ class MediaPengajuanController extends Controller
         $namaPerusahaan = str_replace('  ', ' ', strtolower($request->namaPerusahaan));
         $namaPenanggungJawab = strtolower($request->namaPenanggungJawab);
         $namaPimred = strtolower($request->namaPimred);
+        $namaPimprus = strtolower($request->namaPimprus);
         $kumhamPerusahaan = strtolower($request->kumhamPerusahaan);
         $alamatPerusahaan = strtolower($request->alamatPerusahaan);
+        $alamatWebsite = strtolower($request->alamatWebsite);
         $tlpnPerusahaan = strtolower($request->tlpnPerusahaan);
         $emailPerusahaan = strtolower($request->emailPerusahaan);
         $npwpPerusahaan = strtolower($request->npwpPerusahaan);
         $nibPerusahaan = strtolower($request->nibPerusahaan);
-        $noKbki = strtolower($request->noKbki);
         $izinIpp = strtolower($request->izinIpp);
         $namaPercetakan = strtolower($request->namaPercetakan);
         $alamatPercetakan = strtolower($request->alamatPercetakan);
         $alamatProvPerusahaan = strtolower($request->alamatProvPerusahaan);
         $alamatKabPerusahaan = strtolower($request->alamatKabPerusahaan);
+        $alamatKecPerusahaan = strtolower($request->alamatKecPerusahaan);
         $statusKswp = strtolower($request->statusKswp);
         $noKlbi = strtolower($request->noKlbi);
         $fileSuratPernyataanPimred = strtolower($request->fileSuratPernyataanPimred);
@@ -421,6 +435,8 @@ class MediaPengajuanController extends Controller
         $npwpPerwakilan = strtolower($request->npwpPerwakilan);
         $serfikatUkwPerwakilan = strtolower($request->serfikatUkwPerwakilan);
         $afiliasiPersPerwakilan = strtolower($request->afiliasiPersPerwakilan);
+        $organisasiWartawan = strtolower($request->organisasiWartawan);
+        $organisasiPerusahaanPers = strtolower($request->organisasiPerusahaanPers);
         $alamatPerwakilan = strtolower($request->alamatPerwakilan);
         $tlpnPerwakilan = strtolower($request->tlpnPerwakilan);
         $emailPerwakilan = strtolower($request->emailPerwakilan);
@@ -432,6 +448,7 @@ class MediaPengajuanController extends Controller
         $fileNpwpPerwakilan = strtolower($request->fileNpwpPerwakilan);
         $fileSerfikatUkwPerwakilan = strtolower($request->fileSerfikatUkwPerwakilan);
         $fileafiliasiPersPerwakilan = strtolower($request->fileafiliasiPersPerwakilan);
+        $fileSuratKeteranganWartawan = strtolower($request->fileSuratKeteranganWartawan);
 
         $tahun = tahun::select('tahun')->where('pengajuan_edit', 1)->get();
         if (isset($tahun[0])) {
@@ -492,18 +509,20 @@ class MediaPengajuanController extends Controller
                 'namaPerusahaan' => $namaPerusahaan,
                 'namaPenanggungJawab' => $namaPenanggungJawab,
                 'namaPimred' => $namaPimred,
+                'namaPimprus' => $namaPimprus,
                 'kumhamPerusahaan' => $kumhamPerusahaan,
                 'alamatPerusahaan' => $alamatPerusahaan,
+                'alamatWebsite' => $alamatWebsite,
                 'tlpnPerusahaan' => $tlpnPerusahaan,
                 'emailPerusahaan' => $emailPerusahaan,
                 'npwpPerusahaan' => $npwpPerusahaan,
                 'nibPerusahaan' => $nibPerusahaan,
-                'noKbki' => $noKbki,
                 'izinIpp' => $izinIpp,
                 'namaPercetakan' => $namaPercetakan,
                 'alamatPercetakan' => $alamatPercetakan,
                 'alamatProvPerusahaan' => $alamatProvPerusahaan,
                 'alamatKabPerusahaan' => $alamatKabPerusahaan,
+                'alamatKecPerusahaan' => $alamatKecPerusahaan,
                 'statusKswp' => $statusKswp,
                 'noKlbi' => $noKlbi,
                 'fileSuratPernyataanPimred' => $fileSuratPernyataanPimred,
@@ -539,6 +558,8 @@ class MediaPengajuanController extends Controller
                 'npwpPerwakilan' => $npwpPerwakilan,
                 'serfikatUkwPerwakilan' => $serfikatUkwPerwakilan,
                 'afiliasiPersPerwakilan' => $afiliasiPersPerwakilan,
+                'organisasiWartawan' => $organisasiWartawan,
+                'organisasiPerusahaanPers' => $organisasiPerusahaanPers,
                 'alamatPerwakilan' => $alamatPerwakilan,
                 'tlpnPerwakilan' => $tlpnPerwakilan,
                 'emailPerwakilan' => $emailPerwakilan,
@@ -550,6 +571,7 @@ class MediaPengajuanController extends Controller
                 'fileNpwpPerwakilan' => $fileNpwpPerwakilan,
                 'fileSerfikatUkwPerwakilan' => $fileSerfikatUkwPerwakilan,
                 'fileafiliasiPersPerwakilan' => $fileafiliasiPersPerwakilan,
+                'fileSuratKeteranganWartawan' => $fileSuratKeteranganWartawan,
                 'keterangan' => '',
                 'status' => 'edit'
             ];
@@ -582,17 +604,235 @@ class MediaPengajuanController extends Controller
     }
 
     /**
+     * Persist the two-step Perusahaan Pers / Perwakilan Media application.
+     * Uploaded documents are first stored by upload_data and submitted as filenames.
+     */
+    private function saveSimplifiedPengajuan(Request $request, ?string $pengajuanNo = null)
+    {
+        if ($pengajuanNo) {
+            $existing = new_media_pengajuan::where('pengajuan_no', $pengajuanNo)->firstOrFail();
+            abort_unless($existing->id_user === Auth::id(), 403);
+        }
+        $rules = [
+            'jenis_media' => ['required', 'in:siber,cetak,elektronik'],
+            'subjenis_elektronik' => ['nullable', 'in:televisi,radio'],
+            'namaMedia' => ['required', 'string', 'max:255'],
+            'namaPerusahaan' => ['required', 'string', 'max:255'],
+            'namaPercetakan' => ['nullable', 'string', 'max:255'],
+            'alamatPercetakan' => ['nullable', 'string', 'max:255'],
+            'nibPerusahaan' => ['required', 'string', 'max:255'],
+            'kumhamPerusahaan' => ['required', 'string', 'max:255'],
+            'npwpPerusahaan' => ['required', 'string', 'max:255'],
+            'verifikasiDewanPers' => ['required', 'in:terverifikasi faktual,belum terverifikasi faktual'],
+            'noKlbi' => ['required', 'string', 'max:255'],
+            'alamatPerusahaan' => ['required', 'string', 'max:255'],
+            'alamatKecPerusahaan' => ['required', 'string', 'max:255'],
+            'alamatKabPerusahaan' => ['required', 'string', 'max:255'],
+            'alamatProvPerusahaan' => ['required', 'string', 'max:255'],
+            'tlpnPerusahaan' => ['required', 'string', 'max:50'],
+            'emailPerusahaan' => ['required', 'email', 'max:100'],
+            'alamatWebsite' => ['nullable', 'url', 'max:255'],
+            'linkYoutube' => ['nullable', 'url', 'max:255'],
+            'linkFacebook' => ['nullable', 'url', 'max:255'],
+            'linkInstagram' => ['nullable', 'url', 'max:255'],
+            'linkTiktok' => ['nullable', 'url', 'max:255'],
+            'linkThreads' => ['nullable', 'url', 'max:255'],
+            'linkX' => ['nullable', 'url', 'max:255'],
+            'namaPimred' => ['required', 'string', 'max:255'],
+            'serfikatUkwPimred' => ['required', 'string', 'max:255'],
+            'namaPimprus' => ['required', 'string', 'max:255'],
+            'jenisSerfikatUkwPimred' => ['required', 'in:madya,utama'],
+            'namaPerwakilan' => ['required', 'string', 'max:255'],
+            'serfikatUkwPerwakilan' => ['required', 'string', 'max:255'],
+            'alamatPerwakilan' => ['required', 'string', 'max:255'],
+            'alamatKecPerwakilan' => ['required', 'string', 'max:255'],
+            'alamatKabPerwakilan' => ['required', 'string', 'max:255'],
+            'alamatProvPerwakilan' => ['required', 'string', 'max:255'],
+            'nomorKtpPerwakilan' => ['required', 'regex:/^\d{16}$/'],
+            'nomorKKPerwakilan' => ['required', 'regex:/^\d{16}$/'],
+            'organisasiWartawan' => ['required', 'in:PWI,AJI,IJTI,PFI,lainnya'],
+            'organisasiWartawanLainnya' => ['nullable', 'required_if:organisasiWartawan,lainnya', 'string', 'max:255'],
+            'organisasiPerusahaanPers' => ['required', 'in:JMSI,SMSI,AMSI,PRSSNI,ATVLI,ATVSI,SPS,lainnya'],
+            'organisasiPerusahaanPersLainnya' => ['nullable', 'required_if:organisasiPerusahaanPers,lainnya', 'string', 'max:255'],
+            'fileNibPerusahaan' => ['required', 'string'],
+            'fileKumhamPerusahaan' => ['required', 'string'],
+            'fileNpwpPerusahaan' => ['required', 'string'],
+            'fileSerfikatUkwPimred' => ['required', 'string'],
+            'fileSuratPernyataanPimred' => ['required', 'string'],
+            'fileSuratKeteranganWartawan' => ['required', 'string'],
+            'fileSerfikatUkwPerwakilan' => ['required', 'string'],
+            'fileBuktiKeanggotaanOrganisasiWartawan' => ['required', 'string'],
+            'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => ['required', 'string'],
+        ];
+
+        if ($request->input('jenis_media') === 'elektronik') {
+            $rules['subjenis_elektronik'] = ['required', 'in:televisi,radio'];
+            $rules['izinIpp'] = ['required', 'string', 'max:255'];
+            $rules['fileIzinIpp'] = ['required', 'string'];
+        }
+
+        if ($request->input('jenis_media') === 'cetak') {
+            $rules['namaPercetakan'] = ['required', 'string', 'max:255'];
+            $rules['alamatPercetakan'] = ['required', 'string', 'max:255'];
+        }
+
+        $data = $request->validate($rules);
+        $kbliCode = $this->normalizeKbliCode($data['noKlbi']);
+        $validKbliCodes = $this->validKbliCodes(
+            $data['jenis_media'],
+            $data['subjenis_elektronik'] ?? null,
+        );
+
+        if (!$kbliCode || !in_array($kbliCode, $validKbliCodes, true)) {
+            return response()->json([
+                'massage' => 'Nomor KBLI tidak sesuai dengan jenis media yang dipilih. Pengajuan tidak dapat dikirim.',
+                'icon' => 'error',
+                'title' => 'KBLI Tidak Sesuai',
+            ], 422);
+        }
+
+        $data['noKlbi'] = $kbliCode;
+        $wartawan = $data['organisasiWartawan'] === 'lainnya'
+            ? trim($data['organisasiWartawanLainnya'])
+            : $data['organisasiWartawan'];
+        $perusahaanPers = $data['organisasiPerusahaanPers'] === 'lainnya'
+            ? trim($data['organisasiPerusahaanPersLainnya'])
+            : $data['organisasiPerusahaanPers'];
+
+        $tahun = tahun::where('pengajuan', 1)->value('tahun') ?? date('Y');
+        $normal = fn ($value) => is_string($value) ? mb_strtolower(trim($value)) : $value;
+        $base = [
+            'jenis_media' => $data['jenis_media'],
+            'namaMedia' => $normal($data['namaMedia']),
+            'namaPerusahaan' => $normal($data['namaPerusahaan']),
+            'namaPercetakan' => $data['jenis_media'] === 'cetak' ? $normal($data['namaPercetakan']) : null,
+            'alamatPercetakan' => $data['jenis_media'] === 'cetak' ? $normal($data['alamatPercetakan']) : null,
+            'nibPerusahaan' => $normal($data['nibPerusahaan']),
+            'kumhamPerusahaan' => $normal($data['kumhamPerusahaan']),
+            'npwpPerusahaan' => $normal($data['npwpPerusahaan']),
+            'verifikasiDewanPers' => $data['verifikasiDewanPers'],
+            'noKlbi' => $normal($data['noKlbi']),
+            'alamatPerusahaan' => $normal($data['alamatPerusahaan']),
+            'alamatKecPerusahaan' => $normal($data['alamatKecPerusahaan']),
+            'alamatKabPerusahaan' => $normal($data['alamatKabPerusahaan']),
+            'alamatProvPerusahaan' => $normal($data['alamatProvPerusahaan']),
+            'tlpnPerusahaan' => $normal($data['tlpnPerusahaan']),
+            'emailPerusahaan' => $normal($data['emailPerusahaan']),
+            'alamatWebsite' => $data['jenis_media'] === 'siber' ? null : $normal($data['alamatWebsite'] ?? null),
+            'linkYoutube' => $normal($data['linkYoutube'] ?? null),
+            'linkFacebook' => $normal($data['linkFacebook'] ?? null),
+            'linkInstagram' => $normal($data['linkInstagram'] ?? null),
+            'linkTiktok' => $normal($data['linkTiktok'] ?? null),
+            'linkThreads' => $normal($data['linkThreads'] ?? null),
+            'linkX' => $normal($data['linkX'] ?? null),
+            'namaPimred' => $normal($data['namaPimred']),
+            'serfikatUkwPimred' => $normal($data['serfikatUkwPimred']),
+            'namaPimprus' => $normal($data['namaPimprus']),
+            'jenisSerfikatUkwPimred' => $data['jenisSerfikatUkwPimred'],
+            'izinIpp' => $request->input('jenis_media') === 'elektronik' ? $normal($data['izinIpp']) : null,
+            'jenisJangkauanSiarMediaElektronik' => $request->input('jenis_media') === 'elektronik' ? $data['subjenis_elektronik'] : null,
+            'fileNibPerusahaan' => $data['fileNibPerusahaan'],
+            'fileKumhamPerusahaan' => $data['fileKumhamPerusahaan'],
+            'fileNpwpPerusahaan' => $data['fileNpwpPerusahaan'],
+            'fileIzinIpp' => $request->input('jenis_media') === 'elektronik' ? $data['fileIzinIpp'] : null,
+            'fileSerfikatUkwPimred' => $data['fileSerfikatUkwPimred'],
+            'fileSuratPernyataanPimred' => $data['fileSuratPernyataanPimred'],
+            'namaPerwakilan' => $normal($data['namaPerwakilan']),
+            'serfikatUkwPerwakilan' => $normal($data['serfikatUkwPerwakilan']),
+            'alamatPerwakilan' => $normal($data['alamatPerwakilan']),
+            'alamatKecPerwakilan' => $normal($data['alamatKecPerwakilan']),
+            'alamatKabPerwakilan' => $normal($data['alamatKabPerwakilan']),
+            'alamatProvPerwakilan' => $normal($data['alamatProvPerwakilan']),
+            'nomorKtpPerwakilan' => $normal($data['nomorKtpPerwakilan']),
+            'nomorKKPerwakilan' => $normal($data['nomorKKPerwakilan']),
+            'organisasiWartawan' => $normal($wartawan),
+            'organisasiPerusahaanPers' => $normal($perusahaanPers),
+            'fileSuratKeteranganWartawan' => $data['fileSuratKeteranganWartawan'],
+            'fileSerfikatUkwPerwakilan' => $data['fileSerfikatUkwPerwakilan'],
+            'fileBuktiKeanggotaanOrganisasiWartawan' => $data['fileBuktiKeanggotaanOrganisasiWartawan'],
+            'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => $data['fileBuktiKeanggotaanOrganisasiPerusahaanPers'],
+        ];
+
+        $query = new_media_pengajuan::query()->where('tahun_pengajuan', $tahun);
+        if ($pengajuanNo) {
+            $query->where('pengajuan_no', '!=', $pengajuanNo);
+        }
+        foreach (['namaPerusahaan' => 'Nama Perusahaan', 'namaMedia' => 'Nama Media'] as $column => $label) {
+            if ((clone $query)->where($column, $base[$column])->exists()) {
+                return response()->json(['massage' => "$label telah digunakan", 'icon' => 'error', 'title' => 'Operasi Gagal'], 422);
+            }
+        }
+
+        $identityQuery = new_media_pengajuan::query();
+        if ($pengajuanNo) {
+            $identityQuery->where('pengajuan_no', '!=', $pengajuanNo);
+        }
+        foreach (['nomorKtpPerwakilan' => 'NIK', 'nomorKKPerwakilan' => 'No. KK'] as $column => $label) {
+            if ((clone $identityQuery)->where($column, $base[$column])->exists()) {
+                return response()->json([
+                    'massage' => "$label sudah terdaftar pada pengajuan lain. Pengajuan tidak dapat dikirim.",
+                    'icon' => 'error',
+                    'title' => "$label Sudah Digunakan",
+                ], 422);
+            }
+        }
+        if ($base['nomorKtpPerwakilan'] === $base['nomorKKPerwakilan']) {
+            return response()->json(['massage' => 'NIK dan No. KK tidak boleh sama', 'icon' => 'error', 'title' => 'Operasi Gagal'], 422);
+        }
+
+        if ($pengajuanNo) {
+            new_media_pengajuan::where('pengajuan_no', $pengajuanNo)->update($base + ['keterangan' => '', 'status' => 'edit']);
+            return response()->json(['massage' => 'Data berhasil diupdate', 'icon' => 'success', 'title' => 'Sukses', 'tahun_buka' => $tahun]);
+        }
+        if (new_media_pengajuan::where('id_user', Auth::id())->where('tahun_pengajuan', $tahun)->exists()) {
+            return response()->json(['massage' => "Pengajuan tahun $tahun telah diajukan", 'icon' => 'error', 'title' => 'Operasi Gagal'], 422);
+        }
+        new_media_pengajuan::create($base + [
+            'id_user' => Auth::id(),
+            'pengajuan_no' => $tahun . '_' . Str::random(10),
+            'status' => 'ajukan',
+            'tahun_pengajuan' => $tahun,
+        ]);
+        return response()->json(['massage' => 'Data berhasil diinput', 'icon' => 'success', 'title' => 'Sukses']);
+    }
+
+    /** KBLI 2025 yang relevan untuk perusahaan pers, menurut jenis medianya. */
+    private function validKbliCodes(string $jenisMedia, ?string $subjenisElektronik): array
+    {
+        return match ($jenisMedia) {
+            'siber' => ['58120', '58130', '60311', '60312'],
+            'cetak' => ['58120', '58130', '60311', '60312'],
+            'elektronik' => match ($subjenisElektronik) {
+                'televisi' => ['58120', '58130', '60202', '60311', '60312'],
+                'radio' => ['58120', '58130', '60101', '60102', '60311', '60312'],
+                default => [],
+            },
+            default => [],
+        };
+    }
+
+    /** Hanya menerima kode lima digit, dengan awalan "KBLI" yang opsional. */
+    private function normalizeKbliCode(string $value): ?string
+    {
+        return preg_match('/^(?:kbli\s*)?(\d{5})$/i', trim($value), $matches)
+            ? $matches[1]
+            : null;
+    }
+
+    /**
      * upload media
      */
     public function upload_data(Request $request)
     {
+        $request->validate([
+            'data' => ['required', 'string', 'regex:/^[A-Za-z0-9_-]+$/'],
+            'file' => ['required_unless:data,uploadsignature', 'file', 'mimes:pdf,png,jpg,jpeg', 'max:10240'],
+        ]);
         $param = $request->data;
         $image = $request->images;
         $path = public_path('tmp/uploads/' . trim(strtolower($param), '#'));
 
-        if (!$path) {
-            Storage::makeDirectory($path);
-        }
+        File::ensureDirectoryExists($path);
 
         if ($param == 'uploadsignature') {
             $data_uri =  $image;

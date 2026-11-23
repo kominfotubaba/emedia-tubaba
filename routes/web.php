@@ -34,6 +34,7 @@ Route::get('/data-media', [HomeController::class, 'data_media']);
 Route::get('/data-perwakilan-media', [HomeController::class, 'data_perwakilan_media']);
 Route::get('/data-verifikasi', [HomeController::class, 'data_verifikasi']);
 Route::get('/data-all', [HomeController::class, 'data_all']);
+Route::get('/dokumen/{folder}/{filename}', [HomeController::class, 'document'])->name('dokumen.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);

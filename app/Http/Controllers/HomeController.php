@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\media_pengajuan;
 use App\Models\new_media_pengajuan;
+use App\Models\tahun;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -17,7 +19,7 @@ class HomeController extends Controller
     }
     public function data_media()
     {
-        return view('data-media');
+        return redirect('/data-perusahaan');
     }
     public function data_perwakilan_media()
     {
@@ -28,29 +30,51 @@ class HomeController extends Controller
         return view('data-verifikasi');
     }
 
+    /**
+     * Serve new local uploads and fall back to the legacy production archive
+     * for documents that have not been copied into the local workspace.
+     */
+    public function document(string $folder, string $filename)
+    {
+        $folders = [
+            'filenibperusahaan',
+            'filekumhamperusahaan',
+            'filenpwpperusahaan',
+            'fileizinipp',
+            'fileserfikatukwpimred',
+            'filesuratpernyataanpimred',
+            'filesuratketeranganwartawan',
+            'fileserfikatukwperwakilan',
+            'filebuktikeanggotaanorganisasiwartawan',
+            'filebuktikeanggotaanorganisasiperusahaanpers',
+        ];
+
+        abort_unless(in_array($folder, $folders, true), 404);
+        $filename = basename($filename);
+        abort_if($filename === '', 404);
+
+        $path = public_path('tmp/uploads/' . $folder . '/' . $filename);
+        if (is_file($path)) {
+            return response()->file($path);
+        }
+
+        return redirect()->away('https://emedia.tubaba.go.id/tmp/uploads/' . $folder . '/' . rawurlencode($filename));
+    }
+
     public function data_all(Request $request)
     {
         $param = $request->query('param');
         $draw = (int) $request->query('draw', 0);
 
         try {
-            $query = new_media_pengajuan::query()->where('tahun_pengajuan', '2025');
+            $tahunAktif = tahun::where('pengajuan', 1)->value('tahun') ?? date('Y');
+            $query = new_media_pengajuan::query()->where('tahun_pengajuan', $tahunAktif);
 
             if ($param === 'perwakilan' && $request->filled('jenis_media')) {
                 switch ($request->string('jenis_media')->lower()->value()) {
-                    case 'tv':
-                        $query->where('jenis_media', 'elektronik')
-                            ->whereRaw('LOWER(jenisJangkauanSiarMediaElektronik) = ?', ['televisi']);
-                        break;
-                    case 'radio':
-                        $query->where('jenis_media', 'elektronik')
-                            ->whereRaw('LOWER(jenisJangkauanSiarMediaElektronik) = ?', ['radio']);
-                        break;
-                    case 'fotografi':
-                        $query->whereRaw('LOWER(jenis_media) = ?', ['fotografi']);
-                        break;
                     case 'cetak':
                     case 'siber':
+                    case 'elektronik':
                         $query->whereRaw('LOWER(jenis_media) = ?', [
                             $request->string('jenis_media')->lower()->value(),
                         ]);
@@ -65,45 +89,17 @@ class HomeController extends Controller
 
             $data = $query->get();
 
-            if ($param == 'media') {
+            if ($param == 'badan') {
                 # code...
                 return DataTables()->of($data)
-                    ->addColumn('tahun_berdiri', function ($data) {
-                        return $data->tahunBerdiriMedia;
+                    ->addColumn('pimprus', function ($data) {
+                        return $data->namaPimprus;
                     })
-                    ->addColumn('status_verifikasi', function ($data) {
-                        return $data->verifikasiDewanPers;
+                    ->addColumn('alamat_website', function ($data) {
+                        return $data->alamatWebsite;
                     })
-                    ->addColumn('sertifikat_pimred', function ($data) {
-                        return '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwpimred/' . $data->fileSerfikatUkwPimred . '" class="btn btn-info">' . $data->jenisSerfikatUkwPimred . '</a>';
-                    })
-                    ->addColumn('no_sertifikat_pimred', function ($data) {
-                        return  $data->serfikatUkwPimred;
-                    })
-                    ->addColumn('afiliasi_media', function ($data) {
-                        return $data->afiliasiPerusahaan;
-                    })
-                    ->addColumn('domisili_redaksi', function ($data) {
-                        return $data->domisiliRedaksiMedia;
-                    })
-                    ->addColumn('kanal_program', function ($data) {
-                        return $data->kanalKhusus;
-                    })
-                    ->rawColumns([
-                        'tahun_berdiri',
-                        'status_verifikasi',
-                        'sertifikat_pimred',
-                        'no_sertifikat_pimred',
-                        'afiliasi_media',
-                        'domisili_redaksi',
-                        'kanal_program',
-                    ])
-                    ->make(true);
-            } elseif ($param == 'badan') {
-                # code...
-                return DataTables()->of($data)
-                    ->addColumn('penanggung_jawab', function ($data) {
-                        return $data->namaPenanggungJawab;
+                    ->addColumn('alamat_kecamatan', function ($data) {
+                        return $data->alamatKecPerusahaan;
                     })
                     ->addColumn('surat_pernyataan_pimred', function ($data) {
                         return '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/filesuratpernyataanpimred/' . $data->fileSuratPernyataanPimred . '" class="btn btn-info">Lihat</a>';
@@ -114,47 +110,58 @@ class HomeController extends Controller
                     ->addColumn('alamat_provinsi', function ($data) {
                         return $data->alamatProvPerusahaan;
                     })
-                    ->addColumn('status_kswp', function ($data) {
-                        return $data->statusKswp;
-                    })
-                    ->addColumn('nib_perusahaan', function ($data) {
-                        return $data->nibPerusahaan;
-                    })
-                    ->addColumn('klbi_perusahaan', function ($data) {
-                        return $data->noKlbi;
-                    })
-                    ->addColumn('kbki_perusahaan', function ($data) {
-                        return $data->noKbki;
-                    })
-                    ->addColumn('izin_ipp_perusahaan', function ($data) {
-                        return $data->file_izin_ipp ?? null;
-                    })
-                    ->addColumn('nama_percetakan', function ($data) {
-                        return $data->nama_percetakan ?? null;
-                    })
-                    ->addColumn('alamat_percetakan', function ($data) {
-                        return $data->alamat_percetakan ?? null;
-                    })
-                    ->addColumn('status_persyaratan', function ($data) {
+                    ->addColumn('status_perusahaan_pers', function ($data) {
                         $verifikasi = mb_strtolower(trim((string) $data->verifikasiDewanPers));
-                        if ($verifikasi === '' || str_starts_with($verifikasi, 'belum')) {
-                            return 'Belum';
+
+                        if (str_contains($verifikasi, 'faktual') && !str_contains($verifikasi, 'belum')) {
+                            return 'terverifikasi faktual';
                         }
-                        return str_contains($verifikasi, 'terverifikasi') ? 'Memenuhi syarat' : 'Belum';
+
+                        if (str_contains($verifikasi, 'administrasi') || str_contains($verifikasi, 'administratif')) {
+                            return 'terverivikasi administrasi';
+                        }
+
+                        return 'belum terdata';
+                    })
+                    ->addColumn('keterangan_perusahaan_pers', function ($data) {
+                        if ($data->status === 'terima') {
+                            return 'Memenuhi Syarat';
+                        }
+
+                        // Keterangan dibuat saat verifikasi ditolak. Tanggal perubahan
+                        // tersebut menjadi awal masa pelengkapan dokumen selama satu tahun.
+                        $batasPelengkapan = $data->updated_at
+                            ? Carbon::parse($data->updated_at)->addYear()
+                            : null;
+
+                        return $batasPelengkapan && $batasPelengkapan->isPast()
+                            ? 'Belum Lengkap'
+                            : 'Belum Memenuhi Syarat';
+                    })
+                    ->addColumn('catatan_persyaratan', function ($data) {
+                        if ($data->status === 'terima') {
+                            return '';
+                        }
+
+                        $catatan = html_entity_decode((string) $data->keterangan, ENT_QUOTES, 'UTF-8');
+                        $catatan = preg_replace('/<br\\s*\\/?\\s*>/i', "\n", $catatan);
+
+                        return trim(strip_tags($catatan));
+                    })
+                    ->addColumn('batas_pelengkapan', function ($data) {
+                        return $data->status !== 'terima' && $data->updated_at
+                            ? Carbon::parse($data->updated_at)->addYear()->format('d-m-Y')
+                            : null;
                     })
                     ->rawColumns([
-                        'status_persyaratan',
-                        'penanggung_jawab',
+                        'status_perusahaan_pers',
+                        'keterangan_perusahaan_pers',
+                        'pimprus',
                         'surat_pernyataan_pimred',
                         'alamat_kabupaten',
                         'alamat_provinsi',
-                        'status_kswp',
-                        'nib_perusahaan',
-                        'klbi_perusahaan',
-                        'kbki_perusahaan',
-                        'izin_ipp_perusahaan',
-                        'nama_percetakan',
-                        'alamat_percetakan'
+                        'alamat_kecamatan',
+                        'alamat_website'
                     ])
                     ->make(true);
             } elseif ($param == 'perwakilan') {
@@ -167,22 +174,40 @@ class HomeController extends Controller
                         return $data->alamatProvPerwakilan;
                     })
                     ->addColumn('afiliasi_perwakilan', function ($data) {
-                        return $data->afiliasiPersPerwakilan;
+                        return $data->fileBuktiKeanggotaanOrganisasiWartawan;
+                    })
+                    ->addColumn('organisasi_wartawan', function ($data) {
+                        return $data->organisasiWartawan;
+                    })
+                    ->addColumn('organisasi_perusahaan_pers', function ($data) {
+                        return $data->organisasiPerusahaanPers;
+                    })
+                    ->addColumn('bukti_organisasi_perusahaan_pers', function ($data) {
+                        return $data->fileBuktiKeanggotaanOrganisasiPerusahaanPers;
+                    })
+                    ->addColumn('surat_keterangan_wartawan', function ($data) {
+                        if ($data->fileSuratKeteranganWartawan) {
+                            return '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/filesuratketeranganwartawan/' . $data->fileSuratKeteranganWartawan . '" class="btn btn-info">Lihat</a>';
+                        }
+                        return '';
                     })
                     ->addColumn('kompetensi_perwakilan', function ($data) {
-                        if ($data->fileSerfikatUkwPerwakilan) {
-                            $sertifikat = '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/fileserfikatukwperwakilan/' . $data->fileSerfikatUkwPerwakilan . '" class="btn btn-info">Lihat</a>';
-                        } else {
-                            $sertifikat = '';
-                        }
-                        return  $sertifikat;
+                        return $data->fileSerfikatUkwPerwakilan;
+                    })
+                    ->addColumn('status_wartawan', function ($data) {
+                        return $data->jenisSerfikatUkwPerwakilan ?: ($data->serfikatUkwPerwakilan ? 'Kompeten' : 'Belum Kompeten');
                     })
 
                     ->rawColumns([
                         'kabupaten_perwakilan',
                         'provinsi_perwakilan',
                         'afiliasi_perwakilan',
-                        'kompetensi_perwakilan'
+                        'organisasi_wartawan',
+                        'organisasi_perusahaan_pers',
+                        'bukti_organisasi_perusahaan_pers',
+                        'surat_keterangan_wartawan',
+                        'kompetensi_perwakilan',
+                        'status_wartawan'
                     ])
                     ->make(true);
             }

@@ -187,6 +187,7 @@
     <script src="/assets/icon/acorn-icons-medical.js"></script>
 
     <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/table-sentence-case.js"></script>
     @stack('script')
 </body>
 

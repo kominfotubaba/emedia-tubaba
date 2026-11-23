@@ -75,8 +75,8 @@
                                     @csrf
 
                                     <div class="mb-3 filled form-group tooltip-end-top">
-                                        <i data-acorn-icon="user"></i>
-                                        <input id="email" type="text" placeholder="email"
+                                        <i data-acorn-icon="email"></i>
+                                        <input id="email" type="email" placeholder="eMail"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
                                             value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -152,13 +152,12 @@
 
             $("#loginForm").validate({
                 rules: {
-                    password: {
-                        required: true,
-                    },
-
-                    username: {
+                    email: {
                         required: true,
                         noSpace: true
+                    },
+                    password: {
+                        required: true,
                     },
                 },
             });

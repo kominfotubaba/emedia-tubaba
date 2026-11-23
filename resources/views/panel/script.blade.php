@@ -50,6 +50,7 @@
 <script src="/assets/js/scripts.js"></script>
 <script src="/assets/js/master.js"></script>
 <script src="/assets/js/forms/wizards.js"></script>
+<script src="/assets/js/table-sentence-case.js"></script>
 <!-- Page Specific Scripts End -->
 
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>

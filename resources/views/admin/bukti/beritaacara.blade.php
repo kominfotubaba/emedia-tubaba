@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berita Acara | E-Media Tulang Bawang Barat 2023</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
@@ -130,7 +130,7 @@
             }
             return $temp;
         }
-
+        
         function terbilang($nilai)
         {
             if ($nilai < 0) {
@@ -148,7 +148,8 @@
                 <div class="container-fluid">
                     <div class="row text-center ">
                         <div class="col-2 ">
-                            <img class="img-fluid" style="height: 100px;" src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
+                            <img class="img-fluid" style="height: 100px;"
+                                src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
                         </div>
                         <div class="col-8">
                             <strong class="text-uppercase fs-6" style="line-height: 1;">
@@ -162,7 +163,8 @@
                                 Tulang Bawang Barat </p>
                         </div>
                         <div class="col-2 mt-0">
-                            <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;" src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
+                            <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;"
+                                src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
                         </div>
                     </div>
                     <hr>
@@ -258,7 +260,8 @@
                                     <p class="text-capitalize" style="text-align: center;">
                                         pengelola barang
                                     </p>
-                                    <img style="max-width: 250px; max-height:200px;" src="" class="img-thumbnail border-0 p-0 m-0" alt="">
+                                    <img style="max-width: 250px; max-height:200px;" src=""
+                                        class="img-thumbnail border-0 p-0 m-0" alt="">
                                     <br>
                                     <br>
                                     <br>
@@ -288,7 +291,8 @@
             <div class="container-fluid py-4 px-5">
                 <div class="row text-center ">
                     <div class="col-2 ">
-                        <img class="img-fluid" style="height: 100px;" src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
+                        <img class="img-fluid" style="height: 100px;"
+                            src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
                     </div>
                     <div class="col-8">
                         <strong class="text-uppercase fs-6" style="line-height: 1;">
@@ -301,7 +305,8 @@
                             Tulang Bawang Barat </p>
                     </div>
                     <div class="col-2 mt-0">
-                        <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;" src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
+                        <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;"
+                            src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
                     </div>
                 </div>
                 <hr>
@@ -425,7 +430,8 @@
                                         <a href="#" class="link-light"></a>
                                     </p>
                                     <div class="">
-                                        <img style="max-width: 200px; max-height: 90px;" src="" class="img-thumbnail border-0" alt="">
+                                        <img style="max-width: 200px; max-height: 90px;" src=""
+                                            class="img-thumbnail border-0" alt="">
                                         <br>
                                         <br>
                                         <br>
@@ -483,7 +489,8 @@
                                     <br>
                                     <br>
                                     <div class="">
-                                        <img style="max-width: 200px; max-height: 90px;" src="" class="img-thumbnail border-0" alt="">
+                                        <img style="max-width: 200px; max-height: 90px;" src=""
+                                            class="img-thumbnail border-0" alt="">
                                         <!-- <br><br><br><br> -->
                                     </div>
                                     <p class="text-center text-uppercase">
@@ -514,7 +521,8 @@
             <div class="container-fluid py-4 px-5">
                 <div class="row text-center ">
                     <div class="col-2 ">
-                        <img class="img-fluid" style="height: 100px;" src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
+                        <img class="img-fluid" style="height: 100px;"
+                            src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
                     </div>
                     <div class="col-8">
                         <strong class="text-uppercase fs-6" style="line-height: 1;">
@@ -527,7 +535,8 @@
                             Tulang Bawang Barat </p>
                     </div>
                     <div class="col-2 mt-0">
-                        <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;" src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
+                        <img class="d-flex align-items-start mt-0" style="width:80px; height:100px;"
+                            src="https://emedia.tubaba.go.id/assets/img/logo/logo_kominfo_blue.png" alt"">
                     </div>
                 </div>
                 <hr>
@@ -567,7 +576,7 @@
                                 <td class="col-print-1"></td>
                                 <td class="col-print-2">Jabatan</td>
                                 <td class="col-print-1">:</td>
-                                <td class="col-print-8">Pengguna Anggaran
+                                <td class="col-print-8">Kuasa Pengguna Anggaran
                                 </td>
                             </tr>
                             <tr class="lh-1">
@@ -631,7 +640,7 @@
                 </div>
 
                 <div class="px-4">
-                    <p style="text-align: justify;"><strong>Pihak Pertama</strong> atas nama Pengguna Anggaran
+                    <p style="text-align: justify;"><strong>Pihak Pertama</strong> atas nama Kuasa Pengguna Anggaran
                         Dinas
                         Komunikasi dan Informatika Tulang Bawang Barat telah melakukan pembayaran Kepada
                         <strong>Pihak Kedua</strong> berupa Uang Pengganti dalam bentuk transfer atas pekerjaan
@@ -691,7 +700,7 @@
                                             PIHAK KESATU
                                         </strong>
                                         <br>
-                                        Pengguna Anggaran,
+                                        Kuasa Pengguna Anggaran,
                                     </p>
                                     <div class="">
                                         <br>
@@ -722,8 +731,10 @@
         <div class="page">
             <div class="container-fluid px-5 py-4">
                 <div class="row p-0">
-                    <div class="col-2 d-flex flex-column justify-content-center border-top border-start border-bottom border-dark">
-                        <img class="img-thumbnail border-0" src="https://tubaba.go.id/assets/img/logo%20tubaba.png" alt="">
+                    <div
+                        class="col-2 d-flex flex-column justify-content-center border-top border-start border-bottom border-dark">
+                        <img class="img-thumbnail border-0" src="https://tubaba.go.id/assets/img/logo%20tubaba.png"
+                            alt="">
                     </div>
 
                     <div class="col-10 border border-dark p-0">
@@ -868,7 +879,7 @@
                                 <div class="col-1"></div>
                                 <div class="col-4"></div>
                                 <div class="col-2">Jumlah</div>
-                                <div class="col-5 border-0 border-top border border-dark">Rp. {{ $thasil }},-
+                                <div class="col-5 border-top border border-dark">Rp. {{ $thasil }},-
                                 </div>
                             </div>
                         </div>
@@ -886,7 +897,7 @@
                         <br>
                         <p class="col-12 text-center lh-1">
                         </p>
-                        <p class="col-12 border-0 border-top text-center border border-dark">
+                        <p class="col-12 border border-top text-center border-dark">
                         </p>
                     </div>
                     <div class="col-4 border-top-0 border border-dark">
@@ -902,7 +913,7 @@
                         <p class="col-12 text-center lh-1">
                             {{ $d->bendahara }}
                         </p>
-                        <p class="col-12 border-0 border-top text-center border border-dark">
+                        <p class="col-12 border-top text-center border border-dark">
                             NIP. {{ $d->bendahara_nip }}
                         </p>
 
@@ -911,7 +922,7 @@
                         <p class="text-center">
                             PANARAGAN,
                             <br>
-                            Pengguna Anggaran
+                            Kuasa Pengguna Anggaran
                         </p>
                         <br>
                         <br>
@@ -920,7 +931,7 @@
                         <p class="col-12 text-center lh-1">
                             {{ $d->kpa }}
                         </p>
-                        <p class="col-12 border-0 border-top text-center border border-dark">
+                        <p class="col-12 border-top text-center border border-dark">
                             NIP. {{ $d->kpa_nip }}
                         </p>
                     </div>
@@ -934,8 +945,12 @@
         </div>
     @endforeach
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src=" https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+    integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous">
+</script>
 <script>
     window.print();
 </script>
