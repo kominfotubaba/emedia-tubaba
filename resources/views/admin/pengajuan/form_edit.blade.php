@@ -11,6 +11,7 @@
 <script>
 $(function () {
     const form = $('#pengajuanDuaStep'), csrf = $('meta[name="csrf-token"]').attr('content');
+    const toTitleCase = value => value.toLocaleLowerCase('id-ID').replace(/(^|[\s-])\p{L}/gu, match => match.toLocaleUpperCase('id-ID'));
     const fieldLabel = field => $(field).closest('[class*="col-"]').find('.form-label').first().text().trim() || field.name;
     const showFirstInvalidField = () => { const field=form.find(':input').filter(function(){return !this.disabled&&!this.validity.valid;}).first()[0]; if(!field)return; const pane=$(field).closest('.tab-pane'), tab=form.closest('.card').find(`[data-bs-toggle="tab"][href="#${pane.attr('id')}"]`)[0]; if(tab&&window.bootstrap)bootstrap.Tab.getOrCreateInstance(tab).show(); field.reportValidity(); };
     form[0].addEventListener('invalid', event => { const field=event.target, label=fieldLabel(field); let message=''; if(field.validity.valueMissing)message=`${label} wajib diisi.`; else if(field.validity.typeMismatch)message=field.type==='email'?`${label} harus menggunakan alamat email yang valid.`:`${label} harus berupa URL yang valid.`; else if(field.validity.patternMismatch)message=field.title||`${label} memiliki format yang tidak valid.`; field.setCustomValidity(message); }, true);
@@ -19,6 +20,10 @@ $(function () {
     const toggle = () => { const on = form.find('[name="jenis_media"]').val() === 'elektronik'; form.find('.electronic-only').toggle(on); form.find('[name="subjenis_elektronik"], [name="izinIpp"]').prop('required', on); form.find('.document-upload[data-target="fileIzinIpp"]').prop('required', on && !form.find('[name="fileIzinIpp"]').val()); };
     const toggleWebsite = () => form.find('.website-field').toggle(form.find('[name="jenis_media"]').val() !== 'siber');
     const togglePrintCompany = () => { const print=form.find('[name="jenis_media"]').val()==='cetak'; form.find('.print-only').toggle(print); form.find('[name="namaPercetakan"], [name="alamatPercetakan"]').prop('required', print); };
+    form.on('input', '.title-case', function(){ const start=this.selectionStart, end=this.selectionEnd, titleCased=toTitleCase(this.value); if(this.value===titleCased)return; this.value=titleCased; this.setSelectionRange(start,end); });
+    const duplicateTimers = new WeakMap();
+    const checkDuplicate = input => { clearTimeout(duplicateTimers.get(input)); const container=$(input).closest('[class*="col-"]').first(); container.find('.duplicate-warning').remove(); if(!input.name||!input.value.trim()||input.disabled)return; duplicateTimers.set(input,setTimeout(()=>{ const value=input.value.trim(); $.post('/pengajuan/check-duplicate',{_token:csrf,field:input.name,value,pengajuan_no:form.find('[name="pengajuan_no"]').val()}).done(result=>{ if(!result.duplicate||input.value.trim()!==value)return; container.append(`<div class="text-warning small mt-1 duplicate-warning">${result.message}</div>`); }); },500)); };
+    form.on('input change','input:not([type="hidden"]):not([type="file"]):not(:radio):not(:checkbox)',function(){ checkDuplicate(this); });
     form.on('input', '.media-name', function(){ $('.media-name').not(this).val(this.value); });
     form.on('change', '.media-type', function(){ $('.media-type').not(this).val(this.value); toggle(); toggleWebsite(); togglePrintCompany(); });
     const toggleOrganizationOther = () => { form.find('.organization-other').each(function(){ const input=$(this), other=form.find('[name="'+input.data('for')+'"]:checked').val()==='lainnya'; input.prop('disabled',!other).prop('required',other); if(!other)input.val(''); }); };

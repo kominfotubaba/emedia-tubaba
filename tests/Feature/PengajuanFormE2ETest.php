@@ -64,6 +64,22 @@ class PengajuanFormE2ETest extends TestCase
         $this->assertSame(1, new_media_pengajuan::where('id_user', $user->id)->count());
     }
 
+    public function test_user_is_warned_when_an_entered_field_is_already_registered(): void
+    {
+        $user = User::factory()->create(['role' => 'user']);
+        $this->createActiveYear();
+        $this->actingAs($user)->postJson('/pengajuan/store', $this->payload('nib.pdf'));
+
+        $this->actingAs($user)
+            ->postJson('/pengajuan/check-duplicate', [
+                'field' => 'namaPimred',
+                'value' => 'PIMPINAN REDAKSI',
+            ])
+            ->assertOk()
+            ->assertJsonPath('duplicate', true)
+            ->assertJsonPath('message', 'Nama Pimpinan Redaksi sudah terdaftar.');
+    }
+
     public function test_user_cannot_submit_a_kbli_code_outside_the_dewan_pers_list(): void
     {
         $user = User::factory()->create(['role' => 'user']);

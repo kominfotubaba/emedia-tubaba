@@ -296,6 +296,70 @@ class MediaPengajuanController extends Controller
         );
     }
 
+    public function checkDuplicate(Request $request)
+    {
+        $fields = [
+            'namaMedia' => ['namaMedia', 'Nama Media'],
+            'namaPerusahaan' => ['namaPerusahaan', 'Nama Perusahaan Pers'],
+            'nibPerusahaan' => ['nibPerusahaan', 'No. NIB'],
+            'kumhamPerusahaan' => ['kumhamPerusahaan', 'No. AHU'],
+            'izinIpp' => ['izinIpp', 'No. IPP'],
+            'npwpPerusahaan' => ['npwpPerusahaan', 'NPWP'],
+            'namaPimred' => ['namaPimred', 'Nama Pimpinan Redaksi'],
+            'serfikatUkwPimred' => ['serfikatUkwPimred', 'No. Sertifikat Kompetensi Pimred'],
+            'namaPimprus' => ['namaPimprus', 'Nama Pimpinan Perusahaan'],
+            'noKlbi' => ['noKlbi', 'KBLI'],
+            'alamatPerusahaan' => ['alamatPerusahaan', 'Alamat Perusahaan Pers'],
+            'alamatKecPerusahaan' => ['alamatKecPerusahaan', 'Kecamatan Perusahaan'],
+            'alamatKabPerusahaan' => ['alamatKabPerusahaan', 'Kabupaten/Kota Perusahaan'],
+            'alamatProvPerusahaan' => ['alamatProvPerusahaan', 'Provinsi Perusahaan'],
+            'tlpnPerusahaan' => ['tlpnPerusahaan', 'No. Telepon Redaksi'],
+            'emailPerusahaan' => ['emailPerusahaan', 'Alamat Email Redaksi'],
+            'alamatWebsite' => ['alamatWebsite', 'Link Website'],
+            'linkYoutube' => ['linkYoutube', 'Link YouTube'],
+            'linkFacebook' => ['linkFacebook', 'Link Facebook'],
+            'linkInstagram' => ['linkInstagram', 'Link Instagram'],
+            'linkTiktok' => ['linkTiktok', 'Link TikTok'],
+            'linkThreads' => ['linkThreads', 'Link Threads'],
+            'linkX' => ['linkX', 'Link X'],
+            'namaPercetakan' => ['namaPercetakan', 'Nama Perusahaan Percetakan'],
+            'alamatPercetakan' => ['alamatPercetakan', 'Alamat Perusahaan Percetakan'],
+            'namaPerwakilan' => ['namaPerwakilan', 'Nama Kepala Biro/Wartawan Perwakilan'],
+            'serfikatUkwPerwakilan' => ['serfikatUkwPerwakilan', 'No. Sertifikat Kompetensi'],
+            'alamatPerwakilan' => ['alamatPerwakilan', 'Alamat Domisili Perwakilan'],
+            'alamatKecPerwakilan' => ['alamatKecPerwakilan', 'Kecamatan Perwakilan'],
+            'alamatKabPerwakilan' => ['alamatKabPerwakilan', 'Kabupaten/Kota Perwakilan'],
+            'alamatProvPerwakilan' => ['alamatProvPerwakilan', 'Provinsi Perwakilan'],
+            'nomorKtpPerwakilan' => ['nomorKtpPerwakilan', 'NIK'],
+            'nomorKKPerwakilan' => ['nomorKKPerwakilan', 'No. KK'],
+            'organisasiWartawanLainnya' => ['organisasiWartawan', 'Organisasi Wartawan'],
+            'organisasiPerusahaanPersLainnya' => ['organisasiPerusahaanPers', 'Organisasi Perusahaan Pers'],
+        ];
+
+        $data = $request->validate([
+            'field' => ['required', 'string'],
+            'value' => ['nullable', 'string', 'max:255'],
+            'pengajuan_no' => ['nullable', 'string'],
+        ]);
+
+        if (!isset($fields[$data['field']]) || blank($data['value'])) {
+            return response()->json(['duplicate' => false]);
+        }
+
+        [$column, $label] = $fields[$data['field']];
+        $query = new_media_pengajuan::query()
+            ->whereRaw('LOWER(' . $column . ') = ?', [mb_strtolower(trim($data['value']))]);
+
+        if (!empty($data['pengajuan_no'])) {
+            $query->where('pengajuan_no', '!=', $data['pengajuan_no']);
+        }
+
+        return response()->json([
+            'duplicate' => $query->exists(),
+            'message' => $label . ' sudah terdaftar.',
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *

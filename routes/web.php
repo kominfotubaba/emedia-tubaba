@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/create', [MediaPengajuanController::class, 'create']);
         Route::get('/show/{jenis}', [MediaPengajuanController::class, 'show']);
         Route::post('/store', [MediaPengajuanController::class, 'store']);
+        Route::post('/check-duplicate', [MediaPengajuanController::class, 'checkDuplicate'])->name('pengajuan.check-duplicate');
         Route::get('/checkurl', [MediaPengajuanController::class, 'check_url']);
         Route::post('/uploads', [MediaPengajuanController::class, 'upload_data']);
         Route::get('/edit/{no_pengajuan}', [MediaPengajuanController::class, 'edit'])->name('pengajuan.edit');

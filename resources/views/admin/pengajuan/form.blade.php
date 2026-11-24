@@ -5,6 +5,7 @@ $(function () {
     const form = $('#pengajuanDuaStep');
     const csrf = $('meta[name="csrf-token"]').attr('content');
     const sync = (source, selector) => $(selector).not(source).val($(source).val());
+    const toTitleCase = value => value.toLocaleLowerCase('id-ID').replace(/(^|[\s-])\p{L}/gu, match => match.toLocaleUpperCase('id-ID'));
     const fieldLabel = field => $(field).closest('[class*="col-"]').find('.form-label').first().text().trim() || field.name;
     const showFirstInvalidField = () => {
         const field = form.find(':input').filter(function () { return !this.disabled && !this.validity.valid; }).first()[0];
@@ -60,6 +61,32 @@ $(function () {
         form.find('.print-only').toggle(print);
         form.find('[name="namaPercetakan"], [name="alamatPercetakan"]').prop('required', print);
     };
+    form.on('input', '.title-case', function () {
+        const start = this.selectionStart, end = this.selectionEnd, titleCased = toTitleCase(this.value);
+        if (this.value === titleCased) return;
+        this.value = titleCased;
+        this.setSelectionRange(start, end);
+    });
+    const duplicateTimers = new WeakMap();
+    const checkDuplicate = input => {
+        clearTimeout(duplicateTimers.get(input));
+        const container = $(input).closest('[class*="col-"]').first();
+        container.find('.duplicate-warning').remove();
+        if (!input.name || !input.value.trim() || input.disabled) return;
+        duplicateTimers.set(input, setTimeout(() => {
+            const value = input.value.trim();
+            $.post('/pengajuan/check-duplicate', {
+                _token: csrf,
+                field: input.name,
+                value,
+                pengajuan_no: form.find('[name="pengajuan_no"]').val(),
+            }).done(result => {
+                if (!result.duplicate || input.value.trim() !== value) return;
+                container.append(`<div class="text-warning small mt-1 duplicate-warning">${result.message}</div>`);
+            });
+        }, 500));
+    };
+    form.on('input change', 'input:not([type="hidden"]):not([type="file"]):not(:radio):not(:checkbox)', function () { checkDuplicate(this); });
     form.on('input', '.media-name', function () { sync(this, '.media-name'); });
     form.on('change', '.media-type', function () { sync(this, '.media-type'); toggleElectronic(); toggleWebsite(); togglePrintCompany(); });
     const toggleOrganizationOther = () => {

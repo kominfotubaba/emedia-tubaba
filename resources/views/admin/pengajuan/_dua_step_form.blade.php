@@ -21,8 +21,8 @@
     <div class="card wizard mb-3" id="wizardBasic1">
         <div class="card-header border-0 pb-0">
             <ul class="nav nav-tabs justify-content-center" role="tablist">
-                <li class="nav-item"><a class="nav-link active text-center" data-bs-toggle="tab" href="#perusahaanPers"><div class="mb-1 title d-none d-sm-block">PERUSAHAAN PERS</div></a></li>
-                <li class="nav-item"><a class="nav-link text-center" data-bs-toggle="tab" href="#perwakilanMedia"><div class="mb-1 title d-none d-sm-block">PERWAKILAN MEDIA</div></a></li>
+                <li class="nav-item"><a id="perusahaanPersTab" class="nav-link active text-center" data-bs-toggle="tab" href="#perusahaanPers"><div class="mb-1 title d-none d-sm-block">PERUSAHAAN PERS</div></a></li>
+                <li class="nav-item"><a id="perwakilanMediaTab" class="nav-link text-center" data-bs-toggle="tab" href="#perwakilanMedia"><div class="mb-1 title d-none d-sm-block">PERWAKILAN MEDIA</div></a></li>
             </ul>
         </div>
         <div class="card-body">
@@ -35,7 +35,7 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label">Nama Media</label>
-                                <input class="form-control media-name" 
+                                <input class="form-control media-name title-case"
                                 name="namaMedia" 
                                 value="{{ $value('namaMedia') }}" {{ $disabled }} 
                                 required>
@@ -43,15 +43,7 @@
                             <input type="hidden" name="jenis_media" value="{{ $value('jenis_media') }}">
                             <div class="col-md-6">
                                 <label class="form-label">Nama Perusahaan Pers</label>
-                                <input class="form-control" name="namaPerusahaan" value="{{ $value('namaPerusahaan') }}" {{ $disabled }} required>
-                            </div>
-                            <div class="col-md-6 print-only">
-                                <label class="form-label">Nama Perusahaan Percetakan</label>
-                                <input class="form-control" name="namaPercetakan" value="{{ $value('namaPercetakan') }}" {{ $disabled }}>
-                            </div>
-                            <div class="col-md-6 print-only">
-                                <label class="form-label">Alamat Perusahaan Percetakan</label>
-                                <input class="form-control" name="alamatPercetakan" value="{{ $value('alamatPercetakan') }}" {{ $disabled }}>
+                                <input class="form-control title-case" name="namaPerusahaan" value="{{ $value('namaPerusahaan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-6 electronic-only">
                                 <label class="form-label">Jenis Siaran Elektronik</label>
@@ -120,7 +112,7 @@
                             <div class="w-100"></div>
                             <div class="col-md-4">
                                 <label class="form-label">Nama Pimpinan Redaksi</label>
-                                <input class="form-control" name="namaPimred" value="{{ $value('namaPimred') }}" {{ $disabled }} required>
+                                <input class="form-control title-case" name="namaPimred" value="{{ $value('namaPimred') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">No. Sertifikat Kompetensi Pimred</label>
@@ -128,7 +120,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Nama Pimpinan Perusahaan</label>
-                                <input class="form-control" name="namaPimprus" value="{{ $value('namaPimprus') }}" {{ $disabled }} required>
+                                <input class="form-control title-case" name="namaPimprus" value="{{ $value('namaPimprus') }}" {{ $disabled }} required>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-4">
@@ -150,22 +142,22 @@
                                 <input id="noKlbi" class="form-control" name="noKlbi" value="{{ $value('noKlbi') }}" placeholder="Pilih KBLI" {{ $disabled }} required>
                                 <div class="form-text">Masukkan satu atau lebih kode, lalu tekan Enter atau koma.</div>
                             </div>
-                            <div class="col-12"><label class="form-label">Alamat Perusahaan Pers</label><input class="form-control" name="alamatPerusahaan" value="{{ $value('alamatPerusahaan') }}" {{ $disabled }} required></div>
+                            <div class="col-12"><label class="form-label">Alamat Perusahaan Pers</label><input class="form-control title-case" name="alamatPerusahaan" value="{{ $value('alamatPerusahaan') }}" {{ $disabled }} required></div>
                             <div class="col-md-4">
                                 <label class="form-label">Kecamatan</label>
-                                <input class="form-control" 
+                                <input class="form-control title-case"
                                 name="alamatKecPerusahaan" value="{{ $value('alamatKecPerusahaan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Kabupaten/Kota</label>
                                 <input 
-                                class="form-control" 
+                                class="form-control title-case"
                                 name="alamatKabPerusahaan" 
                                 value="{{ $value('alamatKabPerusahaan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Provinsi</label>
-                                <input class="form-control" 
+                                <input class="form-control title-case"
                                 name="alamatProvPerusahaan" 
                                 value="{{ $value('alamatProvPerusahaan') }}" {{ $disabled }} required>
                                 </div>
@@ -204,6 +196,19 @@
                                 <label class="form-label">Link X</label>
                                 <input type="url" class="form-control" name="linkX" value="{{ $value('linkX') }}" placeholder="https://x.com/namaakun" {{ $disabled }}>
                             </div>
+                            <div class="col-md-6 print-only">
+                                <label class="form-label">Nama Perusahaan Percetakan</label>
+                                <input class="form-control title-case" name="namaPercetakan" value="{{ $value('namaPercetakan') }}" {{ $disabled }}>
+                            </div>
+                            <div class="col-md-6 print-only">
+                                <label class="form-label">Alamat Perusahaan Percetakan</label>
+                                <input class="form-control title-case" name="alamatPercetakan" value="{{ $value('alamatPercetakan') }}" {{ $disabled }}>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4 pt-3 border-top">
+                            <button type="button" class="btn btn-primary px-4" onclick="document.getElementById('perwakilanMediaTab').click()">
+                                Next
+                            </button>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="perwakilanMedia">
@@ -212,7 +217,7 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label">Nama Kepala Biro/Wartawan Perwakilan</label>
-                                <input class="form-control" name="namaPerwakilan" value="{{ $value('namaPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case" name="namaPerwakilan" value="{{ $value('namaPerwakilan') }}" {{ $disabled }} required>
                                 <label class="form-label mt-2">Surat Keterangan sebagai Kepala Biro/Wartawan Perwakilan (PNG, JPG, atau PDF)</label>
                                 @if($readonly)
                                     {!! $document('fileSuratKeteranganWartawan', 'filesuratketeranganwartawan') !!}
@@ -234,22 +239,22 @@
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Alamat Domisili Kepala Biro/Wartawan Perwakilan</label>
-                                <input class="form-control" 
+                                <input class="form-control title-case"
                                 name="alamatPerwakilan" 
                                 value="{{ $value('alamatPerwakilan') }}" 
                                 {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Kecamatan</label>
-                                <input class="form-control" name="alamatKecPerwakilan" value="{{ $value('alamatKecPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case" name="alamatKecPerwakilan" value="{{ $value('alamatKecPerwakilan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Kabupaten/Kota</label>
-                                <input class="form-control" name="alamatKabPerwakilan" value="{{ $value('alamatKabPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case" name="alamatKabPerwakilan" value="{{ $value('alamatKabPerwakilan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Provinsi</label>
-                                <input class="form-control" name="alamatProvPerwakilan" value="{{ $value('alamatProvPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case" name="alamatProvPerwakilan" value="{{ $value('alamatProvPerwakilan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">NIK</label>
@@ -273,7 +278,7 @@
                                         <span class="form-check-label">Lainnya</span>
                                     </label>
                                 </div>
-                                <input class="form-control mt-2 organization-other" name="organisasiWartawanLainnya" data-for="organisasiWartawan" value="{{ $wartawanLainnya }}" placeholder="Tulis organisasi wartawan lainnya" {{ $disabled }} @disabled(!$readonly && $wartawanChoice !== 'lainnya')>
+                                <input class="form-control mt-2 organization-other title-case" name="organisasiWartawanLainnya" data-for="organisasiWartawan" value="{{ $wartawanLainnya }}" placeholder="Tulis organisasi wartawan lainnya" {{ $disabled }} @disabled(!$readonly && $wartawanChoice !== 'lainnya')>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label d-block">Organisasi Perusahaan Pers</label>
@@ -289,7 +294,7 @@
                                         <span class="form-check-label">Lainnya</span>
                                     </label>
                                 </div>
-                                <input class="form-control mt-2 organization-other" name="organisasiPerusahaanPersLainnya" data-for="organisasiPerusahaanPers" value="{{ $perusahaanPersLainnya }}" placeholder="Tulis organisasi perusahaan pers lainnya" {{ $disabled }} @disabled(!$readonly && $perusahaanPersChoice !== 'lainnya')>
+                                <input class="form-control mt-2 organization-other title-case" name="organisasiPerusahaanPersLainnya" data-for="organisasiPerusahaanPers" value="{{ $perusahaanPersLainnya }}" placeholder="Tulis organisasi perusahaan pers lainnya" {{ $disabled }} @disabled(!$readonly && $perusahaanPersChoice !== 'lainnya')>
                             </div>
                         </div>
                         <div class="row g-3">
@@ -299,13 +304,16 @@
                                 <div class="col-md-6 document-field"><label class="form-label">{{ $label }} (PNG, JPG, atau PDF)</label>@if($readonly){!! $document($field, $folder) !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="{{ $field }}" @if($value($field) === '') required @endif><input type="hidden" name="{{ $field }}" value="{{ $value($field) }}">@endif</div>
                             @endforeach
                         </div>
-                        @unless($readonly)
-                            <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                        <div class="d-flex justify-content-center gap-3 mt-4 pt-3 border-top">
+                            <button type="button" class="btn btn-outline-secondary px-4" onclick="document.getElementById('perusahaanPersTab').click()">
+                                Previous
+                            </button>
+                            @unless($readonly)
                                 <button type="submit" class="btn btn-primary px-4">
                                     {{ $record ? 'Simpan Perubahan' : 'Kirim Pengajuan' }}
                                 </button>
-                            </div>
-                        @endunless
+                            @endunless
+                        </div>
                     </div>
                 </div>
             </form>
