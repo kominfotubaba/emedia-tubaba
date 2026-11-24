@@ -5,6 +5,30 @@ $(function () {
     const form = $('#pengajuanDuaStep');
     const csrf = $('meta[name="csrf-token"]').attr('content');
     const sync = (source, selector) => $(selector).not(source).val($(source).val());
+    const setupKbliTags = () => {
+        const input = form.find('#noKlbi')[0];
+        if (!input || input.disabled || typeof Tagify === 'undefined') return;
+        new Tagify(input, {
+            whitelist: [
+                { value: '58120', title: 'Penerbitan Surat Kabar' },
+                { value: '58130', title: 'Penerbitan Jurnal dan Penerbitan Berkala' },
+                { value: '60101', title: 'Radio Analog' },
+                { value: '60102', title: 'Radio Digital' },
+                { value: '60202', title: 'Televisi Digital' },
+                { value: '60311', title: 'Aktivitas Kantor Berita oleh Pemerintah' },
+                { value: '60312', title: 'Aktivitas Kantor Berita oleh Swasta' },
+            ],
+            enforceWhitelist: true,
+            duplicates: false,
+            originalInputValueFormat: values => values.map(item => item.value).join(', '),
+            dropdown: { enabled: 0, maxItems: 7, closeOnSelect: false },
+            templates: {
+                dropdownItem: function (item) {
+                    return `<div class="tagify__dropdown__item d-flex justify-content-between gap-3" ${this.getAttributes(item)}><span>${item.value}</span><small class="text-muted text-end">${item.title}</small></div>`;
+                },
+            },
+        });
+    };
     const toggleElectronic = () => {
         const electronic = form.find('[name="jenis_media"]').val() === 'elektronik';
         form.find('.electronic-only').toggle(electronic);
@@ -17,22 +41,8 @@ $(function () {
         form.find('.print-only').toggle(print);
         form.find('[name="namaPercetakan"], [name="alamatPercetakan"]').prop('required', print);
     };
-    const toggleKbli = () => {
-        const jenis = form.find('[name="jenis_media"]').val();
-        const subjenis = form.find('[name="subjenis_elektronik"]').val();
-        const field = form.find('[name="noKlbi"]');
-        field.find('[data-kbli-option]').each(function () {
-            const option = $(this);
-            const mediaMatches = option.data('media').split(',').includes(jenis);
-            const optionSubjenis = option.data('subjenis');
-            const subjenisMatches = !optionSubjenis || optionSubjenis === subjenis;
-            option.prop('disabled', !(mediaMatches && subjenisMatches)).prop('hidden', !(mediaMatches && subjenisMatches));
-        });
-        if (field.find('option:selected').is(':disabled')) field.val('');
-    };
     form.on('input', '.media-name', function () { sync(this, '.media-name'); });
-    form.on('change', '.media-type', function () { sync(this, '.media-type'); toggleElectronic(); toggleWebsite(); togglePrintCompany(); toggleKbli(); });
-    form.on('change', '[name="subjenis_elektronik"]', toggleKbli);
+    form.on('change', '.media-type', function () { sync(this, '.media-type'); toggleElectronic(); toggleWebsite(); togglePrintCompany(); });
     const toggleOrganizationOther = () => {
         if (!form.find('[data-organization]:not(:disabled)').length) return;
         form.find('.organization-other').each(function () {
@@ -42,7 +52,8 @@ $(function () {
         });
     };
     form.on('change', '[data-organization]', toggleOrganizationOther);
-    toggleElectronic(); toggleWebsite(); togglePrintCompany(); toggleKbli(); toggleOrganizationOther();
+    setupKbliTags();
+    toggleElectronic(); toggleWebsite(); togglePrintCompany(); toggleOrganizationOther();
     form.on('change', '.document-upload', function () {
         const input = this, target = $(input).data('target'), file = input.files[0]; if (!file) return;
         const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg'];

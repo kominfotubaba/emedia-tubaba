@@ -41,6 +41,7 @@ class PengajuanFormE2ETest extends TestCase
         $this->assertDatabaseHas('new_media_pengajuans', [
             'id_user' => (string) $user->id,
             'namaMedia' => 'media pengujian',
+            'noKlbi' => '58120, 60312',
             'status' => 'ajukan',
             'tahun_pengajuan' => '2026',
         ]);
@@ -63,6 +64,18 @@ class PengajuanFormE2ETest extends TestCase
         $this->assertSame(1, new_media_pengajuan::where('id_user', $user->id)->count());
     }
 
+    public function test_user_cannot_submit_a_kbli_code_outside_the_dewan_pers_list(): void
+    {
+        $user = User::factory()->create(['role' => 'user']);
+        $this->createActiveYear();
+        $payload = $this->payload('nib.pdf');
+        $payload['noKlbi'] = '58120, 99999';
+
+        $this->actingAs($user)->postJson('/pengajuan/store', $payload)
+            ->assertStatus(422)
+            ->assertJsonPath('title', 'KBLI Tidak Sesuai');
+    }
+
     private function payload(string $fileName): array
     {
         return [
@@ -73,7 +86,7 @@ class PengajuanFormE2ETest extends TestCase
             'kumhamPerusahaan' => 'AHU-001',
             'npwpPerusahaan' => '12.345.678.9-012.000',
             'verifikasiDewanPers' => 'terverifikasi faktual',
-            'noKlbi' => '58120',
+            'noKlbi' => '58120, 60312',
             'alamatPerusahaan' => 'Jalan Pengujian 1',
             'alamatKecPerusahaan' => 'Tulang Bawang Tengah',
             'alamatKabPerusahaan' => 'Tulang Bawang Barat',

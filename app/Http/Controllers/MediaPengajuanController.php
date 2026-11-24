@@ -23,8 +23,6 @@ class MediaPengajuanController extends Controller
      */
     public function index()
     {
-        //
-
         $count = tahun::select('tahun')->where('pengajuan', 1)->count();
         if ($count == 0) {
             # code...
@@ -677,21 +675,18 @@ class MediaPengajuanController extends Controller
         }
 
         $data = $request->validate($rules);
-        $kbliCode = $this->normalizeKbliCode($data['noKlbi']);
-        $validKbliCodes = $this->validKbliCodes(
-            $data['jenis_media'],
-            $data['subjenis_elektronik'] ?? null,
-        );
+        $kbliCodes = $this->normalizeKbliCodes($data['noKlbi']);
+        $invalidKbliCodes = array_diff($kbliCodes, $this->validKbliCodes());
 
-        if (!$kbliCode || !in_array($kbliCode, $validKbliCodes, true)) {
+        if (!$kbliCodes || $invalidKbliCodes) {
             return response()->json([
-                'massage' => 'Nomor KBLI tidak sesuai dengan jenis media yang dipilih. Pengajuan tidak dapat dikirim.',
+                'massage' => 'KBLI hanya boleh diisi dengan kode Dewan Pers yang tersedia: 58120, 58130, 60101, 60102, 60202, 60311, atau 60312.',
                 'icon' => 'error',
                 'title' => 'KBLI Tidak Sesuai',
             ], 422);
         }
 
-        $data['noKlbi'] = $kbliCode;
+        $data['noKlbi'] = implode(', ', $kbliCodes);
         $wartawan = $data['organisasiWartawan'] === 'lainnya'
             ? trim($data['organisasiWartawanLainnya'])
             : $data['organisasiWartawan'];
@@ -796,19 +791,10 @@ class MediaPengajuanController extends Controller
         return response()->json(['massage' => 'Data berhasil diinput', 'icon' => 'success', 'title' => 'Sukses']);
     }
 
-    /** KBLI 2025 yang relevan untuk perusahaan pers, menurut jenis medianya. */
-    private function validKbliCodes(string $jenisMedia, ?string $subjenisElektronik): array
+    /** Kode KBLI utama perusahaan pers yang diakui Dewan Pers. */
+    private function validKbliCodes(): array
     {
-        return match ($jenisMedia) {
-            'siber' => ['58120', '58130', '60311', '60312'],
-            'cetak' => ['58120', '58130', '60311', '60312'],
-            'elektronik' => match ($subjenisElektronik) {
-                'televisi' => ['58120', '58130', '60202', '60311', '60312'],
-                'radio' => ['58120', '58130', '60101', '60102', '60311', '60312'],
-                default => [],
-            },
-            default => [],
-        };
+        return ['58120', '58130', '60101', '60102', '60202', '60311', '60312'];
     }
 
     /** Hanya menerima kode lima digit, dengan awalan "KBLI" yang opsional. */
@@ -817,6 +803,15 @@ class MediaPengajuanController extends Controller
         return preg_match('/^(?:kbli\s*)?(\d{5})$/i', trim($value), $matches)
             ? $matches[1]
             : null;
+    }
+
+    /** Mengubah daftar KBLI yang dipisahkan koma menjadi kode-kode unik lima digit. */
+    private function normalizeKbliCodes(string $value): array
+    {
+        $values = explode(',', $value);
+        $codes = array_map(fn ($item) => $this->normalizeKbliCode($item), $values);
+
+        return in_array(null, $codes, true) ? [] : array_values(array_unique($codes));
     }
 
     /**

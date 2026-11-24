@@ -12,16 +12,6 @@
     $perusahaanPersChoice = in_array(strtoupper($perusahaanPersCurrent), $perusahaanPersOptions, true) ? strtoupper($perusahaanPersCurrent) : ($perusahaanPersCurrent ? 'lainnya' : '');
     $wartawanLainnya = $wartawanChoice === 'lainnya' ? $wartawanCurrent : old('organisasiWartawanLainnya', '');
     $perusahaanPersLainnya = $perusahaanPersChoice === 'lainnya' ? $perusahaanPersCurrent : old('organisasiPerusahaanPersLainnya', '');
-    $kbliOptions = [
-        '58120' => ['Penerbitan Surat Kabar', 'siber,cetak,elektronik', null],
-        '58130' => ['Penerbitan Jurnal dan Penerbitan Berkala', 'siber,cetak,elektronik', null],
-        '60101' => ['Radio Analog', 'elektronik', 'radio'],
-        '60102' => ['Radio Digital', 'elektronik', 'radio'],
-        '60202' => ['Televisi Digital', 'elektronik', 'televisi'],
-        '60311' => ['Aktivitas Kantor Berita oleh Pemerintah', 'siber,cetak,elektronik', null],
-        '60312' => ['Aktivitas Kantor Berita oleh Swasta', 'siber,cetak,elektronik', null],
-    ];
-    $kbliCurrent = preg_replace('/^kbli\s*/i', '', trim((string) $value('noKlbi')));
     $document = function ($field, $folder) use ($record) {
         $filename = $record?->$field;
         return $filename ? '<a class="btn btn-sm btn-outline-primary" target="_blank" href="' . route('dokumen.show', ['folder' => $folder, 'filename' => $filename]) . '">Lihat dokumen</a>' : '<span class="text-danger small">Dokumen belum tersedia</span>';
@@ -97,7 +87,15 @@
                             </div>
                             <div class="col-md-6 electronic-only">
                                 <label class="form-label">No. IPP</label>
-                                <input class="form-control" name="izinIpp" value="{{ $value('izinIpp') }}" {{ $disabled }}>
+                                <div class="input-group">
+                                    <input class="form-control" name="izinIpp" value="{{ $value('izinIpp') }}" {{ $disabled }}>
+                                    @if($readonly)
+                                        {!! $document('fileIzinIpp', 'fileizinipp') !!}
+                                    @else
+                                        <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileIzinIpp">
+                                        <input type="hidden" name="fileIzinIpp" value="{{ $value('fileIzinIpp') }}">
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">NPWP</label>
@@ -148,16 +146,9 @@
                                 <div class="col-md-4 document-field"><label class="form-label">{{ $label }} (PNG, JPG, PDF)</label>@if($readonly){!! $document($field, $folder) !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="{{ $field }}" @if($value($field) === '') required @endif><input type="hidden" name="{{ $field }}" value="{{ $value($field) }}">@endif</div>
                             @endforeach
                             <div class="col-md-6">
-                                <label class="form-label">KBLI</label>
-                                <select class="form-select" name="noKlbi" {{ $disabled }} required>
-                                    <option value="">Pilih KBLI 2025</option>
-                                    @if($kbliCurrent && !array_key_exists($kbliCurrent, $kbliOptions))
-                                        <option value="{{ $kbliCurrent }}" data-kbli-legacy selected>{{ $kbliCurrent }} — kode lama/tidak sesuai</option>
-                                    @endif
-                                    @foreach($kbliOptions as $code => [$description, $mediaTypes, $subtype])
-                                        <option value="{{ $code }}" data-kbli-option data-media="{{ $mediaTypes }}" @if(isset($subtype)) data-subjenis="{{ $subtype }}" @endif @selected($kbliCurrent === $code)>{{ $code }} — {{ $description }}</option>
-                                    @endforeach
-                                </select>
+                                <label class="form-label" for="noKlbi">KBLI</label>
+                                <input id="noKlbi" class="form-control" name="noKlbi" value="{{ $value('noKlbi') }}" placeholder="Pilih KBLI" {{ $disabled }} required>
+                                <div class="form-text">Masukkan satu atau lebih kode, lalu tekan Enter atau koma.</div>
                             </div>
                             <div class="col-12"><label class="form-label">Alamat Perusahaan Pers</label><input class="form-control" name="alamatPerusahaan" value="{{ $value('alamatPerusahaan') }}" {{ $disabled }} required></div>
                             <div class="col-md-4">
@@ -213,9 +204,6 @@
                                 <label class="form-label">Link X</label>
                                 <input type="url" class="form-control" name="linkX" value="{{ $value('linkX') }}" placeholder="https://x.com/namaakun" {{ $disabled }}>
                             </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md-6 document-field electronic-only"><label class="form-label">IPP dari Kemenkomdigi (PNG, JPG, atau PDF)</label>@if($readonly){!! $document('fileIzinIpp','fileizinipp') !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileIzinIpp"><input type="hidden" name="fileIzinIpp" value="{{ $value('fileIzinIpp') }}">@endif</div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="perwakilanMedia">
