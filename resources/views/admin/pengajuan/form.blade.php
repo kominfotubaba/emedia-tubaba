@@ -102,11 +102,16 @@ $(function () {
     toggleElectronic(); toggleWebsite(); togglePrintCompany(); toggleOrganizationOther();
     form.on('change', '.document-upload', function () {
         const input = this, target = $(input).data('target'), file = input.files[0]; if (!file) return;
-        const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg'];
-        if (!allowedTypes.includes(file.type)) { input.value = ''; alert('Dokumen harus berformat PNG, JPG, atau PDF.'); return; }
+        const extension = file.name.split('.').pop().toLowerCase();
+        if (!['pdf', 'png', 'jpg', 'jpeg'].includes(extension)) { input.value = ''; alert('Dokumen harus berformat PDF, PNG, JPG, atau JPEG.'); return; }
+        if (file.size > 10 * 1024 * 1024) { input.value = ''; alert('Ukuran dokumen maksimal 10 MB.'); return; }
         const body = new FormData(); body.append('file', file); body.append('data', target);
         $.ajax({ url: '/pengajuan/uploads', method: 'POST', data: body, processData: false, contentType: false, headers: {'X-CSRF-TOKEN': csrf} })
-            .done(response => form.find('[name="' + target + '"]').val(response.name)).fail(() => { input.value = ''; alert('Upload dokumen gagal.'); });
+            .done(response => form.find('[name="' + target + '"]').val(response.name)).fail(xhr => {
+                input.value = '';
+                const message = xhr.responseJSON?.errors?.file?.[0] || xhr.responseJSON?.message || 'Upload dokumen gagal. Silakan coba lagi.';
+                alert(message);
+            });
     });
     form.on('submit', function (event) {
         event.preventDefault(); if (!this.checkValidity()) { showFirstInvalidField(); return; }

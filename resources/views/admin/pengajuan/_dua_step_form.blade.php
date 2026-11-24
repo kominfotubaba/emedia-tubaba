@@ -106,7 +106,8 @@
                                 <select class="form-select" name="verifikasiDewanPers" {{ $disabled }} required>
                                     <option value="">Pilih status perusahaan pers</option>
                                     <option value="terverifikasi faktual" @selected($value('verifikasiDewanPers') === 'terverifikasi faktual')>Terverifikasi Faktual</option>
-                                    <option value="belum terverifikasi faktual" @selected($value('verifikasiDewanPers') === 'belum terverifikasi faktual')>Belum Terverifikasi Faktual</option>
+                                    <option value="terverifikasi administratif" @selected($value('verifikasiDewanPers') === 'terverifikasi administratif')>Terverifikasi Administratif</option>
+                                    <option value="belum terdaftar" @selected($value('verifikasiDewanPers') === 'belum terdaftar')>Belum Terdaftar</option>
                                 </select>
                             </div>
                             <div class="w-100"></div>
@@ -127,6 +128,7 @@
                                 <label class="form-label">Kompetensi Pimred</label>
                                 <select class="form-select" name="jenisSerfikatUkwPimred" {{ $disabled }} required>
                                     <option value="">Pilih kompetensi pimred</option>
+                                    <option value="muda" @selected($value('jenisSerfikatUkwPimred') === 'muda')>Muda</option>
                                     <option value="madya" @selected($value('jenisSerfikatUkwPimred') === 'madya')>Madya</option>
                                     <option value="utama" @selected($value('jenisSerfikatUkwPimred') === 'utama')>Utama</option>
                                 </select>

@@ -685,7 +685,7 @@ class MediaPengajuanController extends Controller
             'nibPerusahaan' => ['required', 'string', 'max:255'],
             'kumhamPerusahaan' => ['required', 'string', 'max:255'],
             'npwpPerusahaan' => ['required', 'string', 'max:255'],
-            'verifikasiDewanPers' => ['required', 'in:terverifikasi faktual,belum terverifikasi faktual'],
+            'verifikasiDewanPers' => ['required', 'in:terverifikasi faktual,terverifikasi administratif,belum terdaftar'],
             'noKlbi' => ['required', 'string', 'max:255'],
             'alamatPerusahaan' => ['required', 'string', 'max:255'],
             'alamatKecPerusahaan' => ['required', 'string', 'max:255'],
@@ -703,7 +703,7 @@ class MediaPengajuanController extends Controller
             'namaPimred' => ['required', 'string', 'max:255'],
             'serfikatUkwPimred' => ['required', 'string', 'max:255'],
             'namaPimprus' => ['required', 'string', 'max:255'],
-            'jenisSerfikatUkwPimred' => ['required', 'in:madya,utama'],
+            'jenisSerfikatUkwPimred' => ['required', 'in:muda,madya,utama'],
             'namaPerwakilan' => ['required', 'string', 'max:255'],
             'serfikatUkwPerwakilan' => ['required', 'string', 'max:255'],
             'alamatPerwakilan' => ['required', 'string', 'max:255'],
@@ -922,6 +922,11 @@ class MediaPengajuanController extends Controller
         $request->validate([
             'data' => ['required', 'string', 'regex:/^[A-Za-z0-9_-]+$/'],
             'file' => ['required_unless:data,uploadsignature', 'file', 'mimes:pdf,png,jpg,jpeg', 'max:10240'],
+        ], [
+            'file.required_unless' => 'Pilih dokumen yang akan diunggah.',
+            'file.file' => 'Dokumen yang dipilih tidak dapat dibaca. Silakan pilih ulang dokumen.',
+            'file.mimes' => 'Dokumen harus berformat PDF, PNG, JPG, atau JPEG.',
+            'file.max' => 'Ukuran dokumen maksimal 10 MB.',
         ]);
         $param = $request->data;
         $image = $request->images;
