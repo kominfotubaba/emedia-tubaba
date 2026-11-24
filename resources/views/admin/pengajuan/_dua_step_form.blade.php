@@ -253,11 +253,11 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">NIK</label>
-                                <input class="form-control" name="nomorKtpPerwakilan" value="{{ $value('nomorKtpPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control" name="nomorKtpPerwakilan" value="{{ $value('nomorKtpPerwakilan') }}" inputmode="numeric" pattern="[0-9]{16}" maxlength="16" title="NIK harus terdiri dari 16 digit angka" {{ $disabled }} required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">No. KK</label>
-                                <input class="form-control" name="nomorKKPerwakilan" value="{{ $value('nomorKKPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control" name="nomorKKPerwakilan" value="{{ $value('nomorKKPerwakilan') }}" inputmode="numeric" pattern="[0-9]{16}" maxlength="16" title="No. KK harus terdiri dari 16 digit angka" {{ $disabled }} required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label d-block">Organisasi Wartawan</label>
@@ -299,15 +299,15 @@
                                 <div class="col-md-6 document-field"><label class="form-label">{{ $label }} (PNG, JPG, atau PDF)</label>@if($readonly){!! $document($field, $folder) !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="{{ $field }}" @if($value($field) === '') required @endif><input type="hidden" name="{{ $field }}" value="{{ $value($field) }}">@endif</div>
                             @endforeach
                         </div>
+                        @unless($readonly)
+                            <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                                <button type="submit" class="btn btn-primary px-4">
+                                    {{ $record ? 'Simpan Perubahan' : 'Kirim Pengajuan' }}
+                                </button>
+                            </div>
+                        @endunless
                     </div>
                 </div>
-                @unless($readonly)
-                    <div class="d-flex justify-content-end mt-4 pt-3 border-top">
-                        <button type="submit" class="btn btn-primary px-4">
-                            {{ $record ? 'Simpan Perubahan' : 'Kirim Pengajuan' }}
-                        </button>
-                    </div>
-                @endunless
             </form>
         </div>
     </div>

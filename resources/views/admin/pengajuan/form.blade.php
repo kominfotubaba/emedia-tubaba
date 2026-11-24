@@ -5,6 +5,25 @@ $(function () {
     const form = $('#pengajuanDuaStep');
     const csrf = $('meta[name="csrf-token"]').attr('content');
     const sync = (source, selector) => $(selector).not(source).val($(source).val());
+    const fieldLabel = field => $(field).closest('[class*="col-"]').find('.form-label').first().text().trim() || field.name;
+    const showFirstInvalidField = () => {
+        const field = form.find(':input').filter(function () { return !this.disabled && !this.validity.valid; }).first()[0];
+        if (!field) return;
+        const pane = $(field).closest('.tab-pane');
+        const tab = form.closest('.card').find(`[data-bs-toggle="tab"][href="#${pane.attr('id')}"]`)[0];
+        if (tab && window.bootstrap) bootstrap.Tab.getOrCreateInstance(tab).show();
+        field.reportValidity();
+    };
+    form[0].addEventListener('invalid', event => {
+        const field = event.target;
+        const label = fieldLabel(field);
+        let message = '';
+        if (field.validity.valueMissing) message = `${label} wajib diisi.`;
+        else if (field.validity.typeMismatch) message = field.type === 'email' ? `${label} harus menggunakan alamat email yang valid.` : `${label} harus berupa URL yang valid.`;
+        else if (field.validity.patternMismatch) message = field.title || `${label} memiliki format yang tidak valid.`;
+        field.setCustomValidity(message);
+    }, true);
+    form.on('input change', ':input', function () { this.setCustomValidity(''); });
     const setupKbliTags = () => {
         const input = form.find('#noKlbi')[0];
         if (!input || input.disabled || typeof Tagify === 'undefined') return;
@@ -63,11 +82,14 @@ $(function () {
             .done(response => form.find('[name="' + target + '"]').val(response.name)).fail(() => { input.value = ''; alert('Upload dokumen gagal.'); });
     });
     form.on('submit', function (event) {
-        event.preventDefault(); if (!this.checkValidity()) { this.reportValidity(); return; }
+        event.preventDefault(); if (!this.checkValidity()) { showFirstInvalidField(); return; }
         const data = {}; form.serializeArray().forEach(item => { data[item.name] = item.value; }); data.subjenis_elektronik = form.find('[name="subjenis_elektronik"]').val();
         $.ajax({ url: '/pengajuan/store', method: 'POST', data, headers: {'X-CSRF-TOKEN': csrf} })
             .done(response => { alert(response.massage || 'Data berhasil disimpan.'); window.location = '/daftar/' + new Date().getFullYear() + '/detail'; })
-            .fail(xhr => alert(xhr.responseJSON?.message || xhr.responseJSON?.massage || 'Data gagal disimpan.'));
+            .fail(xhr => {
+                const errors = xhr.responseJSON?.errors;
+                alert(errors ? Object.values(errors).flat().join('\n') : (xhr.responseJSON?.message || xhr.responseJSON?.massage || 'Data gagal disimpan.'));
+            });
     });
 });
 </script>

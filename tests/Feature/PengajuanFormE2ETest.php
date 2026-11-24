@@ -76,6 +76,21 @@ class PengajuanFormE2ETest extends TestCase
             ->assertJsonPath('title', 'KBLI Tidak Sesuai');
     }
 
+    public function test_user_receives_clear_messages_for_invalid_nik_and_kk(): void
+    {
+        $user = User::factory()->create(['role' => 'user']);
+        $this->createActiveYear();
+        $payload = $this->payload('nib.pdf');
+        $payload['nomorKtpPerwakilan'] = '123';
+        $payload['nomorKKPerwakilan'] = '456';
+
+        $this->actingAs($user)->postJson('/pengajuan/store', $payload)
+            ->assertStatus(422)
+            ->assertJsonValidationErrors(['nomorKtpPerwakilan', 'nomorKKPerwakilan'])
+            ->assertJsonPath('errors.nomorKtpPerwakilan.0', 'NIK harus terdiri dari tepat 16 digit angka.')
+            ->assertJsonPath('errors.nomorKKPerwakilan.0', 'No. KK harus terdiri dari tepat 16 digit angka.');
+    }
+
     private function payload(string $fileName): array
     {
         return [

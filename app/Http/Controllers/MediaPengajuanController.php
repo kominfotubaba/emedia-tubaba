@@ -674,7 +674,43 @@ class MediaPengajuanController extends Controller
             $rules['alamatPercetakan'] = ['required', 'string', 'max:255'];
         }
 
-        $data = $request->validate($rules);
+        $messages = [
+            'required' => ':attribute wajib diisi.',
+            'required_if' => ':attribute wajib diisi.',
+            'email' => ':attribute harus menggunakan alamat email yang valid.',
+            'url' => ':attribute harus berupa URL yang valid, misalnya https://contoh.com.',
+            'regex' => ':attribute memiliki format yang tidak valid.',
+            'in' => ':attribute tidak valid.',
+            'nomorKtpPerwakilan.regex' => 'NIK harus terdiri dari tepat 16 digit angka.',
+            'nomorKKPerwakilan.regex' => 'No. KK harus terdiri dari tepat 16 digit angka.',
+        ];
+        $attributes = [
+            'namaMedia' => 'Nama Media', 'namaPerusahaan' => 'Nama Perusahaan Pers',
+            'namaPercetakan' => 'Nama Perusahaan Percetakan', 'alamatPercetakan' => 'Alamat Perusahaan Percetakan',
+            'subjenis_elektronik' => 'Jenis Siaran Elektronik', 'nibPerusahaan' => 'No. NIB',
+            'kumhamPerusahaan' => 'No. AHU', 'izinIpp' => 'No. IPP', 'npwpPerusahaan' => 'NPWP',
+            'verifikasiDewanPers' => 'Status Perusahaan Pers', 'noKlbi' => 'KBLI',
+            'alamatPerusahaan' => 'Alamat Perusahaan Pers', 'alamatKecPerusahaan' => 'Kecamatan Perusahaan',
+            'alamatKabPerusahaan' => 'Kabupaten/Kota Perusahaan', 'alamatProvPerusahaan' => 'Provinsi Perusahaan',
+            'tlpnPerusahaan' => 'No. Telepon Redaksi', 'emailPerusahaan' => 'Alamat Email Redaksi',
+            'alamatWebsite' => 'Link Website', 'linkYoutube' => 'Link YouTube', 'linkFacebook' => 'Link Facebook',
+            'linkInstagram' => 'Link Instagram', 'linkTiktok' => 'Link TikTok', 'linkThreads' => 'Link Threads', 'linkX' => 'Link X',
+            'namaPimred' => 'Nama Pimpinan Redaksi', 'serfikatUkwPimred' => 'No. Sertifikat Kompetensi Pimred',
+            'namaPimprus' => 'Nama Pimpinan Perusahaan', 'jenisSerfikatUkwPimred' => 'Kompetensi Pimred',
+            'namaPerwakilan' => 'Nama Kepala Biro/Wartawan Perwakilan', 'serfikatUkwPerwakilan' => 'No. Sertifikat Kompetensi',
+            'alamatPerwakilan' => 'Alamat Domisili Perwakilan', 'alamatKecPerwakilan' => 'Kecamatan Perwakilan',
+            'alamatKabPerwakilan' => 'Kabupaten/Kota Perwakilan', 'alamatProvPerwakilan' => 'Provinsi Perwakilan',
+            'nomorKtpPerwakilan' => 'NIK', 'nomorKKPerwakilan' => 'No. KK',
+            'organisasiWartawan' => 'Organisasi Wartawan', 'organisasiWartawanLainnya' => 'Organisasi Wartawan Lainnya',
+            'organisasiPerusahaanPers' => 'Organisasi Perusahaan Pers', 'organisasiPerusahaanPersLainnya' => 'Organisasi Perusahaan Pers Lainnya',
+            'fileNibPerusahaan' => 'Dokumen NIB', 'fileKumhamPerusahaan' => 'Dokumen AHU', 'fileIzinIpp' => 'Dokumen IPP',
+            'fileNpwpPerusahaan' => 'Dokumen NPWP', 'fileSerfikatUkwPimred' => 'Sertifikat Kompetensi Pimred',
+            'fileSuratPernyataanPimred' => 'Surat Pernyataan Pimred', 'fileSuratKeteranganWartawan' => 'Surat Keterangan Perwakilan',
+            'fileSerfikatUkwPerwakilan' => 'Sertifikat Kompetensi Perwakilan',
+            'fileBuktiKeanggotaanOrganisasiWartawan' => 'Bukti Keanggotaan Organisasi Wartawan',
+            'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => 'Bukti Keanggotaan Organisasi Perusahaan Pers',
+        ];
+        $data = $request->validate($rules, $messages, $attributes);
         $kbliCodes = $this->normalizeKbliCodes($data['noKlbi']);
         $invalidKbliCodes = array_diff($kbliCodes, $this->validKbliCodes());
 
