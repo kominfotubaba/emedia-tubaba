@@ -31,7 +31,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Serve uploads belonging to the current installation.
+     * Serve shared documents and previously uploaded local files.
      */
     public function document(string $folder, string $filename)
     {
@@ -53,20 +53,15 @@ class HomeController extends Controller
         $filename = basename($filename);
         abort_if($filename === '', 404);
 
-        $path = public_path('tmp/uploads/' . $folder . '/' . $filename);
-        if (request()->getHost() === 'dev-emedia.tubaba.go.id') {
-            $storedName = is_file($path) ? $filename : strtolower($filename);
-            return redirect('/tmp/uploads/' . $folder . '/' . rawurlencode($storedName));
-        }
-
-        if (is_file($path)) {
-            return response()->file($path);
-        }
-
-        // Older uploads were stored in lowercase but returned with mixed case.
-        $lowercasePath = public_path('tmp/uploads/' . $folder . '/' . strtolower($filename));
-        if (is_file($lowercasePath)) {
-            return response()->file($lowercasePath);
+        $sharedRoot = config('filesystems.shared_document_root');
+        $roots = array_filter([$sharedRoot, public_path('tmp/uploads')]);
+        foreach (array_unique($roots) as $root) {
+            foreach (array_unique([$filename, strtolower($filename)]) as $candidate) {
+                $path = $root . '/' . $folder . '/' . $candidate;
+                if (is_file($path)) {
+                    return response()->file($path);
+                }
+            }
         }
 
         abort(404, 'Dokumen tidak ditemukan pada server ini.');

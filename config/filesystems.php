@@ -15,6 +15,9 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
+    // Absolute path to the same mounted upload directory on each installation.
+    'shared_document_root' => env('EMEDIA_DOCUMENT_ROOT'),
+
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks

@@ -910,7 +910,12 @@ class MediaPengajuanController extends Controller
         ]);
         $param = $request->data;
         $image = $request->images;
-        $path = public_path('tmp/uploads/' . trim(strtolower($param), '#'));
+        $sharedRoot = config('filesystems.shared_document_root');
+        if ($sharedRoot && !is_file($sharedRoot . '/.emedia-documents')) {
+            abort(503, 'Penyimpanan dokumen bersama belum terhubung.');
+        }
+        $root = $sharedRoot ?: public_path('tmp/uploads');
+        $path = $root . '/' . strtolower($param);
 
         File::ensureDirectoryExists($path);
 
