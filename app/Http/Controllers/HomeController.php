@@ -40,6 +40,7 @@ class HomeController extends Controller
             'filenibperusahaan',
             'filekumhamperusahaan',
             'filenpwpperusahaan',
+            'filenpwpperwakilan',
             'fileizinipp',
             'fileserfikatukwpimred',
             'filesuratpernyataanpimred',
@@ -56,6 +57,12 @@ class HomeController extends Controller
         $path = public_path('tmp/uploads/' . $folder . '/' . $filename);
         if (is_file($path)) {
             return response()->file($path);
+        }
+
+        // Older uploads were stored in lowercase but returned with mixed case.
+        $lowercasePath = public_path('tmp/uploads/' . $folder . '/' . strtolower($filename));
+        if (is_file($lowercasePath)) {
+            return response()->file($lowercasePath);
         }
 
         return redirect()->away('https://emedia.tubaba.go.id/tmp/uploads/' . $folder . '/' . rawurlencode($filename));

@@ -924,9 +924,9 @@ class MediaPengajuanController extends Controller
         } else {
             // nama file dan pindah ori
             $file = $request->file('file');
-            $name = Str::random(40) . '.' . $file->extension();
+            $name = strtolower(Str::random(40) . '.' . $file->extension());
             $original_name = $file->getClientOriginalName();
-            $file->move($path, strtolower($name));
+            $file->move($path, $name);
         }
         return response()->json([
             'name'          => $name,
