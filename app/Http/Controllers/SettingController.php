@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\crf;
 use App\Models\budget;
 use App\Models\Order;
+use App\Models\tahun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SettingController extends Controller
 {
@@ -17,7 +19,30 @@ class SettingController extends Controller
     public function index()
     {
         //
-        return view('admin.setting.setting');
+        return view('admin.setting.setting', [
+            'registrationOpen' => tahun::where('register', 1)->count() === 1,
+            'registrationYear' => tahun::orderByDesc('tahun')->first(),
+        ]);
+    }
+
+    public function updateRegistration(Request $request)
+    {
+        $data = $request->validate(['active' => ['required', 'boolean']]);
+        $year = tahun::orderByDesc('tahun')->first();
+
+        if (!$year && $data['active']) {
+            return back()->with('registration_error', 'Tambahkan tahun anggaran terlebih dahulu untuk mengaktifkan registrasi.');
+        }
+
+        DB::transaction(function () use ($data, $year) {
+            tahun::query()->where('register', 1)->update(['register' => 0]);
+            if ($data['active']) {
+                $year->register = 1;
+                $year->save();
+            }
+        });
+
+        return back()->with('registration_status', $data['active'] ? 'Registrasi berhasil diaktifkan.' : 'Registrasi berhasil dinonaktifkan.');
     }
 
     /**

@@ -111,6 +111,9 @@
                                     <span class="label">Daftar Pengajuan</span>
                                 </a>
                             </li>
+                            @if (Auth::user()->role == 'admin')
+                                <li><a href="/pengajuan/catatan"><span class="label">Daftar Media dengan Catatan</span></a></li>
+                            @endif
                             @if (Auth::user()->role == 'user')
                                 @if ($pengajuan == 1)
                                     <li>

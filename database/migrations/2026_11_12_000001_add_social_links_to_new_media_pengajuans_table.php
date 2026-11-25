@@ -9,12 +9,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('new_media_pengajuans', function (Blueprint $table) {
-            $table->string('linkYoutube')->nullable()->after('alamatWebsite');
-            $table->string('linkFacebook')->nullable()->after('linkYoutube');
-            $table->string('linkInstagram')->nullable()->after('linkFacebook');
-            $table->string('linkTiktok')->nullable()->after('linkInstagram');
-            $table->string('linkThreads')->nullable()->after('linkTiktok');
-            $table->string('linkX')->nullable()->after('linkThreads');
+            $table->text('linkYoutube')->nullable()->after('alamatWebsite');
+            $table->text('linkFacebook')->nullable()->after('linkYoutube');
+            $table->text('linkInstagram')->nullable()->after('linkFacebook');
+            $table->text('linkTiktok')->nullable()->after('linkInstagram');
+            $table->text('linkThreads')->nullable()->after('linkTiktok');
+            $table->text('linkX')->nullable()->after('linkThreads');
         });
     }
 

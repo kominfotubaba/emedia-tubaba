@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     });
     // admin
     Route::group(['prefix' => 'pengajuan', 'middleware' => ['role:admin']], function () {
+        Route::get('/catatan', [\App\Http\Controllers\PengajuanReviewController::class, 'index']);
+        Route::post('/catatan/{no}', [\App\Http\Controllers\PengajuanReviewController::class, 'save']);
         Route::get('/verifikasi/{no_pengajuan}', [MediaPengajuanController::class, 'show_data_verify'])->name('pengajuan.show_data');
         Route::put('/verifikasi', [MediaPengajuanController::class, 'verifikasi'])->name('verifikasi.put');
         Route::post('/verifikasi', [MediaPengajuanController::class, 'verifikasi'])->name('verifikasi.post');
@@ -182,6 +184,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         // admin
         Route::middleware(['role:admin'])->group(function () {
             Route::get('/', [SettingController::class, 'index']);
+            Route::post('/registrasi', [SettingController::class, 'updateRegistration'])->name('setting.registrasi');
             Route::get('/show', [SettingController::class, 'show']);
             Route::get('/edit/{budget}', [SettingController::class, 'edit']);
             Route::post('/update', [SettingController::class, 'update']);

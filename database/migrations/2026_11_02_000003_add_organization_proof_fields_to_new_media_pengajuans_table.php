@@ -9,8 +9,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('new_media_pengajuans', function (Blueprint $table) {
-            $table->string('fileBuktiKeanggotaanOrganisasiWartawan')->nullable()->after('fileSuratKeteranganWartawan');
-            $table->string('fileBuktiKeanggotaanOrganisasiPerusahaanPers')->nullable()->after('fileBuktiKeanggotaanOrganisasiWartawan');
+            $table->text('fileBuktiKeanggotaanOrganisasiWartawan')->nullable()->after('fileSuratKeteranganWartawan');
+            $table->text('fileBuktiKeanggotaanOrganisasiPerusahaanPers')->nullable()->after('fileBuktiKeanggotaanOrganisasiWartawan');
         });
     }
 

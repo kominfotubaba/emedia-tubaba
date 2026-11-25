@@ -308,11 +308,6 @@ class MediaPengajuanController extends Controller
             'namaPimred' => ['namaPimred', 'Nama Pimpinan Redaksi'],
             'serfikatUkwPimred' => ['serfikatUkwPimred', 'No. Sertifikat Kompetensi Pimred'],
             'namaPimprus' => ['namaPimprus', 'Nama Pimpinan Perusahaan'],
-            'noKlbi' => ['noKlbi', 'KBLI'],
-            'alamatPerusahaan' => ['alamatPerusahaan', 'Alamat Perusahaan Pers'],
-            'alamatKecPerusahaan' => ['alamatKecPerusahaan', 'Kecamatan Perusahaan'],
-            'alamatKabPerusahaan' => ['alamatKabPerusahaan', 'Kabupaten/Kota Perusahaan'],
-            'alamatProvPerusahaan' => ['alamatProvPerusahaan', 'Provinsi Perusahaan'],
             'tlpnPerusahaan' => ['tlpnPerusahaan', 'No. Telepon Redaksi'],
             'emailPerusahaan' => ['emailPerusahaan', 'Alamat Email Redaksi'],
             'alamatWebsite' => ['alamatWebsite', 'Link Website'],
@@ -323,15 +318,9 @@ class MediaPengajuanController extends Controller
             'linkThreads' => ['linkThreads', 'Link Threads'],
             'linkX' => ['linkX', 'Link X'],
             'namaPercetakan' => ['namaPercetakan', 'Nama Perusahaan Percetakan'],
-            'alamatPercetakan' => ['alamatPercetakan', 'Alamat Perusahaan Percetakan'],
             'namaPerwakilan' => ['namaPerwakilan', 'Nama Kepala Biro/Wartawan Perwakilan'],
             'serfikatUkwPerwakilan' => ['serfikatUkwPerwakilan', 'No. Sertifikat Kompetensi'],
-            'alamatPerwakilan' => ['alamatPerwakilan', 'Alamat Domisili Perwakilan'],
-            'alamatKecPerwakilan' => ['alamatKecPerwakilan', 'Kecamatan Perwakilan'],
-            'alamatKabPerwakilan' => ['alamatKabPerwakilan', 'Kabupaten/Kota Perwakilan'],
-            'alamatProvPerwakilan' => ['alamatProvPerwakilan', 'Provinsi Perwakilan'],
-            'nomorKtpPerwakilan' => ['nomorKtpPerwakilan', 'NIK'],
-            'nomorKKPerwakilan' => ['nomorKKPerwakilan', 'No. KK'],
+            'npwpPerwakilan' => ['npwpPerwakilan', 'NPWP Kepala Biro/Wartawan Perwakilan'],
             'organisasiWartawanLainnya' => ['organisasiWartawan', 'Organisasi Wartawan'],
             'organisasiPerusahaanPersLainnya' => ['organisasiPerusahaanPers', 'Organisasi Perusahaan Pers'],
         ];
@@ -673,7 +662,7 @@ class MediaPengajuanController extends Controller
     {
         if ($pengajuanNo) {
             $existing = new_media_pengajuan::where('pengajuan_no', $pengajuanNo)->firstOrFail();
-            abort_unless($existing->id_user === Auth::id(), 403);
+            abort_unless((string) $existing->id_user === (string) Auth::id(), 403);
         }
         $rules = [
             'jenis_media' => ['required', 'in:siber,cetak,elektronik'],
@@ -685,7 +674,7 @@ class MediaPengajuanController extends Controller
             'nibPerusahaan' => ['required', 'string', 'max:255'],
             'kumhamPerusahaan' => ['required', 'string', 'max:255'],
             'npwpPerusahaan' => ['required', 'string', 'max:255'],
-            'verifikasiDewanPers' => ['required', 'in:terverifikasi faktual,terverifikasi administratif,belum terdaftar'],
+            'verifikasiDewanPers' => ['required', 'in:terdata,terverifikasi administrasi,terverifikasi faktual,belum terdata'],
             'noKlbi' => ['required', 'string', 'max:255'],
             'alamatPerusahaan' => ['required', 'string', 'max:255'],
             'alamatKecPerusahaan' => ['required', 'string', 'max:255'],
@@ -700,31 +689,32 @@ class MediaPengajuanController extends Controller
             'linkTiktok' => ['nullable', 'url', 'max:255'],
             'linkThreads' => ['nullable', 'url', 'max:255'],
             'linkX' => ['nullable', 'url', 'max:255'],
-            'namaPimred' => ['required', 'string', 'max:255'],
+            'namaPimred' => ['required', 'string', 'max:255', 'different:namaPimprus'],
             'serfikatUkwPimred' => ['required', 'string', 'max:255'],
             'namaPimprus' => ['required', 'string', 'max:255'],
-            'jenisSerfikatUkwPimred' => ['required', 'in:muda,madya,utama'],
+            'jenisSerfikatUkwPimred' => ['required', 'in:madya,utama'],
             'namaPerwakilan' => ['required', 'string', 'max:255'],
-            'serfikatUkwPerwakilan' => ['required', 'string', 'max:255'],
-            'alamatPerwakilan' => ['required', 'string', 'max:255'],
+            'serfikatUkwPerwakilan' => ['nullable', 'string', 'max:255'],
+            'jenisSerfikatUkwPerwakilan' => ['nullable', 'in:muda,madya,utama,belum ada sertifikat'],
+            'alamatPerwakilan' => ['nullable', 'string', 'max:255'],
             'alamatKecPerwakilan' => ['required', 'string', 'max:255'],
             'alamatKabPerwakilan' => ['required', 'string', 'max:255'],
             'alamatProvPerwakilan' => ['required', 'string', 'max:255'],
-            'nomorKtpPerwakilan' => ['required', 'regex:/^\d{16}$/'],
-            'nomorKKPerwakilan' => ['required', 'regex:/^\d{16}$/'],
-            'organisasiWartawan' => ['required', 'in:PWI,AJI,IJTI,PFI,lainnya'],
+            'npwpPerwakilan' => ['required', 'string', 'max:255'],
+            'organisasiWartawan' => ['nullable', 'in:PWI,AJI,IJTI,PFI,lainnya'],
             'organisasiWartawanLainnya' => ['nullable', 'required_if:organisasiWartawan,lainnya', 'string', 'max:255'],
-            'organisasiPerusahaanPers' => ['required', 'in:JMSI,SMSI,AMSI,PRSSNI,ATVLI,ATVSI,SPS,lainnya'],
+            'organisasiPerusahaanPers' => ['nullable', 'in:JMSI,SMSI,AMSI,PRSSNI,ATVLI,ATVSI,SPS,lainnya'],
             'organisasiPerusahaanPersLainnya' => ['nullable', 'required_if:organisasiPerusahaanPers,lainnya', 'string', 'max:255'],
             'fileNibPerusahaan' => ['required', 'string'],
             'fileKumhamPerusahaan' => ['required', 'string'],
             'fileNpwpPerusahaan' => ['required', 'string'],
             'fileSerfikatUkwPimred' => ['required', 'string'],
-            'fileSuratPernyataanPimred' => ['required', 'string'],
+            'fileSuratPernyataanPimred' => ['nullable', 'required_if:jenisSerfikatUkwPimred,madya', 'string'],
             'fileSuratKeteranganWartawan' => ['required', 'string'],
-            'fileSerfikatUkwPerwakilan' => ['required', 'string'],
-            'fileBuktiKeanggotaanOrganisasiWartawan' => ['required', 'string'],
-            'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => ['required', 'string'],
+            'fileNpwpPerwakilan' => ['required', 'string'],
+            'fileSerfikatUkwPerwakilan' => ['nullable', 'string'],
+            'fileBuktiKeanggotaanOrganisasiWartawan' => ['nullable', 'string'],
+            'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => ['nullable', 'string'],
         ];
 
         if ($request->input('jenis_media') === 'elektronik') {
@@ -741,12 +731,11 @@ class MediaPengajuanController extends Controller
         $messages = [
             'required' => ':attribute wajib diisi.',
             'required_if' => ':attribute wajib diisi.',
+            'different' => ':attribute tidak boleh sama dengan Nama Pimpinan Perusahaan.',
             'email' => ':attribute harus menggunakan alamat email yang valid.',
             'url' => ':attribute harus berupa URL yang valid, misalnya https://contoh.com.',
             'regex' => ':attribute memiliki format yang tidak valid.',
             'in' => ':attribute tidak valid.',
-            'nomorKtpPerwakilan.regex' => 'NIK harus terdiri dari tepat 16 digit angka.',
-            'nomorKKPerwakilan.regex' => 'No. KK harus terdiri dari tepat 16 digit angka.',
         ];
         $attributes = [
             'namaMedia' => 'Nama Media', 'namaPerusahaan' => 'Nama Perusahaan Pers',
@@ -762,37 +751,37 @@ class MediaPengajuanController extends Controller
             'namaPimred' => 'Nama Pimpinan Redaksi', 'serfikatUkwPimred' => 'No. Sertifikat Kompetensi Pimred',
             'namaPimprus' => 'Nama Pimpinan Perusahaan', 'jenisSerfikatUkwPimred' => 'Kompetensi Pimred',
             'namaPerwakilan' => 'Nama Kepala Biro/Wartawan Perwakilan', 'serfikatUkwPerwakilan' => 'No. Sertifikat Kompetensi',
+            'jenisSerfikatUkwPerwakilan' => 'Kompetensi Kepala Biro/Wartawan Perwakilan',
             'alamatPerwakilan' => 'Alamat Domisili Perwakilan', 'alamatKecPerwakilan' => 'Kecamatan Perwakilan',
             'alamatKabPerwakilan' => 'Kabupaten/Kota Perwakilan', 'alamatProvPerwakilan' => 'Provinsi Perwakilan',
-            'nomorKtpPerwakilan' => 'NIK', 'nomorKKPerwakilan' => 'No. KK',
+            'npwpPerwakilan' => 'NPWP Kepala Biro/Wartawan Perwakilan',
             'organisasiWartawan' => 'Organisasi Wartawan', 'organisasiWartawanLainnya' => 'Organisasi Wartawan Lainnya',
             'organisasiPerusahaanPers' => 'Organisasi Perusahaan Pers', 'organisasiPerusahaanPersLainnya' => 'Organisasi Perusahaan Pers Lainnya',
             'fileNibPerusahaan' => 'Dokumen NIB', 'fileKumhamPerusahaan' => 'Dokumen AHU', 'fileIzinIpp' => 'Dokumen IPP',
             'fileNpwpPerusahaan' => 'Dokumen NPWP', 'fileSerfikatUkwPimred' => 'Sertifikat Kompetensi Pimred',
             'fileSuratPernyataanPimred' => 'Surat Pernyataan Pimred', 'fileSuratKeteranganWartawan' => 'Surat Keterangan Perwakilan',
+            'fileNpwpPerwakilan' => 'Dokumen NPWP Kepala Biro/Wartawan Perwakilan',
             'fileSerfikatUkwPerwakilan' => 'Sertifikat Kompetensi Perwakilan',
             'fileBuktiKeanggotaanOrganisasiWartawan' => 'Bukti Keanggotaan Organisasi Wartawan',
             'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => 'Bukti Keanggotaan Organisasi Perusahaan Pers',
         ];
         $data = $request->validate($rules, $messages, $attributes);
         $kbliCodes = $this->normalizeKbliCodes($data['noKlbi']);
-        $invalidKbliCodes = array_diff($kbliCodes, $this->validKbliCodes());
-
-        if (!$kbliCodes || $invalidKbliCodes) {
+        if (!$kbliCodes) {
             return response()->json([
-                'massage' => 'KBLI hanya boleh diisi dengan kode Dewan Pers yang tersedia: 58120, 58130, 60101, 60102, 60202, 60311, atau 60312.',
+                'massage' => 'Setiap kode KBLI harus terdiri dari lima digit angka.',
                 'icon' => 'error',
                 'title' => 'KBLI Tidak Sesuai',
             ], 422);
         }
 
         $data['noKlbi'] = implode(', ', $kbliCodes);
-        $wartawan = $data['organisasiWartawan'] === 'lainnya'
-            ? trim($data['organisasiWartawanLainnya'])
-            : $data['organisasiWartawan'];
-        $perusahaanPers = $data['organisasiPerusahaanPers'] === 'lainnya'
-            ? trim($data['organisasiPerusahaanPersLainnya'])
-            : $data['organisasiPerusahaanPers'];
+        $wartawan = ($data['organisasiWartawan'] ?? null) === 'lainnya'
+            ? trim($data['organisasiWartawanLainnya'] ?? '')
+            : ($data['organisasiWartawan'] ?? null);
+        $perusahaanPers = ($data['organisasiPerusahaanPers'] ?? null) === 'lainnya'
+            ? trim($data['organisasiPerusahaanPersLainnya'] ?? '')
+            : ($data['organisasiPerusahaanPers'] ?? null);
 
         $tahun = tahun::where('pengajuan', 1)->value('tahun') ?? date('Y');
         $normal = fn ($value) => is_string($value) ? mb_strtolower(trim($value)) : $value;
@@ -831,21 +820,22 @@ class MediaPengajuanController extends Controller
             'fileNpwpPerusahaan' => $data['fileNpwpPerusahaan'],
             'fileIzinIpp' => $request->input('jenis_media') === 'elektronik' ? $data['fileIzinIpp'] : null,
             'fileSerfikatUkwPimred' => $data['fileSerfikatUkwPimred'],
-            'fileSuratPernyataanPimred' => $data['fileSuratPernyataanPimred'],
+            'fileSuratPernyataanPimred' => $data['jenisSerfikatUkwPimred'] === 'madya' ? $data['fileSuratPernyataanPimred'] : null,
             'namaPerwakilan' => $normal($data['namaPerwakilan']),
-            'serfikatUkwPerwakilan' => $normal($data['serfikatUkwPerwakilan']),
-            'alamatPerwakilan' => $normal($data['alamatPerwakilan']),
+            'serfikatUkwPerwakilan' => $normal($data['serfikatUkwPerwakilan'] ?? null),
+            'jenisSerfikatUkwPerwakilan' => $data['jenisSerfikatUkwPerwakilan'] ?? null,
+            'alamatPerwakilan' => $normal($data['alamatPerwakilan'] ?? null),
             'alamatKecPerwakilan' => $normal($data['alamatKecPerwakilan']),
             'alamatKabPerwakilan' => $normal($data['alamatKabPerwakilan']),
             'alamatProvPerwakilan' => $normal($data['alamatProvPerwakilan']),
-            'nomorKtpPerwakilan' => $normal($data['nomorKtpPerwakilan']),
-            'nomorKKPerwakilan' => $normal($data['nomorKKPerwakilan']),
+            'npwpPerwakilan' => $normal($data['npwpPerwakilan']),
             'organisasiWartawan' => $normal($wartawan),
             'organisasiPerusahaanPers' => $normal($perusahaanPers),
             'fileSuratKeteranganWartawan' => $data['fileSuratKeteranganWartawan'],
-            'fileSerfikatUkwPerwakilan' => $data['fileSerfikatUkwPerwakilan'],
-            'fileBuktiKeanggotaanOrganisasiWartawan' => $data['fileBuktiKeanggotaanOrganisasiWartawan'],
-            'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => $data['fileBuktiKeanggotaanOrganisasiPerusahaanPers'],
+            'fileNpwpPerwakilan' => $data['fileNpwpPerwakilan'],
+            'fileSerfikatUkwPerwakilan' => $data['fileSerfikatUkwPerwakilan'] ?? null,
+            'fileBuktiKeanggotaanOrganisasiWartawan' => $data['fileBuktiKeanggotaanOrganisasiWartawan'] ?? null,
+            'fileBuktiKeanggotaanOrganisasiPerusahaanPers' => $data['fileBuktiKeanggotaanOrganisasiPerusahaanPers'] ?? null,
         ];
 
         $query = new_media_pengajuan::query()->where('tahun_pengajuan', $tahun);
@@ -862,7 +852,7 @@ class MediaPengajuanController extends Controller
         if ($pengajuanNo) {
             $identityQuery->where('pengajuan_no', '!=', $pengajuanNo);
         }
-        foreach (['nomorKtpPerwakilan' => 'NIK', 'nomorKKPerwakilan' => 'No. KK'] as $column => $label) {
+        foreach (['npwpPerwakilan' => 'NPWP Kepala Biro/Wartawan Perwakilan'] as $column => $label) {
             if ((clone $identityQuery)->where($column, $base[$column])->exists()) {
                 return response()->json([
                     'massage' => "$label sudah terdaftar pada pengajuan lain. Pengajuan tidak dapat dikirim.",
@@ -871,10 +861,6 @@ class MediaPengajuanController extends Controller
                 ], 422);
             }
         }
-        if ($base['nomorKtpPerwakilan'] === $base['nomorKKPerwakilan']) {
-            return response()->json(['massage' => 'NIK dan No. KK tidak boleh sama', 'icon' => 'error', 'title' => 'Operasi Gagal'], 422);
-        }
-
         if ($pengajuanNo) {
             new_media_pengajuan::where('pengajuan_no', $pengajuanNo)->update($base + ['keterangan' => '', 'status' => 'edit']);
             return response()->json(['massage' => 'Data berhasil diupdate', 'icon' => 'success', 'title' => 'Sukses', 'tahun_buka' => $tahun]);
@@ -889,12 +875,6 @@ class MediaPengajuanController extends Controller
             'tahun_pengajuan' => $tahun,
         ]);
         return response()->json(['massage' => 'Data berhasil diinput', 'icon' => 'success', 'title' => 'Sukses']);
-    }
-
-    /** Kode KBLI utama perusahaan pers yang diakui Dewan Pers. */
-    private function validKbliCodes(): array
-    {
-        return ['58120', '58130', '60101', '60102', '60202', '60311', '60312'];
     }
 
     /** Hanya menerima kode lima digit, dengan awalan "KBLI" yang opsional. */
@@ -1078,6 +1058,10 @@ class MediaPengajuanController extends Controller
      */
     public function verifikasi(Request $request)
     {
+        $reviewRecord = new_media_pengajuan::where('pengajuan_no', $request->pengajuan_no)->firstOrFail();
+        if ($request->param === 'terima' && !\App\Support\PengajuanReview::complete($reviewRecord)) {
+            return response()->json(['message' => 'Verifikasi seluruh field wajib dan simpan checklist sebelum menerima pengajuan.'], 422);
+        }
         $pengajuan_no = $request->pengajuan_no;
         $keterangan = $request->keterangan;
         $status = $request->status;

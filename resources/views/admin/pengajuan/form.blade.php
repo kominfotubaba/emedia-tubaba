@@ -7,24 +7,65 @@ $(function () {
     const sync = (source, selector) => $(selector).not(source).val($(source).val());
     const toTitleCase = value => value.toLocaleLowerCase('id-ID').replace(/(^|[\s-])\p{L}/gu, match => match.toLocaleUpperCase('id-ID'));
     const fieldLabel = field => $(field).closest('[class*="col-"]').find('.form-label').first().text().trim() || field.name;
-    const showFirstInvalidField = () => {
-        const field = form.find(':input').filter(function () { return !this.disabled && !this.validity.valid; }).first()[0];
-        if (!field) return;
-        const pane = $(field).closest('.tab-pane');
-        const tab = form.closest('.card').find(`[data-bs-toggle="tab"][href="#${pane.attr('id')}"]`)[0];
-        if (tab && window.bootstrap) bootstrap.Tab.getOrCreateInstance(tab).show();
-        field.reportValidity();
+    const fieldContainer = field => $(field).closest('[class*="col-"]').first();
+    const clearFieldWarning = field => {
+        const container = fieldContainer(field);
+        $(field).removeClass('is-invalid');
+        container.find('.client-validation-feedback').remove();
+    };
+    const showFieldWarning = (field, message) => {
+        const container = fieldContainer(field);
+        clearFieldWarning(field);
+        $(field).addClass('is-invalid');
+        container.append(`<div class="invalid-feedback d-block client-validation-feedback">${message}</div>`);
+    };
+    const validationMessage = field => {
+        const label = fieldLabel(field);
+        if (field.validity.valueMissing) return field.dataset.validationMessage || `${label} wajib diisi.`;
+        if (field.validity.typeMismatch) return field.type === 'email' ? `${label} harus menggunakan alamat email yang valid.` : `${label} harus berupa URL yang valid.`;
+        if (field.validity.patternMismatch) return field.title || `${label} memiliki format yang tidak valid.`;
+        return field.validationMessage || `${label} tidak valid.`;
+    };
+    const validateScope = (scope = form) => {
+        const invalidFields = [];
+        const pimred = form.find('[name="namaPimred"]').val().trim().toLocaleLowerCase('id-ID');
+        const pimprus = form.find('[name="namaPimprus"]').val().trim().toLocaleLowerCase('id-ID');
+        const sameLeadershipName = pimred !== '' && pimred === pimprus;
+        scope.find(':input').each(function () {
+            if (this.disabled || this.type === 'hidden') return;
+            this.setCustomValidity('');
+            if (sameLeadershipName && ['namaPimred', 'namaPimprus'].includes(this.name)) {
+                const message = 'Nama Pimpinan Redaksi tidak boleh sama dengan Nama Pimpinan Perusahaan.';
+                this.setCustomValidity(message);
+                showFieldWarning(this, message);
+                invalidFields.push(this);
+                return;
+            }
+            if (this.validity.valid) return clearFieldWarning(this);
+            const message = validationMessage(this);
+            this.setCustomValidity(message);
+            showFieldWarning(this, message);
+            invalidFields.push(this);
+        });
+        scope.find('.client-validation-summary').remove();
+        if (invalidFields.length) {
+            scope.prepend(`<div class="alert alert-danger client-validation-summary" role="alert">Data Perusahaan Pers belum lengkap. Lengkapi field yang diberi tanda merah.</div>`);
+            invalidFields[0].focus();
+        }
+        return invalidFields.length === 0;
     };
     form[0].addEventListener('invalid', event => {
         const field = event.target;
-        const label = fieldLabel(field);
-        let message = '';
-        if (field.validity.valueMissing) message = `${label} wajib diisi.`;
-        else if (field.validity.typeMismatch) message = field.type === 'email' ? `${label} harus menggunakan alamat email yang valid.` : `${label} harus berupa URL yang valid.`;
-        else if (field.validity.patternMismatch) message = field.title || `${label} memiliki format yang tidak valid.`;
+        field.setCustomValidity('');
+        const message = validationMessage(field);
         field.setCustomValidity(message);
+        showFieldWarning(field, message);
     }, true);
-    form.on('input change', ':input', function () { this.setCustomValidity(''); });
+    form.on('input change', ':input', function () {
+        this.setCustomValidity('');
+        clearFieldWarning(this);
+        $(this).closest('.tab-pane').find('.client-validation-summary').remove();
+    });
     const setupKbliTags = () => {
         const input = form.find('#noKlbi')[0];
         if (!input || input.disabled || typeof Tagify === 'undefined') return;
@@ -38,7 +79,7 @@ $(function () {
                 { value: '60311', title: 'Aktivitas Kantor Berita oleh Pemerintah' },
                 { value: '60312', title: 'Aktivitas Kantor Berita oleh Swasta' },
             ],
-            enforceWhitelist: true,
+            enforceWhitelist: false,
             duplicates: false,
             originalInputValueFormat: values => values.map(item => item.value).join(', '),
             dropdown: { enabled: 0, maxItems: 7, closeOnSelect: false },
@@ -60,6 +101,12 @@ $(function () {
         const print = form.find('[name="jenis_media"]').val() === 'cetak';
         form.find('.print-only').toggle(print);
         form.find('[name="namaPercetakan"], [name="alamatPercetakan"]').prop('required', print);
+    };
+    const togglePimredStatement = () => {
+        const madya = form.find('[name="jenisSerfikatUkwPimred"]').val() === 'madya';
+        const upload = form.find('.document-upload[data-target="fileSuratPernyataanPimred"]');
+        form.find('.madya-only').toggle(madya);
+        upload.prop('disabled', !madya).prop('required', madya && !form.find('[name="fileSuratPernyataanPimred"]').val());
     };
     form.on('input', '.title-case', function () {
         const start = this.selectionStart, end = this.selectionEnd, titleCased = toTitleCase(this.value);
@@ -86,7 +133,7 @@ $(function () {
             });
         }, 500));
     };
-    form.on('input change', 'input:not([type="hidden"]):not([type="file"]):not(:radio):not(:checkbox)', function () { checkDuplicate(this); });
+    form.on('input change', 'input:not([type="hidden"]):not([type="file"]):not(:radio):not(:checkbox):not(.skip-duplicate-check)', function () { checkDuplicate(this); });
     form.on('input', '.media-name', function () { sync(this, '.media-name'); });
     form.on('change', '.media-type', function () { sync(this, '.media-type'); toggleElectronic(); toggleWebsite(); togglePrintCompany(); });
     const toggleOrganizationOther = () => {
@@ -98,8 +145,14 @@ $(function () {
         });
     };
     form.on('change', '[data-organization]', toggleOrganizationOther);
+    form.on('change', '[name="jenisSerfikatUkwPimred"]', togglePimredStatement);
+    form.on('click', '.next-tab', function () {
+        const companyPane = form.find('#perusahaanPers');
+        if (!validateScope(companyPane)) return;
+        $(this).data('next-tab') && $(this).data('next-tab').length && document.querySelector($(this).data('next-tab')).click();
+    });
     setupKbliTags();
-    toggleElectronic(); toggleWebsite(); togglePrintCompany(); toggleOrganizationOther();
+    toggleElectronic(); toggleWebsite(); togglePrintCompany(); togglePimredStatement(); toggleOrganizationOther();
     form.on('change', '.document-upload', function () {
         const input = this, target = $(input).data('target'), file = input.files[0]; if (!file) return;
         const extension = file.name.split('.').pop().toLowerCase();
@@ -114,7 +167,7 @@ $(function () {
             });
     });
     form.on('submit', function (event) {
-        event.preventDefault(); if (!this.checkValidity()) { showFirstInvalidField(); return; }
+        event.preventDefault(); if (!validateScope(form)) return;
         const data = {}; form.serializeArray().forEach(item => { data[item.name] = item.value; }); data.subjenis_elektronik = form.find('[name="subjenis_elektronik"]').val();
         $.ajax({ url: '/pengajuan/store', method: 'POST', data, headers: {'X-CSRF-TOKEN': csrf} })
             .done(response => { alert(response.massage || 'Data berhasil disimpan.'); window.location = '/daftar/' + new Date().getFullYear() + '/detail'; })

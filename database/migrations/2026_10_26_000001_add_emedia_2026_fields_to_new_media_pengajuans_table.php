@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::table('new_media_pengajuans', function (Blueprint $table) {
             // DATA PERUSAHAAN PERS - Badan Hukum
-            $table->string('alamatWebsite')->nullable()->after('alamatKabPerusahaan');
-            $table->string('alamatKecPerusahaan')->nullable()->after('alamatPerusahaan');
-            $table->string('namaPimprus')->nullable()->after('namaPimred');
+            $table->text('alamatWebsite')->nullable()->after('alamatKabPerusahaan');
+            $table->text('alamatKecPerusahaan')->nullable()->after('alamatPerusahaan');
+            $table->text('namaPimprus')->nullable()->after('namaPimred');
             // DATA WARTAWAN BIRO/PERWAKILAN MEDIA
-            $table->string('organisasiWartawan')->nullable()->after('afiliasiPersPerwakilan');
-            $table->string('organisasiPerusahaanPers')->nullable()->after('organisasiWartawan');
-            $table->string('fileSuratKeteranganWartawan')->nullable()->after('fileafiliasiPersPerwakilan');
+            $table->text('organisasiWartawan')->nullable()->after('afiliasiPersPerwakilan');
+            $table->text('organisasiPerusahaanPers')->nullable()->after('organisasiWartawan');
+            $table->text('fileSuratKeteranganWartawan')->nullable()->after('fileafiliasiPersPerwakilan');
         });
     }
 

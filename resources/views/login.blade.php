@@ -51,10 +51,12 @@
                             </div>
                             <div class="mb-5">
                                 <p class="h6">Gunakan Form Login Untuk Masuk.</p>
+                                @if($registrationOpen)
                                 <p class="h6">
                                     Apabila Belum Memiliki Akun Silahkan
                                     <a href="{{ route('register') }}">Register.</a>
                                 </p>
+                                @endif
                             </div>
                             @if (session()->has('register'))
                                 <div class="alert alert-primary alert-dismissible fade show" role="alert">

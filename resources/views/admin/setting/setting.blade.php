@@ -71,6 +71,22 @@
                     </div>
                 </div>
             </section>
+            <section class="scroll-section" id="pengaturan-registrasi">
+                <h2 class="small-title">Pengaturan Registrasi</h2>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        @if(session('registration_status'))<div class="alert alert-success">{{ session('registration_status') }}</div>@endif
+                        @if(session('registration_error'))<div class="alert alert-danger">{{ session('registration_error') }}</div>@endif
+                        <p>Status registrasi: <span class="badge {{ $registrationOpen ? 'bg-success' : 'bg-danger' }}">{{ $registrationOpen ? 'Aktif' : 'Tidak Aktif' }}</span></p>
+                        <p class="text-muted">{{ $registrationYear ? 'Pengaktifan menggunakan tahun ' . $registrationYear->tahun . '.' : 'Tambahkan tahun anggaran untuk mengaktifkan registrasi.' }}</p>
+                        <form method="POST" action="{{ route('setting.registrasi') }}">
+                            @csrf
+                            <input type="hidden" name="active" value="{{ $registrationOpen ? '0' : '1' }}">
+                            <button type="submit" class="btn {{ $registrationOpen ? 'btn-danger' : 'btn-primary' }}" @disabled(!$registrationOpen && !$registrationYear)>{{ $registrationOpen ? 'Nonaktifkan Registrasi' : 'Aktifkan Registrasi' }}</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 @endsection

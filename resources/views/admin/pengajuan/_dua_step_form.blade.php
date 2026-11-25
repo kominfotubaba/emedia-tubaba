@@ -1,8 +1,13 @@
 @php
     $record = $record ?? null;
+    $media_jenis = $media_jenis ?? null;
     $readonly = $readonly ?? false;
     $verify = $verify ?? false;
-    $value = fn ($key, $default = '') => old($key, $record?->$key ?? ($key === 'jenis_media' ? ($media_jenis ?? $default) : $default));
+    $value = function ($key, $default = '') use ($record, $readonly, $media_jenis) {
+        $stored = $record?->$key ?? ($key === 'jenis_media' ? ($media_jenis ?? $default) : $default);
+        return $readonly ? $stored : old($key, $stored);
+    };
+    $isElectronic = strtolower((string) $value('jenis_media')) === 'elektronik';
     $disabled = $readonly ? 'disabled' : '';
     $wartawanOptions = ['PWI', 'AJI', 'IJTI', 'PFI'];
     $perusahaanPersOptions = ['JMSI', 'SMSI', 'AMSI', 'PRSSNI', 'ATVLI', 'ATVSI', 'SPS'];
@@ -14,7 +19,7 @@
     $perusahaanPersLainnya = $perusahaanPersChoice === 'lainnya' ? $perusahaanPersCurrent : old('organisasiPerusahaanPersLainnya', '');
     $document = function ($field, $folder) use ($record) {
         $filename = $record?->$field;
-        return $filename ? '<a class="btn btn-sm btn-outline-primary" target="_blank" href="' . route('dokumen.show', ['folder' => $folder, 'filename' => $filename]) . '">Lihat dokumen</a>' : '<span class="text-danger small">Dokumen belum tersedia</span>';
+        return '<span data-review-document="' . e($field) . '">' . ($filename ? '<a class="btn btn-sm btn-outline-primary" target="_blank" href="' . route('dokumen.show', ['folder' => $folder, 'filename' => $filename]) . '">Lihat dokumen</a>' : '<span class="text-danger small">Dokumen belum tersedia</span>') . '</span>';
     };
 @endphp
 <section class="scroll-section">
@@ -45,14 +50,16 @@
                                 <label class="form-label">Nama Perusahaan Pers</label>
                                 <input class="form-control title-case" name="namaPerusahaan" value="{{ $value('namaPerusahaan') }}" {{ $disabled }} required>
                             </div>
-                            <div class="col-md-6 electronic-only">
-                                <label class="form-label">Jenis Siaran Elektronik</label>
-                                <select class="form-select" name="subjenis_elektronik" {{ $disabled }}>
-                                    <option value="">Pilih TV/Radio</option>
-                                    <option value="televisi" @selected($value('jenisJangkauanSiarMediaElektronik') === 'televisi')>Televisi</option>
-                                    <option value="radio" @selected($value('jenisJangkauanSiarMediaElektronik') === 'radio')>Radio</option>
-                                </select>
-                            </div>
+                            @if($isElectronic)
+                                <div class="col-md-6 electronic-only">
+                                    <label class="form-label">Jenis Siaran Elektronik</label>
+                                    <select class="form-select" name="subjenis_elektronik" {{ $disabled }}>
+                                        <option value="">Pilih TV/Radio</option>
+                                        <option value="televisi" @selected($value('jenisJangkauanSiarMediaElektronik') === 'televisi')>Televisi</option>
+                                        <option value="radio" @selected($value('jenisJangkauanSiarMediaElektronik') === 'radio')>Radio</option>
+                                    </select>
+                                </div>
+                            @endif
                             <div class="col-md-6">
                                 <label class="form-label">No. NIB</label>
                                 <div class="input-group">
@@ -77,18 +84,20 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-6 electronic-only">
-                                <label class="form-label">No. IPP</label>
-                                <div class="input-group">
-                                    <input class="form-control" name="izinIpp" value="{{ $value('izinIpp') }}" {{ $disabled }}>
-                                    @if($readonly)
-                                        {!! $document('fileIzinIpp', 'fileizinipp') !!}
-                                    @else
-                                        <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileIzinIpp">
-                                        <input type="hidden" name="fileIzinIpp" value="{{ $value('fileIzinIpp') }}">
-                                    @endif
+                            @if($isElectronic)
+                                <div class="col-md-6 electronic-only">
+                                    <label class="form-label">No. IPP</label>
+                                    <div class="input-group">
+                                        <input class="form-control" name="izinIpp" value="{{ $value('izinIpp') }}" {{ $disabled }}>
+                                        @if($readonly)
+                                            {!! $document('fileIzinIpp', 'fileizinipp') !!}
+                                        @else
+                                            <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileIzinIpp">
+                                            <input type="hidden" name="fileIzinIpp" value="{{ $value('fileIzinIpp') }}">
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <div class="col-md-6">
                                 <label class="form-label">NPWP</label>
                                 <div class="input-group">
@@ -105,9 +114,10 @@
                                 <label class="form-label">Status Perusahaan Pers</label>
                                 <select class="form-select" name="verifikasiDewanPers" {{ $disabled }} required>
                                     <option value="">Pilih status perusahaan pers</option>
+                                    <option value="terdata" @selected($value('verifikasiDewanPers') === 'terdata')>Terdata</option>
+                                    <option value="terverifikasi administrasi" @selected($value('verifikasiDewanPers') === 'terverifikasi administrasi')>Terverifikasi Administrasi</option>
                                     <option value="terverifikasi faktual" @selected($value('verifikasiDewanPers') === 'terverifikasi faktual')>Terverifikasi Faktual</option>
-                                    <option value="terverifikasi administratif" @selected($value('verifikasiDewanPers') === 'terverifikasi administratif')>Terverifikasi Administratif</option>
-                                    <option value="belum terdaftar" @selected($value('verifikasiDewanPers') === 'belum terdaftar')>Belum Terdaftar</option>
+                                    <option value="belum terdata" @selected($value('verifikasiDewanPers') === 'belum terdata')>Belum Terdata</option>
                                 </select>
                             </div>
                             <div class="w-100"></div>
@@ -121,45 +131,58 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Nama Pimpinan Perusahaan</label>
-                                <input class="form-control title-case" name="namaPimprus" value="{{ $value('namaPimprus') }}" {{ $disabled }} required>
+                                <input class="form-control title-case" name="namaPimprus" value="{{ $value('namaPimprus') }}" @if($readonly && blank($value('namaPimprus'))) placeholder="Data belum tersedia" @endif {{ $disabled }} required>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-4">
                                 <label class="form-label">Kompetensi Pimred</label>
                                 <select class="form-select" name="jenisSerfikatUkwPimred" {{ $disabled }} required>
                                     <option value="">Pilih kompetensi pimred</option>
-                                    <option value="muda" @selected($value('jenisSerfikatUkwPimred') === 'muda')>Muda</option>
                                     <option value="madya" @selected($value('jenisSerfikatUkwPimred') === 'madya')>Madya</option>
                                     <option value="utama" @selected($value('jenisSerfikatUkwPimred') === 'utama')>Utama</option>
                                 </select>
                             </div>
-                            @foreach ([
-                                ['fileSerfikatUkwPimred','Sertifikat Kompetensi Dewan Pers Pimred','fileserfikatukwpimred'],
-                                ['fileSuratPernyataanPimred','Surat Pernyataan Bermaterai Pimred','filesuratpernyataanpimred'],
-                            ] as [$field,$label,$folder])
-                                <div class="col-md-4 document-field"><label class="form-label">{{ $label }} (PNG, JPG, PDF)</label>@if($readonly){!! $document($field, $folder) !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="{{ $field }}" @if($value($field) === '') required @endif><input type="hidden" name="{{ $field }}" value="{{ $value($field) }}">@endif</div>
-                            @endforeach
+                            <div class="col-md-4 document-field madya-only">
+                                <label class="form-label">Surat Pernyataan (PNG, JPG, PDF)</label>
+                                <div class="form-text mb-2">Sertakan surat pernyataan kesanggupan memenuhi persyaratan.</div>
+                                @if($readonly)
+                                    {!! $document('fileSuratPernyataanPimred', 'filesuratpernyataanpimred') !!}
+                                @else
+                                    <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileSuratPernyataanPimred" data-validation-message="Belum upload file Surat Pernyataan.">
+                                    <input type="hidden" name="fileSuratPernyataanPimred" value="{{ $value('fileSuratPernyataanPimred') }}">
+                                @endif
+                            </div>
+                            <div class="col-md-4 document-field"><label class="form-label">Sertifikat Kompetensi Dewan Pers Pimred (PNG, JPG, PDF)</label>@if($readonly){!! $document('fileSerfikatUkwPimred', 'fileserfikatukwpimred') !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileSerfikatUkwPimred" @if($value('fileSerfikatUkwPimred') === '') required @endif><input type="hidden" name="fileSerfikatUkwPimred" value="{{ $value('fileSerfikatUkwPimred') }}">@endif</div>
                             <div class="col-md-6">
                                 <label class="form-label" for="noKlbi">KBLI</label>
-                                <input id="noKlbi" class="form-control" name="noKlbi" value="{{ $value('noKlbi') }}" placeholder="Pilih KBLI" {{ $disabled }} required>
-                                <div class="form-text">Masukkan satu atau lebih kode, lalu tekan Enter atau koma.</div>
+                                <input id="noKlbi" class="form-control skip-duplicate-check" name="noKlbi" value="{{ $value('noKlbi') }}" placeholder="Pilih KBLI" {{ $disabled }} required>
+                                @unless($readonly)
+                                    <div class="form-text">Masukkan satu atau lebih kode, lalu tekan Enter atau koma.</div>
+                                @endunless
                             </div>
-                            <div class="col-12"><label class="form-label">Alamat Perusahaan Pers</label><input class="form-control title-case" name="alamatPerusahaan" value="{{ $value('alamatPerusahaan') }}" {{ $disabled }} required></div>
+                            @unless($readonly)
+                                <div class="col-md-6 d-flex align-items-end">
+                                    <div class="alert alert-warning mb-0 w-100 small" role="alert">
+                                        Jika No. KBLI belum sesuai, harap segera melakukan pembaruan No. KBLI menyesuaikan dengan Surat Edaran Dewan Pers terbaru Nomor 01/SE/DP/VIII/2026.
+                                    </div>
+                                </div>
+                            @endunless
+                            <div class="col-12"><label class="form-label">Alamat Perusahaan Pers</label><input class="form-control title-case skip-duplicate-check" name="alamatPerusahaan" value="{{ $value('alamatPerusahaan') }}" {{ $disabled }} required></div>
                             <div class="col-md-4">
                                 <label class="form-label">Kecamatan</label>
-                                <input class="form-control title-case"
-                                name="alamatKecPerusahaan" value="{{ $value('alamatKecPerusahaan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case skip-duplicate-check"
+                                name="alamatKecPerusahaan" value="{{ $value('alamatKecPerusahaan') }}" @if($readonly && blank($value('alamatKecPerusahaan'))) placeholder="Data belum tersedia" @endif {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Kabupaten/Kota</label>
                                 <input 
-                                class="form-control title-case"
+                                class="form-control title-case skip-duplicate-check"
                                 name="alamatKabPerusahaan" 
                                 value="{{ $value('alamatKabPerusahaan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Provinsi</label>
-                                <input class="form-control title-case"
+                                <input class="form-control title-case skip-duplicate-check"
                                 name="alamatProvPerusahaan" 
                                 value="{{ $value('alamatProvPerusahaan') }}" {{ $disabled }} required>
                                 </div>
@@ -204,11 +227,11 @@
                             </div>
                             <div class="col-md-6 print-only">
                                 <label class="form-label">Alamat Perusahaan Percetakan</label>
-                                <input class="form-control title-case" name="alamatPercetakan" value="{{ $value('alamatPercetakan') }}" {{ $disabled }}>
+                                <input class="form-control title-case skip-duplicate-check" name="alamatPercetakan" value="{{ $value('alamatPercetakan') }}" {{ $disabled }}>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-4 pt-3 border-top">
-                            <button type="button" class="btn btn-primary px-4" onclick="document.getElementById('perwakilanMediaTab').click()">
+                            <button type="button" class="btn btn-primary px-4 next-tab" data-next-tab="#perwakilanMediaTab">
                                 Next
                             </button>
                         </div>
@@ -224,59 +247,71 @@
                                 @if($readonly)
                                     {!! $document('fileSuratKeteranganWartawan', 'filesuratketeranganwartawan') !!}
                                 @else
-                                    <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileSuratKeteranganWartawan" @if($value('fileSuratKeteranganWartawan') === '') required @endif>
+                                    <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileSuratKeteranganWartawan" data-validation-message="Belum upload file Surat Keterangan sebagai Kepala Biro/Wartawan Perwakilan." @if($value('fileSuratKeteranganWartawan') === '') required @endif>
                                     <input type="hidden" name="fileSuratKeteranganWartawan" value="{{ $value('fileSuratKeteranganWartawan') }}">
                                 @endif
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">No. Sertifikat Kompetensi</label>
-                                <input class="form-control" name="serfikatUkwPerwakilan" value="{{ $value('serfikatUkwPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control" name="serfikatUkwPerwakilan" value="{{ $value('serfikatUkwPerwakilan') }}" {{ $disabled }}>
+                                <label class="form-label mt-2">Kompetensi Kepala Biro/Wartawan Perwakilan</label>
+                                <select class="form-select" name="jenisSerfikatUkwPerwakilan" {{ $disabled }}>
+                                    <option value="">Pilih kompetensi</option>
+                                    <option value="muda" @selected($value('jenisSerfikatUkwPerwakilan') === 'muda')>Muda</option>
+                                    <option value="madya" @selected($value('jenisSerfikatUkwPerwakilan') === 'madya')>Madya</option>
+                                    <option value="utama" @selected($value('jenisSerfikatUkwPerwakilan') === 'utama')>Utama</option>
+                                    <option value="belum ada sertifikat" @selected($value('jenisSerfikatUkwPerwakilan') === 'belum ada sertifikat')>Belum Ada Sertifikat</option>
+                                </select>
                                 <label class="form-label mt-2">Sertifikat Kompetensi Kepala Biro/Wartawan Perwakilan (PNG, JPG, atau PDF)</label>
                                 @if($readonly)
                                     {!! $document('fileSerfikatUkwPerwakilan', 'fileserfikatukwperwakilan') !!}
                                 @else
-                                    <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileSerfikatUkwPerwakilan" @if($value('fileSerfikatUkwPerwakilan') === '') required @endif>
+                                    <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileSerfikatUkwPerwakilan">
                                     <input type="hidden" name="fileSerfikatUkwPerwakilan" value="{{ $value('fileSerfikatUkwPerwakilan') }}">
                                 @endif
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Alamat Domisili Kepala Biro/Wartawan Perwakilan</label>
-                                <input class="form-control title-case"
+                                <input class="form-control title-case skip-duplicate-check"
                                 name="alamatPerwakilan" 
                                 value="{{ $value('alamatPerwakilan') }}" 
-                                {{ $disabled }} required>
+                                {{ $disabled }}>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Kecamatan</label>
-                                <input class="form-control title-case" name="alamatKecPerwakilan" value="{{ $value('alamatKecPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case skip-duplicate-check" name="alamatKecPerwakilan" value="{{ $value('alamatKecPerwakilan') }}" @if($readonly && blank($value('alamatKecPerwakilan'))) placeholder="Data belum tersedia" @endif {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Kabupaten/Kota</label>
-                                <input class="form-control title-case" name="alamatKabPerwakilan" value="{{ $value('alamatKabPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case skip-duplicate-check" name="alamatKabPerwakilan" value="{{ $value('alamatKabPerwakilan') }}" {{ $disabled }} required>
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Provinsi</label>
-                                <input class="form-control title-case" name="alamatProvPerwakilan" value="{{ $value('alamatProvPerwakilan') }}" {{ $disabled }} required>
+                                <input class="form-control title-case skip-duplicate-check" name="alamatProvPerwakilan" value="{{ $value('alamatProvPerwakilan') }}" {{ $disabled }} required>
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label">NIK</label>
-                                <input class="form-control" name="nomorKtpPerwakilan" value="{{ $value('nomorKtpPerwakilan') }}" inputmode="numeric" pattern="[0-9]{16}" maxlength="16" title="NIK harus terdiri dari 16 digit angka" {{ $disabled }} required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">No. KK</label>
-                                <input class="form-control" name="nomorKKPerwakilan" value="{{ $value('nomorKKPerwakilan') }}" inputmode="numeric" pattern="[0-9]{16}" maxlength="16" title="No. KK harus terdiri dari 16 digit angka" {{ $disabled }} required>
+                            <div class="col-12">
+                                <label class="form-label">NPWP Kepala Biro/Wartawan Perwakilan</label>
+                                <div class="input-group">
+                                    <input class="form-control" name="npwpPerwakilan" value="{{ $value('npwpPerwakilan') }}" {{ $disabled }} required>
+                                    @if($readonly)
+                                        {!! $document('fileNpwpPerwakilan', 'filenpwpperwakilan') !!}
+                                    @else
+                                        <input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileNpwpPerwakilan" data-validation-message="Belum upload file NPWP Kepala Biro/Wartawan Perwakilan." @if($value('fileNpwpPerwakilan') === '') required @endif>
+                                        <input type="hidden" name="fileNpwpPerwakilan" value="{{ $value('fileNpwpPerwakilan') }}">
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label d-block">Organisasi Wartawan</label>
                                 <div class="d-flex flex-wrap gap-3">
                                     @foreach($wartawanOptions as $item)
                                         <label class="form-check">
-                                            <input class="form-check-input" type="radio" name="organisasiWartawan" value="{{ $item }}" data-organization="organisasiWartawan" @checked($wartawanChoice === $item) {{ $disabled }} required>
+                                            <input class="form-check-input" type="radio" name="organisasiWartawan" value="{{ $item }}" data-organization="organisasiWartawan" @checked($wartawanChoice === $item) {{ $disabled }}>
                                             <span class="form-check-label">{{ $item }}</span>
                                         </label>
                                     @endforeach
                                     <label class="form-check">
-                                        <input class="form-check-input" type="radio" name="organisasiWartawan" value="lainnya" data-organization="organisasiWartawan" @checked($wartawanChoice === 'lainnya') {{ $disabled }} required>
+                                        <input class="form-check-input" type="radio" name="organisasiWartawan" value="lainnya" data-organization="organisasiWartawan" @checked($wartawanChoice === 'lainnya') {{ $disabled }}>
                                         <span class="form-check-label">Lainnya</span>
                                     </label>
                                 </div>
@@ -287,12 +322,12 @@
                                 <div class="d-flex flex-wrap gap-3">
                                     @foreach($perusahaanPersOptions as $item)
                                         <label class="form-check">
-                                            <input class="form-check-input" type="radio" name="organisasiPerusahaanPers" value="{{ $item }}" data-organization="organisasiPerusahaanPers" @checked($perusahaanPersChoice === $item) {{ $disabled }} required>
+                                            <input class="form-check-input" type="radio" name="organisasiPerusahaanPers" value="{{ $item }}" data-organization="organisasiPerusahaanPers" @checked($perusahaanPersChoice === $item) {{ $disabled }}>
                                             <span class="form-check-label">{{ $item }}</span>
                                         </label>
                                     @endforeach
                                     <label class="form-check">
-                                        <input class="form-check-input" type="radio" name="organisasiPerusahaanPers" value="lainnya" data-organization="organisasiPerusahaanPers" @checked($perusahaanPersChoice === 'lainnya') {{ $disabled }} required>
+                                        <input class="form-check-input" type="radio" name="organisasiPerusahaanPers" value="lainnya" data-organization="organisasiPerusahaanPers" @checked($perusahaanPersChoice === 'lainnya') {{ $disabled }}>
                                         <span class="form-check-label">Lainnya</span>
                                     </label>
                                 </div>
@@ -300,11 +335,8 @@
                             </div>
                         </div>
                         <div class="row g-3">
-                            @foreach ([
-                                ['fileBuktiKeanggotaanOrganisasiWartawan','Bukti Keanggotaan Organisasi Wartawan','filebuktikeanggotaanorganisasiwartawan'], ['fileBuktiKeanggotaanOrganisasiPerusahaanPers','Bukti Keanggotaan Organisasi Perusahaan Pers','filebuktikeanggotaanorganisasiperusahaanpers']
-                            ] as [$field,$label,$folder])
-                                <div class="col-md-6 document-field"><label class="form-label">{{ $label }} (PNG, JPG, atau PDF)</label>@if($readonly){!! $document($field, $folder) !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="{{ $field }}" @if($value($field) === '') required @endif><input type="hidden" name="{{ $field }}" value="{{ $value($field) }}">@endif</div>
-                            @endforeach
+                            <div class="col-md-6 document-field"><label class="form-label">Bukti Keanggotaan Organisasi Wartawan (PNG, JPG, atau PDF)</label>@if($readonly){!! $document('fileBuktiKeanggotaanOrganisasiWartawan', 'filebuktikeanggotaanorganisasiwartawan') !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileBuktiKeanggotaanOrganisasiWartawan"><input type="hidden" name="fileBuktiKeanggotaanOrganisasiWartawan" value="{{ $value('fileBuktiKeanggotaanOrganisasiWartawan') }}">@endif</div>
+                            <div class="col-md-6 document-field"><label class="form-label">Bukti Keanggotaan Organisasi Perusahaan Pers (PNG, JPG, atau PDF)</label>@if($readonly){!! $document('fileBuktiKeanggotaanOrganisasiPerusahaanPers', 'filebuktikeanggotaanorganisasiperusahaanpers') !!}@else<input class="form-control document-upload" type="file" accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf" data-target="fileBuktiKeanggotaanOrganisasiPerusahaanPers"><input type="hidden" name="fileBuktiKeanggotaanOrganisasiPerusahaanPers" value="{{ $value('fileBuktiKeanggotaanOrganisasiPerusahaanPers') }}">@endif</div>
                         </div>
                         <div class="d-flex justify-content-center gap-3 mt-4 pt-3 border-top">
                             <button type="button" class="btn btn-outline-secondary px-4" onclick="document.getElementById('perusahaanPersTab').click()">

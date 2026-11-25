@@ -118,7 +118,11 @@ class HomeController extends Controller
                         }
 
                         if (str_contains($verifikasi, 'administrasi') || str_contains($verifikasi, 'administratif')) {
-                            return 'terverivikasi administrasi';
+                            return 'terverifikasi administrasi';
+                        }
+
+                        if (str_contains($verifikasi, 'terdata') && !str_contains($verifikasi, 'belum')) {
+                            return 'terdata';
                         }
 
                         return 'belum terdata';
