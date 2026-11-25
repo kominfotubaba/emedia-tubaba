@@ -54,6 +54,11 @@ class HomeController extends Controller
         abort_if($filename === '', 404);
 
         $path = public_path('tmp/uploads/' . $folder . '/' . $filename);
+        if (request()->getHost() === 'dev-emedia.tubaba.go.id') {
+            $storedName = is_file($path) ? $filename : strtolower($filename);
+            return redirect('/tmp/uploads/' . $folder . '/' . rawurlencode($storedName));
+        }
+
         if (is_file($path)) {
             return response()->file($path);
         }
