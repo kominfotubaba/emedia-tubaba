@@ -31,8 +31,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Serve new local uploads and fall back to the legacy production archive
-     * for documents that have not been copied into the local workspace.
+     * Serve uploads belonging to the current installation.
      */
     public function document(string $folder, string $filename)
     {
@@ -65,7 +64,7 @@ class HomeController extends Controller
             return response()->file($lowercasePath);
         }
 
-        return redirect()->away('https://emedia.tubaba.go.id/tmp/uploads/' . $folder . '/' . rawurlencode($filename));
+        abort(404, 'Dokumen tidak ditemukan pada server ini.');
     }
 
     public function data_all(Request $request)
@@ -109,7 +108,11 @@ class HomeController extends Controller
                         return $data->alamatKecPerusahaan;
                     })
                     ->addColumn('surat_pernyataan_pimred', function ($data) {
-                        return '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/filesuratpernyataanpimred/' . $data->fileSuratPernyataanPimred . '" class="btn btn-info">Lihat</a>';
+                        if (!$data->fileSuratPernyataanPimred) {
+                            return '';
+                        }
+                        $url = route('dokumen.show', ['folder' => 'filesuratpernyataanpimred', 'filename' => $data->fileSuratPernyataanPimred], false);
+                        return '<a target="_blank" href="' . e($url) . '" class="btn btn-info">Lihat</a>';
                     })
                     ->addColumn('alamat_kabupaten', function ($data) {
                         return $data->alamatKabPerusahaan;
@@ -198,7 +201,8 @@ class HomeController extends Controller
                     })
                     ->addColumn('surat_keterangan_wartawan', function ($data) {
                         if ($data->fileSuratKeteranganWartawan) {
-                            return '<a target="_blank" href="https://emedia.tubaba.go.id/tmp/uploads/filesuratketeranganwartawan/' . $data->fileSuratKeteranganWartawan . '" class="btn btn-info">Lihat</a>';
+                            $url = route('dokumen.show', ['folder' => 'filesuratketeranganwartawan', 'filename' => $data->fileSuratKeteranganWartawan], false);
+                            return '<a target="_blank" href="' . e($url) . '" class="btn btn-info">Lihat</a>';
                         }
                         return '';
                     })

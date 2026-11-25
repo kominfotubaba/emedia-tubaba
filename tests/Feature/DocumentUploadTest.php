@@ -30,6 +30,7 @@ class DocumentUploadTest extends TestCase
             $this->assertFileExists($publicPath.'/tmp/uploads/filenpwpperwakilan/'.$name);
             $this->get('/dokumen/filenpwpperwakilan/'.$name)->assertOk();
             $this->get('/dokumen/filenpwpperwakilan/'.strtoupper($name))->assertOk();
+            $this->get('/dokumen/fileserfikatukwpimred/missing.pdf')->assertNotFound();
         } finally {
             $this->app->instance('path.public', $originalPublicPath);
             File::deleteDirectory($publicPath);
