@@ -135,9 +135,5 @@
     </section>
 @endsection
 @push('script')
-    <script>
-        $(document).ready(function() {
-            $('#myModal').modal('show')
-        });
-    </script>
+    {{-- Popup pengumuman dinonaktifkan sementara. --}}
 @endpush

@@ -6,6 +6,7 @@ use App\Models\crf;
 use App\Models\budget;
 use App\Models\Order;
 use App\Models\tahun;
+use App\Models\AppSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,6 +23,7 @@ class SettingController extends Controller
         return view('admin.setting.setting', [
             'registrationOpen' => tahun::where('register', 1)->count() === 1,
             'registrationYear' => tahun::orderByDesc('tahun')->first(),
+            'deletePengajuanEnabled' => AppSetting::enabled('delete_pengajuan'),
         ]);
     }
 
@@ -43,6 +45,21 @@ class SettingController extends Controller
         });
 
         return back()->with('registration_status', $data['active'] ? 'Registrasi berhasil diaktifkan.' : 'Registrasi berhasil dinonaktifkan.');
+    }
+
+    public function updateDeletePengajuan(Request $request)
+    {
+        $data = $request->validate(['active' => ['required', 'boolean']]);
+
+        AppSetting::updateOrCreate(
+            ['key' => 'delete_pengajuan'],
+            ['value' => (bool) $data['active']]
+        );
+
+        return back()->with(
+            'delete_pengajuan_status',
+            $data['active'] ? 'Fitur hapus pengajuan berhasil diaktifkan.' : 'Fitur hapus pengajuan berhasil dinonaktifkan.'
+        );
     }
 
     /**

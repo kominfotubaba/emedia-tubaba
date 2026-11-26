@@ -359,5 +359,22 @@
                 }
             });
         });
+
+        $(document).on('click', '.hapusPengajuan', function() {
+            const noPengajuan = $(this).data('id');
+            if (!confirm('Hapus pengajuan ini? Data akan dipindahkan ke arsip dan tidak tampil lagi.')) return;
+            $.ajax({
+                type: 'DELETE',
+                url: '/pengajuan/hapus/' + encodeURIComponent(noPengajuan),
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                success: function(response) {
+                    alert(response.message);
+                    $('#tbDaftarPengajuan').DataTable().ajax.reload(null, false);
+                },
+                error: function(xhr) {
+                    alert(xhr.responseJSON?.message || 'Pengajuan gagal dihapus.');
+                }
+            });
+        });
     </script>
 @endpush

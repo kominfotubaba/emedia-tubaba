@@ -87,6 +87,23 @@
                     </div>
                 </div>
             </section>
+            <section class="scroll-section" id="pengaturan-hapus-pengajuan">
+                <h2 class="small-title">Pengaturan Hapus Pengajuan</h2>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        @if(session('delete_pengajuan_status'))<div class="alert alert-success">{{ session('delete_pengajuan_status') }}</div>@endif
+                        <form method="POST" action="{{ route('setting.hapus-pengajuan') }}">
+                            @csrf
+                            <div class="form-check form-switch d-flex align-items-center gap-2">
+                                <input type="hidden" name="active" value="0">
+                                <input class="form-check-input" type="checkbox" role="switch" id="deletePengajuanSwitch" name="active" value="1" @checked($deletePengajuanEnabled) onchange="this.form.submit()">
+                                <label class="form-check-label" for="deletePengajuanSwitch">Aktifkan fitur hapus pengajuan</label>
+                            </div>
+                            <small class="text-muted d-block mt-2">Jika aktif, admin dapat menghapus pengajuan dari daftar. Data dihapus secara soft delete.</small>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 @endsection

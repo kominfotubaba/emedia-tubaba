@@ -8,6 +8,7 @@ use App\Mail\notifVerifikasiTolak;
 use App\Models\new_media_pengajuan;
 use App\Models\tahun;
 use App\Models\User;
+use App\Models\AppSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
@@ -149,6 +150,12 @@ class MediaPengajuanDaftarController extends Controller
                                 <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
                               </svg></button>';
                     }
+                    if (AppSetting::enabled('delete_pengajuan')) {
+                        $button .= '<button class="hapusPengajuan btn btn-danger" data-id="' . e($data->pengajuan_no) . '" title="Hapus pengajuan"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5V1.5A1.5 1.5 0 0 1 7.5 0h1A1.5 1.5 0 0 1 10 1.5V2h3.5a1 1 0 0 1 1 1M6.5 2h3V1.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM3.5 3a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"/>
+                        </svg></button>';
+                    }
                     // }
                 }
 
@@ -283,6 +290,12 @@ class MediaPengajuanDaftarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_unless(Auth::user()?->role === 'admin', 403);
+        abort_unless(AppSetting::enabled('delete_pengajuan'), 403, 'Fitur hapus pengajuan sedang dinonaktifkan.');
+
+        $pengajuan = new_media_pengajuan::where('pengajuan_no', $id)->firstOrFail();
+        $pengajuan->delete();
+
+        return response()->json(['message' => 'Pengajuan berhasil dihapus.']);
     }
 }

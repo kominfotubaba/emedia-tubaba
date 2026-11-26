@@ -74,7 +74,12 @@ class HomeController extends Controller
 
         try {
             $tahunAktif = tahun::where('pengajuan', 1)->value('tahun') ?? date('Y');
-            $query = new_media_pengajuan::query()->where('tahun_pengajuan', $tahunAktif);
+            // Beranda hanya menampilkan pengajuan yang sudah diterima admin.
+            // Pengajuan baru, masih diverifikasi, atau ditolak tetap tersimpan
+            // untuk proses internal tetapi tidak dipublikasikan.
+            $query = new_media_pengajuan::query()
+                ->where('tahun_pengajuan', $tahunAktif)
+                ->where('status', 'terima');
 
             if ($param === 'perwakilan' && $request->filled('jenis_media')) {
                 switch ($request->string('jenis_media')->lower()->value()) {
